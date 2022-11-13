@@ -8,6 +8,8 @@ namespace StatsData
     /// </summary>
     public abstract class AShotgun : Weapon
     {
+        //TODO wiki spread 30:1, but calc is 28:1 (28.148repeating)
+        //TODO wiki all pellets far 30, but calc is 32, need evidence
         public AShotgun(decimal baseDamage = 60, int fragments = 10, decimal spread = Damage.SPREAD_SHOTGUN_SCATTERGUN, decimal zeroRange = Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP)
         {
             Name = "Shotgun";
@@ -97,6 +99,8 @@ namespace StatsData
     /// </summary>
     public class PanicAttack : AShotgun
     {
+        // +50% bullets per shot; -20% damage penalty; spread gimmick
+        //TODO (probably just from stock issue) wiki far max 36, calc is 38
         public PanicAttack()
             :base(72, 
                  15)
@@ -162,6 +166,7 @@ namespace StatsData
     /// </summary>
     public class FamilyBusiness : AShotgun
     {
+        //TODO obs/wiki close max is 76, calc is 77  (and long wiki is 26, calc is 27 - relates to stock tho)
         public FamilyBusiness()
             :base(51)
         {

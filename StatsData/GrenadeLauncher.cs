@@ -25,6 +25,9 @@ namespace StatsData
                 Splash = new AOE(splashRadius)
             };
             FireRate = 0.6m;
+
+            //fuse (if no impact or contact with surfaces):
+            ActivationTime = 2.3m;//wiki text says 2.3s;//TODO bad use of ActivationTime?
         }
     }
 
@@ -36,19 +39,22 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
-                new GrenadeLauncherRoller() // TODO other launcher rollers
+                new GrenadeLauncherRoller()
             };
         }
     }
 
     public abstract class AGrenadeLauncherRoller : Weapon
     {
-        public AGrenadeLauncherRoller(decimal splashRadius = AOE.DEFAULT_SPLASH * 1)
+        public AGrenadeLauncherRoller(decimal splashRadius = AOE.DEFAULT_SPLASH * 1,
+            decimal speed = 1216.6m//wd; 1200 in other sheet
+            )
         {
             Name = "grenade launcher (roller)";
 
-            Projectile = new Projectile(1216.6m)//wd; 1200 in other sheet
+            Projectile = new Projectile(speed)
             {
+                //TODO but it doesn't explode on impact...no way to express that?
                 HitDamage = new Damage(60)
                 {
                     Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
@@ -56,11 +62,10 @@ namespace StatsData
                     LongRangeRamp = 1,
                 },
                 Splash = new AOE(splashRadius),
-
             };
             FireRate = 0.6m;
             //fuse:
-            ActivationTime = 2.0m;//TODO FIXME value? bad use of ActivationTime?
+            ActivationTime = 2.3m;//wiki text says 2.3s;//TODO bad use of ActivationTime?
         }
     }
 
@@ -96,7 +101,10 @@ namespace StatsData
             //};
             //FireRate = 0.6;
 
-            // TODO technically it has explode on fuse expiration flak
+            // technically it has explode on fuse expiration flak
+            //fuse (if no impact or contact with surfaces):
+            ActivationTime = 2.3m;//TODO bad use of ActivationTime?
+
             AlternateModes = null;// no rollers
         }
     }
@@ -114,7 +122,7 @@ namespace StatsData
     {
         public LooseCannon()
         {
-            Name = "loose cannon (donk)";
+            Name = "loose cannon";
 
             Projectile = new Projectile(1453.9m)// wd; 1440 in other sheet
             {
@@ -122,20 +130,35 @@ namespace StatsData
                 {
                     Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
                     ZeroRangeRamp = 1,
-                    LongRangeRamp = 0.5m,
+                    LongRangeRamp = 0.5m, // per wiki.
+                    //TODO wiki says crit affected by range.
                 },
-                // no splash
+                // no splash or explosion (technically explosive damage classification however)
                 // TODO increased knockback
+
+                Penetrating = true // Sort of... it can hit multiple enemies in this mode until it hits a surface.
             };
             FireRate = 0.6m;
 
+            Effect = new Effect()
+            {
+                Name = "Donk (take mini-crit & no-radius-falloff fuse explosion (double-donk))"
+            };
+
             AlternateModes = new List<Weapon>()
             {
-                //TODO additions
-                //new LooseCannonFuse(),// what is different from regular Roller?
-                //new LooseCannonDonkRoller(),// I.e. double-donk
-                new GrenadeLauncherRoller()//new LooseCannonRoller()
+                new LooseCannonFuse(),// basically a roller, but doesn't have to hit something first.
             };
+        }
+    }
+
+    public class LooseCannonFuse : AGrenadeLauncherRoller
+    {
+        public LooseCannonFuse()
+        {
+            Name = "Loose Cannon (fuse)";
+
+            ActivationTime = 1.0m;// "Cannonballs have a fuse time of 1 second; fuses can be primed to explode earlier by holding down the fire key."
         }
     }
 

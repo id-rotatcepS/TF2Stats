@@ -211,23 +211,23 @@
                             <TextBlock Text="{Binding Name}"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="4,1">Damage:</TextBlock>
-                                <TextBox Margin="4,1" Text="{Binding BaseDamage}"/>
-                                <TextBox Margin="4,1" Text="{Binding Detail.RangePercents}"/>
-                                <TextBox Margin="4,1" Text="{Binding Detail.RangeDamage}"/>
+                                <TextBlock Margin="4,1" Text="{Binding BaseDamage}"/>
+                                <TextBlock Margin="4,1" Text="{Binding Detail.RangePercents}"/>
+                                <TextBlock Margin="4,1" Text="{Binding Detail.RangeDamage}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBox Margin="4,1" Text="{Binding Detail.WeaponTestsCols}"/>
+                                <TextBlock Margin="4,1" Text="{Binding Detail.WeaponTestsCols}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>Effect:</TextBlock>
-                                <TextBox Text="{Binding Effect}"/>
+                                <TextBlock Text="{Binding Effect}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>Accuracy:</TextBlock>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBox Text="{Binding Detail.Accuracy}"/>
-                                    <TextBox Text="{Binding Detail.AccuracySplash}"/>
-                                    <TextBox Text="{Binding Detail.MaxRange}"/>
+                                    <TextBlock Text="{Binding Detail.Accuracy}"/>
+                                    <TextBlock Text="{Binding Detail.AccuracySplash}"/>
+                                    <TextBlock Text="{Binding Detail.MaxRange}"/>
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">

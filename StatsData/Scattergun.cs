@@ -11,6 +11,8 @@ namespace StatsData
     /// </summary>
     public abstract class AScattergun : AShotgun // literally "Scout Shotgun" in some languages.
     {
+        //TODO (from AShotgun) wiki spread 30:1, but calc is 28:1 (28.148repeating).  calc is 30 if I use 2.0 instead of 1.9 for spread divisor. (but back-scatter is slightly too HIGH calc, then)
+        //TODO (from AShotgun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off
         public AScattergun(decimal baseDamage = 60, int fragments = 10,
             decimal spread = Damage.SPREAD_SHOTGUN_SCATTERGUN, 
             decimal zeroRange = Damage.SCATTERGUN_HITSCAN_ZERO_RANGE_RAMP)
@@ -69,6 +71,7 @@ namespace StatsData
     /// </summary>
     public class ForceANature : AScattergun
     {
+        //TODO wiki all pellets far 32, but calc is 34, need evidence
         public ForceANature()
             : base(64.8m,
             12)
@@ -100,6 +103,8 @@ namespace StatsData
     /// </summary>
     public class Shortstop : AScattergun
     {
+        //TODO wiki spread 50:1, but calc is 47:1 (47.49999repeating so real math probably rounds to 48)
+        //TODO wiki all pellets far 24, but calc is 25, need evidence
         //Wiki claims "has approximately 40% less pellet spread" although it's not listed in stats
         public Shortstop() // closer to a pistol than defaults
             :base(48, 4,
@@ -195,6 +200,7 @@ namespace StatsData
     /// </summary>
     public class BackScatter : AScattergun
     {
+        //TODO, wiki says spread is 24:1, but *1.20m rounds to 23:1 (23.456790... interesting number, just missing the 8)
         public BackScatter()
             :base(60, 10, 
                  Damage.SPREAD_SHOTGUN_SCATTERGUN*1.20m// stats: "20% less accurate"

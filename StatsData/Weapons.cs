@@ -2,7 +2,22 @@
 
 namespace StatsData
 {
-  
+
+    // reviewing vs. wiki pages, most look good starting from shield bash working up the list.  issues marked as TODO in code items.
+    // summary:
+    // TODO shotgun long range all pellets is missing weapon tests (with a giant) and tends to not match wiki
+    // TODO WIKI IS WRONG about shotguns spread... their own evidence proves them wrong (see comments on constant)
+    // TODO rocket launcher point blank is an issue (expecting offset is relevant here... or maybe ramp up?)
+
+    //TODO (shotgun/scattergun) wiki spread 30:1, but calc is 28:1 (28.148repeating).
+    //  calc is 30 if I use 2.0 instead of 1.9 for spread divisor. (but back-scatter is slightly too HIGH calc, then. and Minigun calcs 25 instead of 24 (and tomislav calcs 31 not 30))
+
+    //TODO (shotgun/scattergun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off
+
+    // TODO stickybombs & flamethrowers are issues still
+
+    // TODO alt modes are an issue in some
+    // TODO crit-includes-range not yet supported (ambassador, flamethrowers, etc)
 
     public abstract class IndivisibleParticleSmasher : Weapon
     {
@@ -16,7 +31,7 @@ namespace StatsData
                 {
                     Offset = Damage.OFFSET_2_ENERGY_COWMANGLER_ARROWLIKE,
                     ZeroRangeRamp = Damage.NORMAL_ENERGY_PROJECTILE_ZERO_RANGE_RAMP,
-                    LongRangeRamp = UseSimpleOverrides?Damage.NORMAL_LONG_RANGE_RAMP:
+                    LongRangeRamp = UseSimpleOverrides ? Damage.NORMAL_LONG_RANGE_RAMP :
                     0.533333333333333m,
 
                     BuildingModifier = 0.20m//-80%
@@ -66,7 +81,7 @@ namespace StatsData
     public class RighteousBison : IndivisibleParticleSmasher
     {
         public RighteousBison()
-            :base(20)
+            : base(20)
         {
             Name = "Righteous Bison";
             //TODO damage rate... damage is actually half base and always hits twice.
@@ -94,9 +109,9 @@ namespace StatsData
     }
 
 
-    public abstract class Bolts : Weapon
+    public abstract class ABolt : Weapon
     {
-        public Bolts()
+        public ABolt()
         {
             Name = "bolts";
 
@@ -117,7 +132,7 @@ namespace StatsData
     /// myobs: 51	51	69	69	153	153
     /// wiki: 50	50	68	68	150 (charged all agree)
     /// </summary>
-    public class Huntsman : Bolts
+    public class Huntsman : ABolt
     {
         public Huntsman()
         {
@@ -142,7 +157,7 @@ namespace StatsData
         }
     }
 
-    public class HuntsmanCharged : Bolts
+    public class HuntsmanCharged : ABolt
     {
         public HuntsmanCharged()
         {
@@ -163,7 +178,7 @@ namespace StatsData
         }
     }
 
-    public class HuntsmanLit : Bolts
+    public class HuntsmanLit : ABolt
     {
         public HuntsmanLit()
         {
@@ -208,9 +223,9 @@ namespace StatsData
     /// myobs: 60	21	81	54	120	120
     /// wiki: 57-60	21-23	81	54	120
     /// </summary>
-    public class RescueRanger : Bolts
+    public class RescueRanger : ABolt
     {
-        //TODO wiki mini-crit max of 72 is nonsense
+        //TODO wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
         public RescueRanger()
         {
             Name = "Rescue Ranger";
@@ -246,17 +261,19 @@ namespace StatsData
 
     public abstract class AStickybombLauncher : Weapon
     {
-        public AStickybombLauncher(decimal baseDamage = 120, decimal armTime = 0.7m, decimal splashRadius = AOE.DEFAULT_SPLASH * 1)
+        public AStickybombLauncher(decimal baseDamage = 120, decimal armTime = 0.7m, decimal splashRadius = AOE.DEFAULT_SPLASH * 1,
+            decimal speed = 925.38m //wd; other sheet had 900; wiki text says 805
+            )
         {
             Name = "Stickybomb Launcher";
             //TODO ActivationTime = ...0.05? time to explode after right-click.
-            Projectile = new Projectile(925.38m) //wd; other sheet had 900
+            Projectile = new Projectile(speed)
             {
                 HitDamage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
                     ZeroRangeRamp = Damage.NORMAL_ARCHED_PROJECTILE_ZERO_RANGE_RAMP,
-                    LongRangeRamp = UseSimpleOverrides? Damage.NORMAL_LONG_RANGE_RAMP: 0.5m,
+                    LongRangeRamp = UseSimpleOverrides ? Damage.NORMAL_LONG_RANGE_RAMP : 0.5m,
                 },
                 ArmTime = armTime, // sec bomb arm time;
                 Splash = new AOE(splashRadius)
@@ -271,14 +288,78 @@ namespace StatsData
         {
             Name = "Stickybomb Launcher";
 
-            //TODO alternatemodes charged, flak, trap
+            AlternateModes = new List<Weapon>
+            {
+                new ChargedStickybomb(Projectile.ArmTime, FireRate),
+                new FlakStickybomb(Projectile.ArmTime, FireRate),
+                new TrapStickybomb(Projectile.ArmTime, FireRate),
+            };
+        }
+    }
+
+    internal class TrapStickybomb : AStickybombLauncher
+    {
+        public TrapStickybomb(decimal armTime, 
+            decimal fireRate)
+        {
+            Name = "Stickybomb Trap";
+
+            decimal baseDamage = 120;
+            //decimal armTime = 0.7m; 
+            decimal splashRadius = AOE.DEFAULT_SPLASH * 1;
+            decimal speed = 925.38m;
+
+            Projectile = new Projectile(speed)
+            {
+                HitDamage = new Damage(baseDamage)
+                {
+                    Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
+                },
+                ArmTime = 5.0m,//+ armTime, // bomb arm time + trap activation time;
+                Splash = new AOE(splashRadius)
+            };
+            FireRate = fireRate;
+        }
+    }
+
+    internal class FlakStickybomb : AStickybombLauncher
+    {
+        //December 22, 2014 Patch (Smissmas 2014)
+        //Stickybombs that detonate in the air now have a radius ramp up, starting at 85% at base arm time(0.8s) going back to 100% over 2 seconds.Stickybombs that touch the world will have full radius.
+        //January 7, 2015 Patch
+        //Fixed the air detonation radius for stickybomb jumps.
+
+        /// <summary>
+        /// mid-air stickybomb at start of 2 second period after armed
+        /// </summary>
+        public FlakStickybomb(decimal armTime, decimal fireRate)
+            : base(120m, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this thing?
+        {
+            Name = "Stickybomb Flak";
+            FireRate = fireRate;
+        }
+    }
+
+    internal class ChargedStickybomb : AStickybombLauncher
+    {
+        //wiki text speed "approximately 230%" of 805
+        //TODO charge time
+        public ChargedStickybomb(decimal armTime, decimal fireRate)
+            :base(120m,armTime, AOE.DEFAULT_SPLASH * 1,
+                 925.38m
+                 //805m 
+                 * 2.3m)
+        {
+            Name = "Stickybomb (fully charged)";
+
+            FireRate = fireRate;
         }
     }
 
     public class ScottishResistance : AStickybombLauncher
     {
         public ScottishResistance()
-            :base(120, 1.5m)
+            : base(120, 1.5m)
         {
             Name = "scottish resistance";
             //Projectile = new Projectile(925.38) //wd; other sheet had 900
@@ -294,12 +375,25 @@ namespace StatsData
             //};
             FireRate = 0.45m;
 
-            //TODO alternatemodes charged, flak, trap
+            Effect = new Effect()
+            {
+                Name = "Able to destroy enemy stickybombs"
+            };
+
+            AlternateModes = new List<Weapon>
+            {
+                new ChargedStickybomb(Projectile.ArmTime, FireRate),
+                new FlakStickybomb(Projectile.ArmTime, FireRate),
+                new TrapStickybomb(Projectile.ArmTime, FireRate),
+            };
+
         }
     }
 
     public class QuickiebombLauncher : AStickybombLauncher
     {
+        //"-15% damage penalty"
+        //"-0.2 sec faster bomb arm time"
         public QuickiebombLauncher()
             :base(102, 0.5m)
         {
@@ -317,7 +411,74 @@ namespace StatsData
             //};
             //FireRate = 0.6;
 
-            //TODO alternatemodes charged, flak, trap
+            Effect = new Effect()
+            {
+                Name = "Able to destroy enemy stickybombs"
+            };
+
+            AlternateModes = new List<Weapon>
+            {
+                new ChargedQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, FireRate),
+                new FlakQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, FireRate),
+                new TrapQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, FireRate),
+            };
+        }
+    }
+
+    internal class TrapQuickiebomb : AStickybombLauncher
+    {
+        public TrapQuickiebomb(decimal baseDamage, decimal armTime,
+            decimal fireRate)
+        {
+            Name = "Quickiebomb Trap";
+
+            decimal splashRadius = AOE.DEFAULT_SPLASH * 1;
+            decimal speed = 925.38m;
+
+            Projectile = new Projectile(speed)
+            {
+                HitDamage = new Damage(baseDamage)
+                {
+                    Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
+                },
+                ArmTime = 5.0m,//+ armTime, // bomb arm time + trap activation time;
+                Splash = new AOE(splashRadius)
+            };
+            FireRate = fireRate;
+        }
+    }
+
+    internal class FlakQuickiebomb : AStickybombLauncher
+    {
+        //December 22, 2014 Patch (Smissmas 2014)
+        //Stickybombs that detonate in the air now have a radius ramp up, starting at 85% at base arm time(0.8s) going back to 100% over 2 seconds.Stickybombs that touch the world will have full radius.
+        //January 7, 2015 Patch
+        //Fixed the air detonation radius for stickybomb jumps.
+
+        /// <summary>
+        /// mid-air stickybomb at start of 2 second period after armed
+        /// </summary>
+        public FlakQuickiebomb(decimal baseDamage, decimal armTime, decimal fireRate)
+            : base(baseDamage, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this thing?
+        {
+            Name = "Quickiebomb Flak";
+            FireRate = fireRate;
+        }
+    }
+
+    internal class ChargedQuickiebomb : AStickybombLauncher
+    {
+        //TODO "Max charge time decreased by 70%"
+        //"up to +35% damage based on charge"
+        public ChargedQuickiebomb(decimal baseDamage, decimal armTime, decimal fireRate)
+            : base(baseDamage*1.35m, armTime, AOE.DEFAULT_SPLASH * 1,
+                 925.38m
+                 //805m 
+                 * 2.3m)
+        {
+            Name = "Quickiebomb (fully charged)";
+
+            FireRate = fireRate;
         }
     }
 
@@ -376,10 +537,8 @@ namespace StatsData
             :base(8.5m) // -15% damage
         {
             Name = "overdose";
-            //TODO wiki claims 9 base against players... find out why, that makes 0 sense.
-            //FIXME (fixed wth 8.5 vs. 9?) no stat or wiki text says it should have different ramps, it just has them in stats box.
-            // base damage matches but different vs. buildings?? and then everything else is off by 1??
-            // max ramp 111% in wiki
+            //TODO wiki claims 8 against buildings... find out why, that makes 0 sense.
+            //NOTE no stat or wiki text says it should have different ramps, but it shows 111% in wiki stats box (probably because they were using 9 as base, not 8.5).  We use 120% like the rest of the syringe guns.
 
             //Projectile = new Projectile(1000) //wd; other sheet said 990
             //{

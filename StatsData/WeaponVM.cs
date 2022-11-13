@@ -845,6 +845,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             if (spread.HasValue)
             {
                 decimal defaultSpread = 1.9m;// "1.9 +/- 0.025"
+                //2.0m; //"cures" shotgun values, but breaks others
                 // no explanation for what this value really is.
                 // perhaps it should just be 2.0
 
@@ -858,6 +859,8 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
                 decimal deviance = spread.Value / defaultSpread;
                 decimal spreadToOne = 1.0m / deviance;
                 return string.Format("{0}:1",
+                    //$"{{0}}({spreadToOne}):1",
+
                     //"{0}({1}=1.0/({2}/{3}[={4}])):1",
                     //Math.Round(spreadToOne, MidpointRounding.AwayFromZero), spreadToOne, spread.Value, defaultSpread, spread.Value/defaultSpread);
                     WeaponVMDetail.Round(spreadToOne));

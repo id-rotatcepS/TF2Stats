@@ -92,6 +92,7 @@ namespace StatsData
 
     public class Natascha : AMinigun
     {
+        //TODO calc'd close max of 41. Wiki says 40.
         public Natascha()
         : base(27)
         {
@@ -217,6 +218,7 @@ namespace StatsData
     }
     public class HuoLongHeaterBurningTarget : AMinigun
     {
+        //TODO calc'd close max of 49. Wiki says 48.
         public HuoLongHeaterBurningTarget()
             :base(40.5m)
         {

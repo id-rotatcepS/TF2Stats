@@ -57,6 +57,7 @@ namespace StatsData
     /// </summary>
     public class ShortCircuitAlt : Weapon
     {
+        //TODO building modifier Test - wiki talks about it but no number. not sure where I got it. 
         public ShortCircuitAlt()
         {
             Name = "alt short circuit(orb blast)";
@@ -74,9 +75,11 @@ namespace StatsData
                 Penetrating = true,
                 Propelled = true,
                 MaxRangeTime = 1024 / 400,
-                Splash = new AOE(AOE.DEFAULT_SPLASH * 1),//TODO FIXME VALUE
+                //TODO Doesn't have a splash, has a GIANT projectile size (should modify accuracy), visually looks small + area.
             };
             FireRate = 0.5m;
+
+            CanCrit = false;
 
             Effect = new Effect()
             {
@@ -194,6 +197,9 @@ WeaponData
 	}
 }
         */
+        //TODO wiki long range says 90%, I said 92%, really both are wrong, it's probably 52.8%, but limited by Max Range.
+        //((526-512)/512)percent of long range(0.02734375). 1-(percent * (1-.528)) = .98709 (98.7%) equivalent long range ramp.
+        // results in a value that would round to 25. obs is 24, wiki says 23.  Maybe 526 is not accurate.
         public DragonsFury()
         {
             Name = "Dragon's Fury"; //"fireball launcher";
@@ -204,7 +210,7 @@ WeaponData
                 {
                     Offset = Damage.OFFSET_DRAGONSFURY,
                     ZeroRangeRamp = 1.2m,
-                    LongRangeRamp = 0.92m, // Not really, probalbly standard, but small max range gives us this percent of base.
+                    LongRangeRamp = 0.92m, // Not really, probably standard, but small max range gives us this percent of base.
                     BuildingModifier = 3.0m
                 },
                 Penetrating = true,
@@ -228,10 +234,10 @@ WeaponData
     /// wiki: 38	75	51	101	113-225
     /// note on 51: inverse damage means lower number takes priority. try with a different shape target? but it's a projectile so shape shouldn't matter!
     /// </summary>
-    public class CrusadersCrossbow : Bolts
+    public class CrusadersCrossbow : ABolt
     {
-        //TODO I have 1.6. Wiki lists attack interval as 0.24 s (1.75 s with reload) 
-        //Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52
+        //TODO I had 1.6. Wiki lists attack interval as 0.24 s, 1.5 reload (1.75 s with reload) 
+        //TODO Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)
         public CrusadersCrossbow()
         {
             Name = "Crusader's Crossbow";
@@ -260,7 +266,7 @@ WeaponData
 
 
             };
-            FireRate = 1.6m;
+            FireRate = .24m;// 1.6m;
 
             AlternateModes = new List<Weapon>()
             {
@@ -270,7 +276,7 @@ WeaponData
             };
         }
     }
-    public class CrusadersCrossbowMaxHang : Bolts
+    public class CrusadersCrossbowMaxHang : ABolt
     {
         public CrusadersCrossbowMaxHang()
         {
@@ -296,7 +302,7 @@ WeaponData
         }
     }
 
-    public class CrusadersCrossbowHeal : Bolts
+    public class CrusadersCrossbowHeal : ABolt
     {
         public CrusadersCrossbowHeal()
         {

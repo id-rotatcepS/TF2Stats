@@ -6,7 +6,6 @@ namespace StatsData
 
     public abstract class AFlareGun : Weapon
     {
-        //Minicrit rounding issue: wiki shows 41, I get 40.
         public AFlareGun(decimal baseDamage = 30, decimal speed = 2000, decimal splashRadius = 0)
         {
             Name = "flare guns";
@@ -58,7 +57,6 @@ namespace StatsData
     /// </summary>
     public class Detonator : AFlareGun
     {
-        //TODO rounding issue - this is rounding to 22 base damage in function times display.
         public Detonator()
             :base(22.5m,//23
                  2000, 
@@ -117,7 +115,6 @@ namespace StatsData
     /// </summary>
     public class ScorchShot : AFlareGun
     {
-        //TODO rounding issue? wiki shows Critical of 59, my function times display is 58
         public ScorchShot()
             : base(19.5m,//20
                  2000,

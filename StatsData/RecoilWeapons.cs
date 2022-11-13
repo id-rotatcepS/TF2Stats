@@ -39,6 +39,8 @@ namespace StatsData
     /// </summary>
     public class ScoutPistol : APistol
     {
+        // TODO wiki/obs point blank 22, calc 23; (winger comes out correct)
+        // TODO wiki spread 48:1, calc rounding issue 47.4999repeating
         public ScoutPistol(decimal baseDamage = 15)
             :base(baseDamage)
         {
@@ -209,7 +211,7 @@ namespace StatsData
                 },
 
             };
-            FireRate = 0.51m;
+            FireRate = 0.5m; // wiki .. I used to have 0.51m (maybe that was an old wiki value)
         }
     }
 
