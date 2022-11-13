@@ -1,0 +1,1669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StatsData.ShortCircuit" Collapsed="true">
+    <Position X="7.75" Y="43.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ShortCircuitAlt" Collapsed="true">
+    <Position X="9.5" Y="44.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Gunslinger" Collapsed="true">
+    <Position X="40.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.IndivisibleParticleSmasher" Collapsed="true">
+    <Position X="12" Y="43.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Pomson6000" Collapsed="true">
+    <Position X="12.25" Y="45" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.RighteousBison" Collapsed="true">
+    <Position X="14.5" Y="45" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.DragonsFury" Collapsed="true">
+    <Position X="28" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FlareGun" Collapsed="true">
+    <Position X="17.25" Y="33.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlareGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Detonator" Collapsed="true">
+    <Position X="19.5" Y="33.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlareGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Manmelter" Collapsed="true">
+    <Position X="21.75" Y="33.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlareGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ScorchShot" Collapsed="true">
+    <Position X="24" Y="33.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlareGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Bolts" Collapsed="true">
+    <Position X="17.25" Y="50.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HuntsmanCharged" Collapsed="true">
+    <Position X="18.25" Y="52.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HuntsmanLit" Collapsed="true">
+    <Position X="19.5" Y="53.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.RescueRanger" Collapsed="true">
+    <Position X="25.25" Y="51.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ShieldBash" Collapsed="true">
+    <Position X="14.25" Y="34.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CharginTarge" Collapsed="true">
+    <Position X="9.75" Y="35.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SplendidScreen" Collapsed="true">
+    <Position X="12" Y="35.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.TideTurner" Collapsed="true">
+    <Position X="14.25" Y="35.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ThrowableWeapon" Collapsed="true">
+    <Position X="14" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SandmanBall" Collapsed="true">
+    <Position X="9.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.WrapAssassinBauble" Collapsed="true">
+    <Position X="11.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FlyingGuillotine" Collapsed="true">
+    <Position X="13.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Banners" Collapsed="true">
+    <Position X="14" Y="27.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BuffBanner" Collapsed="true">
+    <Position X="12.75" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BatallionsBackup" Collapsed="true">
+    <Position X="8.25" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Concheror" Collapsed="true">
+    <Position X="10.5" Y="28.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ActiveJumpAssist" Collapsed="true">
+    <Position X="14.25" Y="39.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ThermalThruster" Collapsed="true">
+    <Position X="12" Y="41.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Mantreads" Collapsed="true">
+    <Position X="14" Y="41.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PassiveJumpAssist" Collapsed="true">
+    <Position X="10.25" Y="39.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BASEJumper" Collapsed="true">
+    <Position X="8" Y="41.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Gunboats" Collapsed="true">
+    <Position X="10" Y="41.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PassiveChargeAssists" Collapsed="true">
+    <Position X="7.75" Y="34.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AliBabasWeeBooties" Collapsed="true">
+    <Position X="7.75" Y="35.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PassiveShields" Collapsed="true">
+    <Position X="14" Y="30.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Razorback" Collapsed="true">
+    <Position X="8.25" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.DarwinsDangerShield" Collapsed="true">
+    <Position X="10.5" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CozyCamper" Collapsed="true">
+    <Position X="12.75" Y="31.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.TeammateHealthpack" Collapsed="true">
+    <Position X="12" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ShareableLunchbox" Collapsed="true">
+    <Position X="14" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Sandvich" Collapsed="true">
+    <Position X="5.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.DalokahsBar" Collapsed="true">
+    <Position X="8" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BuffaloSteakSandvich" Collapsed="true">
+    <Position X="10.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SecondBanana" Collapsed="true">
+    <Position X="12.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Lunchbox" Collapsed="true">
+    <Position X="14" Y="24.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BonkAtomicPunch" Collapsed="true">
+    <Position X="8.5" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CritACola" Collapsed="true">
+    <Position X="10.75" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ThrowableAOE" Collapsed="true">
+    <Position X="14" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Jarate" Collapsed="true">
+    <Position X="8.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.MadMilk" Collapsed="true">
+    <Position X="10.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.GasPasser" Collapsed="true">
+    <Position X="12.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CowManglerAlt" Collapsed="true">
+    <Position X="19.25" Y="39.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Wrangler" Collapsed="true">
+    <Position X="14" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AScattergun" Collapsed="true">
+    <Position X="17" Y="17.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scattergun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ForceANature" Collapsed="true">
+    <Position X="19.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scattergun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Shortstop" Collapsed="true">
+    <Position X="22" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scattergun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SodaPopper" Collapsed="true">
+    <Position X="24.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scattergun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BabyFacesBlaster" Collapsed="true">
+    <Position X="26.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scattergun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BackScatter" Collapsed="true">
+    <Position X="28.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scattergun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.EngineerPistol" Collapsed="true">
+    <Position X="17.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Winger" Collapsed="true">
+    <Position X="22" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PrettyBoysPocketPistol" Collapsed="true">
+    <Position X="19.5" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.DirectHit" Collapsed="true">
+    <Position X="30.5" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BlackBox" Collapsed="true">
+    <Position X="28.25" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.LibertyLauncher" Collapsed="true">
+    <Position X="21.5" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CowMangler5000" Collapsed="true">
+    <Position X="19.25" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BeggarsBazooka" Collapsed="true">
+    <Position X="26" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AirStrike" Collapsed="true">
+    <Position X="23.75" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ReserveShooter" Collapsed="true">
+    <Position X="24" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shotgun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PanicAttack" Collapsed="true">
+    <Position X="28.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shotgun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FamilyBusiness" Collapsed="true">
+    <Position X="19.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shotgun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FrontierJustice" Collapsed="true">
+    <Position X="21.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shotgun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Widowmaker" Collapsed="true">
+    <Position X="26.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shotgun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CompressionBlast" Collapsed="true">
+    <Position X="25.5" Y="28.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flamethrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AFlamethrower" Collapsed="true">
+    <Position X="17" Y="28.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flamethrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BackBurner" Collapsed="true">
+    <Position X="19" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flamethrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Degreaser" Collapsed="true">
+    <Position X="21.25" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flamethrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Phlogistinator" Collapsed="true">
+    <Position X="23.5" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flamethrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AGrenadeLauncher" Collapsed="true">
+    <Position X="17.25" Y="46" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GrenadeLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.GrenadeLauncher" Collapsed="true">
+    <Position X="17.25" Y="47.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GrenadeLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.LochNLoad" Collapsed="true">
+    <Position X="19.5" Y="47.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GrenadeLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.LooseCannon" Collapsed="true">
+    <Position X="21.75" Y="47.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GrenadeLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.IronBomber" Collapsed="true">
+    <Position X="24" Y="47.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GrenadeLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AStickybombLauncher" Collapsed="true">
+    <Position X="17.5" Y="42.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ScottishResistance" Collapsed="true">
+    <Position X="20" Y="43.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.QuickiebombLauncher" Collapsed="true">
+    <Position X="22.25" Y="43.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AMinigun" Collapsed="true">
+    <Position X="17.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Natascha" Collapsed="true">
+    <Position X="20" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BrassBeast" Collapsed="true">
+    <Position X="22.25" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Tomislav" Collapsed="true">
+    <Position X="24.5" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HuoLongHeater" Collapsed="true">
+    <Position X="26.75" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ASyringeGun" Collapsed="true">
+    <Position X="17.25" Y="24.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Blutsauger" Collapsed="true">
+    <Position X="21.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Overdose" Collapsed="true">
+    <Position X="19.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Kritzkrieg" Collapsed="true">
+    <Position X="14.5" Y="50.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Vaccinator" Collapsed="true">
+    <Position X="12.25" Y="50.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ChargedSniperRifle" Collapsed="true">
+    <Position X="18" Y="13.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.ASniperRifle" FixedToPoint="true">
+      <Path>
+        <Point X="18.25" Y="11.941" />
+        <Point X="18.25" Y="12.375" />
+        <Point X="18.75" Y="12.375" />
+        <Point X="18.75" Y="13.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SydneySleeper" Collapsed="true">
+    <Position X="27.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BazaarBargain" Collapsed="true">
+    <Position X="19" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ChargedMachina" Collapsed="true">
+    <Position X="26.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HitmansHeatmaker" Collapsed="true">
+    <Position X="21" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Classic" Collapsed="true">
+    <Position X="23.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SMG" Collapsed="true">
+    <Position X="17.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CleanersCarbine" Collapsed="true">
+    <Position X="19.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Revolver" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Ambassador" Collapsed="true">
+    <Position X="19.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.LEtranger" Collapsed="true">
+    <Position X="22" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Enforcer" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Diamondback" Collapsed="true">
+    <Position X="26.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Sapper" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.RedTapeRecorder" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.InvisWatch" Collapsed="true">
+    <Position X="11.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Deadringer" Collapsed="true">
+    <Position X="10.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CloakAndDagger" Collapsed="true">
+    <Position X="12.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NonDamageWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BuildingMaintenance" Collapsed="true">
+    <Position X="39.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Wrench" Collapsed="true">
+    <Position X="40.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SouthernHospitality" Collapsed="true">
+    <Position X="38.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Jag" Collapsed="true">
+    <Position X="38.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.EurekaEffect" Collapsed="true">
+    <Position X="38.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AKnife" Collapsed="true">
+    <Position X="30.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.YourEternalReward" Collapsed="true">
+    <Position X="29.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ConniversKunai" Collapsed="true">
+    <Position X="31.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BigEarner" Collapsed="true">
+    <Position X="31.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Spycicle" Collapsed="true">
+    <Position X="29.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Bat" Collapsed="true">
+    <Position X="36.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ABat" Collapsed="true">
+    <Position X="35" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Sandman" Collapsed="true">
+    <Position X="33.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CandyCane" Collapsed="true">
+    <Position X="36.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BostonBasher" Collapsed="true">
+    <Position X="36.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SunOnAStick" Collapsed="true">
+    <Position X="36.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FanOWar" Collapsed="true">
+    <Position X="36.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Atomizer" Collapsed="true">
+    <Position X="36.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.WrapAssassin" Collapsed="true">
+    <Position X="33.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ActiveMovementeMelee" Collapsed="true">
+    <Position X="42" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.EscapePlan" Collapsed="true">
+    <Position X="44.75" Y="9" Width="1.5" />
+    <InheritanceLine Type="StatsData.ActiveMovementeMelee" FixedToPoint="true">
+      <Path>
+        <Point X="42.75" Y="6.441" />
+        <Point X="42.75" Y="8.877" />
+        <Point X="45.438" Y="8.877" />
+        <Point X="45.438" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.DisciplinaryAction" Collapsed="true">
+    <Position X="46.5" Y="9" Width="1.5" />
+    <InheritanceLine Type="StatsData.ActiveMovementeMelee" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="42.75" Y="6.441" />
+        <Point X="42.75" Y="8.877" />
+        <Point X="47.25" Y="8.877" />
+        <Point X="47.25" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HotHand" Collapsed="true">
+    <Position X="45.25" Y="12.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.ActiveMovementeMelee" FixedToPoint="true">
+      <Path>
+        <Point X="42.75" Y="6.441" />
+        <Point X="42.75" Y="12.377" />
+        <Point X="45.875" Y="12.377" />
+        <Point X="45.875" Y="12.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PowerJack" Collapsed="true">
+    <Position X="47" Y="12.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.ActiveMovementeMelee" FixedToPoint="true">
+      <Path>
+        <Point X="42.75" Y="6.441" />
+        <Point X="42.75" Y="12.377" />
+        <Point X="47.625" Y="12.377" />
+        <Point X="47.625" Y="12.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.GlovesOfRunningUrgently" Collapsed="true">
+    <Position X="45" Y="10.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.ActiveMovementeMelee" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="42.75" Y="6.441" />
+        <Point X="42.75" Y="10.407" />
+        <Point X="45.688" Y="10.407" />
+        <Point X="45.688" Y="10.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.EvictionNotice" Collapsed="true">
+    <Position X="43.25" Y="10.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.ActiveMovementeMelee" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="42.75" Y="6.441" />
+        <Point X="42.75" Y="10.425" />
+        <Point X="44" Y="10.425" />
+        <Point X="44" Y="10.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PainTrain" Collapsed="true">
+    <Position X="48.5" Y="8.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="8.45" />
+        <Point X="49.25" Y="8.45" />
+        <Point X="49.25" Y="8.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HalfZatoichi" Collapsed="true">
+    <Position X="48.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Equalizer" Collapsed="true">
+    <Position X="52.25" Y="9" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="8.442" />
+        <Point X="52.875" Y="8.442" />
+        <Point X="52.875" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.MarketGardener" Collapsed="true">
+    <Position X="50.5" Y="9" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="8.462" />
+        <Point X="51.25" Y="8.462" />
+        <Point X="51.25" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Axtinguisher" Collapsed="true">
+    <Position X="54.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Homewrecker" Collapsed="true">
+    <Position X="57.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BackScratcher" Collapsed="true">
+    <Position X="50.5" Y="12.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="12.125" />
+        <Point X="51.125" Y="12.125" />
+        <Point X="51.125" Y="12.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SharpenedVolcanoFragment" Collapsed="true">
+    <Position X="48.75" Y="12.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="12.125" />
+        <Point X="49.375" Y="12.125" />
+        <Point X="49.375" Y="12.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ThirdDegree" Collapsed="true">
+    <Position X="52.25" Y="12.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="12.125" />
+        <Point X="52.875" Y="12.125" />
+        <Point X="52.875" Y="12.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.NeonAnnihilator" Collapsed="true">
+    <Position X="56" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Eyelander" Collapsed="true">
+    <Position X="43" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.UllapoolCaber" Collapsed="true">
+    <Position X="52.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ClaidheamhMor" Collapsed="true">
+    <Position X="46.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PersionPersuader" Collapsed="true">
+    <Position X="50.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ScottsmansSkullcutter" Collapsed="true">
+    <Position X="44.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.KillingGlovesOfBoxing" Collapsed="true">
+    <Position X="46.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.WarriorsSpirit" Collapsed="true">
+    <Position X="48.5" Y="10.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" ManuallyRouted="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="10.375" />
+        <Point X="49.25" Y="10.375" />
+        <Point X="49.25" Y="10.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HolidayPunch" Collapsed="true">
+    <Position X="50.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FistsOfSteel" Collapsed="true">
+    <Position X="52" Y="10.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="10.375" />
+        <Point X="52.688" Y="10.375" />
+        <Point X="52.688" Y="10.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Ubersaw" Collapsed="true">
+    <Position X="54.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Vitasaw" Collapsed="true">
+    <Position X="58" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Amputator" Collapsed="true">
+    <Position X="56.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SolemnVow" Collapsed="true">
+    <Position X="59.75" Y="9.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="9.345" />
+        <Point X="60.438" Y="9.345" />
+        <Point X="60.438" Y="9.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.TribalmansShiv" Collapsed="true">
+    <Position X="54.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Bushwaka" Collapsed="true">
+    <Position X="56.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Shahanshah" Collapsed="true">
+    <Position X="58" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AMediGun" Collapsed="true">
+    <Position X="12.25" Y="48.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Uber" Collapsed="true">
+    <Position X="6.5" Y="52.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.MediGunCritHeals" Collapsed="true">
+    <Position X="6.5" Y="51" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.MeleeWeapon" Collapsed="true">
+    <Position X="53.25" Y="3.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.Weapon" ManuallyRouted="true">
+      <Path>
+        <Point X="16.5" Y="1.062" />
+        <Point X="16.5" Y="1.295" />
+        <Point X="54" Y="1.295" />
+        <Point X="54" Y="3.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.APistol" Collapsed="true">
+    <Position X="17.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Shotgun" Collapsed="true">
+    <Position X="17.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shotgun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ARocketLauncher" Collapsed="true">
+    <Position X="17.25" Y="37" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Weapon" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EiAAAAAAAAgAAAAKAAQAAAQQAABEAAABAAAAAgAAIAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Damage">
+    <Position X="40" Y="26.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>QCCACECQKQBBFAAAgSAACQAAAAgBQIAJgFAAgQwAwAQ=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Melee">
+    <Position X="37.25" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Damage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StatsData.Hitscan">
+    <Position X="37.25" Y="30.5" Width="1.5" />
+    <AssociationLine Name="Fragmentation" Type="StatsData.Fragmentation" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="38.75" Y="31.381" />
+        <Point X="39.734" Y="31.381" />
+        <Point X="39.734" Y="32.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Damage" Type="StatsData.Damage" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="38.75" Y="30.94" />
+        <Point X="40.562" Y="30.94" />
+        <Point X="40.562" Y="29.085" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAACAIAAEAAAAAAAAAAAAAAgAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Fragmentation" />
+      <Property Name="Damage" />
+      <Property Name="Recoil" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StatsData.Effect">
+    <Position X="35.75" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Damage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StatsData.AOE">
+    <Position X="44" Y="30" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAIIAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Projectile">
+    <Position X="41.75" Y="29.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAEAAAAQAAAAAABAAgAAIAAAAgAEAAIAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="HitDamage" />
+      <Property Name="Splash" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="StatsData.Fragmentation">
+    <Position X="39" Y="32.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Recoil">
+    <Position X="37.25" Y="32.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAEAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Ammo">
+    <Position X="33.5" Y="26.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAgABAAEAAAAAgAAAAAAABAAIEAAACAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.WeaponAttribute" Collapsed="true">
+    <Position X="38.5" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.NegativeAttribute" Collapsed="true">
+    <Position X="38.5" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.PositiveAttribute" Collapsed="true">
+    <Position X="40.75" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.NeutralAttribute" Collapsed="true">
+    <Position X="36.25" Y="22.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ScoutPistol" Collapsed="true">
+    <Position X="19.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CrusadersCrossbow" Collapsed="true">
+    <Position X="21" Y="51.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ASniperRifle" Collapsed="true">
+    <Position X="17.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Machina" Collapsed="true">
+    <Position X="25.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SniperRifle" Collapsed="true">
+    <Position X="17" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AShotgun" Collapsed="true">
+    <Position X="17.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Shotgun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Scattergun" Collapsed="true">
+    <Position X="17.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Scattergun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Minigun" Collapsed="true">
+    <Position X="17.75" Y="22" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.MinigunCold" Collapsed="true">
+    <Position X="19" Y="22.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AFlareGun" Collapsed="true">
+    <Position X="17.25" Y="32.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlareGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Sword" Collapsed="true">
+    <Position X="46.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Knife" Collapsed="true">
+    <Position X="31.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ARevolver" Collapsed="true">
+    <Position X="17.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ASMG" Collapsed="true">
+    <Position X="17.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RecoilWeapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.SyringeGun" Collapsed="true">
+    <Position X="17.25" Y="25.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Flamethrower" Collapsed="true">
+    <Position X="17" Y="29.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Flamethrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.RocketLauncher" Collapsed="true">
+    <Position X="17.25" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.StickybombLauncher" Collapsed="true">
+    <Position X="17.75" Y="43.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Huntsman" Collapsed="true">
+    <Position X="17.25" Y="51.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CrusadersCrossbowMaxHang" Collapsed="true">
+    <Position X="22.25" Y="52.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.CrusadersCrossbowHeal" Collapsed="true">
+    <Position X="23.5" Y="53.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TimeBased.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.MediGun" Collapsed="true">
+    <Position X="7.5" Y="50.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.QuickFix" Collapsed="true">
+    <Position X="10" Y="50.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.QuickFixUber" Collapsed="true">
+    <Position X="8.75" Y="52.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MediGun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
