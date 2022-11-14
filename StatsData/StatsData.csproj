@@ -120,7 +120,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Flamethrower.cs" />
+    <Compile Include="WeaponVMDamageFunctionTimes.cs" />
+    <Compile Include="FlameThrower.cs" />
     <Compile Include="FlareGun.cs" />
     <Compile Include="GrenadeLauncher.cs" />
     <Compile Include="MediGun.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Weapons.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponVM.cs" />
+    <Compile Include="WeaponVMDetail.cs" />
     <EmbeddedResource Include="Properties\StatsData.rd.xml" />
   </ItemGroup>
   <ItemGroup>

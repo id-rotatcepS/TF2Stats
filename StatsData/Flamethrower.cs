@@ -1,36 +1,23 @@
-﻿using StatsData;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace StatsData
 {
 
-    public abstract class AFlamethrower : Weapon
+    public abstract class AFlameThrower : Weapon
     {
-        public AFlamethrower()
+        public AFlameThrower(decimal baseDamage = 6.5m)
         {
             Name = "flamethrower";
 
-            Projectile = new Projectile(1)//TODO FIXME flame speed?
+            Projectile = new Projectile(2450m)//TODO taken from items_game.txt weapon_newflame, but that also includes Drag value that changes everything.  What will the wiki think? equivalent for 0.6s lifespan would be ~641 Hu/s
             {
-                HitDamage = new Damage(6.5m)
+                HitDamage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_6_FLAMETHROWER,
                     ZeroRangeRamp = 2,
                     LongRangeRamp = 1,
-                    BuildingModifier = 2.0m,
+                    //BuildingModifier = 2.0m, // no, I think it's full exposure always for buildings.
                 },
-
-                /*
-                 * from tf/scripts/items/items_game.txt "weapon_newflame"
-                 * 				
-				"flame_gravity"							"0"
-				"flame_drag"							"8.5"
-				"flame_up_speed"						"50"
-				"flame_speed"							"2450"
-				"flame_spread_degree"					"2.8"
-				"flame_lifetime"						"0.6"
-				"flame_random_life_time_offset"			"0.1"
-                 */
 
                 //FIXME particles
                 //Fragmentation = new Fragmentation()
@@ -38,28 +25,85 @@ namespace StatsData
                 //    Fragments = 2,
                 //    FragmentType = "particle",
                 //},
-                MaxRangeTime = 330,//TODO I maybe 350 in other spreadsheet? or I made it up//TODO time vs. speed, not distance.
+                
+                MaxRangeTime = GetMaxRangeWeaponNewFlame() / 2450m,// 385 Hu based on below calculation accounting for drag.  can't use 0.6 with 2450 Hu/s (that'd be 1470Hu range!)
+                // was using 330... from ? I dont' even know. wiki text has 340 
+                //TODO I maybe 350 in other spreadsheet? or I made it up
 
                 Penetrating = true,
                 Influenceable = false
             };
+
+
             FireRate = 0.08m;
+
+            //TODO crits multiply with ramp
 
             Effect = new AfterburnEffect(0, 10);//TODO times? - depends on exposure, so is that an alt mode?
 
         }
+
+        private decimal GetMaxRangeWeaponNewFlame()
+        {
+            /*
+             * from tf/scripts/items/items_game.txt "weapon_newflame"
+             * 				
+            "flame_gravity"							"0"
+            "flame_drag"							"8.5"
+            "flame_up_speed"						"50"
+            "flame_speed"							"2450"
+            "flame_spread_degree"					"2.8"
+            "flame_lifetime"						"0.6"
+            "flame_random_life_time_offset"			"0.1"
+             */
+            // ASSUME drag is percent reduction in speed per game tick (0.015 s).
+            // Apply that, the speed, and the lifetime as follows to get a max range of 385:
+            decimal gameTick = 0.015m;
+            decimal flame_drag = 8.5m;
+            decimal flame_lifetime = 0.6m;
+            decimal flame_speed = 2450m;
+            decimal maxRange = MaxRangeWithDrag(flame_lifetime, gameTick, flame_speed, flame_drag);
+            // ... but random offset of .1 to the lifetime (result 376 to 389), (the random spread direction of 2.8 degrees would shorten it negligibly, like 99.8%).
+            return maxRange;
+        }
+
+        private decimal MaxRangeWithDrag(decimal travelTime, decimal dragIncrement, decimal startSpeed, decimal drag)
+        {
+            decimal answer = 0;
+            decimal speed = startSpeed;
+            int j = 0;
+            for (decimal i = 0; i <= travelTime; i += dragIncrement)
+            {
+                speed = speed * (100.0m - drag) / 100.0m;
+                if (speed <= 0) return answer;
+                answer += speed * dragIncrement;
+                if (answer < 0) return 0;
+            }
+            return answer;
+        }
     }
 
-    public class Flamethrower : AFlamethrower
+    public class FlameThrower : AFlameThrower
     {
-        public Flamethrower()
+        public FlameThrower()
         {
-            Name = "flamethrower";
+            Name = "Flame Thrower";
 
             AlternateModes = new List<Weapon>
             {
-                new CompressionBlast()
+                new CompressionBlast(),
+                new FlameThrowerMaxExposure()
             };
+        }
+    }
+
+    internal class FlameThrowerMaxExposure : AFlameThrower
+    {
+        public FlameThrowerMaxExposure()
+            : base(6.5m * 2)
+            //TODO accurate? do buildings have time-ranged damage?
+        {
+            Name = "Flame Thrower (max exposure/buildings)";
         }
     }
 
@@ -77,13 +121,13 @@ namespace StatsData
                     ZeroRangeRamp = 1,
                     LongRangeRamp = 1,
                 },
-
             };
+
             FireRate = -1;
         }
     }
 
-    public class BackBurner : AFlamethrower
+    public class BackBurner : AFlameThrower
     {
         public BackBurner()
         {
@@ -101,12 +145,13 @@ namespace StatsData
             //FireRate = 0.08;
             AlternateModes = new List<Weapon>
             {
-                new CompressionBlast()
+                new CompressionBlast(),
+                new FlameThrowerMaxExposure()
             };
         }
     }
 
-    public class Degreaser : AFlamethrower
+    public class Degreaser : AFlameThrower
     {
         public Degreaser()
         {
@@ -124,12 +169,13 @@ namespace StatsData
             //FireRate = 0.08;
             AlternateModes = new List<Weapon>
             {
-                new CompressionBlast()
+                new CompressionBlast(),
+                new FlameThrowerMaxExposure()
             };
         }
     }
 
-    public class Phlogistinator : AFlamethrower
+    public class Phlogistinator : AFlameThrower
     {
         public Phlogistinator()
         {
@@ -146,7 +192,11 @@ namespace StatsData
             //};
             //FireRate = 0.08;
 
-            AlternateModes = null; // no compression blast
+            // no compression blast
+            AlternateModes = new List<Weapon>
+            {
+                new FlameThrowerMaxExposure()
+            };
         }
     }
 

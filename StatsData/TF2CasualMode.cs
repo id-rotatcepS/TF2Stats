@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Data;
 
 namespace StatsData
 {
@@ -47,7 +42,7 @@ namespace StatsData
         static RighteousBison RighteousBison = new RighteousBison();
 
         static FlareGun FlareGun = new FlareGun();
-        static Detonator Detonator = new Detonator(/*FlareGun*/);//TODO etc.  Basis reference.
+        static Detonator Detonator = new Detonator();
         static Manmelter Manmelter = new Manmelter();
         static ScorchShot ScorchShot = new ScorchShot();
 
@@ -117,7 +112,7 @@ namespace StatsData
         static BabyFacesBlaster BabyFacesBlaster = new BabyFacesBlaster();
         static BackScatter BackScatter = new BackScatter();
 
-        static Flamethrower Flamethrower = new Flamethrower();
+        static FlameThrower Flamethrower = new FlameThrower();
         static BackBurner BackBurner = new BackBurner();
         static Degreaser Degreaser = new Degreaser();
         static Phlogistinator Phlogistinator = new Phlogistinator();
