@@ -75,6 +75,10 @@ namespace StatsData
     public class DirectHit : ARocketLauncher
     {
         // TODO (similar to base) point blank obs/wiki 140 (mc 189); calc is 141 (mc 190); (wiki base 112 should round to 113, so that's ok)
+
+        // +25% damage bonus
+        // +80% projectile speed
+        // -70% explosion radius
         public DirectHit()
             :base(112.5m,//112.5=(90*1.25), but weapon_damage I had 112. //112)
                  1980,
@@ -94,6 +98,10 @@ namespace StatsData
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 0.3)
             //};
             //FireRate = 0.8;
+            Effect = new Effect()
+            {
+                Name = "Mini-crit launched targets"
+            };
         }
     }
 
@@ -119,6 +127,11 @@ namespace StatsData
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 1)
             //};
             //FireRate = 0.8;
+
+            Effect = new Effect()
+            {
+                Name = "Leach up to 20hp"
+            };
         }
     }
 
@@ -128,7 +141,10 @@ namespace StatsData
     /// </summary>
     public class LibertyLauncher : ARocketLauncher
     {
-        //"-25% damage penalty"
+        //-25% damage penalty
+        //-25% blast damage from rocket jumps
+        //+40% projectile speed
+
         //TODO wiki & obs have crit as 203, function times shows 202.
         public LibertyLauncher()
             :base(67.5m,//67.5=90*.75, had that in weapon_damage, wiki says:68, results work if ZeroRange is 1.25
@@ -176,6 +192,9 @@ namespace StatsData
             //};
             //FireRate = 0.8;
 
+            // TODO FIXME actually has a custom crit-downgrade algorithm similar to mini-crit
+            CanCrit = false;
+
             //"Deals only 20% damage to buildings"
             Projectile.HitDamage.BuildingModifier = .20m;
 
@@ -194,24 +213,16 @@ namespace StatsData
         public CowManglerAlt()
         {
             Name = "cowmangler charged shot";
-            ActivationTime = 4;
+            ActivationTime = 2;// I had 4 but that was probably from building disable.
 
-            //Projectile = new Projectile(1100)
-            //{
-            //    HitDamage = new Damage(90)
-            //    {
-            //        Offset = Damage.OFFSET_2_ENERGY_COWMANGLER_ARROWLIKE,
-            //        ZeroRangeRamp = Damage.NORMAL_ROCKET_PROJECTILE_ZERO_RANGE_RAMP, // 1.25 makes more sense and also works fine. Had 1.24444444444444,
-            //        LongRangeRamp = Damage.NORMAL_LONG_RANGE_RAMP,//0.533333333333333,
-            //    },
-            //    Propelled = true,
-            //    Splash = new AOE(AOE.DEFAULT_SPLASH * 1),
-            //};
-            //FireRate = 0.8;
+            CanCrit = false;
+            Projectile.HitDamage.BuildingModifier = .20m;
 
             Effect = new BuildingEffect()//AfterburnEffect(0);//TODO time?
             {
-                Name = "Mini-crit; Disable Building (time); Afterburn(time)"
+                Name = "Mini-crit; Disable Building (4 s); Afterburn(6 s); vaporize stickybombs",
+                Minimum = 4m,
+                Maximum = 6m,
             };
         }
     }
@@ -246,6 +257,8 @@ namespace StatsData
             //    Spread = 0.05236m,
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 0.8m)
             //};
+
+            //TODO but this is after more than one is loaded.. what about when none are loaded? alt mode? activation time?
             FireRate = 0.24m;
         }
     }
@@ -257,7 +270,9 @@ namespace StatsData
     public class AirStrike : ARocketLauncher
     {
         // -15% damage penalty
+        // -15% blast damage from rocket jumps
         // -10% explosion radius
+
         // TODO point blank obs/wiki of 95; calcs as 96
         public AirStrike()
             :base(76.5m,
@@ -277,10 +292,39 @@ namespace StatsData
             //    Propelled = true,
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 0.9)
             //};
-            FireRate = 0.28m;
+            FireRate = 0.80m;
 
-            //TODO alt with more heads (larger clip)
-            //TODO alt with blast jumping (smaller radius, faster rate)
+            AlternateModes = new List<Weapon>
+            {
+                //new MaxHeadsAirStrike(),
+                new BlastJumpingAirStrike()
+            };
+        }
+    }
+    //public class MaxHeadsAirStrike : ARocketLauncher
+    //{
+    //    // Clip size increase
+    //    public MaxHeadsAirStrike()
+    //        : base(76.5m,
+    //             1100,
+    //             AOE.DEFAULT_SPLASH * 0.9m)
+    //    {
+    //        Name = "Air Strike (max heads)";
+
+    //        FireRate = 0.80m;
+    //    }
+    //}
+    public class BlastJumpingAirStrike : ARocketLauncher
+    {
+        // Increased attack speed and smaller blast radius while blast jumping
+        public BlastJumpingAirStrike()
+            : base(76.5m,
+                 1100,
+                 (AOE.DEFAULT_SPLASH * 0.9m)*0.8m)
+        {
+            Name = "Air Strike (rocket jumping)";
+
+            FireRate = 0.28m;
         }
     }
 

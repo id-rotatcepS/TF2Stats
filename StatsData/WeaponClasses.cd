@@ -501,13 +501,6 @@
       <FileName>RocketLauncher.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StatsData.AirStrike" Collapsed="true">
-    <Position X="23.75" Y="38.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>RocketLauncher.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="StatsData.ReserveShooter" Collapsed="true">
     <Position X="24" Y="16.25" Width="1.5" />
     <TypeIdentifier>
@@ -1375,8 +1368,6 @@
       <Path>
         <Point X="16.5" Y="1.062" />
         <Point X="16.5" Y="1.295" />
-        <Point X="17.167" Y="1.295" Type="JumpStart" />
-        <Point X="17.333" Y="1.295" Type="JumpEnd" />
         <Point X="54" Y="1.295" />
         <Point X="54" Y="3.5" />
       </Path>
@@ -1945,14 +1936,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.FocusChargedHitmansHeatmakerHeadshot" Collapsed="true">
-    <Position X="30.75" Y="14" Width="1.5" />
+    <Position X="30.75" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.FocusChargedHitmansHeatmakerBodyshot" Collapsed="true">
-    <Position X="30.75" Y="13.25" Width="1.5" />
+    <Position X="30.75" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
@@ -1977,6 +1968,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.BlastJumpingAirStrike" Collapsed="true">
+    <Position X="23.75" Y="38.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RocketLauncher.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
