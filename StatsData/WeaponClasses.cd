@@ -114,6 +114,14 @@
   </Class>
   <Class Name="StatsData.SplendidScreen" Collapsed="true">
     <Position X="12" Y="35.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.ShieldBash" FixedFromPoint="true">
+      <Path>
+        <Point X="15" Y="34.941" />
+        <Point X="15" Y="35.375" />
+        <Point X="12.75" Y="35.375" />
+        <Point X="12.75" Y="35.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TimeBased.cs</FileName>
@@ -177,6 +185,14 @@
   </Class>
   <Class Name="StatsData.Concheror" Collapsed="true">
     <Position X="10.5" Y="28.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.Banners" FixedFromPoint="true">
+      <Path>
+        <Point X="14.75" Y="27.941" />
+        <Point X="14.75" Y="28.375" />
+        <Point X="11.25" Y="28.375" />
+        <Point X="11.25" Y="28.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NonDamageWeapons.cs</FileName>
@@ -184,6 +200,14 @@
   </Class>
   <Class Name="StatsData.ActiveJumpAssist" Collapsed="true">
     <Position X="14.25" Y="39.5" Width="1.5" />
+    <InheritanceLine Type="StatsData.Weapon" FixedFromPoint="true">
+      <Path>
+        <Point X="16.5" Y="1.062" />
+        <Point X="16.5" Y="39.125" />
+        <Point X="15" Y="39.125" />
+        <Point X="15" Y="39.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TimeBased.cs</FileName>
@@ -247,6 +271,14 @@
   </Class>
   <Class Name="StatsData.Razorback" Collapsed="true">
     <Position X="8.25" Y="31.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.PassiveShields" FixedFromPoint="true">
+      <Path>
+        <Point X="14.75" Y="30.941" />
+        <Point X="14.75" Y="31.375" />
+        <Point X="9" Y="31.375" />
+        <Point X="9" Y="31.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NonDamageWeapons.cs</FileName>
@@ -499,6 +531,14 @@
   </Class>
   <Class Name="StatsData.FrontierJustice" Collapsed="true">
     <Position X="21.75" Y="16.25" Width="1.5" />
+    <InheritanceLine Type="StatsData.AShotgun" FixedFromPoint="true">
+      <Path>
+        <Point X="18.25" Y="15.691" />
+        <Point X="18.25" Y="16.148" />
+        <Point X="22.5" Y="16.148" />
+        <Point X="22.5" Y="16.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Shotgun.cs</FileName>
@@ -515,35 +555,28 @@
     <Position X="25.5" Y="28.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Flamethrower.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StatsData.AFlamethrower" Collapsed="true">
-    <Position X="17" Y="28.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Flamethrower.cs</FileName>
+      <FileName>FlameThrower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.BackBurner" Collapsed="true">
-    <Position X="19" Y="29.5" Width="1.5" />
+    <Position X="19.75" Y="29.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Flamethrower.cs</FileName>
+      <FileName>FlameThrower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.Degreaser" Collapsed="true">
-    <Position X="21.25" Y="29.5" Width="1.5" />
+    <Position X="22" Y="29.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Flamethrower.cs</FileName>
+      <FileName>FlameThrower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.Phlogistinator" Collapsed="true">
-    <Position X="23.5" Y="29.5" Width="1.5" />
+    <Position X="24.25" Y="29.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Flamethrower.cs</FileName>
+      <FileName>FlameThrower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.AGrenadeLauncher" Collapsed="true">
@@ -672,51 +705,36 @@
       <FileName>MediGun.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StatsData.ChargedSniperRifle" Collapsed="true">
-    <Position X="18" Y="13.5" Width="1.5" />
-    <InheritanceLine Type="StatsData.ASniperRifle" FixedToPoint="true">
-      <Path>
-        <Point X="18.25" Y="11.941" />
-        <Point X="18.25" Y="12.375" />
-        <Point X="18.75" Y="12.375" />
-        <Point X="18.75" Y="13.5" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="StatsData.ChargedMachina" Collapsed="true">
+    <Position X="22" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.SydneySleeper" Collapsed="true">
-    <Position X="27.5" Y="12.75" Width="1.5" />
+    <Position X="24.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.BazaarBargain" Collapsed="true">
-    <Position X="19" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SniperRifle.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StatsData.ChargedMachina" Collapsed="true">
-    <Position X="26.5" Y="13.5" Width="1.5" />
+    <Position X="19.75" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.HitmansHeatmaker" Collapsed="true">
-    <Position X="21" Y="12.75" Width="1.5" />
+    <Position X="28.75" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StatsData.Classic" Collapsed="true">
-    <Position X="23.25" Y="12.75" Width="1.5" />
+  <Class Name="StatsData.ChargedClassicHeadshot" Collapsed="true">
+    <Position X="26.5" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
@@ -920,6 +938,14 @@
   </Class>
   <Class Name="StatsData.FanOWar" Collapsed="true">
     <Position X="36.25" Y="8.25" Width="1.5" />
+    <InheritanceLine Type="StatsData.ABat" FixedFromPoint="true">
+      <Path>
+        <Point X="35.688" Y="6.441" />
+        <Point X="35.688" Y="8.096" />
+        <Point X="37" Y="8.096" />
+        <Point X="37" Y="8.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Melee.cs</FileName>
@@ -981,9 +1007,9 @@
     <InheritanceLine Type="StatsData.ActiveMovementeMelee" FixedToPoint="true">
       <Path>
         <Point X="42.75" Y="6.441" />
-        <Point X="42.75" Y="12.377" />
-        <Point X="45.875" Y="12.377" />
-        <Point X="45.875" Y="12.5" />
+        <Point X="42.75" Y="12.406" />
+        <Point X="46.25" Y="12.406" />
+        <Point X="46.25" Y="12.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -996,8 +1022,8 @@
     <InheritanceLine Type="StatsData.ActiveMovementeMelee" FixedToPoint="true">
       <Path>
         <Point X="42.75" Y="6.441" />
-        <Point X="42.75" Y="12.377" />
-        <Point X="47.625" Y="12.377" />
+        <Point X="42.75" Y="12.406" />
+        <Point X="47.625" Y="12.406" />
         <Point X="47.625" Y="12.5" />
       </Path>
     </InheritanceLine>
@@ -1104,7 +1130,7 @@
   </Class>
   <Class Name="StatsData.BackScratcher" Collapsed="true">
     <Position X="50.5" Y="12.5" Width="1.5" />
-    <InheritanceLine Type="StatsData.MeleeWeapon" FixedToPoint="true">
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="54" Y="4.191" />
         <Point X="54" Y="12.125" />
@@ -1119,7 +1145,7 @@
   </Class>
   <Class Name="StatsData.SharpenedVolcanoFragment" Collapsed="true">
     <Position X="48.75" Y="12.5" Width="1.5" />
-    <InheritanceLine Type="StatsData.MeleeWeapon" FixedToPoint="true">
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="54" Y="4.191" />
         <Point X="54" Y="12.125" />
@@ -1134,7 +1160,7 @@
   </Class>
   <Class Name="StatsData.ThirdDegree" Collapsed="true">
     <Position X="52.25" Y="12.5" Width="1.5" />
-    <InheritanceLine Type="StatsData.MeleeWeapon" FixedToPoint="true">
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="54" Y="4.191" />
         <Point X="54" Y="12.125" />
@@ -1235,6 +1261,14 @@
   </Class>
   <Class Name="StatsData.Ubersaw" Collapsed="true">
     <Position X="54.5" Y="9.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedFromPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="9.345" />
+        <Point X="55.25" Y="9.345" />
+        <Point X="55.25" Y="9.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Melee.cs</FileName>
@@ -1271,6 +1305,14 @@
   </Class>
   <Class Name="StatsData.TribalmansShiv" Collapsed="true">
     <Position X="54.5" Y="6.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedFromPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="6.375" />
+        <Point X="55.25" Y="6.375" />
+        <Point X="55.25" Y="6.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Melee.cs</FileName>
@@ -1278,6 +1320,14 @@
   </Class>
   <Class Name="StatsData.Bushwaka" Collapsed="true">
     <Position X="56.25" Y="6.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.MeleeWeapon" FixedFromPoint="true">
+      <Path>
+        <Point X="54" Y="4.191" />
+        <Point X="54" Y="6.375" />
+        <Point X="57" Y="6.375" />
+        <Point X="57" Y="6.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Melee.cs</FileName>
@@ -1292,6 +1342,14 @@
   </Class>
   <Class Name="StatsData.AMediGun" Collapsed="true">
     <Position X="12.25" Y="48.75" Width="1.5" />
+    <InheritanceLine Type="StatsData.Weapon" FixedFromPoint="true">
+      <Path>
+        <Point X="16.5" Y="1.062" />
+        <Point X="16.5" Y="48.375" />
+        <Point X="13" Y="48.375" />
+        <Point X="13" Y="48.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MediGun.cs</FileName>
@@ -1317,6 +1375,8 @@
       <Path>
         <Point X="16.5" Y="1.062" />
         <Point X="16.5" Y="1.295" />
+        <Point X="17.167" Y="1.295" Type="JumpStart" />
+        <Point X="17.333" Y="1.295" Type="JumpEnd" />
         <Point X="54" Y="1.295" />
         <Point X="54" Y="3.5" />
       </Path>
@@ -1335,6 +1395,12 @@
   </Class>
   <Class Name="StatsData.Shotgun" Collapsed="true">
     <Position X="17.5" Y="16.25" Width="1.5" />
+    <InheritanceLine Type="StatsData.AShotgun" FixedFromPoint="true">
+      <Path>
+        <Point X="18.25" Y="15.691" />
+        <Point X="18.25" Y="16.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Shotgun.cs</FileName>
@@ -1512,14 +1578,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.Machina" Collapsed="true">
-    <Position X="25.5" Y="12.75" Width="1.5" />
+    <Position X="22" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.SniperRifle" Collapsed="true">
-    <Position X="17" Y="12.75" Width="1.5" />
+    <Position X="17.5" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SniperRifle.cs</FileName>
@@ -1593,13 +1659,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Weapons.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="StatsData.Flamethrower" Collapsed="true">
-    <Position X="17" Y="29.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Flamethrower.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StatsData.RocketLauncher" Collapsed="true">
@@ -1791,6 +1850,133 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Weapons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.AFlameThrower" Collapsed="true">
+    <Position X="21.25" Y="28.25" Width="1.5" />
+    <InheritanceLine Type="StatsData.Weapon" FixedFromPoint="true">
+      <Path>
+        <Point X="16.5" Y="1.062" />
+        <Point X="16.5" Y="28" />
+        <Point X="22" Y="28" />
+        <Point X="22" Y="28.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>FlameThrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FlameThrower" Collapsed="true">
+    <Position X="17.5" Y="29.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlameThrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FlameThrowerMaxExposure" Collapsed="true">
+    <Position X="18.75" Y="30.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlameThrower.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ChargedSniperRifle" Collapsed="true">
+    <Position X="17.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ScopedSydneySleeper" Collapsed="true">
+    <Position X="24.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ChargedSydneySleeper" Collapsed="true">
+    <Position X="24.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.NoHeadsChargedBazaarBargain" Collapsed="true">
+    <Position X="19.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.MaxHeadsChargedBazaarBargain" Collapsed="true">
+    <Position X="19.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FullyChargedMachina" Collapsed="true">
+    <Position X="22" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.HitmansHeatmakerHeadshot" Collapsed="true">
+    <Position X="28.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ChargedHitmansHeatmakerHeadshot" Collapsed="true">
+    <Position X="28.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ChargedHitmansHeatmakerBodyshot" Collapsed="true">
+    <Position X="28.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FocusChargedHitmansHeatmakerHeadshot" Collapsed="true">
+    <Position X="30.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.FocusChargedHitmansHeatmakerBodyshot" Collapsed="true">
+    <Position X="30.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.Classic" Collapsed="true">
+    <Position X="26.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ClassicHeadshot" Collapsed="true">
+    <Position X="26.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ChargedClassicBodyshot" Collapsed="true">
+    <Position X="26.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
