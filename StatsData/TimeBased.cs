@@ -92,7 +92,7 @@ namespace StatsData
     /// myobs: 30	24	40	34	75	75
     /// wiki: pb: 25 (75 burn/build); long: (N/A)/25 (75 burn/build) (M/R); pb mc: 34 (102 burn); long mc: 34 (102 burn); pb crit: 75 (225 burn)
     /// </summary>
-    public class DragonsFury : Weapon
+    public class ADragonsFury : Weapon
     {
         /* https://www.teamfortress.tv/44242/where-can-i-find-weapon-script-txt-files
          * tf_weapon_rocketlauncher_fireball.txt - Flamethrower
@@ -200,13 +200,13 @@ WeaponData
         //TODO wiki long range says 90%, I said 92%, really both are wrong, it's probably 52.8%, but limited by Max Range.
         //((526-512)/512)percent of long range(0.02734375). 1-(percent * (1-.528)) = .98709 (98.7%) equivalent long range ramp.
         // results in a value that would round to 25. obs is 24, wiki says 23.  Maybe 526 is not accurate.
-        public DragonsFury()
+        public ADragonsFury(decimal baseDamage = 25)
         {
-            Name = "Dragon's Fury"; //"fireball launcher";
+            Name = "fireball launcher";
 
             Projectile = new Projectile(3000)
             {
-                HitDamage = new Damage(25)
+                HitDamage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_DRAGONSFURY,
                     ZeroRangeRamp = 1.2m,
@@ -219,15 +219,77 @@ WeaponData
             };
             FireRate = 0.8m;
 
-            Effect = new AfterburnEffect(2, 10);//TODO times? has a larger minimum, additive I think?
-
-            AlternateModes = new List<Weapon>
+            Effect = new AfterburnEffect(3)
             {
-                // TODO burning target triples (not crits) and actually involves a smaller projectile
-                new CompressionBlast()//TODO special variation due to cost
+                Name = "Afterburn(3s, additive); Pyro Afterburn (1s)"
             };
         }
     }
+
+    public class DragonsFury : ADragonsFury
+    {
+        public DragonsFury()
+        {
+            Name = "Dragon's Fury";
+
+            AlternateModes = new List<Weapon>
+            {
+                new DragonsFuryBurning(),
+                new DragonsFuryPostHit(),
+                new DragonsFuryRampage(),
+                new CompressionBlast(),//TODO special variation due to cost
+                new DragonsFuryPostCompressionBlast(),
+            };
+        }
+    }
+
+    internal class DragonsFuryPostCompressionBlast : ADragonsFury
+    {
+        public DragonsFuryPostCompressionBlast()
+        {
+            Name = "Dragon's Fury (after compression blast)";
+
+            FireRate = 1.6m;
+        }
+    }
+
+    internal class DragonsFuryPostHit : ADragonsFury
+    {
+        public DragonsFuryPostHit()
+        {
+            Name = "Dragon's Fury (after hit)";
+
+            FireRate = 0.53m;
+        }
+    }
+    internal class DragonsFuryRampage : ADragonsFury
+    {
+        public DragonsFuryRampage()
+            :base(75)
+        {
+            Name = "rampage (consecutive hits)";
+
+            //TODO smaller projectile
+            Projectile.HitDamage.BuildingModifier = 1.0m;
+
+            FireRate = 0.53m;
+        }
+    }
+
+    internal class DragonsFuryBurning : ADragonsFury
+    {
+        // burning target triples (not crits) and actually involves a smaller projectile
+        public DragonsFuryBurning()
+            :base(75)
+        {
+            Name = "Dragon's Fury (burning)";
+
+            //TODO smaller projectile
+
+            Projectile.HitDamage.BuildingModifier = 1.0m;
+        }
+    }
+
 
     /// <summary>
     /// myobs: 38	75	52	101	115	225

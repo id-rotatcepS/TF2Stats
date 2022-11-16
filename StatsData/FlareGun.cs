@@ -23,7 +23,7 @@ namespace StatsData
             };
             FireRate = 2;
 
-            Effect = new AfterburnEffect(10);//TODO time?
+            Effect = new AfterburnEffect(7.5m);
         }
     }
 
@@ -47,9 +47,27 @@ namespace StatsData
 
             //};
             //FireRate = 2;
+
+            AlternateModes = new List<Weapon>
+            {
+                new FlareGunBurning()
+            };
         }
     }
 
+    internal class FlareGunBurning : AFlareGun
+    {
+        public FlareGunBurning()
+        {
+            Name = "Flare Gun (burning)";
+
+            // 10s and crit damage on burning players
+            Effect = new AfterburnEffect(10m)
+            {
+                Name = "Crit; Afterburn(10 s)"
+            };
+        }
+    }
 
     /// <summary>
     /// myobs: 23	23	30	30	68	68
@@ -57,10 +75,10 @@ namespace StatsData
     /// </summary>
     public class Detonator : AFlareGun
     {
+        // -25% damage penalty
         public Detonator()
             :base(22.5m,//23
-                 2000, 
-                 AOE.DEFAULT_SPLASH*1) // TODO no, explosion is an alternate mode.
+                 2000)
         {
             Name = "Detonator";
 
@@ -76,11 +94,44 @@ namespace StatsData
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 1)
             //};
             ////FireRate = 2;
-            
-            //AlternateModes = new List<Weapon>
-            //{
-            //    TODO new DetonatorTriggeredExplosion()
-            //};
+
+            AlternateModes = new List<Weapon>
+            {
+                new DetonatorBurning(),
+                new DetonatorExplosion()
+            };
+        }
+    }
+
+    internal class DetonatorExplosion : AFlareGun
+    {
+        //TODO +50% damage to self
+        public DetonatorExplosion()
+            : base(22.5m,//23
+                 2000,
+                 AOE.DEFAULT_SPLASH * 1)
+        {
+            Name = "Detonator (triggered)";
+
+            Effect = new AfterburnEffect(7.5m)
+            {
+                Name = "Destroy Stickybombs; Afterburn(7.5 s)"
+            };
+        }
+    }
+
+    internal class DetonatorBurning : AFlareGun
+    {
+        public DetonatorBurning()
+            : base(22.5m,//23
+                 2000)
+        {
+            Name = "Detonator (burning)";
+
+            Effect = new AfterburnEffect(10m)
+            {
+                Name = "Mini-Crit; Afterburn(10 s)"
+            };
         }
     }
 
@@ -106,6 +157,23 @@ namespace StatsData
             //    },
             //};
             ////FireRate = 2;
+            AlternateModes = new List<Weapon>
+            {
+                new ManmelterBurning()
+            };
+        }
+    }
+
+    internal class ManmelterBurning : AFlareGun
+    {
+        public ManmelterBurning()
+            : base(30,
+                 3000)
+        {
+            Name = "Manmelter (burning)";
+
+            // 10s on burning players
+            Effect = new AfterburnEffect(10m);//according to wiki
         }
     }
 
@@ -115,6 +183,7 @@ namespace StatsData
     /// </summary>
     public class ScorchShot : AFlareGun
     {
+        //-35% damage penalty
         public ScorchShot()
             : base(19.5m,//20
                  2000,
@@ -134,11 +203,31 @@ namespace StatsData
             //};
             ////FireRate = 2;
 
-            //TODO knockback bonus
+            Effect = new AfterburnEffect(7.5m)
+            {
+                Name = "Knockback; Destroy Stickybombs; Afterburn(7.5 s)"
+            };
 
             AlternateModes = new List<Weapon>()
             {
-                //new ScorchShotBurningTarget() // extra knockback bonus
+            //TODO represent "rollers" somehow? it's just normal damage from an abnormal projectile, I think.
+                new ScorchShotBurningTarget() // extra knockback bonus
+            };
+        }
+    }
+
+    public class ScorchShotBurningTarget : AFlareGun
+    {
+        public ScorchShotBurningTarget()
+            : base(19.5m,//20
+                 2000,
+                 AOE.DEFAULT_SPLASH * 1)
+        {
+            Name = "Scorch Shot (burning)";
+
+            Effect = new AfterburnEffect(10m)
+            {
+                Name = "Extra Knockback; Mini-Crit; Destroy Stickybombs; Afterburn(10 s)"
             };
         }
     }

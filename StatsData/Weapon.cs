@@ -178,7 +178,7 @@ namespace StatsData
             Minimum = time;
             Maximum = time2;
 
-            Damage = new Damage(8);
+            Damage = new Damage(4);
             DamageRate = 0.5m;
         }
     }
@@ -190,7 +190,7 @@ namespace StatsData
             Minimum = time;
             Maximum = time;
 
-            Damage = new Damage(8);
+            Damage = new Damage(4);
             DamageRate = 0.5m;
         }
     }
