@@ -149,7 +149,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Class Association Diagram.cd" />
     <None Include="WeaponClasses.cd" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
