@@ -3,14 +3,16 @@
 namespace StatsData
 {
 
+
     public abstract class AFlameThrower : Weapon
     {
-        public AFlameThrower(decimal baseDamage = 6.5m)
+        public AFlameThrower(decimal baseDamage = 6.5m*.5m)
         {
             Name = "flamethrower";
 
             Projectile = new Projectile(2450m)//TODO taken from items_game.txt weapon_newflame, but that also includes Drag value that changes everything.  What will the wiki think? equivalent for 0.6s lifespan would be ~641 Hu/s
             {
+                //"Note: Flame damage is proportional to particle lifetime instead of distance from target. Unlike most weapons, Critical hits are also affected by the scaling."
                 HitDamage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_6_FLAMETHROWER,
@@ -34,16 +36,15 @@ namespace StatsData
                 Influenceable = false
             };
 
-
-            FireRate = 0.08m;
+            FireRate = 0.075m;//recent wiki change? used to have 0.08m;
 
             //TODO crits multiply with ramp
 
-            Effect = new AfterburnEffect(0, 10);//TODO times? - depends on exposure, so is that an alt mode?
+            Effect = new AfterburnEffect(4, 10);//TODO times? - depends on exposure, so only minimum for min exposure?
 
         }
 
-        private decimal GetMaxRangeWeaponNewFlame()
+        protected decimal GetMaxRangeWeaponNewFlame()
         {
             /*
              * from tf/scripts/items/items_game.txt "weapon_newflame"
@@ -83,6 +84,21 @@ namespace StatsData
         }
     }
 
+    public abstract class AFullFlameThrower : AFlameThrower
+    {
+        public AFullFlameThrower(decimal baseDamage = 6.5m)
+            : base(baseDamage)
+        {
+            Name = "flamethrower (max exposure/buildings)";
+
+            //TODO crits multiply with ramp
+
+            Effect = new AfterburnEffect(10);
+
+        }
+
+    }
+
     public class FlameThrower : AFlameThrower
     {
         public FlameThrower()
@@ -97,11 +113,10 @@ namespace StatsData
         }
     }
 
-    internal class FlameThrowerMaxExposure : AFlameThrower
+    internal class FlameThrowerMaxExposure : AFullFlameThrower
     {
         public FlameThrowerMaxExposure()
-            : base(6.5m * 2)
-            //TODO accurate? do buildings have time-ranged damage?
+            //TODO accurate? do buildings have time-ranged damage?  Should this be primary and half-damage is alternate like cold minigun? But Dragon's Fury works best as a ramp up that includes buildings
         {
             Name = "Flame Thrower (max exposure/buildings)";
         }

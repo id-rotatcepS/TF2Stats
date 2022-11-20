@@ -24,18 +24,36 @@ namespace StatsData
                 // Penetrates teammates, but not enemies
             };
             FireRate = 1.5m;
+
+            //charge & headshots/scoping are alt modes
         }
     }
+
     public class SniperRifle : ASniperRifle
     {
         public SniperRifle()
         {
             AlternateModes = new List<Weapon>
             {
+                new ScopedSniperRifle(),
                 new ChargedSniperRifle()
             };
         }
     }
+
+    public class ScopedSniperRifle : ASniperRifle
+    {
+        public ScopedSniperRifle()
+        {
+            Name = "Sniper Rifle (scoped, no charge)";
+
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
+        }
+    }
+
     public class ChargedSniperRifle : ASniperRifle
     {
         public ChargedSniperRifle()
@@ -43,6 +61,10 @@ namespace StatsData
         {
             Name = "sniper rifle (fully charged)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
 
@@ -66,6 +88,9 @@ namespace StatsData
 
             //};
             //FireRate = 1.5;
+
+            Effect = null;//no crit on headshot
+
             AlternateModes = new List<Weapon>
             {
                 new ScopedSydneySleeper(),
@@ -81,7 +106,7 @@ namespace StatsData
 
             Effect = new Effect()
             {
-                Name = "Jarate",
+                Name = "Jarate; Mini-crit on Headshot",
                 Minimum = 2m,
                 Maximum = 2m,
             };
@@ -97,7 +122,7 @@ namespace StatsData
 
             Effect = new Effect()
             {
-                Name = "Jarate",
+                Name = "Jarate; Mini-crit on Headshot",
                 Minimum = 5m,
                 Maximum = 5m,
             };
@@ -128,6 +153,7 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
+                new ScopedSniperRifle(),
                 new NoHeadsChargedBazaarBargain(),
                 new MaxHeadsChargedBazaarBargain(),
             };
@@ -141,6 +167,10 @@ namespace StatsData
         {
             Name = "zero heads (fully charged)";
             ActivationTime = 5.0m + 1.3m;// sec charge time + pre-charge delay;
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
     internal class MaxHeadsChargedBazaarBargain : ASniperRifle
@@ -150,6 +180,10 @@ namespace StatsData
         {
             Name = "six heads (fully charged)";
             ActivationTime = 0.5m + 1.3m;// sec charge time + pre-charge delay;
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
 
@@ -159,7 +193,7 @@ namespace StatsData
         public Machina()
             : base(50)
         {
-            Name = "machina";
+            Name = "machina (scoped, no charge)";
             //ActivationTime = 1.3;// sec pre-charge delay;
             //Hitscan = new Hitscan()
             //{
@@ -176,8 +210,14 @@ namespace StatsData
             //};
             //FireRate = 1.5;
 
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
+
             AlternateModes = new List<Weapon>
             {
+                //TODO technically machina "doesn't fire" except scoped alternate, so we only list the alternate, but now name doesn't match up.
                 // Full charge penetrates, but regular shot, partial charge, doesn't
                 new ChargedMachina(),
                 new FullyChargedMachina() //172.5
@@ -192,6 +232,10 @@ namespace StatsData
         {
             Name = "machina (charged)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
     internal class FullyChargedMachina : ASniperRifle
@@ -206,6 +250,10 @@ namespace StatsData
 
             // Full charge penetrates, but regular shot doesn't
             Hitscan.Penetrating = true;
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
 
@@ -229,7 +277,8 @@ namespace StatsData
             //FireRate = 1.5;
             AlternateModes = new List<Weapon>
             {
-                new HitmansHeatmakerHeadshot(),
+                new ScopedHitmansHeatmakerBodyshot(),
+                new ScopedHitmansHeatmakerHeadshot(),
                 new ChargedHitmansHeatmakerBodyshot(),
                 new ChargedHitmansHeatmakerHeadshot(),
                 new FocusChargedHitmansHeatmakerBodyshot(),
@@ -237,12 +286,25 @@ namespace StatsData
             };
         }
     }
-    internal class HitmansHeatmakerHeadshot : ASniperRifle
+    internal class ScopedHitmansHeatmakerBodyshot : ASniperRifle
     {
-        public HitmansHeatmakerHeadshot()
+        public ScopedHitmansHeatmakerBodyshot()
+            : base(40)
+        {
+            Name = "Hitman's Heatmaker (body shot)";
+            ActivationTime = 0.0m;// no zoom-in delay since it's not a headshot
+        }
+    }
+    internal class ScopedHitmansHeatmakerHeadshot : ASniperRifle
+    {
+        public ScopedHitmansHeatmakerHeadshot()
         {
             Name = "Hitman's Heatmaker (head shot)";
             ActivationTime = 0.2m;// zoom-in headshot delay
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
     internal class ChargedHitmansHeatmakerHeadshot : ASniperRifle
@@ -252,6 +314,10 @@ namespace StatsData
         {
             Name = "Hitman's Heatmaker (fully charged head shot)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
     internal class ChargedHitmansHeatmakerBodyshot : ASniperRifle
@@ -270,6 +336,10 @@ namespace StatsData
         {
             Name = "Focus (fully charged head shot)";
             ActivationTime = 1.5m + 1.3m;// sec focus charge time + pre-charge delay;
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
     internal class FocusChargedHitmansHeatmakerBodyshot : ASniperRifle
@@ -306,18 +376,19 @@ namespace StatsData
             //FireRate = 1.5;
             AlternateModes = new List<Weapon>
             {
-                new ClassicHeadshot(),
+                new ScopedClassic(),
                 new ChargedClassicBodyshot(),
                 new ChargedClassicHeadshot()
             };
         }
     }
-    internal class ClassicHeadshot : ASniperRifle
+    internal class ScopedClassic : ASniperRifle
     {
-        public ClassicHeadshot()
+        public ScopedClassic()
         {
-            Name = "Classic (head shot)";
+            Name = "Classic (scoped, no charge)";
             ActivationTime = 0;// no delay;
+            // no crit on not-fully-charged headshot
         }
     }
     internal class ChargedClassicHeadshot : ASniperRifle
@@ -327,6 +398,11 @@ namespace StatsData
         {
             Name = "Classic (fully charged head shot)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
     internal class ChargedClassicBodyshot : ASniperRifle

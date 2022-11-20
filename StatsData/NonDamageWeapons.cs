@@ -12,7 +12,7 @@ namespace StatsData
         {
             Name = "banners";
 
-            AreaOfEffect = new AOE(AOE.DEFAULT_BANNER * 1);//TODO FIXME value??
+            AreaOfEffect = new BannerAOE();//TODO FIXME value??
 
             FireRate = -1;
         }
@@ -43,7 +43,7 @@ namespace StatsData
             Name = "batallion's backup";
             ActivationTime = 2.645m;
             FireRate = -1;
-            
+
             Effect = new Effect()
             {
                 Name = "Crit Protection, etc.",
@@ -63,7 +63,7 @@ namespace StatsData
 
             Effect = new Effect()
             {
-                Name = "Speed Buff, Leach",
+                Name = "Speed Buff, Leach, Passive Health regen",
                 Maximum = 10 // TODO value??
             };
             //PassiveEffect = new Effect()
@@ -75,13 +75,11 @@ namespace StatsData
         }
     }
 
-
     public abstract class PassiveJumpAssist : Weapon
     {
         public PassiveJumpAssist()
         {
             Name = "passive jump assists";
-
 
             FireRate = -1;
         }
@@ -94,7 +92,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "BASE jumper";
 
-
             FireRate = -1;
         }
     }
@@ -106,7 +103,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "gunboats";
 
-
             FireRate = -1;
         }
     }
@@ -116,7 +112,6 @@ namespace StatsData
         public PassiveChargeAssists()
         {
             Name = "passive charge assists";
-
 
             FireRate = -1;
         }
@@ -128,7 +123,6 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "ali baba's wee booties / bootlegger";
-
 
             FireRate = -1;
         }
@@ -173,7 +167,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "cozy camper";
 
-
             FireRate = -1;
 
             Effect = new Effect()
@@ -200,7 +193,6 @@ namespace StatsData
         public ShareableLunchbox()
         {
             Name = "lunchbox(shareable snack)";
-
 
             FireRate = -1;
         }

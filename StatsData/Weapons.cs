@@ -7,6 +7,7 @@ namespace StatsData
     // summary:
     // TODO shotgun long range all pellets is missing weapon tests (with a giant) and tends to not match wiki
     // TODO WIKI IS WRONG about shotguns spread... their own evidence proves them wrong (see comments on constant)
+    //TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
     // TODO rocket launcher point blank is an issue (expecting offset is relevant here... or maybe ramp up?)
 
     //TODO (shotgun/scattergun) wiki spread 30:1, but calc is 28:1 (28.148repeating).
@@ -14,7 +15,8 @@ namespace StatsData
 
     //TODO (shotgun/scattergun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off
 
-    // TODO stickybombs & flamethrowers are issues still
+    // TODO need evidence observations: stickybombs & flamethrowers - numbers are a pretty good match now.
+    // TODO needle gun observations: small "vs. building" difference in wiki.
 
     // TODO alt modes are an issue in some
     // TODO crit-includes-range not yet supported (ambassador, flamethrowers, etc)
@@ -84,6 +86,7 @@ namespace StatsData
             : base(20)
         {
             Name = "Righteous Bison";
+
             //TODO damage rate... damage is actually half base and always hits twice.
 
             //Projectile = new Projectile(1200)//wd
@@ -104,7 +107,23 @@ namespace StatsData
             Projectile.Penetrating = true;
             ////FireRate = 0.8;
 
-            //TODO Alternate: single-hit damage, list double-hit as if it were the main value? Anyhow, one of these is "alternate"
+            // Alternate: double-hit damage, list single-hit as the main value. Anyhow, one of these is "alternate"
+            AlternateModes = new List<Weapon>
+            {
+                new RighteousBisonTypical()
+            };
+        }
+    }
+
+    public class RighteousBisonTypical : IndivisibleParticleSmasher
+    {
+        //Alternate: typical double-hit damage
+        public RighteousBisonTypical()
+            : base(20*2)
+        {
+            Name = "Righteous Bison (per second)";
+            Projectile.Penetrating = true;
+            ////FireRate = 0.8;
         }
     }
 
@@ -154,6 +173,11 @@ namespace StatsData
                 new HuntsmanLit(),
                 new HuntsmanCharged()
             };
+
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
 
@@ -175,6 +199,11 @@ namespace StatsData
             };
             //added charge time
             FireRate = 2.94m;
+
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
 
@@ -196,7 +225,7 @@ namespace StatsData
             };
             FireRate = 1.94m;
 
-            Effect = new AfterburnEffect(10);// TODO time?
+            Effect = new AfterburnEffect(10);// TODO time? // TODO crit on headshot, too
         }
     }
 
@@ -225,7 +254,7 @@ namespace StatsData
     /// </summary>
     public class RescueRanger : ABolt
     {
-        //TODO wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
+        //TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
         public RescueRanger()
         {
             Name = "Rescue Ranger";
@@ -261,12 +290,14 @@ namespace StatsData
 
     public abstract class AStickybombLauncher : Weapon
     {
+        //NOTE this is practical, but not really right... stickybombs do no damage on hit, it's triggering them that does the damage.
+        //Maybe projectile facts with no damage, then alt mode of triggered (which has its own explode activation time beyond arm time)
         public AStickybombLauncher(decimal baseDamage = 120, decimal armTime = 0.7m, decimal splashRadius = AOE.DEFAULT_SPLASH * 1,
             decimal speed = 925.38m //wd; other sheet had 900; wiki text says 805
             )
         {
             Name = "Stickybomb Launcher";
-            //TODO ActivationTime = ...0.05? time to explode after right-click.
+            ActivationTime = 0.135m;//time to explode after right-click
             Projectile = new Projectile(speed)
             {
                 HitDamage = new Damage(baseDamage)
@@ -290,7 +321,7 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
-                new ChargedStickybomb(Projectile.ArmTime, FireRate),
+                new ChargedStickybomb(Projectile.ArmTime, 4.0m),// maximum charge time
                 new FlakStickybomb(Projectile.ArmTime, FireRate),
                 new TrapStickybomb(Projectile.ArmTime, FireRate),
             };
@@ -359,7 +390,8 @@ namespace StatsData
     public class ScottishResistance : AStickybombLauncher
     {
         public ScottishResistance()
-            : base(120, 1.5m)
+            : base(120,
+                  1.72m) // 1.5 in text; 1.72 in function times
         {
             Name = "scottish resistance";
             //Projectile = new Projectile(925.38) //wd; other sheet had 900
@@ -382,7 +414,7 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
-                new ChargedStickybomb(Projectile.ArmTime, FireRate),
+                new ChargedStickybomb(Projectile.ArmTime, 4.0m),// maximum charge time
                 new FlakStickybomb(Projectile.ArmTime, FireRate),
                 new TrapStickybomb(Projectile.ArmTime, FireRate),
             };
@@ -418,7 +450,7 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
-                new ChargedQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, FireRate),
+                new ChargedQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, 1.2m),// maximum quickiebomb charge time
                 new FlakQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, FireRate),
                 new TrapQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, FireRate),
             };
@@ -502,6 +534,7 @@ namespace StatsData
             FireRate = 0.105m;//due to game ticks like minigun. used to be 0.1m;
         }
     }
+
     public class SyringeGun : ASyringeGun
     {
         public SyringeGun()
@@ -528,13 +561,18 @@ namespace StatsData
             //    Influenceable = false
             //};
             //FireRate = 0.1;
+
+            Effect = new Effect()
+            {
+                Name = "Leach, Passive Self-damage"
+            };
         }
     }
 
     public class Overdose : ASyringeGun
     {
         public Overdose()
-            :base(8.5m) // -15% damage
+            : base(8.5m) // -15% damage
         {
             Name = "overdose";
             //TODO wiki claims 8 against buildings... find out why, that makes 0 sense.
@@ -552,6 +590,11 @@ namespace StatsData
             //    Influenceable = false
             //};
             //FireRate = 0.1;
+
+            Effect = new Effect()
+            {
+                Name = "Uber charge-based Self Speed buff"
+            };
         }
     }
 

@@ -251,6 +251,11 @@ namespace StatsData
 
             //};
             FireRate = 0.6m;
+
+            Effect = new Effect()
+            {
+                Name = "Crit on Headshot"
+            };
         }
     }
 
@@ -302,8 +307,26 @@ namespace StatsData
 
             //};
             FireRate = 0.6m;
+
+            AlternateModes = new List<Weapon>
+            {
+                new EnforcerDisguised()
+            };
         }
     }
+    
+    public class EnforcerDisguised : ARevolver
+    {
+        public EnforcerDisguised()
+            : base(40 * 1.20m,
+                 0.9m)//other spreadsheet had default 1.25,
+        {
+            Name = "enforcer (disguised)";
+
+            FireRate = 0.6m;
+        }
+    }
+
 
     public class Diamondback : ARevolver
     {

@@ -172,9 +172,9 @@ namespace StatsData
         public AfterburnEffect(decimal time, decimal time2)
         {
             if (time2 == time)
-                Name = $"Afterburn({time})";
+                Name = $"Afterburn({time} s)";
             else
-                Name = $"Afterburn({time}, {time2})";
+                Name = $"Afterburn({time} - {time2} s)";
             Minimum = time;
             Maximum = time2;
 
@@ -186,7 +186,7 @@ namespace StatsData
     {
         public BleedEffect(decimal time)
         {
-            Name = $"Bleed({time})";
+            Name = $"Bleed({time} s)";
             Minimum = time;
             Maximum = time;
 
@@ -218,7 +218,7 @@ namespace StatsData
     }
     public class BannerAOE : AOE
     {
-        BannerAOE() 
+        public BannerAOE() 
             : base(AOE.DEFAULT_BANNER) 
         { }
     }

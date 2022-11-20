@@ -60,7 +60,7 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>()
             {
-                new MinigunCold() //TODO the same for other miniguns
+                new MinigunCold()
             };
         }
     }
@@ -116,8 +116,18 @@ namespace StatsData
             //FireRate = 0.1;
             AlternateModes = new List<Weapon>()
             {
-               new MinigunCold() //new NataschaCold() //TODO the same for other miniguns
+               new NataschaCold()
             };
+        }
+    }
+
+    public class NataschaCold : AMinigun
+    {
+        public NataschaCold()
+            : base(27/2.0m)
+        {
+            Name = "Natascha (cold)";
+            ActivationTime = 1.16m;// sec spin up;
         }
     }
 
@@ -146,8 +156,18 @@ namespace StatsData
             //FireRate = 0.1;
             AlternateModes = new List<Weapon>()
             {
-                new MinigunCold()//new BrassBeastCold() //TODO the same for other miniguns
+                new BrassBeastCold()
             };
+        }
+    }
+
+    public class BrassBeastCold : AMinigun
+    {
+        public BrassBeastCold()
+            : base(43.2m / 2.0m)
+        {
+            Name = "Brass Beast (cold)";
+            ActivationTime = 1.31m;// sec spin up;
         }
     }
 
@@ -177,11 +197,23 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>()
             {
-               new MinigunCold() //TODO  new TomislavCold()
+               new TomislavCold()
             };
 
         }
     }
+
+    public class TomislavCold : AMinigun
+    {
+        public TomislavCold()
+            : base(36 / 2.0m, 0.064m)
+        {
+            Name = "Tomislav (cold)";
+            ActivationTime = 0.696m;// sec spin up;
+            FireRate = 0.12m; // "sometimes .135 due to server tick innacuracy"
+        }
+    }
+
 
     public class HuoLongHeater : AMinigun
     {
@@ -206,19 +238,54 @@ namespace StatsData
             //};
             ////FireRate = 0.1;
 
-            //TODO FIXME AreaOfEffect - new AOE(AOE.DEFAULT_RADIUS * ?)
+            AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
+            Effect = new Effect()
+            {
+                Name = $"Direct Burn & Afterburn(8s)",
+                Minimum = 8m,
+                Maximum = 8m,
+
+                Damage = new Damage(12), // direct fire ring damage (4 @0.5 for afterburn)
+                //TODO what does this even mean? how can it do non-active direct burn damage of 12? shouldn't it always be "15?"  probably just "instant 3x afterburn application"... or maybe it's some kind of flamethrower calculation
+
+            }; // & ammo cost
 
             AlternateModes = new List<Weapon>()
             {
-                new MinigunCold(),//TODO new HuoLongHeaterCold(),
+                new HuoLongHeaterCold(),
                 new HuoLongHeaterBurningTarget()
                 //TODO and coldburning
             };
         }
     }
+    public class HuoLongHeaterCold : AMinigun
+    {
+        public HuoLongHeaterCold()
+            : base(32.4m / 2.0m)
+        {
+            Name = "Huo-long Heater (cold)";
+
+
+            AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
+            Effect = new Effect()
+            {
+                Name = $"Direct Burn & Afterburn(8s)",
+                Minimum = 8m,
+                Maximum = 8m,
+
+                Damage = new Damage(12), // direct fire ring damage (4 @0.5 for afterburn)
+
+            }; // & ammo cost
+
+        }
+    }
+
+
     public class HuoLongHeaterBurningTarget : AMinigun
     {
         //TODO calc'd close max of 49. Wiki says 48.
+        //TODO wiki on burning target crit & minicrit are just wrong, probably had a cold weapon.
+        // +25% (includes afterburn while active)
         public HuoLongHeaterBurningTarget()
             :base(40.5m)
         {
@@ -240,7 +307,16 @@ namespace StatsData
             //};
             ////FireRate = 0.1;
 
-            //TODO FIXME AreaOfEffect - new AOE(AOE.DEFAULT_RADIUS * ?)
+            AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
+            Effect = new Effect()
+            {
+                Name = $"Direct Continuous Burn & Active with Afterburn(8s +25%)",
+                Minimum = 8m,
+                Maximum = 8m,
+
+                Damage = new Damage(12*1.25m), // direct fire ring damage (4 @0.5 for afterburn)
+
+            }; // & ammo cost
         }
     }
 
