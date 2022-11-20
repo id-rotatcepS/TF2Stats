@@ -16,231 +16,112 @@
             <ColumnDefinition Width="11"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            <StackPanel.ContextFlyout>
+            <!--"{Binding Source={StaticResource collectionView}}"-->
+        <controls:DataGrid x:Name="WeaponGrid"  Grid.Column="0" 
+                            ItemsSource="{Binding WeaponCollection}"
+                            HeadersVisibility="All" FrozenColumnCount="1" AreRowGroupHeadersFrozen="True"
+                            HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"
+                            VerticalScrollBarVisibility="Visible" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"
+                            AlternatingRowBackground="AliceBlue"
+                            CanUserReorderColumns="True"
+                            CanUserSortColumns="True"
+                            AutoGenerateColumns="True" AutoGeneratingColumn="WeaponGrid_AutoGeneratingColumn"
+                            Sorting="WeaponGrid_Sorting"
+                            >
+            <controls:DataGrid.ContextFlyout>
                 <MenuFlyout>
                     <ToggleMenuFlyoutItem IsChecked="{Binding IsIncludingAlternates, Mode=TwoWay}" Text="Include Alternate Weapon Modes"/>
                 </MenuFlyout>
-            </StackPanel.ContextFlyout>
-
-            <!--"{Binding Source={StaticResource collectionView}}"-->
-            <controls:DataGrid x:Name="WeaponGrid" 
-                               ItemsSource="{Binding WeaponCollection}"
-                               HeadersVisibility="All" FrozenColumnCount="1" AreRowGroupHeadersFrozen="True"
-                               HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Height="900"
-                               AlternatingRowBackground="AliceBlue"
-                               CanUserReorderColumns="True"
-                               CanUserSortColumns="True"
-                               AutoGenerateColumns="True" AutoGeneratingColumn="WeaponGrid_AutoGeneratingColumn"
-                                   Sorting="WeaponGrid_Sorting"
-                                   >
-            </controls:DataGrid>
-        </StackPanel>
+            </controls:DataGrid.ContextFlyout>
+        </controls:DataGrid>
+        
         <controls:GridSplitter Grid.Column="1"/>
-        <StackPanel Grid.Column="2"
-                         DataContext="{x:Bind WeaponGrid.SelectedItem, Mode=OneWay}">
-            <TextBlock Text="{Binding Name}"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="4,1">Damage:</TextBlock>
-                <TextBlock Margin="4,1" Text="{Binding BaseDamage}"/>
-                <TextBlock Margin="4,1" Text="{Binding Detail.RangePercents}"/>
-                <TextBlock Margin="4,1" Text="{Binding Detail.RangeDamage}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="4,1" Text="{Binding Detail.WeaponTestsCols}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock>Effect:</TextBlock>
-                <TextBlock Text="{Binding Effect}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock>Accuracy:</TextBlock>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="{Binding Detail.Accuracy}"/>
-                    <TextBlock Text="{Binding Detail.AccuracySplash}"/>
-                    <TextBlock Text="{Binding Detail.MaxRange}"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock>DPS:</TextBlock>
-                <TextBlock Text="{Binding Detail.DPS}"/>
-            </StackPanel>
+        <ScrollViewer Grid.Column="2"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <StackPanel 
+                        DataContext="{x:Bind WeaponGrid.SelectedItem, Mode=OneWay}"  HorizontalAlignment="Stretch">
+                <TextBlock Text="{Binding Name}"/>
 
-            <StackPanel x:Name="DamageAndFunctionTimes" Background="#FFF3EAD9"
-                        DataContext="{Binding Detail.FunctionTimes}">
-                <StackPanel.Resources>
-                    <Style x:Key="Label" TargetType="StackPanel">
-                        <Setter Property="Background" Value="Orange"/>
-                    </Style>
-                    <Style x:Key="Percent" TargetType="StackPanel">
-                        <Setter Property="Background" Value="LightBlue"/>
-                    </Style>
-                </StackPanel.Resources>
-                <TextBlock x:Name="MainHeading" HorizontalAlignment="Stretch" Text="Damage and Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.ColumnSpan="3" TextAlignment="Center"/>
+                <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
-                <StackPanel Orientation="Horizontal" Visibility="{Binding CloseRampVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelCloseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Maximum ramp-up" Width="150"/>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource ResourceKey=Percent}">
-                        <TextBlock x:Name="CloseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding MaximumRampUpPercent}" Width="50"/>
-                    </StackPanel>
-                    <TextBlock x:Name="CloseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding MaximumRampUp}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelBaseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Base damage" Width="150"/>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource ResourceKey=Percent}">
-                        <TextBlock x:Name="BaseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                               Text="{Binding BaseDamagePercent}" Width="50"/>
-                    </StackPanel>
-                    <TextBlock x:Name="BaseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding BaseDamage}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="{Binding BuildingVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelBuildingRamp" HorizontalAlignment="Center" HorizontalTextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Building damage" Width="150"/>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource ResourceKey=Percent}">
-                        <TextBlock x:Name="BuildingRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                               Text="{Binding BuildingDamagePercent}" Width="50"/>
-                    </StackPanel>
-                    <TextBlock x:Name="BuildingRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding BuildingDamage}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="{Binding FarRampVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelFarRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Maximum fall-off" Width="150"/>
-                    </StackPanel>
-                    <StackPanel Style="{StaticResource ResourceKey=Percent}">
-                        <TextBlock x:Name="FarRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                               Text="{Binding MaximumFallOffPercent}" Width="50"/>
-                    </StackPanel>
-                    <TextBlock x:Name="FarRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding MaximumFallOff}" Width="200"/>
-                </StackPanel>
+                    <local:DamageAndFunctionTimesTable x:Name="DamageAndFunctionTimes" DataContext="{Binding Detail.FunctionTimes}"/>
 
-                <StackPanel Orientation="Horizontal" Visibility="{Binding FragmentVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelFragment" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Fragment count" Width="200"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Effect:</TextBlock>
+                        <TextBlock Text="{Binding Effect}"/>
                     </StackPanel>
-                    <TextBlock x:Name="Fragment" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding Fragment}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="{Binding PointBlankVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelPointBlank" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Point blank" Width="200"/>
-                    </StackPanel>
-                    <TextBlock x:Name="PointBlank" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding PointBlank}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="{Binding MediumRangeVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelMediumRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Medium range" Width="200"/>
-                    </StackPanel>
-                    <TextBlock x:Name="MediumRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding MediumRange}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="{Binding LongRangeVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelLongRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Long range" Width="200"/>
-                    </StackPanel>
-                    <TextBlock x:Name="LongRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding LongRange}" Width="200"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelSpread" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Spread" Width="200"/>
-                    </StackPanel>
-                    <TextBlock x:Name="Spread" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding Spread}" Width="200"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Visibility="{Binding CriticalVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelCritical" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Critical" Width="200"/>
-                    </StackPanel>
-                    <TextBlock x:Name="Critical" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding Critical}" Width="200"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Visibility="{Binding MiniCritVisibility}">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelMiniCrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Mini-crit" Width="200"/>
-                    </StackPanel>
-                    <TextBlock x:Name="MiniCrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding MiniCrit}" Width="200"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Style="{StaticResource ResourceKey=Label}">
-                        <TextBlock x:Name="labelAttackInterval" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="Attack Interval" Width="200"/>
-                    </StackPanel>
-                    <TextBlock x:Name="AttackInterval" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding AttackInterval}" Width="200"/>
-                </StackPanel>
-
-
-
-            </StackPanel>
-
-            <ItemsControl x:Name="alts" ItemsSource="{Binding Alts}" CanBeScrollAnchor="True">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel BorderBrush="Aqua" BorderThickness="2">
-                            <TextBlock Text="{Binding Name}"/>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="4,1">Damage:</TextBlock>
-                                <TextBlock Margin="4,1" Text="{Binding BaseDamage}"/>
-                                <TextBlock Margin="4,1" Text="{Binding Detail.RangePercents}"/>
-                                <TextBlock Margin="4,1" Text="{Binding Detail.RangeDamage}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="4,1" Text="{Binding Detail.WeaponTestsCols}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>Effect:</TextBlock>
-                                <TextBlock Text="{Binding Effect}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>Accuracy:</TextBlock>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="{Binding Detail.Accuracy}"/>
-                                    <TextBlock Text="{Binding Detail.AccuracySplash}"/>
-                                    <TextBlock Text="{Binding Detail.MaxRange}"/>
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock>DPS:</TextBlock>
-                                <TextBlock Text="{Binding Detail.DPS}"/>
-                            </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Accuracy:</TextBlock>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Detail.Accuracy}"/>
+                            <TextBlock Text="{Binding Detail.AccuracySplash}"/>
+                            <TextBlock Text="{Binding Detail.MaxRange}"/>
                         </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>DPS:</TextBlock>
+                        <TextBlock Text="{Binding Detail.DPS}"/>
+                    </StackPanel>
 
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="4,1">Damage:</TextBlock>
+                        <TextBlock Margin="4,1" Text="{Binding BaseDamage}"/>
+                        <TextBlock Margin="4,1" Text="{Binding Detail.RangePercents}"/>
+                        <TextBlock Margin="4,1" Text="{Binding Detail.RangeDamage}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="4,1" Text="{Binding Detail.WeaponTestsCols}"/>
+                    </StackPanel>
+                </StackPanel>
 
+                <ItemsControl x:Name="alts" ItemsSource="{Binding Alts}" >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                
+                                <StackPanel BorderBrush="Aqua" BorderThickness="2">
+                                    <TextBlock Text="{Binding Name}"/>
+                            
+                                    <local:DamageAndFunctionTimesTable DataContext="{Binding Detail.FunctionTimes}"/>
+                            
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>Effect:</TextBlock>
+                                        <TextBlock Text="{Binding Effect}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>Accuracy:</TextBlock>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Detail.Accuracy}"/>
+                                            <TextBlock Text="{Binding Detail.AccuracySplash}"/>
+                                            <TextBlock Text="{Binding Detail.MaxRange}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>DPS:</TextBlock>
+                                        <TextBlock Text="{Binding Detail.DPS}"/>
+                                    </StackPanel>
 
-        </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="4,1">Damage:</TextBlock>
+                                        <TextBlock Margin="4,1" Text="{Binding BaseDamage}"/>
+                                        <TextBlock Margin="4,1" Text="{Binding Detail.RangePercents}"/>
+                                        <TextBlock Margin="4,1" Text="{Binding Detail.RangeDamage}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Margin="4,1" Text="{Binding Detail.WeaponTestsCols}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

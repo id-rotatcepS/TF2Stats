@@ -1,0 +1,143 @@
+﻿<UserControl
+    x:Class="TF2Stats.DamageAndFunctionTimesTable"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TF2Stats"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel Background="#FFF3EAD9">
+        <StackPanel.Resources>
+            <Style x:Key="Label" TargetType="StackPanel">
+                <Setter Property="Background" Value="Orange"/>
+            </Style>
+            <Style x:Key="Percent" TargetType="StackPanel">
+                <Setter Property="Background" Value="LightBlue"/>
+            </Style>
+        </StackPanel.Resources>
+        <TextBlock x:Name="MainHeading" HorizontalAlignment="Stretch" Text="Damage and Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.ColumnSpan="3" TextAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" Visibility="{Binding CloseRampVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelCloseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Maximum ramp-up" Width="150"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ResourceKey=Percent}">
+                <TextBlock x:Name="CloseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding MaximumRampUpPercent}" Width="50"/>
+            </StackPanel>
+            <TextBlock x:Name="CloseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding MaximumRampUp}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelBaseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Base damage" Width="150"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ResourceKey=Percent}">
+                <TextBlock x:Name="BaseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                               Text="{Binding BaseDamagePercent}" Width="50"/>
+            </StackPanel>
+            <TextBlock x:Name="BaseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding BaseDamage}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding BuildingVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelBuildingRamp" HorizontalAlignment="Center" HorizontalTextAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Building damage" Width="150"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ResourceKey=Percent}">
+                <TextBlock x:Name="BuildingRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                               Text="{Binding BuildingDamagePercent}" Width="50"/>
+            </StackPanel>
+            <TextBlock x:Name="BuildingRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding BuildingDamage}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding FarRampVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelFarRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Maximum fall-off" Width="150"/>
+            </StackPanel>
+            <StackPanel Style="{StaticResource ResourceKey=Percent}">
+                <TextBlock x:Name="FarRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                               Text="{Binding MaximumFallOffPercent}" Width="50"/>
+            </StackPanel>
+            <TextBlock x:Name="FarRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding MaximumFallOff}" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Visibility="{Binding FragmentVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelFragment" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Fragment count" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="Fragment" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding Fragment}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding PointBlankVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelPointBlank" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Point blank" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="PointBlank" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding PointBlank}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding MediumRangeVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelMediumRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Medium range" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="MediumRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding MediumRange}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding LongRangeVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelLongRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Long range" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="LongRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding LongRange}" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelSpread" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Spread" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="Spread" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding Spread}" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Visibility="{Binding CriticalVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelCritical" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Critical" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="Critical" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding Critical}" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding MiniCritVisibility}">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelMiniCrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Mini-crit" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="MiniCrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding MiniCrit}" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelAttackInterval" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Attack Interval" Width="200"/>
+            </StackPanel>
+            <TextBlock x:Name="AttackInterval" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding AttackInterval}" Width="200"/>
+        </StackPanel>
+
+
+
+    </StackPanel>
+</UserControl>
