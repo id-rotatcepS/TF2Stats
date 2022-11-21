@@ -32,8 +32,10 @@ namespace StatsData
         public int Level { get; protected set; }
         public string WeaponType { get; protected set; }
         public List<WeaponAttribute> Attributes { get; protected set; }
+        //https://wiki.teamfortress.com/wiki/Critical_hits#Special_cases
         public bool CanCrit { get; internal set; } = true;
-        //TODO CanMinicrit? A few things like heal bolts and things that upgrade it to crits
+        // for A few things like heal bolts or things that upgrade it to crits
+        public bool CanMinicrit { get; internal set; } = true;
     }
 
     public class Damage
@@ -164,6 +166,8 @@ namespace StatsData
         public decimal DamageRate { get; set; }
         //public DamageType DamageType { get;  set; }
     }
+
+    //"The bleeding and afterburn mechanics do not crit, but will mini-crit if the attacking player is mini-crit boosted or if the target is under a mini-crit debuff."
     public class AfterburnEffect : Effect
     {
         public AfterburnEffect(decimal time)
@@ -184,6 +188,8 @@ namespace StatsData
             DamageRate = 0.5m;
         }
     }
+
+    //"The bleeding and afterburn mechanics do not crit, but will mini-crit if the attacking player is mini-crit boosted or if the target is under a mini-crit debuff."
     public class BleedEffect : Effect
     {
         public BleedEffect(decimal time)

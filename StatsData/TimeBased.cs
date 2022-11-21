@@ -43,6 +43,7 @@ namespace StatsData
             };
             FireRate = 0.15m;
 
+            //"The Short Circuit is unable to deal critical damage, but can deal mini-crits under respective buffs or enemy debuffs."
             CanCrit = false;
 
             AlternateModes = new List<Weapon> {
@@ -79,6 +80,7 @@ namespace StatsData
             };
             FireRate = 0.5m;
 
+            //"The Short Circuit is unable to deal critical damage, but can deal mini-crits under respective buffs or enemy debuffs."
             CanCrit = false;
 
             Effect = new Effect()
@@ -383,6 +385,7 @@ WeaponData
             FireRate = .24m;// 1.6m;
 
             CanCrit = false;
+            CanMinicrit = false;
         }
     }
     public class CrusadersCrossbowHealMaxHang : CrusadersCrossbowHeal
@@ -403,6 +406,7 @@ WeaponData
             };
 
             CanCrit = false;
+            CanMinicrit = false;
         }
     }
 
@@ -468,7 +472,7 @@ WeaponData
                 MaxRangeTime = 1125.0m / 750.0m,
             };
             FireRate = 12;
-
+            //"unable to deal critical damage, but can deal mini-crits under respective buffs or enemy debuffs."
             CanCrit = false;
         }
     }

@@ -152,6 +152,7 @@ namespace StatsData
 
         public WeaponVMDetail Detail { get; set; }
         public bool CanCrit => W.CanCrit;
+        public bool CanMinicrit => W.CanMinicrit;
 
         public int CompareTo(object obj)
         {

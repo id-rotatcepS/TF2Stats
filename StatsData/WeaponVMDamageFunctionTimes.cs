@@ -52,7 +52,7 @@ namespace StatsData
         public string Critical => CriticalDamage();
         public Visibility CriticalVisibility => (v.CanCrit || v.Alts.Any((v) =>v.CanCrit)) ? Visibility.Visible : Visibility.Collapsed;
         public string MiniCrit => MiniCritDamage();
-        public Visibility MiniCritVisibility => Visibility.Visible;
+        public Visibility MiniCritVisibility => (v.CanMinicrit || v.Alts.Any((v) => v.CanMinicrit)) ? Visibility.Visible : Visibility.Collapsed;
 
 
         private Visibility NullableVisibility(Func<WeaponVM, int?> fragments)
@@ -199,7 +199,7 @@ namespace StatsData
             decimal? baseDamage = v.BaseDamage;
             int? fragments = v.Fragments;
 
-            if (!baseDamage.HasValue)
+            if (!baseDamage.HasValue || !v.CanMinicrit)
             {
                 return string.Empty;
             }

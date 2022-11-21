@@ -123,6 +123,7 @@ namespace StatsData
         }
     }
 
+    //"Cow Mangler: Deals critical hits when reflected by a crit-boosted flamethrower." - implies crit-boosted reflects crit-ify anything they reflect.
     public class CompressionBlast : Weapon
     {
         public CompressionBlast()

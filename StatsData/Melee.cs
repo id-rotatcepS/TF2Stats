@@ -305,7 +305,7 @@ namespace StatsData
     public class FanOWar : ABat
     {
         public FanOWar()
-            :base(8.75m)
+            : base(8.75m)
         {
             Name = "fan o'war";
             ////ActivationTime = 0.2;// hits at end of swing;
@@ -318,7 +318,14 @@ namespace StatsData
             //};
             ////FireRate = 0.5;
 
-            //TODO MFDTarget effect
+            CanMinicrit = false;
+
+            Effect = new Effect()
+            {
+                Name = "Marked For Death (only one); Crits on minicrit",
+                Minimum = 15m,
+                Maximum = 15m,
+            };
         }
     }
 
@@ -903,6 +910,12 @@ namespace StatsData
             //    Damage = new Damage(65)
             //};
             //FireRate = 0.8;
+            CanMinicrit = false;
+
+            Effect = new Effect()
+            {
+                Name = "Crits on minicrit",
+            };
         }
     }
 
