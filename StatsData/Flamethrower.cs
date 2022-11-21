@@ -139,6 +139,11 @@ namespace StatsData
             };
 
             FireRate = -1;
+
+            Effect = new Effect()
+            {
+                Name = "Deflect projectiles, Minicrit; push enemies; extinguish teammates"
+            };
         }
     }
 
@@ -162,6 +167,7 @@ namespace StatsData
             {
                 new CompressionBlast(),
                 new FlameThrowerMaxExposure()
+                //TODO ?FromBack, Effect: crit
             };
         }
     }
@@ -211,6 +217,7 @@ namespace StatsData
             AlternateModes = new List<Weapon>
             {
                 new FlameThrowerMaxExposure()
+                //TODO phlog crits for 10 seconds
             };
         }
     }

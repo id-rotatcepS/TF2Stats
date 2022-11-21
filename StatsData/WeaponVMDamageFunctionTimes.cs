@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Windows.UI.Xaml;
 
 namespace StatsData
@@ -9,68 +11,73 @@ namespace StatsData
         private readonly WeaponVM v;
         private readonly Weapon w;
 
-        public WeaponVMDamageFunctionTimes(WeaponVM vm)
+        public WeaponVMDamageFunctionTimes(WeaponVM vm, Weapon w)
         {
             this.v = vm;
+            this.w = w;
         }
+
+        public string Name => w.Name;
+        public IEnumerable<WeaponVMDamageFunctionTimes> Alts => v.Alts?.Select(vm => vm.Detail.FunctionTimes);
 
         //public string ShotType => "Hitscan", etc.
         //public string DamageType => "Bullet" etc.
         //public string RangedOrMeleeDamage => "Ranged"
         public string MaximumRampUpPercent => PercentString(v.ZeroRangeMod);
         public string MaximumRampUp => FragmentDamage(v.ZeroRangeMod);
-        public Visibility CloseRampVisibility => PercentVisibility(v.ZeroRangeMod);
+        public Visibility CloseRampVisibility => PercentVisibility((v) => v.ZeroRangeMod);
 
         public string BaseDamagePercent => PercentString(1.0m);
         public string BaseDamage => FragmentDamage(1.0m);
         
         public string MaximumFallOffPercent => PercentString(v.LongRangeMod);
         public string MaximumFallOff => FragmentDamage(v.LongRangeMod);
-        public Visibility FarRampVisibility => PercentVisibility(v.LongRangeMod);
+        public Visibility FarRampVisibility => PercentVisibility((v) => v.LongRangeMod);
         
         public string BuildingDamagePercent => PercentString(v.BuildingMod);
         public string BuildingDamage => FragmentDamage(v.BuildingMod);
-        public Visibility BuildingVisibility => PercentVisibility(v.BuildingMod);
+        public Visibility BuildingVisibility => PercentVisibility((v) => v.BuildingMod);
 
         public string Fragment => v.Fragments?.ToString();
-        public Visibility FragmentVisibility => NullableVisibility(v.Fragments);
+        public Visibility FragmentVisibility => NullableVisibility((v) => v.Fragments);
 
         public string PointBlank => FullDamage(v.ZeroRangeMod);
-        public Visibility PointBlankVisibility => FullDamageVisibility(v.ZeroRangeMod);
+        public Visibility PointBlankVisibility => FullDamageVisibility((v) => v.ZeroRangeMod);
         public string MediumRange => FullDamage(1.0m);
-        public Visibility MediumRangeVisibility => FullDamageVisibility(1.0m);
+        public Visibility MediumRangeVisibility => FullDamageVisibility((v) => 1.0m);
         public string LongRange => FullDamage(v.LongRangeMod);
-        public Visibility LongRangeVisibility => FullDamageVisibility(v.LongRangeMod);
+        public Visibility LongRangeVisibility => FullDamageVisibility((v) => v.LongRangeMod);
 
         public string Critical => CriticalDamage();
-        public Visibility CriticalVisibility => v.CanCrit ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility CriticalVisibility => (v.CanCrit || v.Alts.Any((v) =>v.CanCrit)) ? Visibility.Visible : Visibility.Collapsed;
         public string MiniCrit => MiniCritDamage();
         public Visibility MiniCritVisibility => Visibility.Visible;
 
 
-        private Visibility NullableVisibility(int? fragments)
+        private Visibility NullableVisibility(Func<WeaponVM, int?> fragments)
         {
-            return fragments.HasValue
+            return (fragments.Invoke(v).HasValue || v.Alts.Any(v=>fragments.Invoke(v).HasValue))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
         }
         
-        private Visibility NullableVisibility(decimal? fragments)
+        private Visibility NullableVisibility(Func<WeaponVM, decimal?> fragments)
         {
-            return fragments.HasValue
+            return (fragments.Invoke(v).HasValue || v.Alts.Any(v => fragments.Invoke(v).HasValue))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
         }
 
-        private Visibility PercentVisibility(decimal? buildingMod)
+        private Visibility PercentVisibility(Func<WeaponVM, decimal?> buildingMod)
         {
-            return (buildingMod.HasValue && buildingMod.Value != 1.0m)
+            Func<WeaponVM, bool> x = (v)=>buildingMod.Invoke(v).HasValue && buildingMod.Invoke(v).Value != 1.0m;
+            return (x.Invoke(v) || v.Alts.Any(x))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
         }
 
         public string Spread => SpreadRatio(v.Spread);
-        public Visibility SpreadVisibility => NullableVisibility(v.Spread);
+        public Visibility SpreadVisibility => NullableVisibility((v)=>v.Spread);
 
         public string AttackInterval => string.Format("{0:0.####} s", v.FireRate);
 
@@ -146,11 +153,12 @@ namespace StatsData
                     fullDamage);
         }
 
-        private Visibility FullDamageVisibility(decimal? rangeMod)
+        private Visibility FullDamageVisibility(Func<WeaponVM, decimal?> rangeMod)
         {
+            Func<WeaponVM, bool> x = (v) => rangeMod.Invoke(v).HasValue
+                 && (v.Fragments.HasValue || v.SplashRadius.HasValue);
             return
-                rangeMod.HasValue
-                && (v.Fragments.HasValue || v.SplashRadius.HasValue)
+               (x.Invoke(v)||v.Alts.Any(x))
                 ? Visibility.Visible
                 : Visibility.Collapsed;
         }

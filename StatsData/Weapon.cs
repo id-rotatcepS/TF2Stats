@@ -33,6 +33,7 @@ namespace StatsData
         public string WeaponType { get; protected set; }
         public List<WeaponAttribute> Attributes { get; protected set; }
         public bool CanCrit { get; internal set; } = true;
+        //TODO CanMinicrit? A few things like heal bolts and things that upgrade it to crits
     }
 
     public class Damage

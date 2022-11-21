@@ -36,6 +36,7 @@
         </controls:DataGrid>
         
         <controls:GridSplitter Grid.Column="1"/>
+        
         <ScrollViewer Grid.Column="2"
                 VerticalScrollBarVisibility="Auto"
                 HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
@@ -104,16 +105,6 @@
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>DPS:</TextBlock>
                                         <TextBlock Text="{Binding Detail.DPS}"/>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Margin="4,1">Damage:</TextBlock>
-                                        <TextBlock Margin="4,1" Text="{Binding BaseDamage}"/>
-                                        <TextBlock Margin="4,1" Text="{Binding Detail.RangePercents}"/>
-                                        <TextBlock Margin="4,1" Text="{Binding Detail.RangeDamage}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Margin="4,1" Text="{Binding Detail.WeaponTestsCols}"/>
                                     </StackPanel>
                                 </StackPanel>
                                 

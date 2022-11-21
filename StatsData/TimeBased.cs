@@ -381,6 +381,8 @@ WeaponData
 
             };
             FireRate = 1.6m;
+
+            CanCrit = false;
         }
     }
     public class CrusadersCrossbowHealMaxHang : CrusadersCrossbowHeal
@@ -399,6 +401,8 @@ WeaponData
                 },
 
             };
+
+            CanCrit = false;
         }
     }
 

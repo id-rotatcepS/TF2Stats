@@ -108,24 +108,25 @@ namespace StatsData
             ////FireRate = 0.8;
 
             // Alternate: double-hit damage, list single-hit as the main value. Anyhow, one of these is "alternate"
-            AlternateModes = new List<Weapon>
-            {
-                new RighteousBisonTypical()
-            };
+            //AlternateModes = new List<Weapon>
+            //{
+            //    new RighteousBisonTypical()
+            //};
         }
     }
 
-    public class RighteousBisonTypical : IndivisibleParticleSmasher
-    {
-        //Alternate: typical double-hit damage
-        public RighteousBisonTypical()
-            : base(20*2)
-        {
-            Name = "Righteous Bison (per second)";
-            Projectile.Penetrating = true;
-            ////FireRate = 0.8;
-        }
-    }
+    //public class RighteousBisonTypical : IndivisibleParticleSmasher
+    //{
+    //    //Alternate: typical double-hit damage
+    //    // TODO this doesn't actually work because it's final number (range, crits applied, rounded) *2, not just base damage*2
+    //    public RighteousBisonTypical()
+    //        : base(20*2)
+    //    {
+    //        Name = "Righteous Bison (per second)";
+    //        Projectile.Penetrating = true;
+    //        ////FireRate = 0.8;
+    //    }
+    //}
 
 
     public abstract class ABolt : Weapon

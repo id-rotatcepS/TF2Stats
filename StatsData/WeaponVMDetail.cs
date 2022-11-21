@@ -29,7 +29,7 @@ namespace StatsData
             this.w = w;
             this.p = p;
 
-            this.FunctionTimes = new WeaponVMDamageFunctionTimes(v);
+            this.FunctionTimes = new WeaponVMDamageFunctionTimes(v, w);
         }
 
         public string RangePercents => (v.Damage?.ZeroRangeRamp == v.Damage?.LongRangeRamp
