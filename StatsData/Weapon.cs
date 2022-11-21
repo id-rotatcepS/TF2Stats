@@ -46,7 +46,8 @@ namespace StatsData
         public const decimal NORMAL_HITSCAN_ZERO_RANGE_RAMP = 1.5m;
         public const decimal SCATTERGUN_HITSCAN_ZERO_RANGE_RAMP = 1.75m;
         public const decimal NORMAL_ARCHED_PROJECTILE_ZERO_RANGE_RAMP = 1.2m;
-        public const decimal NORMAL_ROCKET_PROJECTILE_ZERO_RANGE_RAMP = 1.25m;
+        //TODO custom value needs to get argued with people - alternatively: 1.25 with an offset, but same difference effectively.
+        public const decimal NORMAL_ROCKET_PROJECTILE_ZERO_RANGE_RAMP = 1.246m;// had in several places, but not quite high enough for liberty launcher math: 1.24444444444444m;//original simple number: 1.25m;
         public const decimal NORMAL_ENERGY_PROJECTILE_ZERO_RANGE_RAMP = 1.2m;
 
         /// <summary>

@@ -18,6 +18,7 @@ namespace StatsData
         }
 
         public string Name => w.Name;
+        //TODO maybe variant on functiontimes that filters out values that match the base
         public IEnumerable<WeaponVMDamageFunctionTimes> Alts => v.Alts?.Select(vm => vm.Detail.FunctionTimes);
 
         //public string ShotType => "Hitscan", etc.

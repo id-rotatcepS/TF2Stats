@@ -132,7 +132,24 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
-                //TODO new ShortstopShove(); melee, 1damage, Offset = 23.5, knockback
+                new ShortstopShove()
+            };
+        }
+    }
+
+    public class ShortstopShove : MeleeWeapon
+    {
+        //melee, 1damage, Offset = 23.5, knockback
+        public ShortstopShove()
+            :base(1)
+        {
+            Name = "Shove";
+
+            FireRate = 1.5m;
+
+            Effect = new Effect()
+            {
+                Name = "Shove knockback"
             };
         }
     }

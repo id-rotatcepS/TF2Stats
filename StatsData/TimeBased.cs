@@ -298,7 +298,7 @@ WeaponData
     /// </summary>
     public class CrusadersCrossbow : ABolt
     {
-        //TODO I had 1.6. Wiki lists attack interval as 0.24 s, 1.5 reload (1.75 s with reload) 
+        //TODO I had 1.6 FireRate. Wiki lists attack interval as 0.24 s, 1.5 reload (1.75 s with reload) 
         //TODO Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)
         public CrusadersCrossbow()
         {
@@ -360,7 +360,7 @@ WeaponData
                 // 225/3   = 75 close
                 // 101/1.35= 74.81481481481481 close (75*1.35=101.25..101)
             };
-            FireRate = 1.6m;
+            FireRate = .24m;// 1.6m;
         }
     }
 
@@ -380,7 +380,7 @@ WeaponData
                 },
 
             };
-            FireRate = 1.6m;
+            FireRate = .24m;// 1.6m;
 
             CanCrit = false;
         }

@@ -41,7 +41,8 @@
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                            Text="" Width="200"/>
             </StackPanel>
-            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                       Text="" Style="{StaticResource MainValue}"/> <!--<ContentControl ContentTemplate="{StaticResource rowBody}"/>-->
 
             <ItemsControl ItemsSource="{Binding Alts}" >
                 <ItemsControl.ItemsPanel>

@@ -13,7 +13,7 @@ namespace StatsData
             {
                 Damage = new Damage(baseDamage)
                 {
-                    Offset = Damage.OFFSET_HITSCAN_PISTOL, //Offset = 22, not sure why I had 22
+                    Offset = Damage.OFFSET_HITSCAN_PISTOL, //Offset = 22, I had 22... probably to try and account for "wiki/obs point blank 22, calc 23; (winger comes out correct)"
                     ZeroRangeRamp = Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP,
                     LongRangeRamp = Damage.NORMAL_LONG_RANGE_RAMP
                 },

@@ -40,7 +40,8 @@ namespace StatsData
 
             //TODO crits multiply with ramp
 
-            Effect = new AfterburnEffect(4, 10);//TODO times? - depends on exposure, so only minimum for min exposure?
+            Effect = new AfterburnEffect(4, 10);//TODO flamethrower says 4-10 (increase by .4s per hit), others show 3-10 or other nonsense
+                                                //TODO depends on exposure, so only minimum for min exposure? This is likely additive regardless of constant exposure, howerver.
 
         }
 
@@ -138,7 +139,7 @@ namespace StatsData
                 },
             };
 
-            FireRate = -1;
+            FireRate = 0.75m;
 
             Effect = new Effect()
             {
@@ -165,7 +166,7 @@ namespace StatsData
             //FireRate = 0.08;
             AlternateModes = new List<Weapon>
             {
-                new CompressionBlast(),
+                new CompressionBlast(),//TODO More expensive
                 new FlameThrowerMaxExposure()
                 //TODO ?FromBack, Effect: crit
             };
@@ -174,6 +175,9 @@ namespace StatsData
 
     public class Degreaser : AFlameThrower
     {
+        //TODO wiki numbers all look like old flamethrower stats or something
+
+        //-66% afterburn damage penalty
         public Degreaser()
         {
             Name = "degreaser";
@@ -190,8 +194,21 @@ namespace StatsData
             //FireRate = 0.08;
             AlternateModes = new List<Weapon>
             {
-                new CompressionBlast(),
+                new CompressionBlast(), //TODO more expensive
                 new FlameThrowerMaxExposure()
+            };
+
+            decimal time = 4m;decimal time2 = 10m;//TODO using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
+            Effect = new Effect()
+            {
+                Name = (time2 == time)
+                ? $"Degreaser Afterburn({time} s)"
+                : $"Degreaser Afterburn({time} - {time2} s)",
+                Minimum = time,
+                Maximum = time2,
+
+                Damage = new Damage(4m * 0.34m), // Wiki says 1/tick (2/tick minicrit) - probably accurate, math works and ensures minicrit does more damage.
+                DamageRate = 0.5m,
             };
         }
     }
