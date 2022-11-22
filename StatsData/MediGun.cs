@@ -15,10 +15,13 @@ namespace StatsData
                 //},
                 MaxRange = 450
             };
+            CanCrit = false;
+            CanMinicrit = false;
             AreaOfEffect = new AOE(540);
             Effect = new Effect()
             {
                 Name = "Übercharge",
+                Minimum = 8.0m,//TODO really, there's a minimum when sharing uber between targets
                 Maximum = 8.0m,
                 Damage = new Damage(-3),
                 DamageRate = 0.125m,
@@ -46,6 +49,8 @@ namespace StatsData
         /// </summary>
         public AMediGun() {
             Name = "Medi Gun";
+            CanCrit = false;
+            CanMinicrit = false;
             Melee = new Melee()
             {
                 //Damage = new Damage(0)

@@ -238,22 +238,10 @@ namespace StatsData
             //};
             ////FireRate = 0.1;
 
-            AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
-            //TODO NO this belongs on an alt mode of "Fire Ring"...direct damage + afterburn like a flamethrower
-            Effect = new Effect()
-            {
-                Name = $"Direct Burn & Afterburn(8s)",
-                Minimum = 8m,
-                Maximum = 8m,
-
-                Damage = new Damage(12), // direct fire ring damage (4 @0.5 for afterburn)
-                //TODO what does this even mean? how can it do non-active direct burn damage of 12? shouldn't it always be "15?"  probably just "instant 3x afterburn application"... or maybe it's some kind of flamethrower calculation
-
-            }; // & ammo cost
-
             AlternateModes = new List<Weapon>()
             {
                 new HuoLongHeaterCold(),
+                new HuoLongHeaterFireRing(),
                 new HuoLongHeaterBurningTarget()
                 //TODO and coldburning
             };
@@ -265,19 +253,38 @@ namespace StatsData
             : base(32.4m / 2.0m)
         {
             Name = "(cold)";
+        }
+    }
 
+    public class HuoLongHeaterFireRing : Weapon
+    {
+        public HuoLongHeaterFireRing()
+        {
+            Name = "Fire Ring";
 
-            AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
-            Effect = new Effect()
-            {
-                Name = $"Direct Burn & Afterburn(8s)",
-                Minimum = 8m,
-                Maximum = 8m,
+            //TODO commented out - Test this... I don't think this is accurate information.
+            //Hitscan = new Hitscan()
+            //{
+            //    Damage = new Damage(12)//TODO this is suspect.  Wiki may just have transferred primary fire damage to this stat
+            //    //TODO what does this even mean? how can it do non-active direct burn damage of 12? shouldn't it always be "15?"  probably just "instant 3x afterburn application"... or maybe it's some kind of flamethrower calculation
+            //    {
+            //        BuildingModifier = 0.0m,// assuming this can't damage buildings.
+            //    },
 
-                Damage = new Damage(12), // direct fire ring damage (4 @0.5 for afterburn)
+            //    Splash = new AOE(AOE.DEFAULT_BANNER),//TODO actual radius?
 
-            }; // & ammo cost
+            //    Penetrating = true,
+            //};
 
+            CanCrit = false;// Based on wiki function times table
+
+            //TODO not sure how I want to handle this... Hitscan with splash? convert AOE into another Damage source type? that makes more sense.  Or is direct damage not even true?
+            AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO radius??
+
+            //TODO +25% afterburn damage while weapon is active  Maybe just special afterburn on "burning target" alt.
+            Effect = new AfterburnEffect(8m);
+
+            // TODO ammo cost
         }
     }
 
@@ -307,17 +314,6 @@ namespace StatsData
             //    },
             //};
             ////FireRate = 0.1;
-
-            AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
-            Effect = new Effect()
-            {
-                Name = $"Direct Continuous Burn & Active with Afterburn(8s +25%)",
-                Minimum = 8m,
-                Maximum = 8m,
-
-                Damage = new Damage(12*1.25m), // direct fire ring damage (4 @0.5 for afterburn)
-
-            }; // & ammo cost
         }
     }
 

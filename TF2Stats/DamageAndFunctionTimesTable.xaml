@@ -468,10 +468,10 @@
             </ItemsControl>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectMinicritVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
-                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectMinicritVisibility}">
                         <TextBlock x:Name="EffectMinicrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding EffectMinicrit}" Style="{StaticResource MainValue}"/>
                     </StackPanel>

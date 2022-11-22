@@ -101,8 +101,11 @@ namespace StatsData
         public string EffectLabel => v.EffectDamage.HasValue && v.EffectDamage.Value != 0 
             ? v.Effect 
             : v.Alts?.FirstOrDefault(v => (v.Effect != null && v.EffectDamage.HasValue))?.Effect;
-        public Visibility EffectVisibility => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v=> (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0)))
+        public Visibility EffectVisibility => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0)))
             ? Visibility.Visible
+            : Visibility.Collapsed;
+        public Visibility EffectMinicritVisibility => EffectVisibility == Visibility.Visible && MiniCritVisibility == Visibility.Visible 
+            ? Visibility.Visible 
             : Visibility.Collapsed;
 
         /// <summary>

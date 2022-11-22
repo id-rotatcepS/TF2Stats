@@ -11,7 +11,8 @@ namespace StatsData
         public Banners()
         {
             Name = "banners";
-
+            CanCrit = false;
+            CanMinicrit = false;
             AreaOfEffect = new BannerAOE();//TODO FIXME value??
 
             FireRate = -1;
@@ -80,6 +81,8 @@ namespace StatsData
         public PassiveJumpAssist()
         {
             Name = "passive jump assists";
+            CanCrit = false;
+            CanMinicrit = false;
 
             FireRate = -1;
         }
@@ -112,6 +115,8 @@ namespace StatsData
         public PassiveChargeAssists()
         {
             Name = "passive charge assists";
+            CanCrit = false;
+            CanMinicrit = false;
 
             FireRate = -1;
         }
@@ -133,6 +138,8 @@ namespace StatsData
         public PassiveShields()
         {
             Name = "passive shields";
+            CanCrit = false;
+            CanMinicrit = false;
 
             FireRate = -1;
         }
@@ -183,6 +190,8 @@ namespace StatsData
         public TeammateHealthpack()
         {
             Name = "teammate healthpack";
+            CanCrit = false;
+            CanMinicrit = false;
 
             FireRate = -1;
         }
@@ -193,6 +202,8 @@ namespace StatsData
         public ShareableLunchbox()
         {
             Name = "lunchbox(shareable snack)";
+            CanCrit = false;
+            CanMinicrit = false;
 
             FireRate = -1;
         }
@@ -286,6 +297,8 @@ namespace StatsData
         public Lunchbox()
         {
             Name = "lunchbox(drink)";
+            CanCrit = false;
+            CanMinicrit = false;
 
             FireRate = -1;
         }
@@ -363,6 +376,8 @@ namespace StatsData
                 Splash = new AOE(AOE.DEFAULT_SPLASH * 1)//TODO FIXME value?
 
             };
+            CanCrit = false;
+            CanMinicrit = false;
             FireRate = -1;
         }
     }
@@ -442,6 +457,8 @@ namespace StatsData
                     Offset = Damage.OFFSET_HITSCAN_MELEE,//23.5,
                 }
             };
+            CanCrit = false;
+            CanMinicrit = false;
 
             // oversimplified still... It's "build sapper" and sapper has health and effect "sap building"
             Effect = new BuildingEffect() { Name = "Sapped" };
@@ -472,6 +489,8 @@ namespace StatsData
         public InvisWatch()
         {
             Name = "invis watch";
+            CanCrit = false;
+            CanMinicrit = false;
 
             FireRate = -1;
         }
