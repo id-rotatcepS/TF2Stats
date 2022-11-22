@@ -154,6 +154,11 @@ namespace StatsData
         public bool CanCrit => W.CanCrit;
         public bool CanMinicrit => W.CanMinicrit;
 
+        public decimal? CritLongRangeMod => Damage?.CritLongRangeRamp;
+        public decimal? CritZeroRangeMod => Damage?.CritZeroRangeRamp;
+        public decimal? MinicritLongRangeMod => Damage?.MinicritLongRangeRamp;
+        public decimal? MinicritZeroRangeMod => Damage?.MinicritZeroRangeRamp;
+
         public int CompareTo(object obj)
         {
             return Name.CompareTo(obj);

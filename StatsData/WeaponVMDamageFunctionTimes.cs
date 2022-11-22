@@ -192,30 +192,38 @@ namespace StatsData
 
         private string CriticalDamage()
         {
-            //decimal? longRangeMod = v.LongRangeMod;
-            decimal? baseDamage = v.BaseDamage;
-            int? fragments = v.Fragments;
+            decimal crit = 3.0m;
+            decimal longRangeMod = v.CritLongRangeMod ?? 1.0m;
+            decimal closeRangeMod = v.CritZeroRangeMod ?? 1.0m;
+            if (closeRangeMod == 1.0m)
+                return CritifiedDamage(crit * longRangeMod);
+            else
+                return CritifiedDamage(crit * longRangeMod, crit * closeRangeMod);
 
-            if (!baseDamage.HasValue || !v.CanCrit)
-            {
-                return string.Empty;
-            }
+            ////decimal? longRangeMod = v.LongRangeMod;
+            //decimal? baseDamage = v.BaseDamage;
+            //int? fragments = v.Fragments;
 
-            decimal rangeMod = 3.0m;// longRangeMod ?? 1.0m;
-            decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
-            //for a while I was using Math.Round(... , MidpointRounding.ToEven);
-            // but I didn't explain why...must have fixed something, but broke other stuff.
-            if (fragments.HasValue)
-            {
-                decimal oneFragDamage = rangeMod * baseDamage.Value / fragments.Value;
-                return string.Format("{1:0}, {0:0.####} / {2}",
-                     oneFragDamage,
-                     fullDamage,
-                     v.FragmentType);
-            }
+            //if (!baseDamage.HasValue || !v.CanCrit)
+            //{
+            //    return string.Empty;
+            //}
 
-            return string.Format("{0:0}",
-                fullDamage);
+            //decimal rangeMod = 3.0m;// longRangeMod ?? 1.0m;
+            //decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
+            ////for a while I was using Math.Round(... , MidpointRounding.ToEven);
+            //// but I didn't explain why...must have fixed something, but broke other stuff.
+            //if (fragments.HasValue)
+            //{
+            //    decimal oneFragDamage = rangeMod * baseDamage.Value / fragments.Value;
+            //    return string.Format("{1:0}, {0:0.####} / {2}",
+            //         oneFragDamage,
+            //         fullDamage,
+            //         v.FragmentType);
+            //}
+
+            //return string.Format("{0:0}",
+            //    fullDamage);
         }
 
         private decimal? MiniCritCalc(decimal? baseDamage, decimal range = 1.0m)
@@ -231,8 +239,17 @@ namespace StatsData
         }
         private string MiniCritDamage()
         {
-            //decimal? longRangeMod = v.LongRangeMod;
-            decimal? closeRangeMod = v.ZeroRangeMod;
+            decimal minicrit = 1.35m;
+            decimal longRangeMod = v.MinicritLongRangeMod ?? 1.0m;
+            decimal closeRangeMod = v.MinicritZeroRangeMod ?? 1.0m;
+            if (closeRangeMod == 1.0m)
+                return CritifiedDamage(minicrit * longRangeMod);
+            else
+                return CritifiedDamage(minicrit * longRangeMod, minicrit * closeRangeMod);
+        }
+
+        private string CritifiedDamage(decimal longRangeMod, decimal closeRangeMod)
+        {
             decimal? baseDamage = v.BaseDamage;
             int? fragments = v.Fragments;
 
@@ -240,38 +257,53 @@ namespace StatsData
             {
                 return string.Empty;
             }
-
-            decimal rangeMod = 1.35m;// longRangeMod ?? 1.0m;
-            decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
+            decimal fullDamage = WeaponVMDetail.Round(longRangeMod * baseDamage.Value);
             if (fragments.HasValue)
             {
-                decimal oneFragDamage = rangeMod * baseDamage.Value / fragments.Value;
-                if (closeRangeMod.HasValue)
-                {
-                    decimal closeDamage = WeaponVMDetail.Round(rangeMod * closeRangeMod.Value * baseDamage.Value);
-                    //Math.Round(rangeMode * closeRangeMod.Value * baseDamage.Value, MidpointRounding.ToEven);
-                    decimal oneCloseFragDamage = rangeMod * closeRangeMod.Value * baseDamage.Value / fragments.Value;
-                    return string.Format("{1:0} - {4:0}, {0:0.####} - {3:0.####} / {2}",
-                        oneFragDamage, fullDamage,
-                        v.FragmentType,
-                        oneCloseFragDamage, closeDamage);
-                }
+                decimal oneFragDamage = longRangeMod * baseDamage.Value / fragments.Value;
+                decimal closeDamage = WeaponVMDetail.Round(closeRangeMod * baseDamage.Value);
+                //Math.Round(rangeMode * closeRangeMod.Value * baseDamage.Value, MidpointRounding.ToEven);
+                decimal oneCloseFragDamage = closeRangeMod * baseDamage.Value / fragments.Value;
+                return string.Format("{1:0} - {4:0} ({0:0.####} - {3:0.####} / {2})",
+                    oneFragDamage, fullDamage,
+                    v.FragmentType,
+                    oneCloseFragDamage, closeDamage);
+            }
+            else
+            {
+                decimal closeDamage = WeaponVMDetail.Round(
+                    //Math.Round(
+                    closeRangeMod * baseDamage.Value
+                    //, MidpointRounding.ToEven);//TODO umm..different rounding why? pretty sure it was needed, but maybe I just forgot
+                    );
+                return string.Format("{0:0} - {1:0}",
+                    fullDamage, closeDamage);
+            }
+        }
+        private string CritifiedDamage(decimal longRangeMod)
+        {
+            decimal? baseDamage = v.BaseDamage;
+            int? fragments = v.Fragments;
 
-                return string.Format("{0:0}, {1:0.####} / {2}",
+            if (!baseDamage.HasValue || !v.CanMinicrit)
+            {
+                return string.Empty;
+            }
+            decimal fullDamage = WeaponVMDetail.Round(longRangeMod * baseDamage.Value);
+            if (fragments.HasValue)
+            {
+                decimal oneFragDamage = longRangeMod * baseDamage.Value / fragments.Value;
+
+                return string.Format("{0:0} ({1:0.####} / {2})",
                     fullDamage,
                      oneFragDamage,
                      v.FragmentType);
             }
-
-            if (closeRangeMod.HasValue)
+            else
             {
-                decimal closeDamage = Math.Round(rangeMod * closeRangeMod.Value * baseDamage.Value, MidpointRounding.ToEven);
-                return string.Format("{0:0}-{1:0}",
-                    fullDamage, closeDamage);
+                return string.Format("{0:0}",
+                    fullDamage);
             }
-
-            return string.Format("{0:0}",
-                fullDamage);
         }
 
         private string FragmentDamage(decimal? longRangeMod)

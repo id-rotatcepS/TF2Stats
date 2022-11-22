@@ -232,10 +232,6 @@ namespace StatsData
         {
             Name = "ambassador";
 
-            //TODO Crits (and minicrits??) are affected by distance falloff.
-            // Wiki says as low as 54 damage crit, but doesn't show reduction in mini-crit numbers.
-            // yet " the critical hits and mini-crit damage are affected by distance falloff"
-
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(34)
@@ -250,11 +246,44 @@ namespace StatsData
             //    },
 
             //};
+
+            FireRate = 0.6m;
+
+            AlternateModes = new List<Weapon>()
+            {
+                //obs: crit-boosted Amby does normal crit damage, not ranged.  Guessing: only headshots do ranged?  In which case minicrit isn't relevant?
+                new AmbassadorHeadshot()
+            };
+        }
+    }
+
+    public class AmbassadorHeadshot : ARevolver
+    {
+        //TODO need evidence, wiki is all over the place.
+        //Wiki: max 102 (base 34 with crit), ramps down to 51(based on? maybe just transferred from close range ramp no crit?), and super-long-range (1200) does base (34?)
+        // so maybe we need a range of crits plus: 34 close to 51/3=17 (somewhere) to 34/3 super long range;
+        // But what about minicrits?
+        public AmbassadorHeadshot()
+            : base(34,
+             1.0m//TODO other spreadsheet AND WIKI have 1, where did I get 0.9 from?,
+                 )
+        {
+            Name = "(headshot)";
+
+            // Crits (and minicrits??) are affected by distance falloff.
+            // Wiki says as low as 54 damage crit, but doesn't show reduction in mini-crit numbers.
+            // yet " the critical hits and mini-crit damage are affected by distance falloff"
+            Hitscan.Damage.ZeroRangeRamp = 1.0001m;//TODO hack to show up when it's 1.0// Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP,
+            Hitscan.Damage.LongRangeRamp = 0.33m;//UseSimpleOverrides ? Damage.NORMAL_LONG_RANGE_RAMP : 0.525m,
+            Hitscan.Damage.CritIncludesRamp = true;//TODO .33 not gonna work for minicrit range.
+
+            CanMinicrit = false;
+
             FireRate = 0.6m;
 
             Effect = new Effect()
             {
-                Name = "Crit on Headshot"
+                Name = "Crit on Recovered Headshot"
             };
         }
     }

@@ -126,12 +126,47 @@ namespace StatsData
         // push modifier
         // self push modifier
 
-        public decimal ZeroRangeRamp { get;  set; } = 1.0m; // theoretical, not practical
+        public decimal ZeroRangeRamp { get;  set; } = 1.0m; // theoretical, not practical?
         public decimal Offset { get;  set; } = 0;
-        public decimal PointBlankRamp => ZeroRangeRamp;//FIXME
+        //public decimal PointBlankRamp => ZeroRangeRamp;//FIXME theoretical ramp that applies offset.
         public decimal LongRangeRamp { get;  set; } = 1.0m;
 
         public decimal BuildingModifier { get;  set; } = 1.0m;
+
+
+        // mangler (no crits, downgrade): |CH={{#expr:1.25*1.35/3.0}}|CL={{#expr:1.0*1.35/3.0}}
+        // short circuit (no crits): |CH={{#expr:1.12/3.0}}|CM={{#expr:1.0/3.0}}|CL=0.0|ML=0.0
+        // sc alt (no crits): |CH={{#expr:1.0/3.0}}|CM={{#expr:1.0/3.0}}|CL={{#expr:1.0/3.0}}
+        // fanowar (no minicrits, upgrade): |MH={{#expr:1/1.35*3}}
+        // (bushwacka upgrades, also)
+
+        // ball: |H=1.0 |L=1.5 |ML=1.5 |CL=1.5    
+        // -> guillotine: |ML=1.0|CL=1.0
+        // bolt->rescueranger (normal): |MH=1.5|ML=1.0|CH=1.0|CL=1.0
+        // bolt->crossbow (time as range with crits applied): |MH=.75|ML=1.5|CH=.75|CL=1.5
+
+        // ambassador: |CH=1.0|CL=0.528|MH=1.5|ML=0.528
+        // flamethrower: |H=2.0 |CL=0|CH=2.0|ML=0
+
+        // for ambassador (headshots - it's complicated) and flamethrowers (crossbow, too, but that's handled with hang time as a "charged" alternate)
+        public bool CritIncludesRamp { get; set; } = false;
+
+        //TODO probably better off with a crit calculator object that can be overridden for special weapons like the cowmangler.
+
+        public decimal MinicritZeroRangeRamp => ZeroRangeRamp;
+        
+        public decimal MinicritLongRangeRamp => CritIncludesRamp
+            ? LongRangeRamp
+            : 1.0m;
+
+        public decimal CritZeroRangeRamp => CritIncludesRamp
+            ? ZeroRangeRamp
+            : 1.0m;
+        
+        public decimal CritLongRangeRamp => CritIncludesRamp
+            ? LongRangeRamp
+            : 1.0m;
+
     }
 
     public class Melee

@@ -586,7 +586,7 @@ WeaponData
                 {
                     Offset = Damage.OFFSET_4_BALLS_CLEAVER,
                     ZeroRangeRamp = 1,
-                    LongRangeRamp = 1.5m, // extra long range
+                    LongRangeRamp = 1.5m, // extra long range (time-based long range)
                 },
 
             };

@@ -6,10 +6,10 @@ namespace StatsData
     // reviewing vs. wiki pages, most look good starting from shield bash working up the list.  issues marked as TODO in code items.
     // summary:
     // TODO shotgun long range all pellets is missing weapon tests (with a giant) and tends to not match wiki
-    // TODO WIKI IS WRONG about shotguns spread... their own evidence proves them wrong (see comments on constant)
-    //TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
-    // TODO rocket launcher point blank is an issue (expecting offset is relevant here... or maybe ramp up?)
 
+    // TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
+    // TODO rocket launchers point blank required a custom ramp up
+    // TODO WIKI IS WRONG about shotguns spread... their own evidence proves them wrong (see comments on constant)
     //TODO (shotgun/scattergun) wiki spread 30:1, but calc is 28:1 (28.148repeating).
     //  calc is 30 if I use 2.0 instead of 1.9 for spread divisor. (but back-scatter is slightly too HIGH calc, then. and Minigun calcs 25 instead of 24 (and tomislav calcs 31 not 30))
 
@@ -18,7 +18,6 @@ namespace StatsData
     // TODO need evidence observations: stickybombs & flamethrowers - numbers are a pretty good match now.
     // TODO needle gun observations: small "vs. building" difference in wiki.
 
-    // TODO alt modes are an issue in some
     // TODO crit-includes-range not yet supported (ambassador, flamethrowers, etc)
 
     public abstract class IndivisibleParticleSmasher : Weapon

@@ -19,6 +19,7 @@ namespace StatsData
                     ZeroRangeRamp = 2,
                     LongRangeRamp = 1,
                     //BuildingModifier = 2.0m, // no, I think it's full exposure always for buildings.
+                    CritIncludesRamp = true, // (zero range damage with crits is 6x)
                 },
 
                 //FIXME particles
@@ -202,9 +203,10 @@ namespace StatsData
             decimal time = 4m;decimal time2 = 10m;//TODO using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
             Effect = new Effect()
             {
-                Name = (time2 == time)
-                ? $"Degreaser Afterburn({time} s)"
-                : $"Degreaser Afterburn({time} - {time2} s)",
+                //Name = (time2 == time)
+                //? $"Degreaser Afterburn({time} s)"
+                //: $"Degreaser Afterburn({time} - {time2} s)",
+                Name = "Degreaser Afterburn",
                 Minimum = time,
                 Maximum = time2,
 
