@@ -73,7 +73,7 @@ namespace StatsData
     {
         public GrenadeLauncherRoller()
         {
-            Name = "grenade launcher (roller)";
+            Name = "(roller)";
         }
     }
 
@@ -142,7 +142,9 @@ namespace StatsData
 
             Effect = new Effect()
             {
-                Name = "Donk (take mini-crit & no-radius-falloff fuse explosion (double-donk))"
+                Name = "Donk (take mini-crit & no-radius-falloff fuse explosion (double-donk))",
+                Minimum = 0.5m,
+                Maximum = 0.5m
             };
 
             AlternateModes = new List<Weapon>()
@@ -156,7 +158,7 @@ namespace StatsData
     {
         public LooseCannonFuse()
         {
-            Name = "Loose Cannon (fuse)";
+            Name = "(fuse)";
 
             ActivationTime = 1.0m;// "Cannonballs have a fuse time of 1 second; fuses can be primed to explode earlier by holding down the fire key."
         }
@@ -194,7 +196,7 @@ namespace StatsData
         public IronBomberRoller()
             :base(AOE.DEFAULT_SPLASH * 0.85m)
         {
-            Name = "iron bomber (roller)";
+            Name = "(roller)";
 
             //FireRate = 0.6;
             //Projectile = new Projectile(1216.6)//wd; 1200 in other sheet

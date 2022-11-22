@@ -6,11 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
+    d:DesignHeight="500"
     d:DesignWidth="400">
 
     <StackPanel Background="#FFF3EAD9">
         <StackPanel.Resources>
+            <Style x:Key="Heading" TargetType="StackPanel">
+                <Setter Property="Background" Value="DarkOrange"/>
+            </Style>
             <Style x:Key="Label" TargetType="StackPanel">
                 <Setter Property="Background" Value="Orange"/>
             </Style>
@@ -28,8 +31,9 @@
                 <Setter Property="Width" Value="100"/>
             </Style>
         </StackPanel.Resources>
-        <TextBlock x:Name="MainHeading" HorizontalAlignment="Stretch" Text="Damage and Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.ColumnSpan="3" TextAlignment="Center"/>
-
+        <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
+            <TextBlock x:Name="MainHeading" FontWeight="Bold"  HorizontalAlignment="Stretch" Text="Damage and Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" >
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -39,7 +43,7 @@
             </StackPanel.Resources>
             <StackPanel Style="{StaticResource ResourceKey=Label}">
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="" Width="200"/>
+                           Text="" Width="200" />
             </StackPanel>
             <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                        Text="" Style="{StaticResource MainValue}"/> <!--<ContentControl ContentTemplate="{StaticResource rowBody}"/>-->
@@ -61,6 +65,10 @@
 
         </StackPanel>
 
+        <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
+            <TextBlock x:Name="DamageHeading" HorizontalAlignment="Stretch" Text="Damage" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
+        </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Visibility="{Binding CloseRampVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -96,16 +104,16 @@
             </ItemsControl>
             
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Visibility="{Binding BaseDamangeVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel Style="{StaticResource ResourceKey=Percent}">
+                        <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding BaseDamangeVisibility}">
                             <TextBlock x:Name="BaseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                            Text="{Binding BaseDamagePercent}" />
                         </StackPanel>
                         <TextBlock x:Name="BaseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding BaseDamage}" Style="{StaticResource MainValue}"/>
+                                       Text="{Binding BaseDamage}" Style="{StaticResource MainValue}" Visibility="{Binding BaseDamangeVisibility}"/>
                     </StackPanel>
                 </DataTemplate>
             </StackPanel.Resources>
@@ -429,6 +437,76 @@
 
         </StackPanel>
 
+        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+                        <TextBlock x:Name="EffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding EffectDamage}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelEffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding EffectLabel}" Width="200"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+                        <TextBlock x:Name="EffectMinicrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding EffectMinicrit}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelEffectMinicrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200">
+                    <Run Text="{Binding EffectLabel}"/>
+                    <Run Text=" (mini-crit)"/>
+                </TextBlock>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        
+        <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
+            <TextBlock x:Name="FunctionHeading" HorizontalAlignment="Stretch" Text="Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
+        </StackPanel>
+        
         <StackPanel Orientation="Horizontal">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -461,6 +539,40 @@
 
         </StackPanel>
 
+        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+                        <TextBlock x:Name="EffectDuration" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding EffectDuration}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelEffectDuration" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200">
+                    <Run Text="{Binding EffectLabel}"/>
+                    <Run Text=" Duration"/>
+                </TextBlock>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
 
     </StackPanel>
 </UserControl>

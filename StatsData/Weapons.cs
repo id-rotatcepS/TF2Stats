@@ -186,7 +186,7 @@ namespace StatsData
     {
         public HuntsmanCharged()
         {
-            Name = "Huntsman charged";
+            Name = "charged";
 
             Projectile = new Projectile(2400)//wd
             {
@@ -212,7 +212,7 @@ namespace StatsData
     {
         public HuntsmanLit()
         {
-            Name = "huntsman(lit)";
+            Name = "lit";
 
             Projectile = new Projectile(1875)//wd; had 1812 from other spreadsheet
             {
@@ -334,7 +334,7 @@ namespace StatsData
         public TrapStickybomb(decimal armTime, 
             decimal fireRate)
         {
-            Name = "Stickybomb Trap";
+            Name = "Trap";
 
             decimal baseDamage = 120;
             //decimal armTime = 0.7m; 
@@ -367,7 +367,7 @@ namespace StatsData
         public FlakStickybomb(decimal armTime, decimal fireRate)
             : base(120m, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this thing?
         {
-            Name = "Stickybomb Flak";
+            Name = "Flak";
             FireRate = fireRate;
         }
     }
@@ -382,7 +382,7 @@ namespace StatsData
                  //805m 
                  * 2.3m)
         {
-            Name = "Stickybomb (fully charged)";
+            Name = "(fully charged)";
 
             FireRate = fireRate;
         }
@@ -463,7 +463,7 @@ namespace StatsData
         public TrapQuickiebomb(decimal baseDamage, decimal armTime,
             decimal fireRate)
         {
-            Name = "Quickiebomb Trap";
+            Name = "Trap";
 
             decimal splashRadius = AOE.DEFAULT_SPLASH * 1;
             decimal speed = 925.38m;
@@ -494,7 +494,7 @@ namespace StatsData
         public FlakQuickiebomb(decimal baseDamage, decimal armTime, decimal fireRate)
             : base(baseDamage, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this thing?
         {
-            Name = "Quickiebomb Flak";
+            Name = "Flak";
             FireRate = fireRate;
         }
     }
@@ -509,7 +509,7 @@ namespace StatsData
                  //805m 
                  * 2.3m)
         {
-            Name = "Quickiebomb (fully charged)";
+            Name = "(fully charged)";
 
             FireRate = fireRate;
         }

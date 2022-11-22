@@ -212,7 +212,7 @@ namespace StatsData
     {
         public CowManglerAlt()
         {
-            Name = "cowmangler charged shot";
+            Name = "charged shot";
             ActivationTime = 2;// I had 4 but that was probably from building disable.
 
             CanCrit = false;
@@ -223,6 +223,9 @@ namespace StatsData
                 Name = "Mini-crit; Disable Building (4 s); Afterburn(6 s); vaporize stickybombs",
                 Minimum = 4m,
                 Maximum = 6m,
+
+                Damage = new Damage(4),
+                DamageRate = 0.5m,
             };
         }
     }
@@ -309,7 +312,7 @@ namespace StatsData
     //             1100,
     //             AOE.DEFAULT_SPLASH * 0.9m)
     //    {
-    //        Name = "Air Strike (max heads)";
+    //        Name = "(max heads)";
 
     //        FireRate = 0.80m;
     //    }
@@ -322,7 +325,7 @@ namespace StatsData
                  1100,
                  (AOE.DEFAULT_SPLASH * 0.9m)*0.8m)
         {
-            Name = "Air Strike (rocket jumping)";
+            Name = "(rocket jumping)";
 
             FireRate = 0.28m;
         }

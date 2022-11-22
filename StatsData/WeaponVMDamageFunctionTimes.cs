@@ -30,7 +30,10 @@ namespace StatsData
 
         public string BaseDamagePercent => PercentString(1.0m);
         public string BaseDamage => FragmentDamage(1.0m);
-        
+        public Visibility BaseDamangeVisibility => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+
         public string MaximumFallOffPercent => PercentString(v.LongRangeMod);
         public string MaximumFallOff => FragmentDamage(v.LongRangeMod);
         public Visibility FarRampVisibility => PercentVisibility((v) => v.LongRangeMod);
@@ -50,21 +53,21 @@ namespace StatsData
         public Visibility LongRangeVisibility => FullDamageVisibility((v) => v.LongRangeMod);
 
         public string Critical => CriticalDamage();
-        public Visibility CriticalVisibility => (v.CanCrit || v.Alts.Any((v) =>v.CanCrit)) ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility CriticalVisibility => (v.CanCrit || (v.Alts != null && v.Alts.Any((v) =>v.CanCrit))) ? Visibility.Visible : Visibility.Collapsed;
         public string MiniCrit => MiniCritDamage();
-        public Visibility MiniCritVisibility => (v.CanMinicrit || v.Alts.Any((v) => v.CanMinicrit)) ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility MiniCritVisibility => (v.CanMinicrit || (v.Alts != null && v.Alts.Any((v) => v.CanMinicrit))) ? Visibility.Visible : Visibility.Collapsed;
 
 
         private Visibility NullableVisibility(Func<WeaponVM, int?> fragments)
         {
-            return (fragments.Invoke(v).HasValue || v.Alts.Any(v=>fragments.Invoke(v).HasValue))
+            return (fragments.Invoke(v).HasValue || (v.Alts != null && v.Alts.Any(v=>fragments.Invoke(v).HasValue)))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
         }
         
         private Visibility NullableVisibility(Func<WeaponVM, decimal?> fragments)
         {
-            return (fragments.Invoke(v).HasValue || v.Alts.Any(v => fragments.Invoke(v).HasValue))
+            return (fragments.Invoke(v).HasValue || (v.Alts != null && v.Alts.Any(v => fragments.Invoke(v).HasValue)))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
         }
@@ -72,7 +75,7 @@ namespace StatsData
         private Visibility PercentVisibility(Func<WeaponVM, decimal?> buildingMod)
         {
             Func<WeaponVM, bool> x = (v)=>buildingMod.Invoke(v).HasValue && buildingMod.Invoke(v).Value != 1.0m;
-            return (x.Invoke(v) || v.Alts.Any(x))
+            return (x.Invoke(v) || (v.Alts != null && v.Alts.Any(x)))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
         }
@@ -81,6 +84,26 @@ namespace StatsData
         public Visibility SpreadVisibility => NullableVisibility((v)=>v.Spread);
 
         public string AttackInterval => string.Format("{0:0.####} s", v.FireRate);
+
+        public string EffectDamage => v.EffectDamage.HasValue
+            ? string.Format("{0:0.#} / {1:0.#} s", WeaponVMDetail.Round(v.EffectDamage.Value), v.EffectDamageRate)
+            : null;
+        public string EffectMinicrit => v.EffectDamage.HasValue
+            ? string.Format("{0:0.#} / {1:0.#} s", MiniCritCalc(v.EffectDamage), v.EffectDamageRate)
+            : null;
+        public string EffectDuration => v.EffectMin.HasValue
+            ? string.Format(
+                (v.EffectMin == v.EffectMax)
+                ? "{0:0.#} s"
+                : "{0:0.#}-{1:0.#} s",
+                v.EffectMin, v.EffectMax)
+            : null;
+        public string EffectLabel => v.EffectDamage.HasValue && v.EffectDamage.Value != 0 
+            ? v.Effect 
+            : v.Alts?.FirstOrDefault(v => (v.Effect != null && v.EffectDamage.HasValue))?.Effect;
+        public Visibility EffectVisibility => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v=> (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
 
         /// <summary>
         /// calculation based on https://imgur.com/a/ZmWeqe9
@@ -159,7 +182,7 @@ namespace StatsData
             Func<WeaponVM, bool> x = (v) => rangeMod.Invoke(v).HasValue
                  && (v.Fragments.HasValue || v.SplashRadius.HasValue);
             return
-               (x.Invoke(v)||v.Alts.Any(x))
+               (x.Invoke(v)|| (v.Alts != null && v.Alts.Any(x)))
                 ? Visibility.Visible
                 : Visibility.Collapsed;
         }
@@ -192,6 +215,17 @@ namespace StatsData
                 fullDamage);
         }
 
+        private decimal? MiniCritCalc(decimal? baseDamage, decimal range = 1.0m)
+        {
+            if (!baseDamage.HasValue || !v.CanMinicrit)
+            {
+                return null;
+            }
+
+            decimal rangeMod = 1.35m * range;
+            decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
+            return fullDamage;
+        }
         private string MiniCritDamage()
         {
             //decimal? longRangeMod = v.LongRangeMod;

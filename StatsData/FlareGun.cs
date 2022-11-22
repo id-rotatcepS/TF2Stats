@@ -59,7 +59,7 @@ namespace StatsData
     {
         public FlareGunBurning()
         {
-            Name = "Flare Gun (burning)";
+            Name = "(burning)";
 
             // 10s and crit damage on burning players
             Effect = new AfterburnEffect(10m)
@@ -111,7 +111,7 @@ namespace StatsData
                  2000,
                  AOE.DEFAULT_SPLASH * 1)
         {
-            Name = "Detonator (triggered)";
+            Name = "(triggered)";
 
             Effect = new AfterburnEffect(7.5m)
             {
@@ -126,7 +126,7 @@ namespace StatsData
             : base(22.5m,//23
                  2000)
         {
-            Name = "Detonator (burning)";
+            Name = "(burning)";
 
             Effect = new AfterburnEffect(10m)
             {
@@ -170,7 +170,7 @@ namespace StatsData
             : base(30,
                  3000)
         {
-            Name = "Manmelter (burning)";
+            Name = "(burning)";
 
             // 10s on burning players
             Effect = new AfterburnEffect(10m);//according to wiki
@@ -223,7 +223,7 @@ namespace StatsData
                  2000,
                  AOE.DEFAULT_SPLASH * 1)
         {
-            Name = "Scorch Shot (burning)";
+            Name = "(burning)";
 
             Effect = new AfterburnEffect(10m)
             {

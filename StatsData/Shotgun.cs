@@ -138,7 +138,7 @@ namespace StatsData
                  15, 
                  0.0945m)
         {
-            Name = "panic attack 6th shot";
+            Name = "6th shot";
 
             //Hitscan = new Hitscan()
             //{
@@ -258,7 +258,7 @@ namespace StatsData
         public WidowmakerSentryTarget()
             :base(66)
         {
-            Name = "widowmaker sentry target";
+            Name = "sentry target";
 
             //Hitscan = new Hitscan()
             //{

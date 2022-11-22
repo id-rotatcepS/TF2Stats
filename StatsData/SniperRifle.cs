@@ -45,7 +45,7 @@ namespace StatsData
     {
         public ScopedSniperRifle()
         {
-            Name = "Sniper Rifle (scoped, no charge)";
+            Name = "(scoped, no charge)";
 
             Effect = new Effect()
             {
@@ -59,7 +59,7 @@ namespace StatsData
         public ChargedSniperRifle()
             : base(150)
         {
-            Name = "sniper rifle (fully charged)";
+            Name = "(fully charged)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
             Effect = new Effect()
             {
@@ -102,7 +102,7 @@ namespace StatsData
     {
         public ScopedSydneySleeper()
         {
-            Name = "sydney sleeper (scoped, no charge)";
+            Name = "(scoped, no charge)";
 
             Effect = new Effect()
             {
@@ -117,7 +117,7 @@ namespace StatsData
         public ChargedSydneySleeper()
             : base(150)
         {
-            Name = "Sydney Sleeper (fully charged)";
+            Name = "(fully charged)";
             ActivationTime = 1.5m + 1.3m;// sec charge time + pre-charge delay;
 
             Effect = new Effect()
@@ -193,7 +193,7 @@ namespace StatsData
         public Machina()
             : base(50)
         {
-            Name = "machina (scoped, no charge)";
+            Name = "(scoped, no charge)";
             //ActivationTime = 1.3;// sec pre-charge delay;
             //Hitscan = new Hitscan()
             //{
@@ -230,7 +230,7 @@ namespace StatsData
         public ChargedMachina()
             : base(150)
         {
-            Name = "machina (charged)";
+            Name = "(charged)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
             Effect = new Effect()
             {
@@ -245,7 +245,7 @@ namespace StatsData
         public FullyChargedMachina()
         :base(172.5m) 
         {
-            Name = "machina (fully charged)";
+            Name = "(fully charged)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
 
             // Full charge penetrates, but regular shot doesn't
@@ -291,7 +291,7 @@ namespace StatsData
         public ScopedHitmansHeatmakerBodyshot()
             : base(40)
         {
-            Name = "Hitman's Heatmaker (body shot)";
+            Name = "(body shot)";
             ActivationTime = 0.0m;// no zoom-in delay since it's not a headshot
         }
     }
@@ -299,7 +299,7 @@ namespace StatsData
     {
         public ScopedHitmansHeatmakerHeadshot()
         {
-            Name = "Hitman's Heatmaker (head shot)";
+            Name = "(head shot)";
             ActivationTime = 0.2m;// zoom-in headshot delay
             Effect = new Effect()
             {
@@ -312,7 +312,7 @@ namespace StatsData
         public ChargedHitmansHeatmakerHeadshot()
             : base(150)
         {
-            Name = "Hitman's Heatmaker (fully charged head shot)";
+            Name = "(fully charged head shot)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
             Effect = new Effect()
             {
@@ -325,7 +325,7 @@ namespace StatsData
         public ChargedHitmansHeatmakerBodyshot()
             : base(120)
         {
-            Name = "Hitman's Heatmaker (fully charged body shot)";
+            Name = "(fully charged body shot)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
         }
     }
@@ -386,7 +386,7 @@ namespace StatsData
     {
         public ScopedClassic()
         {
-            Name = "Classic (scoped, no charge)";
+            Name = "(scoped, no charge)";
             ActivationTime = 0;// no delay;
             // no crit on not-fully-charged headshot
         }
@@ -396,7 +396,7 @@ namespace StatsData
         public ChargedClassicHeadshot()
             : base(150)
         {
-            Name = "Classic (fully charged head shot)";
+            Name = "(fully charged head shot)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
 
             Effect = new Effect()
@@ -410,7 +410,7 @@ namespace StatsData
         public ChargedClassicBodyshot()
             : base(135)
         {
-            Name = "Classic (fully charged body shot)";
+            Name = "(fully charged body shot)";
             ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
         }
     }

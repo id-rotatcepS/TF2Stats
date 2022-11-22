@@ -29,7 +29,7 @@ namespace StatsData
     {
         public MediGunCritHeals()
         {
-            Name = "Medi Gun Crit Heals";
+            Name = "Crit Heals";
             Effect = new Effect()
             {
                 Name = "Target Healing Out of Combat",
@@ -207,7 +207,7 @@ namespace StatsData
     {
         public QuickFixCritHeals()
         {
-            Name = "quickfix crit heal";
+            Name = "crit heal";
 
             Melee = new Melee()
             {

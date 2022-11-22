@@ -177,10 +177,11 @@ namespace StatsData
 
         public AfterburnEffect(decimal time, decimal time2)
         {
-            if (time2 == time)
-                Name = $"Afterburn({time} s)";
-            else
-                Name = $"Afterburn({time} - {time2} s)";
+            Name = "Afterburn";
+            //if (time2 == time)
+            //    Name = $"Afterburn({time} s)";
+            //else
+            //    Name = $"Afterburn({time} - {time2} s)";
             Minimum = time;
             Maximum = time2;
 
@@ -194,7 +195,9 @@ namespace StatsData
     {
         public BleedEffect(decimal time)
         {
-            Name = $"Bleed({time} s)";
+            //Name = $"Bleed({time} s)";
+            Name = "Bleed";
+
             Minimum = time;
             Maximum = time;
 

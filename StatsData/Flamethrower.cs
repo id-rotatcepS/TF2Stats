@@ -119,7 +119,7 @@ namespace StatsData
         public FlameThrowerMaxExposure()
             //TODO accurate? do buildings have time-ranged damage?  Should this be primary and half-damage is alternate like cold minigun? But Dragon's Fury works best as a ramp up that includes buildings
         {
-            Name = "Flame Thrower (max exposure/buildings)";
+            Name = "(max exposure/buildings)";
         }
     }
 

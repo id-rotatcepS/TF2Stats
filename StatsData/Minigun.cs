@@ -70,7 +70,7 @@ namespace StatsData
         public MinigunCold()
             :base(18)
         {
-            Name = "minigun (cold)";
+            Name = "(cold)";
             ////ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -126,7 +126,7 @@ namespace StatsData
         public NataschaCold()
             : base(27/2.0m)
         {
-            Name = "Natascha (cold)";
+            Name = "(cold)";
             ActivationTime = 1.16m;// sec spin up;
         }
     }
@@ -166,7 +166,7 @@ namespace StatsData
         public BrassBeastCold()
             : base(43.2m / 2.0m)
         {
-            Name = "Brass Beast (cold)";
+            Name = "(cold)";
             ActivationTime = 1.31m;// sec spin up;
         }
     }
@@ -208,7 +208,7 @@ namespace StatsData
         public TomislavCold()
             : base(36 / 2.0m, 0.064m)
         {
-            Name = "Tomislav (cold)";
+            Name = "(cold)";
             ActivationTime = 0.696m;// sec spin up;
             FireRate = 0.12m; // "sometimes .135 due to server tick innacuracy"
         }
@@ -239,6 +239,7 @@ namespace StatsData
             ////FireRate = 0.1;
 
             AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
+            //TODO NO this belongs on an alt mode of "Fire Ring"...direct damage + afterburn like a flamethrower
             Effect = new Effect()
             {
                 Name = $"Direct Burn & Afterburn(8s)",
@@ -263,7 +264,7 @@ namespace StatsData
         public HuoLongHeaterCold()
             : base(32.4m / 2.0m)
         {
-            Name = "Huo-long Heater (cold)";
+            Name = "(cold)";
 
 
             AreaOfEffect = new AOE(AOE.DEFAULT_SPLASH * 1);//TODO value??
@@ -289,7 +290,7 @@ namespace StatsData
         public HuoLongHeaterBurningTarget()
             :base(40.5m)
         {
-            Name = "huo - long heater (burning target)";
+            Name = "(burning target)";
             ////ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{

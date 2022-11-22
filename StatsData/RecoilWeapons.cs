@@ -321,7 +321,7 @@ namespace StatsData
             : base(40 * 1.20m,
                  0.9m)//other spreadsheet had default 1.25,
         {
-            Name = "enforcer (disguised)";
+            Name = "(disguised)";
 
             FireRate = 0.6m;
         }

@@ -61,7 +61,7 @@ namespace StatsData
         //TODO building modifier Test - wiki talks about it but no number. not sure where I got it. 
         public ShortCircuitAlt()
         {
-            Name = "alt short circuit(orb blast)";
+            Name = "alt (orb blast)";
 
             Projectile = new Projectile(400)//wd (guessed)
             {
@@ -249,7 +249,7 @@ WeaponData
     {
         public DragonsFuryPostCompressionBlast()
         {
-            Name = "Dragon's Fury (after compression blast)";
+            Name = "(after compression blast)";
 
             FireRate = 1.6m;
         }
@@ -259,7 +259,7 @@ WeaponData
     {
         public DragonsFuryPostHit()
         {
-            Name = "Dragon's Fury (after hit)";
+            Name = "(after hit)";
 
             FireRate = 0.53m;
         }
@@ -284,7 +284,7 @@ WeaponData
         public DragonsFuryBurning()
             :base(75)
         {
-            Name = "Dragon's Fury (burning)";
+            Name = "(burning)";
 
             //TODO smaller projectile
 
@@ -344,7 +344,7 @@ WeaponData
     {
         public CrusadersCrossbowMaxHang()
         {
-            Name = "crossbow (max time)";
+            Name = "(max time)";
 
             Projectile = new Projectile(2400)
             {
@@ -370,7 +370,7 @@ WeaponData
     {
         public CrusadersCrossbowHeal()
         {
-            Name = "crossbow (heal)";
+            Name = "(heal)";
 
             Projectile = new Projectile(2400)
             {
@@ -392,7 +392,7 @@ WeaponData
     {
         public CrusadersCrossbowHealMaxHang()
         {
-            Name = "crossbow (heal, max time)";
+            Name = "(heal, max time)";
 
             Projectile = new Projectile(2400)
             {
@@ -578,7 +578,7 @@ WeaponData
     {
         public SandmanBall()
         {
-            Name = "Ball(sandman)";
+            Name = "Ball";
 
             Projectile = new Projectile(3000)
             {
@@ -604,7 +604,7 @@ WeaponData
     {
         public WrapAssassinBauble()
         {
-            Name = "Bauble(wrap assassin)";
+            Name = "Bauble";
 
             Projectile = new Projectile(3000)
             {
@@ -788,7 +788,7 @@ tf_weapon_rocketpack.txt - Jetpack
     {
         public ThermalThrusterTerminalVelocity()
         {
-            Name = "thermal thruster terminal velocity";
+            Name = "terminal velocity";
 
             Projectile = new Projectile(3500)
             {
@@ -833,7 +833,7 @@ tf_weapon_rocketpack.txt - Jetpack
     {
         public MantreadsTerminalVelocity()
         {
-            Name = "mantreads terminal velocity";
+            Name = "terminal velocity";
 
             Projectile = new Projectile(3500)
             {
