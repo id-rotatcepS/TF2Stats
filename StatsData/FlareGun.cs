@@ -210,7 +210,7 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>()
             {
-            //TODO represent "rollers" somehow? it's just normal damage from an abnormal projectile, I think.
+            //TODO represent "rollers" somehow? it's just normal damage from an abnormal "penetrating" projectile, I think.
                 new ScorchShotBurningTarget() // extra knockback bonus
             };
         }

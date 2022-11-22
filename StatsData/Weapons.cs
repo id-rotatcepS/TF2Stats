@@ -6,6 +6,13 @@ namespace StatsData
     // reviewing vs. wiki pages, most look good starting from shield bash working up the list.  issues marked as TODO in code items.
     // summary:
     // TODO shotgun long range all pellets is missing weapon tests (with a giant) and tends to not match wiki
+    // TODO need evidence observations: stickybombs & flamethrowers - numbers are a pretty good match now.
+    // TODO needle gun observations: small "vs. building" difference in wiki.
+    // TODO huo-long heater direct burn damage a real thing, or does it just invoke simple afterburn? increased damage on already-burning enemy? assuming increased afterburn damage while active is true but test it inactive.
+
+    //TODO Degreaser wiki numbers all look like old flamethrower stats or something
+
+    //TODO wiki vs. calc'd close max on a huolong & natascha miniguns doesn't match up exactly (what is obs?) scout pistol, too (obs matches wiki)
 
     // TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
     // TODO rocket launchers point blank required a custom ramp up
@@ -15,10 +22,15 @@ namespace StatsData
 
     //TODO (shotgun/scattergun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off
 
-    // TODO need evidence observations: stickybombs & flamethrowers - numbers are a pretty good match now.
-    // TODO needle gun observations: small "vs. building" difference in wiki.
-
-    // TODO crit-includes-range not yet supported (ambassador, flamethrowers, etc)
+    //TODO self-damage management
+    //TODO knock-back management
+    //TODO Ubers
+    //TODO crit-calculator strategy object to deal with special cases without hacks.
+    //TODO ammo-cost & different ammo cost rate from fire rate (e.g. airblasts)
+    
+    //TODO Building Maintenance as its own Melee-like add-on, not an effect.  Could include Sapper damage (apply to two pyro weapons with 0 maintenance)
+    
+    //TODO All Ammo/Reload info objects still outstanding.  Maybe ammo type for metal weapons
 
     public abstract class IndivisibleParticleSmasher : Weapon
     {
@@ -165,7 +177,7 @@ namespace StatsData
                     ZeroRangeRamp = 1,
                     LongRangeRamp = 1,
                 },
-
+                //TODO ArmTime= - minimum charge time to fire.  Impossible to get exactly 50 damage, possible to not fire.
             };
             FireRate = 1.94m;
             AlternateModes = new List<Weapon>

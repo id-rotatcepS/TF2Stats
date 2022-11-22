@@ -212,7 +212,7 @@ namespace StatsData
         static UllapoolCaber UllapoolCaber = new UllapoolCaber();
         static ClaidheamhMor ClaidheamhMor = new ClaidheamhMor();
         static PersionPersuader PersionPersuader = new PersionPersuader();
-        static ScottsmansSkullcutter ScottsmansSkullcutter = new ScottsmansSkullcutter();
+        static ScotsmansSkullcutter ScottsmansSkullcutter = new ScotsmansSkullcutter();
         static KillingGlovesOfBoxing KillingGlovesOfBoxing = new KillingGlovesOfBoxing();
         static WarriorsSpirit WarriorsSpirit = new WarriorsSpirit();
         static HolidayPunch HolidayPunch = new HolidayPunch();

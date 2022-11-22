@@ -19,7 +19,8 @@ namespace StatsData
                     ZeroRangeRamp = 2,
                     LongRangeRamp = 1,
                     //BuildingModifier = 2.0m, // no, I think it's full exposure always for buildings.
-                    CritIncludesRamp = true, // (zero range damage with crits is 6x)
+
+                    CritIncludesRamp = true, // (e.g. zero range damage with crits is 6x)
                 },
 
                 //FIXME particles
@@ -39,10 +40,8 @@ namespace StatsData
 
             FireRate = 0.075m;//recent wiki change? used to have 0.08m;
 
-            //TODO crits multiply with ramp
-
             Effect = new AfterburnEffect(4, 10);//TODO flamethrower says 4-10 (increase by .4s per hit), others show 3-10 or other nonsense
-                                                //TODO depends on exposure, so only minimum for min exposure? This is likely additive regardless of constant exposure, howerver.
+                                                //TODO depends on exposure, so only minimum for min exposure? This is likely additive regardless of constant exposure, however.
 
         }
 
@@ -93,8 +92,6 @@ namespace StatsData
         {
             Name = "flamethrower (max exposure/buildings)";
 
-            //TODO crits multiply with ramp
-
             Effect = new AfterburnEffect(10);
 
         }
@@ -118,7 +115,8 @@ namespace StatsData
     internal class FlameThrowerMaxExposure : AFullFlameThrower
     {
         public FlameThrowerMaxExposure()
-            //TODO accurate? do buildings have time-ranged damage?  Should this be primary and half-damage is alternate like cold minigun? But Dragon's Fury works best as a ramp up that includes buildings
+            //TODO accurate? do buildings have time-ranged damage?
+            //TODO Should this be primary and half-damage is alternate like cold minigun? But Dragon's Fury works best as a ramp up that includes buildings
         {
             Name = "(max exposure/buildings)";
         }
@@ -156,16 +154,6 @@ namespace StatsData
         {
             Name = "backburner";
 
-            //Projectile = new Projectile(1)//TODO FIXME flame speed?
-            //{
-            //    HitDamage = new Damage(6.5)
-            //    {
-            //        ZeroRangeRamp = 2,
-            //        LongRangeRamp = 1,
-            //    },
-
-            //};
-            //FireRate = 0.08;
             AlternateModes = new List<Weapon>
             {
                 new CompressionBlast(),//TODO More expensive
@@ -177,30 +165,18 @@ namespace StatsData
 
     public class Degreaser : AFlameThrower
     {
-        //TODO wiki numbers all look like old flamethrower stats or something
-
         //-66% afterburn damage penalty
         public Degreaser()
         {
             Name = "degreaser";
 
-            //Projectile = new Projectile(1)//TODO FIXME flame speed?
-            //{
-            //    HitDamage = new Damage(6.5)
-            //    {
-            //        ZeroRangeRamp = 2,
-            //        LongRangeRamp = 1,
-            //    },
-
-            //};
-            //FireRate = 0.08;
             AlternateModes = new List<Weapon>
             {
                 new CompressionBlast(), //TODO more expensive
                 new FlameThrowerMaxExposure()
             };
 
-            decimal time = 4m;decimal time2 = 10m;//TODO using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
+            decimal time = 4m;decimal time2 = 10m;// using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
             Effect = new Effect()
             {
                 //Name = (time2 == time)
@@ -221,17 +197,6 @@ namespace StatsData
         public Phlogistinator()
         {
             Name = "phlogistinator";
-
-            //Projectile = new Projectile(1)//TODO FIXME flame speed?
-            //{
-            //    HitDamage = new Damage(6.5)
-            //    {
-            //        ZeroRangeRamp = 2,
-            //        LongRangeRamp = 1,
-            //    },
-
-            //};
-            //FireRate = 0.08;
 
             // no compression blast
             AlternateModes = new List<Weapon>

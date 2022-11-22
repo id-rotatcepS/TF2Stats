@@ -27,11 +27,6 @@ namespace StatsData
             };
             FireRate = 0.105m;// May 6 2021 wiki all changed from .1 to .105.
                               // pocket pistol mentions "rounded up to the next multiple of 0.015 seconds (a game tick)"
-
-            //AlternateModes = new List<Weapon>()
-            //{
-            //    new MinigunCold() //TODO the same for other miniguns
-            //};
         }
     }
 

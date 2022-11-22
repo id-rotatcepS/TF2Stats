@@ -64,18 +64,30 @@ namespace StatsData
             //    Damage = new Damage(65)
             //};
             //FireRate = 0.8;
-            
-            // TODO bleed effect AND maintenance
+
+            // TODO bleed effect AND maintenance (and 20% fire damage vuln & no random)
+            Effect = new BleedEffect(5m)// AND new BuildingEffect()
+            {
+                Name = "Bleed & Building Maintenance"
+            };
         }
     }
 
     public class Jag : BuildingMaintenance
     {
+        //"Construction hit speed boost increased by 30%"
+        //"+15% faster firing speed"
+        //"-25% damage penalty"
+        //"20% slower repair rate"
+        //"-33% damage penalty vs buildings"
         public Jag()
-            :base(48.75m)
+            :base(65*.75m)//=48.75m
         {
             Name = "The Jag";
 
+            //TODO: Sappers: 65dmg -33% = 43;
+            // buildings: 65*.75*.6666666666666667 = 32.49999; wiki says 32 dmg (whole math: 65 *3/4 *2/3 = 65/2 = 32.5 = 33dmg)
+            Melee.Damage.BuildingModifier = 2m/3m; 
             //Melee = new Melee()
             //{
             //    Damage = new Damage(48.75)
@@ -84,8 +96,7 @@ namespace StatsData
             //    }
             //};
             
-            //TODO FIXME not default fire rate
-            FireRate = 0.8m;
+            FireRate = 0.68m;
         }
     }
 
@@ -278,7 +289,12 @@ namespace StatsData
             //};
             //FireRate = 0.5;
 
-            Effect = new BleedEffect(5);// TODO time?
+            //TODO also self-damage of 18 on miss before bleed starts
+
+            Effect = new BleedEffect(5m)
+            {
+                Name = "Bleed (hit self on miss)"
+            };
         }
     }
 
@@ -571,7 +587,7 @@ namespace StatsData
                 Damage = new Damage(48.75m)
                 {
                     Offset = Damage.OFFSET_HITSCAN_MELEE,//23.5,
-                    BuildingModifier = 2.67m//because it's 2x65, not 2x48.75
+                    BuildingModifier = 2.67m//because it's 2x65, not 2x48.75 TODO is that true for all buildings or just sappers? sappers get their own permanent damage base of 65 from all wrenches.
                     //TODO sapper effect as building
                 }
             };
@@ -613,7 +629,7 @@ namespace StatsData
             //};
             ////FireRate = 0.8;
             
-            Effect = new AfterburnEffect(10);//TODO TIME?
+            Effect = new AfterburnEffect(7.5m);
         }
     }
 
@@ -679,7 +695,7 @@ namespace StatsData
             //    {
             //        Offset = Damage.OFFSET_HITSCAN_MELEE,//23.5,
             //    },
-            //    MaxRange = 72, //TODO superclass?
+            //    MaxRange = 72,
             //};
             ////FireRate = 0.8;
         }
@@ -740,16 +756,16 @@ namespace StatsData
         }
     }
 
-    public class ScottsmansSkullcutter : Sword
+    public class ScotsmansSkullcutter : Sword
     {
-        public ScottsmansSkullcutter()
-            :base(78)//TODO I had 52??? check that other spreadsheet
+        public ScotsmansSkullcutter()
+            :base(65*1.20m)
         {
-            Name = "scottsman's skullcutter";
+            Name = "scotsman's skullcutter";
 
             //Melee = new Melee()
             //{
-            //    Damage = new Damage(78)//TODO I had 52??? check that other spreadsheet
+            //    Damage = new Damage(78)
             //    {
             //        Offset = Damage.OFFSET_HITSCAN_MELEE,//23.5,
             //    },
@@ -895,7 +911,7 @@ namespace StatsData
             //};
             ////FireRate = 0.8;
 
-            Effect = new BleedEffect(10);//TODO correct?
+            Effect = new BleedEffect(6m);
         }
     }
 

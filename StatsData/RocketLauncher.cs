@@ -218,7 +218,7 @@ namespace StatsData
             CanCrit = false;
             Projectile.HitDamage.BuildingModifier = .20m;
 
-            Effect = new BuildingEffect()//AfterburnEffect(0);//TODO time?
+            Effect = new BuildingEffect()
             {
                 Name = "Mini-crit; Disable Building (4 s); Afterburn(6 s); vaporize stickybombs",
                 Minimum = 4m,
@@ -276,7 +276,7 @@ namespace StatsData
         // -15% blast damage from rocket jumps
         // -10% explosion radius
 
-        // TODO point blank obs/wiki of 95; calcs as 96
+        // TODO my calc (now) & my obs & point blank wiki of 95; wiki Ramp as 96 (my calc USED to do that too)
         public AirStrike()
             :base(76.5m,
                  1100, 

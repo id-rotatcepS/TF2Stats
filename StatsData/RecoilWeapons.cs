@@ -227,7 +227,7 @@ namespace StatsData
     {
         public Ambassador()
             : base(34,
-             1.0m//TODO other spreadsheet AND WIKI have 1, where did I get 0.9 from?,
+             1.0m//TODO other spreadsheet AND WIKI have 1, another page has 0.9, discussion page mentions this too
                  )
         {
             Name = "ambassador";
@@ -265,7 +265,7 @@ namespace StatsData
         // But what about minicrits?
         public AmbassadorHeadshot()
             : base(34,
-             1.0m//TODO other spreadsheet AND WIKI have 1, where did I get 0.9 from?,
+             1.0m//TODO see note on main
                  )
         {
             Name = "(headshot)";

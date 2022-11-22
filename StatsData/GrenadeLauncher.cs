@@ -54,7 +54,6 @@ namespace StatsData
 
             Projectile = new Projectile(speed)
             {
-                //TODO but it doesn't explode on impact...no way to express that?
                 HitDamage = new Damage(60)
                 {
                     Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
@@ -62,6 +61,8 @@ namespace StatsData
                     LongRangeRamp = 1,
                 },
                 Splash = new AOE(splashRadius),
+                // Using Armtime=fuse time to express it doesn't explode on impact when it's a roller.
+                ArmTime = 2.3m,
             };
             FireRate = 0.6m;
             //fuse:
@@ -101,9 +102,9 @@ namespace StatsData
             //};
             //FireRate = 0.6;
 
-            // technically it has explode on fuse expiration flak
+            // TODO technically it has explode on fuse expiration flak
             //fuse (if no impact or contact with surfaces):
-            ActivationTime = 2.3m;//TODO bad use of ActivationTime?
+            ActivationTime = 2.3m;
 
             AlternateModes = null;// no rollers
         }
@@ -131,7 +132,8 @@ namespace StatsData
                     Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
                     ZeroRangeRamp = 1,
                     LongRangeRamp = 0.5m, // per wiki.
-                    //TODO wiki says crit affected by range.
+                    // wiki says crit affected by range.
+                    CritIncludesRamp = true,
                 },
                 // no splash or explosion (technically explosive damage classification however)
                 // TODO increased knockback
@@ -159,6 +161,8 @@ namespace StatsData
         public LooseCannonFuse()
         {
             Name = "(fuse)";
+            // Using Armtime=fuse time to express it doesn't explode on impact when it's a roller.
+            Projectile.ArmTime = 1.0m;
 
             ActivationTime = 1.0m;// "Cannonballs have a fuse time of 1 second; fuses can be primed to explode earlier by holding down the fire key."
         }
@@ -166,6 +170,8 @@ namespace StatsData
 
     public class IronBomber : AGrenadeLauncher
     {
+        //"-30% fuse time on grenades"
+        //"-15% explosion radius"
         public IronBomber()
             :base(AOE.DEFAULT_SPLASH * 0.85m)
         {
@@ -183,6 +189,8 @@ namespace StatsData
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 0.85)
             //};
             //FireRate = 0.6;
+            Projectile.ArmTime = 1.61m; //2.3 s * 0.70 = 1.61 s
+            ActivationTime = 1.61m;
 
             AlternateModes = new List<Weapon>()
             {
@@ -193,6 +201,7 @@ namespace StatsData
 
     public class IronBomberRoller : AGrenadeLauncherRoller
     {
+        //"-30% fuse time on grenades"
         public IronBomberRoller()
             :base(AOE.DEFAULT_SPLASH * 0.85m)
         {
@@ -212,7 +221,9 @@ namespace StatsData
             //};
             //FireRate = 0.6;
             ////fuse:
-            //ActivationTime = 2.0;//TODO FIXME value? bad use of ActivationTime?
+            // Using Armtime=fuse time to express it doesn't explode on impact when it's a roller.
+            Projectile.ArmTime = 1.61m;
+            ActivationTime = 1.61m;//I had 2.0m;... but that's not 2.3m -30%
         }
     }
 
