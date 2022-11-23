@@ -7,14 +7,18 @@ namespace StatsData
     // summary:
     // TODO shotgun long range all pellets is missing weapon tests (with a giant) and tends to not match wiki
     // TODO need evidence observations: stickybombs & flamethrowers - numbers are a pretty good match now.
-    // TODO needle gun observations: small "vs. building" difference in wiki.
+    // TODO overdose (other needs?) observations: small "vs. building" difference in wiki.
     // TODO huo-long heater direct burn damage a real thing, or does it just invoke simple afterburn? increased damage on already-burning enemy? assuming increased afterburn damage while active is true but test it inactive.
+    // TODO short circuit orb building modifier test - wiki talks about it but no number. not sure where I got it. 
+    // TODO Crossbow heal: -75: is this just theoretical or can we heal this small an amount?
 
     //TODO Degreaser wiki numbers all look like old flamethrower stats or something
 
     //TODO wiki vs. calc'd close max on a huolong & natascha miniguns doesn't match up exactly (what is obs?) scout pistol, too (obs matches wiki)
 
     // TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
+    // TODO crossbow: Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)
+    // TODO shortcircuit: wiki went with base + falloff which doesn't really make any sense and they also didn't show mini-crit range
     // TODO rocket launchers point blank required a custom ramp up
     // TODO WIKI IS WRONG about shotguns spread... their own evidence proves them wrong (see comments on constant)
     //TODO (shotgun/scattergun) wiki spread 30:1, but calc is 28:1 (28.148repeating).
@@ -27,9 +31,9 @@ namespace StatsData
     //TODO Ubers
     //TODO crit-calculator strategy object to deal with special cases without hacks.
     //TODO ammo-cost & different ammo cost rate from fire rate (e.g. airblasts)
-    
+
     //TODO Building Maintenance as its own Melee-like add-on, not an effect.  Could include Sapper damage (apply to two pyro weapons with 0 maintenance)
-    
+
     //TODO All Ammo/Reload info objects still outstanding.  Maybe ammo type for metal weapons
 
     public abstract class IndivisibleParticleSmasher : Weapon
@@ -98,7 +102,7 @@ namespace StatsData
         {
             Name = "Righteous Bison";
 
-            //TODO damage rate... damage is actually half base and always hits twice.
+            //TODO damage rate... damage always hits twice within one frame (could hit more times in theory).
 
             //Projectile = new Projectile(1200)//wd
             //{
@@ -165,6 +169,7 @@ namespace StatsData
     /// </summary>
     public class Huntsman : ABolt
     {
+        //TODO Aim Fatigue: 5s
         public Huntsman()
         {
             Name = "Huntsman";
@@ -195,6 +200,7 @@ namespace StatsData
 
     public class HuntsmanCharged : ABolt
     {
+
         public HuntsmanCharged()
         {
             Name = "charged";
@@ -237,7 +243,7 @@ namespace StatsData
             };
             FireRate = 1.94m;
 
-            Effect = new AfterburnEffect(10);// TODO time? // TODO crit on headshot, too
+            Effect = new AfterburnEffect(10);// TODO time? Wiki doesn't say // TODO crit on headshot, too
         }
     }
 
@@ -376,7 +382,7 @@ namespace StatsData
         /// mid-air stickybomb at start of 2 second period after armed
         /// </summary>
         public FlakStickybomb(decimal armTime, decimal fireRate)
-            : base(120m, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this thing?
+            : base(120m, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this splash reduction?
         {
             Name = "Flak";
             FireRate = fireRate;
@@ -386,7 +392,6 @@ namespace StatsData
     internal class ChargedStickybomb : AStickybombLauncher
     {
         //wiki text speed "approximately 230%" of 805
-        //TODO charge time
         public ChargedStickybomb(decimal armTime, decimal fireRate)
             :base(120m,armTime, AOE.DEFAULT_SPLASH * 1,
                  925.38m
@@ -503,7 +508,7 @@ namespace StatsData
         /// mid-air stickybomb at start of 2 second period after armed
         /// </summary>
         public FlakQuickiebomb(decimal baseDamage, decimal armTime, decimal fireRate)
-            : base(baseDamage, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this thing?
+            : base(baseDamage, armTime, AOE.DEFAULT_SPLASH * .85m)//TODO does "fixed" mean they cancelled this splash reduction?
         {
             Name = "Flak";
             FireRate = fireRate;
@@ -512,7 +517,7 @@ namespace StatsData
 
     internal class ChargedQuickiebomb : AStickybombLauncher
     {
-        //TODO "Max charge time decreased by 70%"
+        //"Max charge time decreased by 70%"
         //"up to +35% damage based on charge"
         public ChargedQuickiebomb(decimal baseDamage, decimal armTime, decimal fireRate)
             : base(baseDamage*1.35m, armTime, AOE.DEFAULT_SPLASH * 1,

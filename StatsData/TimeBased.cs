@@ -85,7 +85,7 @@ namespace StatsData
 
             Effect = new Effect()
             {
-                Name = "Vaporize Projectile"//TODO does it have a movement impairment, too?
+                Name = "Vaporize Projectile"
             };
         }
     }
@@ -643,7 +643,7 @@ WeaponData
             };
             //FireRate = 0.25;
 
-            Effect = new BleedEffect(5);// TODO short time?
+            Effect = new BleedEffect(5);
         }
     }
 

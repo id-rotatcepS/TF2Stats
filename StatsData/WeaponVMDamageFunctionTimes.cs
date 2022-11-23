@@ -5,12 +5,27 @@ using Windows.UI.Xaml;
 
 namespace StatsData
 {
+    //public class SubFunctionTime : WeaponVMDamageFunctionTimes
+    //{
+    //    public SubFunctionTime(WeaponVMDamageFunctionTimes vm,WeaponVMDamageFunctionTimes p) : base(vm., w, p)
+    //    {
+    //    }
 
+    //}
     public class WeaponVMDamageFunctionTimes
     {
         private readonly WeaponVM v;
         private readonly Weapon w;
+        private readonly WeaponVMDamageFunctionTimes b;
+        private readonly WeaponVMDamageFunctionTimes p;
 
+        private WeaponVMDamageFunctionTimes(WeaponVMDamageFunctionTimes b, WeaponVMDamageFunctionTimes p)
+        {
+            this.b = b;
+            this.v = b.v;
+            this.w = b.w;
+            this.p = p;
+        }
         public WeaponVMDamageFunctionTimes(WeaponVM vm, Weapon w)
         {
             this.v = vm;
@@ -18,8 +33,7 @@ namespace StatsData
         }
 
         public string Name => w.Name;
-        //TODO maybe variant on functiontimes that filters out values that match the base
-        public IEnumerable<WeaponVMDamageFunctionTimes> Alts => v.Alts?.Select(vm => vm.Detail.FunctionTimes);
+        public IEnumerable<WeaponVMDamageFunctionTimes> Alts => v.Alts?.Select(vm => new WeaponVMDamageFunctionTimes(vm.Detail.FunctionTimes, this));
 
         //public string ShotType => "Hitscan", etc.
         //public string DamageType => "Bullet" etc.
@@ -27,35 +41,51 @@ namespace StatsData
         public string MaximumRampUpPercent => PercentString(v.ZeroRangeMod);
         public string MaximumRampUp => FragmentDamage(v.ZeroRangeMod);
         public Visibility CloseRampVisibility => PercentVisibility((v) => v.ZeroRangeMod);
+        public bool CloseRampDiff => IfDifferent((f) => f.MaximumRampUp);
+
+        private bool IfDifferent(Func<WeaponVMDamageFunctionTimes, string> x)
+        {
+            return p == null || x(p) != x(b);
+        }
 
         public string BaseDamagePercent => PercentString(1.0m);
         public string BaseDamage => FragmentDamage(1.0m);
-        public Visibility BaseDamangeVisibility => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0)))
+        public Visibility BaseDamageVisibility => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0)))
             ? Visibility.Visible
             : Visibility.Collapsed;
+        public bool BaseDamageDiff => IfDifferent((f) => f.BaseDamage);
+
 
         public string MaximumFallOffPercent => PercentString(v.LongRangeMod);
         public string MaximumFallOff => FragmentDamage(v.LongRangeMod);
         public Visibility FarRampVisibility => PercentVisibility((v) => v.LongRangeMod);
+        public bool FarRampDiff => IfDifferent((f)=>f.MaximumFallOff);
         
         public string BuildingDamagePercent => PercentString(v.BuildingMod);
         public string BuildingDamage => FragmentDamage(v.BuildingMod);
         public Visibility BuildingVisibility => PercentVisibility((v) => v.BuildingMod);
+        public bool BuildingDiff => IfDifferent((f) => f.BuildingDamage);
 
         public string Fragment => v.Fragments?.ToString();
         public Visibility FragmentVisibility => NullableVisibility((v) => v.Fragments);
+        public bool FragmentDiff => IfDifferent((f) => f.Fragment);
 
         public string PointBlank => FullDamage(v.ZeroRangeMod);
         public Visibility PointBlankVisibility => FullDamageVisibility((v) => v.ZeroRangeMod);
+        public bool PointBlankDiff => IfDifferent((f) => f.PointBlank);
         public string MediumRange => FullDamage(1.0m);
         public Visibility MediumRangeVisibility => FullDamageVisibility((v) => 1.0m);
+        public bool MediumRangeDiff => IfDifferent((f) => f.MediumRange);
         public string LongRange => FullDamage(v.LongRangeMod);
         public Visibility LongRangeVisibility => FullDamageVisibility((v) => v.LongRangeMod);
+        public bool LongRangeDiff => IfDifferent((f) => f.LongRange);
 
         public string Critical => CriticalDamage();
-        public Visibility CriticalVisibility => (v.CanCrit || (v.Alts != null && v.Alts.Any((v) =>v.CanCrit))) ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility CriticalVisibility => (v.CanCrit || (v.Alts != null && v.Alts.Any((v) => v.CanCrit))) ? Visibility.Visible : Visibility.Collapsed;
+        public bool CriticalDiff => IfDifferent((f) => f.Critical);
         public string MiniCrit => MiniCritDamage();
         public Visibility MiniCritVisibility => (v.CanMinicrit || (v.Alts != null && v.Alts.Any((v) => v.CanMinicrit))) ? Visibility.Visible : Visibility.Collapsed;
+        public bool MiniCritDiff => IfDifferent((f) => f.MiniCrit);
 
 
         private Visibility NullableVisibility(Func<WeaponVM, int?> fragments)
@@ -81,9 +111,14 @@ namespace StatsData
         }
 
         public string Spread => SpreadRatio(v.Spread);
-        public Visibility SpreadVisibility => NullableVisibility((v)=>v.Spread);
+        public Visibility SpreadVisibility => NullableVisibility((v) => v.Spread);
+        public bool SpreadDiff => IfDifferent((f) => f.Spread);
 
         public string AttackInterval => string.Format("{0:0.####} s", v.FireRate);
+        public Visibility AttackIntervalVisibility => (v.FireRate != 0) || (v.Alts != null && v.Alts.Any(v => (v.FireRate != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool AttackIntervalDiff => IfDifferent((f) => f.AttackInterval);
 
         public string EffectDamage => v.EffectDamage.HasValue
             ? string.Format("{0:0.#} / {1:0.#} s", WeaponVMDetail.Round(v.EffectDamage.Value), v.EffectDamageRate)
@@ -99,14 +134,17 @@ namespace StatsData
                 v.EffectMin, v.EffectMax)
             : null;
         public string EffectLabel => v.EffectDamage.HasValue && v.EffectDamage.Value != 0 
-            ? v.Effect 
+            ? v.Effect
             : v.Alts?.FirstOrDefault(v => (v.Effect != null && v.EffectDamage.HasValue))?.Effect;
         public Visibility EffectVisibility => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0)))
             ? Visibility.Visible
             : Visibility.Collapsed;
-        public Visibility EffectMinicritVisibility => EffectVisibility == Visibility.Visible && MiniCritVisibility == Visibility.Visible 
-            ? Visibility.Visible 
+        public bool EffectDiff => IfDifferent((f) => f.EffectDamage);
+        public bool EffectDurationDiff => IfDifferent((f) => f.EffectDuration);
+        public Visibility EffectMinicritVisibility => EffectVisibility == Visibility.Visible && MiniCritVisibility == Visibility.Visible
+            ? Visibility.Visible
             : Visibility.Collapsed;
+        public bool EffectMinicritDiff => IfDifferent((f) => f.EffectMinicrit);
 
         /// <summary>
         /// calculation based on https://imgur.com/a/ZmWeqe9

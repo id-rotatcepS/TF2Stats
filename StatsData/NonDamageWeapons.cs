@@ -15,7 +15,7 @@ namespace StatsData
             CanMinicrit = false;
             AreaOfEffect = new BannerAOE();//TODO FIXME value??
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -26,7 +26,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "buff banner";
             ActivationTime = 3;
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -43,7 +42,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "batallion's backup";
             ActivationTime = 2.645m;
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -60,7 +58,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "concheror";
             ActivationTime = 3;
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -84,7 +81,7 @@ namespace StatsData
             CanCrit = false;
             CanMinicrit = false;
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -95,7 +92,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "BASE jumper";
 
-            FireRate = -1;
         }
     }
 
@@ -106,7 +102,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "gunboats";
 
-            FireRate = -1;
         }
     }
 
@@ -118,7 +113,7 @@ namespace StatsData
             CanCrit = false;
             CanMinicrit = false;
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -129,7 +124,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "ali baba's wee booties / bootlegger";
 
-            FireRate = -1;
         }
     }
 
@@ -141,7 +135,7 @@ namespace StatsData
             CanCrit = false;
             CanMinicrit = false;
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -152,7 +146,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "razorback";
 
-            FireRate = -1;
         }
     }
 
@@ -163,7 +156,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "darwin's danger shield";
 
-            FireRate = -1;
         }
     }
 
@@ -173,8 +165,6 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "cozy camper";
-
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -193,7 +183,7 @@ namespace StatsData
             CanCrit = false;
             CanMinicrit = false;
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -205,7 +195,7 @@ namespace StatsData
             CanCrit = false;
             CanMinicrit = false;
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -216,7 +206,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "sandvich";
             ActivationTime = 4.3m;
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -234,7 +223,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "dalokahs bar";
             ActivationTime = 4.3m;
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -258,7 +246,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "buffalo steak sandvich";
             ActivationTime = 4.3m;
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -281,7 +268,6 @@ namespace StatsData
             //Offset = 23.5,
             Name = "second banana";
             ActivationTime = 4.3m;
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -300,7 +286,7 @@ namespace StatsData
             CanCrit = false;
             CanMinicrit = false;
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -311,7 +297,7 @@ namespace StatsData
             //Offset = 23.5,
             Name = "bonk! atomic punch";
             ActivationTime = 1.2m;
-            FireRate = -1;
+
             Effect = new Effect()
             {
                 Name = "Phase",
@@ -327,7 +313,7 @@ namespace StatsData
             //Offset = 23.5,
             Name = "crit - a - cola";
             ActivationTime = 1.2m;
-            FireRate = -1;
+
             Effect = new Effect()
             {
                 Name = "Mini-Crit buff and debuff",
@@ -378,7 +364,7 @@ namespace StatsData
             };
             CanCrit = false;
             CanMinicrit = false;
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -392,7 +378,6 @@ namespace StatsData
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
                 Splash = new AOE(AOE.DEFAULT_SPLASH * 1.0m),//TODO FIXME value?
             };
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -413,7 +398,6 @@ namespace StatsData
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
                 Splash = new AOE(AOE.DEFAULT_SPLASH * 1),//TODO FIXME value?
             };
-            FireRate = -1;
 
             Effect = new Effect()
             {
@@ -434,7 +418,7 @@ namespace StatsData
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
                 Splash = new AOE(AOE.DEFAULT_SPLASH * 1.0m),//TODO FIXME value?
             };
-            FireRate = -1;
+
             //TODO Splash Hang Time
             Effect = new Effect()
             {
@@ -463,7 +447,7 @@ namespace StatsData
             // oversimplified still... It's "build sapper" and sapper has health and effect "sap building"
             Effect = new BuildingEffect() { Name = "Sapped" };
 
-            FireRate = -1;
+            FireRate = 0;//TODO FIXME I know there is a rate for this... probably same as melee
         }
     }
 
@@ -480,7 +464,6 @@ namespace StatsData
                 //}
             };
             Effect = new BuildingEffect() { Name = "Unbuilding" };
-            FireRate = -1;
         }
     }
 
@@ -492,7 +475,7 @@ namespace StatsData
             CanCrit = false;
             CanMinicrit = false;
 
-            FireRate = -1;
+            FireRate = 0;
         }
     }
 
@@ -502,7 +485,6 @@ namespace StatsData
         {
             Name = "deadringer";
 
-            FireRate = -1;
         }
     }
 
@@ -512,7 +494,6 @@ namespace StatsData
         {
             Name = "Cloak & Dagger";
 
-            FireRate = -1;
         }
     }
 

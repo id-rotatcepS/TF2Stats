@@ -5,12 +5,13 @@
     xmlns:local="using:TF2Stats"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     d:DesignHeight="500"
     d:DesignWidth="400">
-
     <StackPanel Background="#FFF3EAD9">
         <StackPanel.Resources>
+            <SolidColorBrush x:Key="NoDiff" Color="DarkGray"/>
             <Style x:Key="Heading" TargetType="StackPanel">
                 <Setter Property="Background" Value="DarkOrange"/>
             </Style>
@@ -73,6 +74,13 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding CloseRampDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=CloseRampPercent}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=CloseRamp}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+
                         <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding CloseRampVisibility}">
                             <TextBlock x:Name="CloseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                Text="{Binding MaximumRampUpPercent}"/>
@@ -104,16 +112,22 @@
             </ItemsControl>
             
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Visibility="{Binding BaseDamangeVisibility}">
+        <StackPanel Orientation="Horizontal" Visibility="{Binding BaseDamageVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
-                        <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding BaseDamangeVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding BaseDamageDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=BaseRampPercent}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=BaseRamp}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding BaseDamageVisibility}">
                             <TextBlock x:Name="BaseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                            Text="{Binding BaseDamagePercent}" />
                         </StackPanel>
                         <TextBlock x:Name="BaseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding BaseDamage}" Style="{StaticResource MainValue}" Visibility="{Binding BaseDamangeVisibility}"/>
+                                       Text="{Binding BaseDamage}" Style="{StaticResource MainValue}" Visibility="{Binding BaseDamageVisibility}"/>
                     </StackPanel>
                 </DataTemplate>
             </StackPanel.Resources>
@@ -144,6 +158,12 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding BuildingDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=BuildingRampPercent}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=BuildingRamp}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding BuildingVisibility}">
                             <TextBlock x:Name="BuildingRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                            Text="{Binding BuildingDamagePercent}" />
@@ -179,6 +199,12 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding FarRampDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=FarRampPercent}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=FarRamp}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding FarRampVisibility}" >
                             <TextBlock x:Name="FarRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                            Text="{Binding MaximumFallOffPercent}" />
@@ -216,6 +242,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding FragmentDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=Fragment}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="Fragment" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding Fragment}" Style="{StaticResource MainValue}" Visibility="{Binding FragmentVisibility}"/>
 
@@ -248,6 +279,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding PointBlankDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=PointBlank}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="PointBlank" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding PointBlank}" Style="{StaticResource MainValue}" Visibility="{Binding PointBlankVisibility}"/>
                     </StackPanel>
@@ -279,6 +315,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding MediumRangeDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MediumRange}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="MediumRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding MediumRange}" Style="{StaticResource MainValue}" Visibility="{Binding MediumRangeVisibility}"/>
 
@@ -311,6 +352,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding LongRangeDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=LongRange}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="LongRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding LongRange}" Style="{StaticResource MainValue}" Visibility="{Binding LongRangeVisibility}"/>
 
@@ -343,6 +389,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding SpreadDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=Spread}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="Spread" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding Spread}" Style="{StaticResource MainValue}" Visibility="{Binding SpreadVisibility}"/>
 
@@ -376,6 +427,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding CriticalDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=Critical}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="Critical" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding Critical}" Style="{StaticResource MainValue}" Visibility="{Binding CriticalVisibility}"/>
 
@@ -408,6 +464,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding MiniCritDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MiniCrit}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="MiniCrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding MiniCrit}" Style="{StaticResource MainValue}" Visibility="{Binding MiniCritVisibility}"/>
 
@@ -441,6 +502,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding EffectDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectDamage}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="EffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding EffectDamage}" Style="{StaticResource MainValue}"/>
                     </StackPanel>
@@ -472,6 +538,11 @@
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
                     <StackPanel Orientation="Horizontal" Visibility="{Binding EffectMinicritVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding EffectMinicritDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectMinicrit}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="EffectMinicrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding EffectMinicrit}" Style="{StaticResource MainValue}"/>
                     </StackPanel>
@@ -506,11 +577,16 @@
         <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
             <TextBlock x:Name="FunctionHeading" HorizontalAlignment="Stretch" Text="Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
         </StackPanel>
-        
-        <StackPanel Orientation="Horizontal">
+
+        <StackPanel Orientation="Horizontal" Visibility="{Binding AttackIntervalVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding AttackIntervalVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding AttackIntervalDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=AttackInterval}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="AttackInterval" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding AttackInterval}" Style="{StaticResource MainValue}"/>
                     </StackPanel>
@@ -542,7 +618,12 @@
         <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
-                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}"><!-- note this one shares visibility with damage, but has an independent diff-->
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding EffectDurationDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectDuration}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="EffectDuration" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
                                        Text="{Binding EffectDuration}" Style="{StaticResource MainValue}"/>
                     </StackPanel>

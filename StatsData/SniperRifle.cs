@@ -193,7 +193,7 @@ namespace StatsData
         public Machina()
             : base(50)
         {
-            Name = "(scoped, no charge)";
+            Name = "Machina (scoped, no charge)";
             //ActivationTime = 1.3;// sec pre-charge delay;
             //Hitscan = new Hitscan()
             //{

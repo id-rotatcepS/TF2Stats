@@ -173,11 +173,16 @@ namespace StatsData
             AlternateModes = new List<Weapon>
             {
                 new CompressionBlast(), //TODO more expensive
-                new FlameThrowerMaxExposure()
+                new DegreaserMaxExposure()
             };
 
-            decimal time = 4m;decimal time2 = 10m;// using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
-            Effect = new Effect()
+            Effect = NewDegreaserAfterburn();
+        }
+
+        internal static Effect NewDegreaserAfterburn(decimal time = 4m)
+        {
+            decimal time2 = 10m;// using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
+            return new Effect()
             {
                 //Name = (time2 == time)
                 //? $"Degreaser Afterburn({time} s)"
@@ -191,6 +196,19 @@ namespace StatsData
             };
         }
     }
+    internal class DegreaserMaxExposure : AFullFlameThrower
+    {
+        public DegreaserMaxExposure()
+        //TODO (same as flameethrower) accurate? do buildings have time-ranged damage?
+        //TODO (same as flameethrower) Should this be primary and half-damage is alternate like cold minigun? But Dragon's Fury works best as a ramp up that includes buildings
+        {
+            Name = "(max exposure/buildings)";
+
+            Effect = Degreaser.NewDegreaserAfterburn(10m);
+        }
+    }
+
+
 
     public class Phlogistinator : AFlameThrower
     {
