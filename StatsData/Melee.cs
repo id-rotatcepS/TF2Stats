@@ -68,7 +68,7 @@ namespace StatsData
             // TODO bleed effect AND maintenance (and 20% fire damage vuln & no random)
             Effect = new BleedEffect(5m)// AND new BuildingEffect()
             {
-                Name = "Bleed & Building Maintenance"
+                Name = "Bleeding & Building Maintenance"
             };
         }
     }
@@ -293,7 +293,7 @@ namespace StatsData
 
             Effect = new BleedEffect(5m)
             {
-                Name = "Bleed (hit self on miss)"
+                Name = "Bleeding (hit self on miss)"
             };
         }
     }

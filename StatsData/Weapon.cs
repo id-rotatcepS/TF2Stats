@@ -230,7 +230,7 @@ namespace StatsData
     {
         public BleedEffect(decimal time)
         {
-            //Name = $"Bleed({time} s)";
+            //Name = $"Bleeding({time} s)";
             Name = "Bleeding";
 
             Minimum = time;
@@ -299,7 +299,7 @@ namespace StatsData
         }
         public int Fragments { get;  set; } = 1;
         public decimal Spread { get; }
-        public string FragmentType { get;  set; } = "Pellet";
+        public string FragmentType { get;  set; } = "pellet";
         // int centerFragments
         // spread pattern
     }

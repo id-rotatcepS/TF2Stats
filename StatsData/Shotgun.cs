@@ -24,7 +24,7 @@ namespace StatsData
                 Fragmentation = new Fragmentation(spread)
                 {
                     Fragments = fragments,
-                    FragmentType = "Pellet",
+                    FragmentType = "pellet",
                 }
             };
             FireRate = 0.625m;

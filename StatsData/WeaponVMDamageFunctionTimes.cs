@@ -190,9 +190,13 @@ namespace StatsData
                 : "{0:0.#}-{1:0.#} s",
                 v.EffectMin, v.EffectMax)
             : null;
-        public string EffectLabel => v.EffectDamage.HasValue && v.EffectDamage.Value != 0 
+        public string EffectLabel => v.EffectDamage.HasValue && v.EffectDamage.Value != 0
             ? v.Effect
-            : v.Alts?.FirstOrDefault(v => (v.Effect != null && v.EffectDamage.HasValue))?.Effect;
+            : v.Alts?.FirstOrDefault(v => (v.Effect != null && v.EffectDamage.HasValue))?.Effect
+            // prefer effect that causes damage, otherwise, anything will do.
+            ?? (v.Effect != null
+            ? v.Effect
+            : v.Alts?.FirstOrDefault(v => v.Effect != null)?.Effect);
         public Visibility EffectVisibility => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0)))
             ? Visibility.Visible
             : Visibility.Collapsed;
