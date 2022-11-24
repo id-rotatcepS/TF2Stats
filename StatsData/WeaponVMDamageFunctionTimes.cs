@@ -114,17 +114,74 @@ namespace StatsData
         public Visibility SpreadVisibility => NullableVisibility((v) => v.Spread);
         public bool SpreadDiff => IfDifferent((f) => f.Spread);
 
+        public string MinimumSplashDamagePercent => PercentString(0.50m);//TODO a few items need a variable source for this fact.
+        public string MinimumSplashDamage => RadiusSize(v.SplashRadius);
+
+        private string RadiusSize(decimal? splashRadius)
+        {
+            return splashRadius.HasValue
+                ? string.Format("{0:0.##} Hu", splashRadius.Value) // TODO additional formats (m or cm, ft, then Hu)
+                : null;
+        }
+
+        public Visibility MinimumSplashVisibility => NullableVisibility((v) => v.SplashRadius);
+        public bool MinimumSplashDiff => IfDifferent((f) => f.MinimumSplashDamage) || IfDifferent((f) => f.MinimumSplashDamagePercent);
+        public string DamageReduction => DamageReductionString(v.SplashRadius);
+
+        private string DamageReductionString(decimal? splashRadius)
+        {
+            if (!splashRadius.HasValue)
+            {
+                return null;
+            }
+
+            decimal minSplashPercent = 0.50m;
+            decimal numberPercents = (1 - minSplashPercent) * 100;
+            decimal onePercentRadius = splashRadius.Value / numberPercents;
+            return string.Format("1% / {0:0.##} Hu", onePercentRadius);
+        }
+
+        public bool DamageReductionDiff => IfDifferent((f) => f.DamageReduction);
+
         public string AttackInterval => string.Format("{0:0.####} s", v.FireRate);
         public Visibility AttackIntervalVisibility => (v.FireRate != 0) || (v.Alts != null && v.Alts.Any(v => (v.FireRate != 0)))
             ? Visibility.Visible
             : Visibility.Collapsed;
         public bool AttackIntervalDiff => IfDifferent((f) => f.AttackInterval);
 
-        public string EffectDamage => v.EffectDamage.HasValue
-            ? string.Format("{0:0.#} / {1:0.#} s", WeaponVMDetail.Round(v.EffectDamage.Value), v.EffectDamageRate)
+        public string ActivationTime => v.Activation.HasValue
+            ? string.Format("{0:0.####} s", v.Activation)
             : null;
+        public Visibility ActivationTimeVisibility => (v.Activation.HasValue && v.Activation != 0) || (v.Alts != null && v.Alts.Any(v => (v.Activation.HasValue && v.Activation != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool ActivationTimeDiff => IfDifferent((f) => f.ActivationTime);
+
+        public string SpreadRecovery => v.Recovery.HasValue
+            ? string.Format("{0:0.####} s", v.Recovery)
+            : null;
+        public Visibility SpreadRecoveryVisibility => (v.Recovery.HasValue && v.Recovery != 0) || (v.Alts != null && v.Alts.Any(v => (v.Recovery.HasValue && v.Recovery != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool SpreadRecoveryDiff => IfDifferent((f) => f.SpreadRecovery);
+
+        private string EffectDamageFormat = "{0:0.#} / {1:0.#} s\n{2:0} total";
+        public string EffectDamage => v.EffectDamage.HasValue
+            ? string.Format(EffectDamageFormat, WeaponVMDetail.Round(v.EffectDamage.Value), v.EffectDamageRate, EffectDamageTotal(WeaponVMDetail.Round(v.EffectDamage.Value)))
+            : null;
+
+        private decimal EffectDamageTotal(decimal? d)
+        {
+            if (!d.HasValue)
+            {
+                return 0;
+            }
+
+            return d.Value * (v.EffectMax ?? 1) * 1m / (v.EffectDamageRate ?? 1);
+        }
+
         public string EffectMinicrit => v.EffectDamage.HasValue
-            ? string.Format("{0:0.#} / {1:0.#} s", MiniCritCalc(v.EffectDamage), v.EffectDamageRate)
+            ? string.Format(EffectDamageFormat, MiniCritCalc(v.EffectDamage), v.EffectDamageRate, EffectDamageTotal(MiniCritCalc(v.EffectDamage)))
             : null;
         public string EffectDuration => v.EffectMin.HasValue
             ? string.Format(
@@ -140,6 +197,9 @@ namespace StatsData
             ? Visibility.Visible
             : Visibility.Collapsed;
         public bool EffectDiff => IfDifferent((f) => f.EffectDamage);
+        public Visibility EffectDurationVisibility => (v.Effect != null && v.EffectMin.HasValue && v.EffectMin.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.Effect != null && v.EffectMin.HasValue && v.EffectMin.Value != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
         public bool EffectDurationDiff => IfDifferent((f) => f.EffectDuration);
         public Visibility EffectMinicritVisibility => EffectVisibility == Visibility.Visible && MiniCritVisibility == Visibility.Visible
             ? Visibility.Visible
@@ -233,7 +293,7 @@ namespace StatsData
             decimal crit = 3.0m;
             decimal longRangeMod = v.CritLongRangeMod ?? 1.0m;
             decimal closeRangeMod = v.CritZeroRangeMod ?? 1.0m;
-            if (closeRangeMod == 1.0m)
+            if (closeRangeMod == longRangeMod)
                 return CritifiedDamage(crit * longRangeMod);
             else
                 return CritifiedDamage(crit * longRangeMod, crit * closeRangeMod);
@@ -280,7 +340,7 @@ namespace StatsData
             decimal minicrit = 1.35m;
             decimal longRangeMod = v.MinicritLongRangeMod ?? 1.0m;
             decimal closeRangeMod = v.MinicritZeroRangeMod ?? 1.0m;
-            if (closeRangeMod == 1.0m)
+            if (closeRangeMod == longRangeMod)
                 return CritifiedDamage(minicrit * longRangeMod);
             else
                 return CritifiedDamage(minicrit * longRangeMod, minicrit * closeRangeMod);

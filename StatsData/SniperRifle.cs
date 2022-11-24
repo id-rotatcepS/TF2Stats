@@ -277,7 +277,7 @@ namespace StatsData
             //FireRate = 1.5;
             AlternateModes = new List<Weapon>
             {
-                new ScopedHitmansHeatmakerBodyshot(),
+                new ScopedHitmansHeatmakerBodyshot(),// Is this really worthwhile? no actual difference from a hipshot.
                 new ScopedHitmansHeatmakerHeadshot(),
                 new ChargedHitmansHeatmakerBodyshot(),
                 new ChargedHitmansHeatmakerHeadshot(),

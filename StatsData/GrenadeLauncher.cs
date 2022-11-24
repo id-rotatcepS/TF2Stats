@@ -132,8 +132,7 @@ namespace StatsData
                     Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
                     ZeroRangeRamp = 1,
                     LongRangeRamp = 0.5m, // per wiki.
-                    // wiki says crit affected by range.
-                    CritIncludesRamp = true,
+                    //CritIncludesRamp = true, // wiki sort-of says crit affected by range.  Need evidence either way.  wiki's Function times matches better without ramp included.
                 },
                 // no splash or explosion (technically explosive damage classification however)
                 // TODO increased knockback

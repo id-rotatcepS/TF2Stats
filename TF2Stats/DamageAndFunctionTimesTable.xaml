@@ -66,6 +66,12 @@
 
         </StackPanel>
 
+        <!-- TODO  -->
+        <!-- TODO Shot type 	Projectile -->
+        <!-- TODO Damage type 	Explosive -->
+        <!-- TODO Ranged or Melee damage? 	Ranged -->
+
+
         <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
             <TextBlock x:Name="DamageHeading" HorizontalAlignment="Stretch" Text="Damage" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
         </StackPanel>
@@ -154,6 +160,7 @@
             </ItemsControl>
             
         </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Visibility="{Binding BuildingVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -195,6 +202,7 @@
             </ItemsControl>
 
         </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Visibility="{Binding FarRampVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -275,6 +283,7 @@
             </ItemsControl>
 
         </StackPanel>
+
         <StackPanel Orientation="Horizontal" Visibility="{Binding PointBlankVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -311,6 +320,7 @@
             </ItemsControl>
 
         </StackPanel>
+
         <StackPanel Orientation="Horizontal" Visibility="{Binding MediumRangeVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -348,6 +358,7 @@
             </ItemsControl>
 
         </StackPanel>
+
         <StackPanel Orientation="Horizontal" Visibility="{Binding LongRangeVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -460,6 +471,7 @@
             </ItemsControl>
 
         </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Visibility="{Binding MiniCritVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -534,6 +546,7 @@
             </ItemsControl>
 
         </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Visibility="{Binding EffectMinicritVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -573,9 +586,99 @@
             </ItemsControl>
 
         </StackPanel>
+
+        <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3" Visibility="{Binding MinimumSplashVisibility}">
+            <TextBlock x:Name="SplashHeading" HorizontalAlignment="Stretch" Text="Splash damage" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Minimum splash 	50% 	83.82 cm-->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding MinimumSplashVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding MinimumSplashDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MinimumSplashRampPercent}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MinimumSplashRamp}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding MinimumSplashVisibility}">
+                            <TextBlock x:Name="MinimumSplashRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                           Text="{Binding MinimumSplashDamagePercent, FallbackValue=50%}" />
+                        </StackPanel>
+                        <TextBlock x:Name="MinimumSplashRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding MinimumSplashDamage}" Style="{StaticResource MainValue}" Visibility="{Binding MinimumSplashVisibility}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelMinimumSplashRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Minimum splash" Width="150"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <!-- Damage reduction 	1% / 0.86 -->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding MinimumSplashVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding MinimumSplashVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding DamageReductionDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=DamageReduction}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="DamageReduction" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding DamageReduction}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelDamageReduction" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Damage reduction"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <!-- TODO Self-damage 	27-89 -->
+        <!-- TODO Self damage (rocket jump) 	27-46 -->
+
+        <!-- (bfblstr) TODO Charge fill damage 	99 -->
+        <!-- TODO Healing -->
+        <!-- (crossbow, box) TODO Healing amount 	75 - 150-->
         
         <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
-            <TextBlock x:Name="FunctionHeading" HorizontalAlignment="Stretch" Text="Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
+            <TextBlock x:Name="FunctionHeading" HorizontalAlignment="Stretch" Text="Function times" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Visibility="{Binding AttackIntervalVisibility}">
@@ -615,10 +718,57 @@
 
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
+        <!-- TODO Reload (first) 	0.92 s  -->
+        <!-- Reload 	1.5 s -->
+        <!-- TODO Reload (consecutive) 	0.8 s -->
+        <!-- TODO Charge fill speed 	2.1 - 6.3 %/100 HP-->
+
+        <!-- aka Windup time 	1.16 s -->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ActivationTimeVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
-                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}"><!-- note this one shares visibility with damage, but has an independent diff-->
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding ActivationTimeVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding ActivationTimeDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=ActivationTime}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="ActivationTime" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding ActivationTime}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelActivationTime" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Activation time"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+
+        <!-- TODO Recharge time 	5.1 s -->
+        <!-- TODO Maximum charge time 	1.0 s (double-meaning - also used for shield activated charge duration-->
+
+        <!-- Effect Duration (regardless of damage) -->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectDurationVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectDurationVisibility}">
                         <Interactivity:Interaction.Behaviors>
                             <Interactions:DataTriggerBehavior Binding="{Binding EffectDurationDiff}" ComparisonCondition="Equal" Value="False">
                                 <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectDuration}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
@@ -655,5 +805,48 @@
 
         </StackPanel>
 
+        <!-- TODO Zoom-in charging delay 	1.3 s-->
+        <!-- TODO Zoom-in headshot delay 	0.2 s-->
+        <!-- TODO Ammo consumption interval 	0.105 s (followed by afterburn duration)-->
+        <!-- TODO Airblast cooldown 	0.75 s -->
+        <!-- TODO Aim fatigue 	5.0 s -->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadRecoveryVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadRecoveryVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding SpreadRecoveryDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=SpreadRecovery}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="SpreadRecovery" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding SpreadRecovery}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelSpreadRecovery" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Spread recovery"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+
     </StackPanel>
+    
 </UserControl>

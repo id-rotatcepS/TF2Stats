@@ -231,7 +231,7 @@ namespace StatsData
         public BleedEffect(decimal time)
         {
             //Name = $"Bleed({time} s)";
-            Name = "Bleed";
+            Name = "Bleeding";
 
             Minimum = time;
             Maximum = time;
