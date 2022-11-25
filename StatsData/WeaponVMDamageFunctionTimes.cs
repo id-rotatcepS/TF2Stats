@@ -5,13 +5,81 @@ using Windows.UI.Xaml;
 
 namespace StatsData
 {
-    //public class SubFunctionTime : WeaponVMDamageFunctionTimes
-    //{
-    //    public SubFunctionTime(WeaponVMDamageFunctionTimes vm,WeaponVMDamageFunctionTimes p) : base(vm., w, p)
-    //    {
-    //    }
 
-    //}
+    /* https://wiki.teamfortress.com/wiki/Template:Damage_table
+Damage parameters
+
+All damage parameters are optional.
+Parameter name 	Notes
+effect range 	
+ramp up 	
+ramp up % 	defaults to 150
+base 	
+fall off 	
+fall off % 	defaults to 52.8
+bullet count 	for miniguns
+pellet count 	for shotguns
+point blank 	
+long range 	
+flame close 	
+flame far 	
+flame far % 	
+bodyshot 	
+crit 	
+minicrit 	
+afterburn 	
+afterburn minicrit 	
+bleeding 	
+bleeding minicrit 	
+damage repaired 	
+upgrade amount 	
+metal cost repairing 	
+metal cost reloading 	
+selfdamage 	
+selfdamage jump 	for rocket launchers
+charge fill dmg 	for buff weapons
+splash damage 	Set to yes if any below are needed
+splash radius 	
+splash min % 	
+splash reduction 	
+healing 	Set to yes if any below are needed
+selfheal 	
+heal amt 	
+heal combat 	Use this and the following ones for mediguns
+heal noncombat 	
+heal noncombat % 	
+Function time parameters
+
+All function time parameters are also optional.
+Parameter name 	Notes
+attack interval 	
+ammo interval 	
+taunt duration 	
+windup time 	
+reload 	
+reload first 	shotguns, rocket launchers, etc.
+reload more 	
+consumption time 	
+cloak duration 	
+cloak fade 	
+decloak fade 	
+recharge 	
+recharge duration ratio 	
+effect time 	
+drop expiry 	
+afterburn time 	
+bleeding time 	
+airblast cooldown 	
+max charge time 	
+zoom charge delay 	
+zoom headshot delay 	
+spread recovery 
+    (not doc'd: aim fatigue; building destroy time)
+charge fill speed 	
+activation time 	
+beamconnect 	mediguns
+beamdisconnect 	mediguns 
+     */
     public class WeaponVMDamageFunctionTimes
     {
         private readonly WeaponVM v;
@@ -59,8 +127,8 @@ namespace StatsData
         public string MaximumFallOffPercent => PercentString(v.LongRangeMod);
         public string MaximumFallOff => FragmentDamage(v.LongRangeMod);
         public Visibility FarRampVisibility => PercentVisibility((v) => v.LongRangeMod);
-        public bool FarRampDiff => IfDifferent((f)=>f.MaximumFallOff);
-        
+        public bool FarRampDiff => IfDifferent((f) => f.MaximumFallOff);
+
         public string BuildingDamagePercent => PercentString(v.BuildingMod);
         public string BuildingDamage => FragmentDamage(v.BuildingMod);
         public Visibility BuildingVisibility => PercentVisibility((v) => v.BuildingMod);
@@ -90,11 +158,11 @@ namespace StatsData
 
         private Visibility NullableVisibility(Func<WeaponVM, int?> fragments)
         {
-            return (fragments.Invoke(v).HasValue || (v.Alts != null && v.Alts.Any(v=>fragments.Invoke(v).HasValue)))
+            return (fragments.Invoke(v).HasValue || (v.Alts != null && v.Alts.Any(v => fragments.Invoke(v).HasValue)))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
         }
-        
+
         private Visibility NullableVisibility(Func<WeaponVM, decimal?> fragments)
         {
             return (fragments.Invoke(v).HasValue || (v.Alts != null && v.Alts.Any(v => fragments.Invoke(v).HasValue)))
@@ -104,7 +172,7 @@ namespace StatsData
 
         private Visibility PercentVisibility(Func<WeaponVM, decimal?> buildingMod)
         {
-            Func<WeaponVM, bool> x = (v)=>buildingMod.Invoke(v).HasValue && buildingMod.Invoke(v).Value != 1.0m;
+            Func<WeaponVM, bool> x = (v) => buildingMod.Invoke(v).HasValue && buildingMod.Invoke(v).Value != 1.0m;
             return (x.Invoke(v) || (v.Alts != null && v.Alts.Any(x)))
                         ? Visibility.Visible
                         : Visibility.Collapsed;
@@ -143,12 +211,25 @@ namespace StatsData
 
         public bool DamageReductionDiff => IfDifferent((f) => f.DamageReduction);
 
+        /// <summary>
+        /// 
+        ///attack interval 	
+        /// airblast cooldown
+        /// </summary>
         public string AttackInterval => string.Format("{0:0.####} s", v.FireRate);
         public Visibility AttackIntervalVisibility => (v.FireRate != 0) || (v.Alts != null && v.Alts.Any(v => (v.FireRate != 0)))
             ? Visibility.Visible
             : Visibility.Collapsed;
         public bool AttackIntervalDiff => IfDifferent((f) => f.AttackInterval);
 
+        /// <summary>
+        /// grenade fuse; sticky explode time; melee delay; "zoom charge delay"; huntsman accurate draw time "aim fatigue"; minigun rev "windup time"; banner "taunt duration"
+        ///activation time
+        /// taunt duration
+        /// consumption time
+        ///windup time
+        ///zoom charge delay
+        /// </summary>
         public string ActivationTime => v.Activation.HasValue
             ? string.Format("{0:0.####} s", v.Activation)
             : null;
@@ -156,6 +237,34 @@ namespace StatsData
             ? Visibility.Visible
             : Visibility.Collapsed;
         public bool ActivationTimeDiff => IfDifferent((f) => f.ActivationTime);
+
+        /// <summary>
+        /// sticky arm time; "zoom headshot delay"; huntsman min charge time (unknown); 
+        /// TODO (except arm time is currently held on Projectile, so it doesn't work for headshot delay)
+        ///(arm time)
+        /// zoom headshot delay
+        /// 
+        /// </summary>
+        public string ArmTime => v.Arm.HasValue
+            ? string.Format("{0:0.####} s", v.Arm)
+            : null;
+        public Visibility ArmTimeVisibility => (v.Arm.HasValue && v.Arm != 0) || (v.Alts != null && v.Alts.Any(v => (v.Arm.HasValue && v.Arm != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool ArmTimeDiff => IfDifferent((f) => f.ArmTime);
+
+        // sticky max charge; sniper max charge time (including delay?); huntsman max charge; minigun rev max warmup; banner timed charge time
+        //max charge time
+        // recharge
+        // drop expiry
+        //TODO public string MaxChargeTime =>
+
+        //ammo interval
+        //TODO public string AmmoInterval =>
+
+        //recharge duration ratio
+
+        //charge fill speed
 
         public string SpreadRecovery => v.Recovery.HasValue
             ? string.Format("{0:0.####} s", v.Recovery)
@@ -258,8 +367,6 @@ namespace StatsData
 
             decimal rangeMod = longRangeMod ?? 1.0m;
             decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
-            //for a while I was using Math.Round(... , MidpointRounding.ToEven);
-            // but I didn't explain why...must have fixed something, but broke other stuff.
             if (fragments.HasValue)
             {
                 decimal oneFragDamage = rangeMod * baseDamage.Value / fragments.Value;
@@ -287,7 +394,7 @@ namespace StatsData
             Func<WeaponVM, bool> x = (v) => rangeMod.Invoke(v).HasValue
                  && (v.Fragments.HasValue || v.SplashRadius.HasValue);
             return
-               (x.Invoke(v)|| (v.Alts != null && v.Alts.Any(x)))
+               (x.Invoke(v) || (v.Alts != null && v.Alts.Any(x)))
                 ? Visibility.Visible
                 : Visibility.Collapsed;
         }
@@ -301,31 +408,6 @@ namespace StatsData
                 return CritifiedDamage(crit * longRangeMod);
             else
                 return CritifiedDamage(crit * longRangeMod, crit * closeRangeMod);
-
-            ////decimal? longRangeMod = v.LongRangeMod;
-            //decimal? baseDamage = v.BaseDamage;
-            //int? fragments = v.Fragments;
-
-            //if (!baseDamage.HasValue || !v.CanCrit)
-            //{
-            //    return string.Empty;
-            //}
-
-            //decimal rangeMod = 3.0m;// longRangeMod ?? 1.0m;
-            //decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
-            ////for a while I was using Math.Round(... , MidpointRounding.ToEven);
-            //// but I didn't explain why...must have fixed something, but broke other stuff.
-            //if (fragments.HasValue)
-            //{
-            //    decimal oneFragDamage = rangeMod * baseDamage.Value / fragments.Value;
-            //    return string.Format("{1:0}, {0:0.####} / {2}",
-            //         oneFragDamage,
-            //         fullDamage,
-            //         v.FragmentType);
-            //}
-
-            //return string.Format("{0:0}",
-            //    fullDamage);
         }
 
         private decimal? MiniCritCalc(decimal? baseDamage, decimal range = 1.0m)
@@ -364,7 +446,6 @@ namespace StatsData
             {
                 decimal oneFragDamage = longRangeMod * baseDamage.Value / fragments.Value;
                 decimal closeDamage = WeaponVMDetail.Round(closeRangeMod * baseDamage.Value);
-                //Math.Round(rangeMode * closeRangeMod.Value * baseDamage.Value, MidpointRounding.ToEven);
                 decimal oneCloseFragDamage = closeRangeMod * baseDamage.Value / fragments.Value;
                 return string.Format("{1:0} - {4:0} ({0:0.####} - {3:0.####} / {2})",
                     oneFragDamage, fullDamage,
@@ -373,11 +454,7 @@ namespace StatsData
             }
             else
             {
-                decimal closeDamage = WeaponVMDetail.Round(
-                    //Math.Round(
-                    closeRangeMod * baseDamage.Value
-                    //, MidpointRounding.ToEven);//TODO umm..different rounding why? pretty sure it was needed, but maybe I just forgot
-                    );
+                decimal closeDamage = WeaponVMDetail.Round(closeRangeMod * baseDamage.Value);
                 return string.Format("{0:0} - {1:0}",
                     fullDamage, closeDamage);
             }
@@ -429,12 +506,11 @@ namespace StatsData
             // some things on the wiki use decimals but most don't
             return string.Format("{0:0}",
                 WeaponVMDetail.Round(rangeMod * baseDamage.Value));
-            //TODO for a while I was using this style and thought it fixed something, but what? still needed? Math.Round(rangeMode * baseDamage.Value, MidpointRounding.ToEven));
         }
 
         private string PercentString(decimal? zeroRangeMod)
         {
-            return zeroRangeMod.HasValue 
+            return zeroRangeMod.HasValue
                 ? string.Format("{0:0.#}%", zeroRangeMod.Value * 100.0m)
                 : string.Empty;
         }

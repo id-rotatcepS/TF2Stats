@@ -453,7 +453,7 @@ namespace StatsData
         }
         private ObservableCollection<WeaponVM> rows = null;
 
-        private bool _IsIncludingAlternates = true;
+        private bool _IsIncludingAlternates = false;
 
         public bool IsIncludingAlternates
         {

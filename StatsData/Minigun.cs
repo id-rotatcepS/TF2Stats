@@ -235,10 +235,10 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>()
             {
+                new HuoLongHeaterBurningTarget(),
                 new HuoLongHeaterCold(),
-                new HuoLongHeaterFireRing(),
-                new HuoLongHeaterBurningTarget()
                 //TODO and coldburning
+                new HuoLongHeaterFireRing(),
             };
         }
     }

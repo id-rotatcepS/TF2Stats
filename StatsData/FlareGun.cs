@@ -64,7 +64,7 @@ namespace StatsData
             // 10s and crit damage on burning players
             Effect = new AfterburnEffect(10m)
             {
-                Name = "Crit; Afterburn(10 s)"
+                Name = "Crit; Afterburn"
             };
         }
     }
@@ -109,13 +109,13 @@ namespace StatsData
         public DetonatorExplosion()
             : base(22.5m,//23
                  2000,
-                 AOE.DEFAULT_SPLASH * 1)
+                 AOE.FLARE_SPLASH)
         {
             Name = "(triggered)";
 
             Effect = new AfterburnEffect(7.5m)
             {
-                Name = "Destroy Stickybombs; Afterburn(7.5 s)"
+                Name = "Destroy Stickybombs; Afterburn"
             };
         }
     }
@@ -130,7 +130,7 @@ namespace StatsData
 
             Effect = new AfterburnEffect(10m)
             {
-                Name = "Mini-Crit; Afterburn(10 s)"
+                Name = "Mini-Crit; Afterburn"
             };
         }
     }
@@ -187,7 +187,7 @@ namespace StatsData
         public ScorchShot()
             : base(19.5m,//20
                  2000,
-                 AOE.DEFAULT_SPLASH * 1)
+                 AOE.FLARE_SPLASH)
         {
             Name = "Scorch Shot";
 
@@ -205,7 +205,7 @@ namespace StatsData
 
             Effect = new AfterburnEffect(7.5m)
             {
-                Name = "Knockback; Destroy Stickybombs; Afterburn(7.5 s)"
+                Name = "Knockback; Destroy Stickybombs; Afterburn"
             };
 
             AlternateModes = new List<Weapon>()
@@ -221,13 +221,13 @@ namespace StatsData
         public ScorchShotBurningTarget()
             : base(19.5m,//20
                  2000,
-                 AOE.DEFAULT_SPLASH * 1)
+                 AOE.FLARE_SPLASH)
         {
             Name = "(burning)";
 
             Effect = new AfterburnEffect(10m)
             {
-                Name = "Extra Knockback; Mini-Crit; Destroy Stickybombs; Afterburn(10 s)"
+                Name = "Extra Knockback; Mini-Crit; Destroy Stickybombs; Afterburn"
             };
         }
     }

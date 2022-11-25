@@ -223,7 +223,7 @@ WeaponData
 
             Effect = new AfterburnEffect(3)
             {
-                Name = "Afterburn(3s, additive); Pyro Afterburn (1s)"
+                Name = "Afterburn(additive); Pyro Afterburn (1s)"
             };
         }
     }
@@ -237,11 +237,20 @@ WeaponData
             AlternateModes = new List<Weapon>
             {
                 new DragonsFuryBurning(),
-                new DragonsFuryPostHit(),
                 new DragonsFuryRampage(),
-                new CompressionBlast(),//TODO special variation due to cost
+                new DragonsFuryPostHit(),
                 new DragonsFuryPostCompressionBlast(),
+                new DragonsFuryCompressionBlast(),
             };
+        }
+    }
+
+    internal class DragonsFuryCompressionBlast : CompressionBlast
+    {
+        public DragonsFuryCompressionBlast()
+        {
+            //TODO cost
+            FireRate = 1.6m;
         }
     }
 

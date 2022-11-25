@@ -88,7 +88,7 @@
                                 <StackPanel BorderBrush="Aqua" BorderThickness="2">
                                     <TextBlock Text="{Binding Name}"/>
                             
-                                    <local:DamageAndFunctionTimesTable DataContext="{Binding Detail.FunctionTimes}"/>
+                                    <!--<local:DamageAndFunctionTimesTable DataContext="{Binding Detail.FunctionTimes}"/>-->
                             
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>Effect:</TextBlock>

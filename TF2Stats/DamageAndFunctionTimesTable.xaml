@@ -681,6 +681,7 @@
             <TextBlock x:Name="FunctionHeading" HorizontalAlignment="Stretch" Text="Function times" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
         </StackPanel>
 
+        <!-- TODO I think this should include: Airblast cooldown 	0.75 s -->
         <StackPanel Orientation="Horizontal" Visibility="{Binding AttackIntervalVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -723,7 +724,46 @@
         <!-- TODO Reload (consecutive) 	0.8 s -->
         <!-- TODO Charge fill speed 	2.1 - 6.3 %/100 HP-->
 
+        <!-- TODO somehow include: Zoom-in headshot delay 	0.2 s-->
         <!-- aka Windup time 	1.16 s -->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ArmTimeVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding ArmTimeVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding ArmTimeDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=ArmTime}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="ArmTime" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding ArmTime}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelArmTime" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Arm time"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <!-- TODO includes Aim fatigue 	5.0 s -->
+        <!-- TODO includes Zoom-in charging delay 	1.3 s-->
         <StackPanel Orientation="Horizontal" Visibility="{Binding ActivationTimeVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -805,11 +845,7 @@
 
         </StackPanel>
 
-        <!-- TODO Zoom-in charging delay 	1.3 s-->
-        <!-- TODO Zoom-in headshot delay 	0.2 s-->
         <!-- TODO Ammo consumption interval 	0.105 s (followed by afterburn duration)-->
-        <!-- TODO Airblast cooldown 	0.75 s -->
-        <!-- TODO Aim fatigue 	5.0 s -->
         <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadRecoveryVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">

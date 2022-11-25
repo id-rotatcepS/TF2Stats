@@ -27,7 +27,7 @@ namespace StatsData
             FireRate = 0.6m;
 
             //fuse (if no impact or contact with surfaces):
-            ActivationTime = 2.3m;//wiki text says 2.3s;//TODO bad use of ActivationTime?
+            ActivationTime = 2.3m;//wiki text says 2.3s;
         }
     }
 
@@ -61,12 +61,10 @@ namespace StatsData
                     LongRangeRamp = 1,
                 },
                 Splash = new AOE(splashRadius),
-                // Using Armtime=fuse time to express it doesn't explode on impact when it's a roller.
-                ArmTime = 2.3m,
             };
             FireRate = 0.6m;
             //fuse:
-            ActivationTime = 2.3m;//wiki text says 2.3s;//TODO bad use of ActivationTime?
+            ActivationTime = 2.3m;//wiki text says 2.3s;
         }
     }
 
@@ -141,6 +139,7 @@ namespace StatsData
             };
             FireRate = 0.6m;
 
+            ActivationTime = 0;// direct hits have no activation time, just roller fuses
             Effect = new Effect()
             {
                 Name = "Donk (take mini-crit & no-radius-falloff fuse explosion (double-donk))",
@@ -160,8 +159,6 @@ namespace StatsData
         public LooseCannonFuse()
         {
             Name = "(fuse)";
-            // Using Armtime=fuse time to express it doesn't explode on impact when it's a roller.
-            Projectile.ArmTime = 1.0m;
 
             ActivationTime = 1.0m;// "Cannonballs have a fuse time of 1 second; fuses can be primed to explode earlier by holding down the fire key."
         }
@@ -188,7 +185,6 @@ namespace StatsData
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 0.85)
             //};
             //FireRate = 0.6;
-            Projectile.ArmTime = 1.61m; //2.3 s * 0.70 = 1.61 s
             ActivationTime = 1.61m;
 
             AlternateModes = new List<Weapon>()
@@ -220,8 +216,6 @@ namespace StatsData
             //};
             //FireRate = 0.6;
             ////fuse:
-            // Using Armtime=fuse time to express it doesn't explode on impact when it's a roller.
-            Projectile.ArmTime = 1.61m;
             ActivationTime = 1.61m;//I had 2.0m;... but that's not 2.3m -30%
         }
     }

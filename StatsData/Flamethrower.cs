@@ -106,8 +106,8 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
+                new FlameThrowerMaxExposure(),
                 new CompressionBlast(),
-                new FlameThrowerMaxExposure()
             };
         }
     }
@@ -156,9 +156,9 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
-                new CompressionBlast(),//TODO More expensive
-                new FlameThrowerMaxExposure()
+                new FlameThrowerMaxExposure(),
                 //TODO ?FromBack, Effect: crit
+                new CompressionBlast(),//TODO More expensive
             };
         }
     }
@@ -172,8 +172,8 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
+                new DegreaserMaxExposure(),
                 new CompressionBlast(), //TODO more expensive
-                new DegreaserMaxExposure()
             };
 
             Effect = NewDegreaserAfterburn();
@@ -219,7 +219,7 @@ namespace StatsData
             // no compression blast
             AlternateModes = new List<Weapon>
             {
-                new FlameThrowerMaxExposure()
+                new FlameThrowerMaxExposure(),
                 //TODO phlog crits for 10 seconds
             };
         }

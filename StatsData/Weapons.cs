@@ -187,8 +187,8 @@ namespace StatsData
             FireRate = 1.94m;
             AlternateModes = new List<Weapon>
             {
+                new HuntsmanCharged(),
                 new HuntsmanLit(),
-                new HuntsmanCharged()
             };
 
             Effect = new Effect()

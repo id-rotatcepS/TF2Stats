@@ -14,6 +14,11 @@ namespace StatsData
         public List<Weapon> AlternateModes { get; protected set; }
 
         public decimal FireRate { get; protected set; }
+        /// <summary>
+        /// most post-click time before damage.
+        /// Melee delay, Grenade Fuse, sticky post-trigger time; "zoom charge delay"; huntsman accurate draw time "aim fatigue"; minigun rev "windup time"; banner "taunt duration"
+        /// (see Projectile for ArmTime ... but zoom headshot delay is elsewhere)
+        /// </summary>
         public decimal ActivationTime { get; protected set; } = 0; // rev up, scope
 
         // Switch times holster/draw
@@ -251,6 +256,10 @@ namespace StatsData
     public class AOE
     {
         public const decimal DEFAULT_SPLASH = 146;//Hu
+        //"...a small blast radius which damages and ignites nearby enemy players..."
+        //July 2, 2015 Patch #1 (Gun Mettle Update)
+        // Increased the blast radius from flares from 92Hu to 110Hu.
+        public const decimal FLARE_SPLASH = 110m;
         public const decimal DEFAULT_BANNER = 450;
         public AOE() : this(DEFAULT_SPLASH)
         {
