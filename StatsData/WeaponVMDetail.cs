@@ -337,17 +337,23 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
 
         private string GetSpeedAccuracy()
         {
+            int speedAccuracy = GetSpeedAccuracyValue(v);
+            decimal projectileSpeed = (v?.Speed ?? 0);
+            return $"{speedAccuracy}% (projectile, {projectileSpeed}Hu/s)";
+
+            //closes range in {{#expr:(512/{{{V}}})round1}} {{common strings|seconds}}, accurate at {{#expr:(( ((49/2)/300) *{{{V}}})/512*100)round0}}% range
+            //return $"closes range in {round1((512 / speed))} seconds, accurate at {round0(((((49 / 2) / 300) * speed) / 512 * 100))}% range";
+        }
+
+        public static int GetSpeedAccuracyValue(WeaponVM v)
+        {
             decimal projectileSpeed = (v?.Speed ?? 0);
             //{{#expr:(( ((49/2)/300) *{{{V|0}}})/512*100)round0}}% ({{tooltip|projectile|{{{V}}}{{common strings|Hus}}}})
             decimal maxTimeInImpactZone = (49.0m / 2.0m) / 300.0m; // (targetSize/2) / targetMoveSpeed
             decimal maxDistanceToHitImpactZone = maxTimeInImpactZone * projectileSpeed;
             decimal percentOfRange = maxDistanceToHitImpactZone / 512.0m;
 
-            int speedAccuracy = round0(percentOfRange * 100.0m);
-            return $"{speedAccuracy}% (projectile, {projectileSpeed}Hu/s)";
-
-            //closes range in {{#expr:(512/{{{V}}})round1}} {{common strings|seconds}}, accurate at {{#expr:(( ((49/2)/300) *{{{V}}})/512*100)round0}}% range
-            //return $"closes range in {round1((512 / speed))} seconds, accurate at {round0(((((49 / 2) / 300) * speed) / 512 * 100))}% range";
+            return round0(percentOfRange * 100.0m);
         }
 
         private string GetSplashAccuracy()
@@ -355,9 +361,19 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             decimal speed = (v?.Speed ?? 0);
             decimal splash = (v?.SplashRadius ?? 1.0m);
 
-            //{{#expr:(( ((49/2)/300) *({{{V|0}}}+0))/512*100)round0}}% ({{tooltip|projectile|{{{V}}}{{common strings|Hus}}}})<br/>{{#expr:({{User:RotatcepS/tests/AccurateRange|C=0|V={{{V|0}}}|E={{{E|1.0}}}}}/512*100)round0}}% (projectile {{tooltip|splash|{{#expr:{{{E|1}}}*146}}Hu radius}})
-            int splashAccuracy = round0(AccurateRange(0, speed, splash) / 512.0m * 100.0m);
+            ////{{#expr:(( ((49/2)/300) *({{{V|0}}}+0))/512*100)round0}}% ({{tooltip|projectile|{{{V}}}{{common strings|Hus}}}})<br/>{{#expr:({{User:RotatcepS/tests/AccurateRange|C=0|V={{{V|0}}}|E={{{E|1.0}}}}}/512*100)round0}}% (projectile {{tooltip|splash|{{#expr:{{{E|1}}}*146}}Hu radius}})
+            //int splashAccuracy = round0(AccurateRange(0, speed, splash) / 512.0m * 100.0m);
+            int splashAccuracy = GetSplashAccuracyValue(v);
             return $"{splashAccuracy}% (projectile splash, {speed}Hu/s {splash}Hu radius)";
+        }
+
+        public static int GetSplashAccuracyValue(WeaponVM v)
+        {
+            decimal speed = (v?.Speed ?? 0);
+            decimal splash = (v?.SplashRadius ?? 1.0m);
+
+            //{{#expr:(( ((49/2)/300) *({{{V|0}}}+0))/512*100)round0}}% ({{tooltip|projectile|{{{V}}}{{common strings|Hus}}}})<br/>{{#expr:({{User:RotatcepS/tests/AccurateRange|C=0|V={{{V|0}}}|E={{{E|1.0}}}}}/512*100)round0}}% (projectile {{tooltip|splash|{{#expr:{{{E|1}}}*146}}Hu radius}})
+            return round0(AccurateRange(0, speed, splash) / 512.0m * 100.0m);
         }
 
         private static decimal AccurateRange(decimal spread, decimal speed, decimal splashradius) => WeaponVM.GetAccurateRange(spread, speed, splashradius);
@@ -376,21 +392,28 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
 
         private string GetSpreadAccuracy()
         {
-            decimal speed = (v?.Speed ?? 0);
-            //{{#expr:({{User:RotatcepS/tests/AccurateRange|C={{{S|0}}}|V=0|E=0}}/512*100)round0}}% ({{tooltip|shot spread|one accurate {{{pellet|pellet}}} of {{{F}}} {{{pellet|pellet}}}s per shot}})
-            int spreadAccuracy = round0(AccurateRange(v?.Spread ?? 0, speed, v?.SplashRadius ?? 0) / 512.0m * 100.0m);
+            int spreadAccuracy = GetSpreadAccuracyValue(v);
+            //decimal speed = (v?.Speed ?? 0);
+            ////{{#expr:({{User:RotatcepS/tests/AccurateRange|C={{{S|0}}}|V=0|E=0}}/512*100)round0}}% ({{tooltip|shot spread|one accurate {{{pellet|pellet}}} of {{{F}}} {{{pellet|pellet}}}s per shot}})
+            //int spreadAccuracy = round0(AccurateRange(v?.Spread ?? 0, speed, v?.SplashRadius ?? 0) / 512.0m * 100.0m);
             return $"{spreadAccuracy}% (shot spread, {v?.Fragments} {v?.FragmentType}s)";
         }
 
         private string GetRecoveryAccuracy()
         {
-            decimal speed = (v?.Speed ?? 0);
-            //{{#expr:({{User:RotatcepS/tests/AccurateRange|C={{{S|0}}}|V=0|E=0}}/512*100)round0}}% ({{tooltip|recoil spread|starts with one accurate shot with {{{recovery}}} {{common strings|seconds}} recovery}})
-            int recoveryAccuracy = round0(AccurateRange(v?.Spread ?? 0, speed, v?.SplashRadius ?? 0) / 512.0m * 100.0m);
+            int recoveryAccuracy = GetSpreadAccuracyValue(v);
             return $"{recoveryAccuracy}% (recoil spread, {v?.Recovery} sec recovery)";
         }
 
-        private int round0(decimal v)
+        public static int GetSpreadAccuracyValue(WeaponVM v)
+        {
+            decimal speed = (v?.Speed ?? 0);
+            //{{#expr:({{User:RotatcepS/tests/AccurateRange|C={{{S|0}}}|V=0|E=0}}/512*100)round0}}% ({{tooltip|recoil spread|starts with one accurate shot with {{{recovery}}} {{common strings|seconds}} recovery}})
+            int recoveryAccuracy = round0(AccurateRange(v?.Spread ?? 0, speed, v?.SplashRadius ?? 0) / 512.0m * 100.0m);
+            return recoveryAccuracy;
+        }
+
+        private static int round0(decimal v)
         {
             return Round(v);
         }

@@ -883,6 +883,189 @@
 
         </StackPanel>
 
+        <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
+            <TextBlock x:Name="CustomHeading" HorizontalAlignment="Stretch" Text="Custom Information" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadAmountVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadAmountVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding SpreadAmountDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=SpreadAmount}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="SpreadAmount" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding SpreadAmount}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelSpreadAmount" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Spread Amount"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding VelocityVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding VelocityVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding VelocityDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=Velocity}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="Velocity" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding Velocity}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelVelocity" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Velocity"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding MaxRangeVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding MaxRangeVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding MaxRangeDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MaxRange}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="MaxRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding MaxRange}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelMaxRange" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Max Range"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding DPSVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding DPSVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding DPSDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=DPS}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="DPS" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding DPS}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelDPS" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Damage Per Second (DPS)"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding AccuracyVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding AccuracyVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding AccuracyDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=Accuracy}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="Accuracy" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding Accuracy}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelAccuracy" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Accurate Range"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
     </StackPanel>
     
 </UserControl>

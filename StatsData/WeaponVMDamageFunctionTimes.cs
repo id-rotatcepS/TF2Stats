@@ -319,6 +319,74 @@ beamdisconnect 	mediguns
             : Visibility.Collapsed;
         public bool EffectMinicritDiff => IfDifferent((f) => f.EffectMinicrit);
 
+        public string Velocity => v.Speed.HasValue
+            ? string.Format("{0:0.##} HU/s", v.Speed.Value)
+            : null;
+        public Visibility VelocityVisibility => v.Speed.HasValue || (v.Alts != null && v.Alts.Any(v => v.Speed.HasValue))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool VelocityDiff => IfDifferent((f) => f.Velocity);
+        
+        public string SpreadAmount => v.Spread.HasValue
+            ? string.Format("{0:0.#####}", v.Spread.Value)
+            : null;
+        public Visibility SpreadAmountVisibility => v.Spread.HasValue || (v.Alts != null && v.Alts.Any(v => v.Spread.HasValue))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool SpreadAmountDiff => IfDifferent((f) => f.SpreadAmount);
+
+        public string MaxRange => v.MaxRange.HasValue
+            ? string.Format("{0:0.##} HU", v.MaxRange.Value)
+            : null;
+        public Visibility MaxRangeVisibility => v.MaxRange.HasValue || (v.Alts != null && v.Alts.Any(v => v.MaxRange.HasValue))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool MaxRangeDiff => IfDifferent((f) => f.MaxRange);
+
+        public string Accuracy => GetAccuracy();
+        private string GetAccuracy()
+        {
+            string all = string.Empty;
+
+            if (v.Spread.HasValue && v.Spread.Value > 0)
+            {
+                int spreadAccuracy = WeaponVMDetail.GetSpreadAccuracyValue(v);
+                if (all.Length > 0) all += "\n";
+                all += string.Format("{0}% (spread)", spreadAccuracy);
+            }
+            if (v.Speed.HasValue && v.Speed.Value > 0)
+            {
+                int speedAccuracy = WeaponVMDetail.GetSpeedAccuracyValue(v);
+                if (all.Length > 0) all += "\n";
+                all += string.Format("{0}% (impact)", speedAccuracy);
+            }
+            if (v.SplashRadius.HasValue && v.SplashRadius.Value > 0)
+            {
+                int speedSplashAccuracy = WeaponVMDetail.GetSplashAccuracyValue(v);
+                if (all.Length > 0) all += "\n";
+                all += string.Format("{0}% (splash)", speedSplashAccuracy);
+            }
+            if (v.MaxRange.HasValue && v.MaxRange.Value > 0)
+            {
+                if (all.Length > 0) all += "\n";
+                all += string.Format("{0:0.}% (max)", v.MaxRange / 512.0m * 100.0m);
+            }
+
+            return all;
+        }
+        public Visibility AccuracyVisibility => v.Spread.HasValue || v.Speed.HasValue || v.SplashRadius.HasValue || v.MaxRange.HasValue
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool AccuracyDiff => IfDifferent((f) => f.Accuracy);
+
+        public string DPS => v.DPS.HasValue
+            ? string.Format("{0:0.##}", v.DPS.Value)
+            : null;
+        public Visibility DPSVisibility => v.DPS.HasValue || (v.Alts != null && v.Alts.Any(v => v.DPS.HasValue))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool DPSDiff => IfDifferent((f) => f.DPS);
+
         /// <summary>
         /// calculation based on https://imgur.com/a/ZmWeqe9
         /// (however, that example uses a different value for shotgun spread than it should.)
@@ -405,9 +473,9 @@ beamdisconnect 	mediguns
             decimal longRangeMod = v.CritLongRangeMod ?? 1.0m;
             decimal closeRangeMod = v.CritZeroRangeMod ?? 1.0m;
             if (closeRangeMod == longRangeMod)
-                return CritifiedDamage(crit * longRangeMod);
+                return CritifiedDamage(crit * longRangeMod, v.CanCrit);
             else
-                return CritifiedDamage(crit * longRangeMod, crit * closeRangeMod);
+                return CritifiedDamage(crit * longRangeMod, crit * closeRangeMod, v.CanCrit);
         }
 
         private decimal? MiniCritCalc(decimal? baseDamage, decimal range = 1.0m)
@@ -427,17 +495,17 @@ beamdisconnect 	mediguns
             decimal longRangeMod = v.MinicritLongRangeMod ?? 1.0m;
             decimal closeRangeMod = v.MinicritZeroRangeMod ?? 1.0m;
             if (closeRangeMod == longRangeMod)
-                return CritifiedDamage(minicrit * longRangeMod);
+                return CritifiedDamage(minicrit * longRangeMod, v.CanMinicrit);
             else
-                return CritifiedDamage(minicrit * longRangeMod, minicrit * closeRangeMod);
+                return CritifiedDamage(minicrit * longRangeMod, minicrit * closeRangeMod, v.CanMinicrit);
         }
 
-        private string CritifiedDamage(decimal longRangeMod, decimal closeRangeMod)
+        private string CritifiedDamage(decimal longRangeMod, decimal closeRangeMod, bool can)
         {
             decimal? baseDamage = v.BaseDamage;
             int? fragments = v.Fragments;
 
-            if (!baseDamage.HasValue || !v.CanMinicrit)
+            if (!baseDamage.HasValue || !can)
             {
                 return string.Empty;
             }
@@ -459,12 +527,12 @@ beamdisconnect 	mediguns
                     fullDamage, closeDamage);
             }
         }
-        private string CritifiedDamage(decimal longRangeMod)
+        private string CritifiedDamage(decimal longRangeMod, bool can)
         {
             decimal? baseDamage = v.BaseDamage;
             int? fragments = v.Fragments;
 
-            if (!baseDamage.HasValue || !v.CanMinicrit)
+            if (!baseDamage.HasValue || !can)
             {
                 return string.Empty;
             }

@@ -52,7 +52,7 @@
                         <TextBlock>Effect:</TextBlock>
                         <TextBlock Text="{Binding Effect}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                    <!--<StackPanel Orientation="Horizontal">
                         <TextBlock>Accuracy:</TextBlock>
                         <StackPanel Orientation="Vertical">
                             <TextBlock Text="{Binding Detail.Accuracy}"/>
@@ -63,7 +63,7 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>DPS:</TextBlock>
                         <TextBlock Text="{Binding Detail.DPS}"/>
-                    </StackPanel>
+                    </StackPanel>-->
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="4,1">Damage:</TextBlock>
@@ -94,7 +94,7 @@
                                         <TextBlock>Effect:</TextBlock>
                                         <TextBlock Text="{Binding Effect}"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
+                                    <!--<StackPanel Orientation="Horizontal">
                                         <TextBlock>Accuracy:</TextBlock>
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock Text="{Binding Detail.Accuracy}"/>
@@ -105,7 +105,7 @@
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>DPS:</TextBlock>
                                         <TextBlock Text="{Binding Detail.DPS}"/>
-                                    </StackPanel>
+                                    </StackPanel>-->
                                 </StackPanel>
                                 
                             </DataTemplate>

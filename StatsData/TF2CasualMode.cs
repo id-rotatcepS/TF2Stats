@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -428,30 +429,26 @@ namespace StatsData
         //    set { _selectedWeapon = value; }
         //}
 
-        public ObservableCollection<WeaponVM> WeaponCollection
+        private ObservableCollection<WeaponVM> rows = null;
+        public ObservableCollection<WeaponVM> WeaponCollection => rows ?? (rows = CreateWeaponCollection());
+
+        private ObservableCollection<WeaponVM> CreateWeaponCollection()
         {
-            get
+            ObservableCollection<WeaponVM> rows = new ObservableCollection<WeaponVM>();
+            foreach (Weapon w in Weapons)
             {
-                if (rows == null)
+                rows.Add(new WeaponVM(w));
+                if (IsIncludingAlternates && w.AlternateModes != null)
                 {
-                    rows = new ObservableCollection<WeaponVM>();
-                    foreach (Weapon w in Weapons)
+                    foreach (Weapon x in w.AlternateModes)
                     {
-                        rows.Add(new WeaponVM(w));
-                        if (IsIncludingAlternates && w.AlternateModes != null)
-                        {
-                            foreach (Weapon x in w.AlternateModes)
-                            {
-                                if (x != null)
-                                    rows.Add(new WeaponVM(x, w));
-                            }
-                        }
+                        if (x != null)
+                            rows.Add(new WeaponVM(x, w));
                     }
                 }
-                return rows;
             }
+            return rows;
         }
-        private ObservableCollection<WeaponVM> rows = null;
 
         private bool _IsIncludingAlternates = false;
 
