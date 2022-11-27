@@ -89,7 +89,7 @@ namespace StatsData
             //};
             //FireRate = 1.5;
 
-            Effect = null;//no crit on headshot
+            Effects.Clear();//no crit on headshot
 
             AlternateModes = new List<Weapon>
             {

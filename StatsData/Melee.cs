@@ -66,10 +66,8 @@ namespace StatsData
             //FireRate = 0.8;
 
             // TODO bleed effect AND maintenance (and 20% fire damage vuln & no random)
-            Effect = new BleedEffect(5m)// AND new BuildingEffect()
-            {
-                Name = "Bleeding & Building Maintenance"
-            };
+            Effect = new BleedEffect(5m);
+            // AND new BuildingEffect() (already added by superclass)
         }
     }
 
@@ -338,10 +336,14 @@ namespace StatsData
 
             Effect = new Effect()
             {
-                Name = "Marked For Death (only one); Crits on minicrit",
+                Name = "Marked For Death (only one)",
                 Minimum = 15m,
                 Maximum = 15m,
             };
+            Effects.Add(new Effect()
+            {
+                Name = "Crits on minicrit"
+            });
         }
     }
 

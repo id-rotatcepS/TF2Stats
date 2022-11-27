@@ -33,6 +33,7 @@ namespace StatsData
         public MediGunCritHeals()
         {
             Name = "Crit Heals";
+            Effects.Clear();
             Effect = new Effect()
             {
                 Name = "Target Healing Out of Combat",
@@ -161,6 +162,7 @@ namespace StatsData
                 //},
                 MaxRange = 450
             };
+            Effects.Clear();
             Effect = new Effect()
             {
                 Name = "Target Healing",
@@ -193,6 +195,7 @@ namespace StatsData
                 //},
                 MaxRange = 450
             };
+            Effects.Clear();
             Effect = new Effect()
             {
                 Name = "Target Healing",
@@ -223,6 +226,7 @@ namespace StatsData
                 MaxRange = 450
             };
             AreaOfEffect = new AOE(540);
+            Effects.Clear();
             Effect = new Effect()
             {
                 Name = "Target Healing Out of Combat",
@@ -247,6 +251,7 @@ namespace StatsData
                 //},
                 MaxRange = 450
             };
+            Effects.Clear();
             Effect = new Effect()
             {
                 Name = "Quickfix Uber Target Healing",
@@ -272,6 +277,7 @@ namespace StatsData
                 MaxRange = 450
             };
             AreaOfEffect = new AOE(540);
+            Effects.Clear();
             Effect = new Effect()
             {
                 Name = "Quickfix Uber Target Healing Out of Combat",
@@ -297,6 +303,7 @@ namespace StatsData
                 //},
                 MaxRange = 450
             };
+            Effects.Clear();
             Effect = new Effect()
             {
                 Name = "Target Healing",

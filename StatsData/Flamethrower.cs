@@ -73,7 +73,6 @@ namespace StatsData
         {
             decimal answer = 0;
             decimal speed = startSpeed;
-            int j = 0;
             for (decimal i = 0; i <= travelTime; i += dragIncrement)
             {
                 speed = speed * (100.0m - drag) / 100.0m;
@@ -92,6 +91,7 @@ namespace StatsData
         {
             Name = "flamethrower (max exposure/buildings)";
 
+            Effects.Clear();
             Effect = new AfterburnEffect(10);
 
         }
@@ -176,6 +176,7 @@ namespace StatsData
                 new CompressionBlast(), //TODO more expensive
             };
 
+            Effects.Clear();
             Effect = NewDegreaserAfterburn();
         }
 
@@ -204,6 +205,7 @@ namespace StatsData
         {
             Name = "(max exposure/buildings)";
 
+            Effects.Clear();
             Effect = Degreaser.NewDegreaserAfterburn(10m);
         }
     }

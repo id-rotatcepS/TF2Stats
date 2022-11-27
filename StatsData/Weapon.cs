@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace StatsData
 {
@@ -23,7 +24,12 @@ namespace StatsData
 
         // Switch times holster/draw
 
-        public Effect Effect { get; protected set; }
+        public Effect Effect
+        {
+            get => Effects.FirstOrDefault();
+            protected set => Effects.Insert(0, value);
+        }
+        public List<Effect> Effects { get; } = new List<Effect>();
 
         public AOE AreaOfEffect { get; protected set; } // banner, medic target heal & target maintain
         public Melee Melee { get; protected set; } // melee; medic target hit & activate AOE (but does connect use hitbox or hitscan?)

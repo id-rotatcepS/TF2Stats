@@ -62,10 +62,11 @@ namespace StatsData
             Name = "(burning)";
 
             // 10s and crit damage on burning players
-            Effect = new AfterburnEffect(10m)
+            Effect = new AfterburnEffect(10m);
+            Effects.Add(new Effect
             {
-                Name = "Crit; Afterburn"
-            };
+                Name = "Crit"
+            });
         }
     }
 
@@ -113,10 +114,11 @@ namespace StatsData
         {
             Name = "(triggered)";
 
-            Effect = new AfterburnEffect(7.5m)
+            Effect = new AfterburnEffect(7.5m);
+            Effects.Add(new Effect()
             {
-                Name = "Destroy Stickybombs; Afterburn"
-            };
+                Name = "Destroy Stickybombs"
+            });
         }
     }
 
@@ -128,10 +130,11 @@ namespace StatsData
         {
             Name = "(burning)";
 
-            Effect = new AfterburnEffect(10m)
+            Effect = new AfterburnEffect(10m);
+            Effects.Add(new Effect()
             {
-                Name = "Mini-Crit; Afterburn"
-            };
+                Name = "Mini-Crit"
+            });
         }
     }
 
@@ -203,10 +206,11 @@ namespace StatsData
             //};
             ////FireRate = 2;
 
-            Effect = new AfterburnEffect(7.5m)
+            Effect = new AfterburnEffect(7.5m);
+            Effects.Add(new Effect()
             {
-                Name = "Knockback; Destroy Stickybombs; Afterburn"
-            };
+                Name = "Knockback; Destroy Stickybombs"
+            });
 
             AlternateModes = new List<Weapon>()
             {
@@ -225,10 +229,11 @@ namespace StatsData
         {
             Name = "(burning)";
 
-            Effect = new AfterburnEffect(10m)
+            Effect = new AfterburnEffect(10m);
+            Effects.Add(new Effect()
             {
-                Name = "Extra Knockback; Mini-Crit; Destroy Stickybombs; Afterburn"
-            };
+                Name = "Extra Knockback; Mini-Crit; Destroy Stickybombs"
+            });
         }
     }
 }

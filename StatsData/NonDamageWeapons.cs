@@ -463,6 +463,7 @@ namespace StatsData
                 //    Offset = 23.5,
                 //}
             };
+            Effects.Clear();// not normal sap
             Effect = new BuildingEffect() { Name = "Unbuilding" };
         }
     }

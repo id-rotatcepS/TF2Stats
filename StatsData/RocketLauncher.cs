@@ -218,15 +218,17 @@ namespace StatsData
             CanCrit = false;
             Projectile.HitDamage.BuildingModifier = .20m;
 
-            Effect = new BuildingEffect()
+            Effect = new AfterburnEffect(6m);
+            Effects.Add(new BuildingEffect()
             {
-                Name = "Mini-crit; Disable Building (4 s); Afterburn(6 s); vaporize stickybombs",
+                Name = "Disable Building",
                 Minimum = 4m,
-                Maximum = 6m,
-
-                Damage = new Damage(4),
-                DamageRate = 0.5m,
-            };
+                Maximum = 4m,
+            });
+            Effects.Add(new Effect()
+            {
+                Name = "Mini-crit; vaporize stickybombs",
+            });
         }
     }
 
