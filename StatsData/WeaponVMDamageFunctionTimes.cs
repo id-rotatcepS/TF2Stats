@@ -188,7 +188,7 @@ beamdisconnect 	mediguns
         private string RadiusSize(decimal? splashRadius)
         {
             return splashRadius.HasValue
-                ? string.Format("{0:0.##} Hu", splashRadius.Value) // TODO additional formats (m or cm, ft, then Hu)
+                ? new HammerUnit(splashRadius.Value).GetDetail()
                 : null;
         }
 
@@ -206,7 +206,7 @@ beamdisconnect 	mediguns
             decimal minSplashPercent = 0.50m;
             decimal numberPercents = (1 - minSplashPercent) * 100;
             decimal onePercentRadius = splashRadius.Value / numberPercents;
-            return string.Format("1% / {0:0.##} Hu", onePercentRadius);
+            return string.Format("1% / {0:0.##} HU", onePercentRadius);
         }
 
         public bool DamageReductionDiff => IfDifferent((f) => f.DamageReduction);
@@ -336,7 +336,7 @@ beamdisconnect 	mediguns
         public bool SpreadAmountDiff => IfDifferent((f) => f.SpreadAmount);
 
         public string MaxRange => v.MaxRange.HasValue
-            ? string.Format("{0:0.##} HU", v.MaxRange.Value)
+            ? new HammerUnit(v.MaxRange.Value).GetDetail()
             : null;
         public Visibility MaxRangeVisibility => v.MaxRange.HasValue || (v.Alts != null && v.Alts.Any(v => v.MaxRange.HasValue))
             ? Visibility.Visible

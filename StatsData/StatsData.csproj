@@ -120,6 +120,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HammerUnit.cs" />
     <Compile Include="WeaponVMDamageFunctionTimes.cs" />
     <Compile Include="FlameThrower.cs" />
     <Compile Include="FlareGun.cs" />
