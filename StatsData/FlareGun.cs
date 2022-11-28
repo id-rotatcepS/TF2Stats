@@ -24,6 +24,12 @@ namespace StatsData
             FireRate = 2;
 
             Effect = new AfterburnEffect(7.5m);
+
+            Ammo = new Ammo(1, 16)
+            {
+                Reload = 2.0m,
+                ReloadUsing = "Passive",
+            };
         }
     }
 
@@ -164,6 +170,8 @@ namespace StatsData
             {
                 new ManmelterBurning()
             };
+
+            Ammo.Carried = Ammo.INFINITE_AMMO;
         }
     }
 

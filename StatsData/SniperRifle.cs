@@ -26,6 +26,11 @@ namespace StatsData
             FireRate = 1.5m;
 
             //charge & headshots/scoping are alt modes
+
+            Ammo = new Ammo(1, 25)
+            {
+                Reload = 1.5m,//TODO fire rate or reload, not really both.
+            };
         }
     }
 

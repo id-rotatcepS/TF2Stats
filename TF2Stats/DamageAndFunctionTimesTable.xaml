@@ -719,9 +719,117 @@
 
         </StackPanel>
 
-        <!-- TODO Reload (first) 	0.92 s  -->
+        <!-- Reload (first) 	0.92 s  -->
         <!-- Reload 	1.5 s -->
-        <!-- TODO Reload (consecutive) 	0.8 s -->
+        <!-- Reload (consecutive) 	0.8 s -->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ReloadVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding ReloadVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding ReloadDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=Reload}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="Reload" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding Reload}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelReload" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Reload" Width="200"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ReloadFirstVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding ReloadFirstVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding ReloadFirstDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=ReloadFirst}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="ReloadFirst" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding ReloadFirst}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelReloadFirst" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Reload (first)" Width="200"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ReloadConsecutiveVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding ReloadConsecutiveVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding ReloadConsecutiveDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=ReloadConsecutive}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="ReloadConsecutive" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding ReloadConsecutive}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelReloadConsecutive" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Reload (consecutive)" Width="200"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
         <!-- TODO Charge fill speed 	2.1 - 6.3 %/100 HP-->
 
         <!-- TODO somehow include: Zoom-in headshot delay 	0.2 s-->

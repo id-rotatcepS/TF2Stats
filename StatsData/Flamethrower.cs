@@ -43,6 +43,11 @@ namespace StatsData
             Effect = new AfterburnEffect(4, 10);//TODO flamethrower says 4-10 (increase by .4s per hit), others show 3-10 or other nonsense
                                                 //TODO depends on exposure, so only minimum for min exposure? This is likely additive regardless of constant exposure, however.
 
+            Ammo = new Ammo(200)
+            {
+                AmmoUseInterval = 0.105m,
+            };
+
         }
 
         protected decimal GetMaxRangeWeaponNewFlame()
@@ -125,7 +130,7 @@ namespace StatsData
     //"Cow Mangler: Deals critical hits when reflected by a crit-boosted flamethrower." - implies crit-boosted reflects crit-ify anything they reflect.
     public class CompressionBlast : Weapon
     {
-        public CompressionBlast()
+        public CompressionBlast(int ammoUsed = 20)
         {
             Name = "compression blast";
 
@@ -145,6 +150,11 @@ namespace StatsData
             {
                 Name = "Deflect projectiles, Minicrit; push enemies; extinguish teammates"
             };
+
+            Ammo = new Ammo(200)
+            {
+                AmmoUsed = ammoUsed,
+            };
         }
     }
 
@@ -158,7 +168,7 @@ namespace StatsData
             {
                 new FlameThrowerMaxExposure(),
                 //TODO ?FromBack, Effect: crit
-                new CompressionBlast(),//TODO More expensive
+                new CompressionBlast(30),
             };
         }
     }
@@ -173,7 +183,7 @@ namespace StatsData
             AlternateModes = new List<Weapon>
             {
                 new DegreaserMaxExposure(),
-                new CompressionBlast(), //TODO more expensive
+                new CompressionBlast(25),
             };
 
             Effects.Clear();

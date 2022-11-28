@@ -28,6 +28,12 @@ namespace StatsData
 
             //fuse (if no impact or contact with surfaces):
             ActivationTime = 2.3m;//wiki text says 2.3s;
+
+            Ammo = new Ammo(4, 16)
+            {
+                ReloadFirst = 1.24m,
+                ReloadAdditional = 0.6m,
+            };
         }
     }
 
@@ -65,6 +71,12 @@ namespace StatsData
             FireRate = 0.6m;
             //fuse:
             ActivationTime = 2.3m;//wiki text says 2.3s;
+
+            Ammo = new Ammo(4, 16)
+            {
+                ReloadFirst = 1.24m,
+                ReloadAdditional = 0.6m,
+            };
         }
     }
 
@@ -103,6 +115,8 @@ namespace StatsData
             // TODO technically it has explode on fuse expiration flak
             //fuse (if no impact or contact with surfaces):
             ActivationTime = 2.3m;
+
+            Ammo.Loaded = 3;
 
             AlternateModes = null;// no rollers
         }

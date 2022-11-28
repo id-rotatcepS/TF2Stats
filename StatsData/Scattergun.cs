@@ -37,6 +37,12 @@ namespace StatsData
 
             //};
             //FireRate = 0.625;
+
+            Ammo = new Ammo(6, 32) // same as shotgun
+            {
+                ReloadFirst = 0.7m,
+                ReloadAdditional = 0.5m, // same as shotgun
+            };
         }
     }
 
@@ -94,6 +100,11 @@ namespace StatsData
 
             //};
             FireRate = 0.3125m;
+
+            Ammo = new Ammo(2, 32)
+            {
+                Reload = 1.4333m,
+            };
         }
     }
 
@@ -129,6 +140,11 @@ namespace StatsData
 
             //};
             FireRate = 0.36m;
+
+            Ammo = new Ammo(4, 32)
+            {
+                Reload = 1.52m,
+            };
 
             AlternateModes = new List<Weapon>
             {
@@ -179,6 +195,11 @@ namespace StatsData
             //    },
             //};
             FireRate = 0.3125m;
+
+            Ammo = new Ammo(2, 32)
+            {
+                Reload = 1.1333m,
+            };
         }
     }
 
@@ -208,6 +229,8 @@ namespace StatsData
 
             //};
             //FireRate = 0.625;
+
+            Ammo.Loaded = 4;
         }
     }
 
@@ -241,6 +264,8 @@ namespace StatsData
 
             //};
             //FireRate = 0.625;
+
+            Ammo.Loaded = 4;
         }
     }
 

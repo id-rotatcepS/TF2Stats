@@ -58,6 +58,12 @@ namespace StatsData
                 Influenceable = false
             };
             FireRate = 0.8m;
+
+            Ammo = new Ammo(4, Ammo.INFINITE_AMMO)
+            {
+                ReloadFirst = 1.02m,
+                ReloadAdditional = 0.53m,
+            };
         }
     }
 
@@ -127,6 +133,9 @@ namespace StatsData
             //{
             //    new RighteousBisonTypical()
             //};
+
+            Ammo.ReloadFirst = 0.92m;
+            Ammo.ReloadAdditional = 0.4m;
         }
     }
 
@@ -195,6 +204,12 @@ namespace StatsData
             {
                 Name = "Crit on Headshot"
             };
+
+            Ammo = new Ammo(1, 12)
+            {
+                Reload = 1.94m,
+            };
+
         }
     }
 
@@ -215,8 +230,10 @@ namespace StatsData
                 },
 
             };
-            //added charge time
-            FireRate = 2.94m;
+            FireRate = 1.94m;
+            ChargeTime = 1.0m;
+            // Aim Fatigue / Accurate Time
+            ActivationTime = 5.0m;
 
             Effect = new Effect()
             {
@@ -288,6 +305,12 @@ namespace StatsData
 
             };
             FireRate = 0.625m;
+
+            Ammo = new Ammo(4, 16)
+            {
+                ReloadFirst = 1.0m,
+                ReloadAdditional = 0.5m,
+            };
         }
     }
 
@@ -328,6 +351,12 @@ namespace StatsData
                 Splash = new AOE(splashRadius)
             };
             FireRate = 0.6m;
+
+            Ammo = new Ammo(8, 24)
+            {
+                ReloadFirst = 1.09m,
+                ReloadAdditional = 0.67m,
+            };
         }
     }
 
@@ -429,6 +458,8 @@ namespace StatsData
                 Name = "Able to destroy enemy stickybombs"
             };
 
+            Ammo.Carried = 36;//TODO update carried on alternate modes
+
             AlternateModes = new List<Weapon>
             {
                 new ChargedStickybomb(Projectile.ArmTime, 4.0m),// maximum charge time
@@ -465,6 +496,8 @@ namespace StatsData
                 Name = "Able to destroy enemy stickybombs"
             };
 
+            Ammo.Loaded = 4;
+
             AlternateModes = new List<Weapon>
             {
                 new ChargedQuickiebomb(Projectile.HitDamage.Base, Projectile.ArmTime, 1.2m),// maximum quickiebomb charge time
@@ -494,6 +527,8 @@ namespace StatsData
                 Splash = new AOE(splashRadius)
             };
             FireRate = fireRate;
+
+            Ammo.Loaded = 4;
         }
     }
 
@@ -512,6 +547,8 @@ namespace StatsData
         {
             Name = "Flak";
             FireRate = fireRate;
+
+            Ammo.Loaded = 4;
         }
     }
 
@@ -528,6 +565,8 @@ namespace StatsData
             Name = "(fully charged)";
 
             FireRate = fireRate;
+
+            Ammo.Loaded = 4;
         }
     }
 
@@ -549,6 +588,11 @@ namespace StatsData
                 Influenceable = false
             };
             FireRate = 0.105m;//due to game ticks like minigun. used to be 0.1m;
+
+            Ammo = new Ammo(40, 150)
+            {
+                Reload = 1.305m,
+            };
         }
     }
 

@@ -432,7 +432,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
                 string sep = "\t";
                 string r = ColsForCloseOffset(closeOffset, d, sep);
 
-                WeaponTestData observed = GetWeaponTestData(v.Name);
+                WeaponTestData observed = GetWeaponTestData(v.Name, p?.Name);
                 if (observed != null)
                 {
                     string observedRow = "";
@@ -509,9 +509,9 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             return result;
         }
 
-        public WeaponTestData GetWeaponTestData(string name)
+        public WeaponTestData GetWeaponTestData(string name, string parentName)
         {
-            string[] parts = GetWeaponTestsDataArray(name);
+            string[] parts = GetWeaponTestsDataArray(name, parentName);
             if (parts == null)
             {
                 return null;
@@ -530,17 +530,22 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             };
         }
 
-        public string[] GetWeaponTestsDataArray(string name)
+        public string[] GetWeaponTestsDataArray(string name, string parentName)
         {
             foreach (string line in WeaponTestsTSV)
             {
                 string[] parts = line.Split("\t");
-                if (parts[0] != null
-                    && (parts[0].Equals(name, StringComparison.OrdinalIgnoreCase)
-                    || name.EndsWith(parts[0], StringComparison.OrdinalIgnoreCase)
-                    ))
+                if (parts.Length > 0)
                 {
-                    return parts;
+                    if (
+                        (parts[0].Equals(name, StringComparison.OrdinalIgnoreCase)
+                        || name.EndsWith(parts[0], StringComparison.OrdinalIgnoreCase)
+                        //|| ((parts.Length > 1) && parts[0].Equals(parentName, StringComparison.OrdinalIgnoreCase) && parts[1].Equals(name, StringComparison.OrdinalIgnoreCase))
+                        //|| (parts[0].Equals(parentName + " " + name, StringComparison.OrdinalIgnoreCase))
+                    ))
+                    {
+                        return parts;
+                    }
                 }
             }
             return null;
@@ -562,9 +567,9 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
         "Pomson 6000	https://youtu.be/-K0HGz1kKs4	32	81	180	72	97	180",
         "Righteous Bison	https://youtu.be/P8oY8jX68MI	22	54	120	48	64	120",
         "Short Circuit	https://youtu.be/PBjJp3wUyoo	9	13	9	10	14	10",
-        "alt Short Circuit(orb blast)	https://youtu.be/eti3ZoTLWzE	15	20	15	15	20	15",
+        "Short Circuit\n>alt (orb blast)	https://youtu.be/eti3ZoTLWzE	15	20	15	15	20	15",//"alt Short Circuit(orb blast)	https://youtu.be/eti3ZoTLWzE	15	20	15	15	20	15",
         "Dragon's Fury	https://youtu.be/aK90XPG2a_Q	24	34	75	30	40	75",
-        //"Dragon's Fury	flaming	72	106	225	90	121	225",
+        "Dragon's Fury\n>(burning)	flaming	72	106	225	90	121	225",//"Dragon's Fury	flaming	72	106	225	90	121	225",
         //"Dragon's Fury	https://youtu.be/aLt6NL8iOKk	24	34	75			",
         //"Dragon's Fury	flaming	71	101	225			",
         "Flare Gun	https://youtu.be/u3yRQEyD0HM	30	41	90	30	41	90",
@@ -577,14 +582,14 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
         "Manmelter	https://youtu.be/5kQYq9B3Qgk	30	41	90	30	41	90",
         "Rescue Ranger	https://youtu.be/Mx4sESdVNHs	21	54	120	60	81	120",
         "Huntsman	https://youtu.be/ho8L5T3548c	54	73	172	53	73	159",
-        "Huntsman charged		120	162	360	120	162	360",
+        "Huntsman\n>charged		120	162	360	120	162	360", //"Huntsman charged		120	162	360	120	162	360",
         "Crusader's Crossbow	https://youtu.be/ivCOJvt5YDc	75	101	225	38	52	115",
         //"Crusader's Crossbow		64	85	194			",
         "Splendid Screen	https://youtu.be/6k2RGZaXh3U	85	115	85	27	36	27",
         "Tide Turner	https://youtu.be/weNcJwsHtL0	50	68	50	16	21	16",
         "Chargin' Targe	https://youtu.be/6yDguA4wsSQ	50	68	50	16	21	16",
         "Flying Guillotine	https://youtu.be/hKfGVds7vGg	54	73	154	54	73	154",
-        "Sandman\n>Ball(sandman)	https://youtu.be/9qDER1W83IM	15	20	45	15	20	45",//"Sandman	https://youtu.be/9qDER1W83IM	15	20	45	15	20	45",
+        "Sandman\n>Ball	https://youtu.be/9qDER1W83IM	15	20	45	15	20	45",//"Sandman	https://youtu.be/9qDER1W83IM	15	20	45	15	20	45",
         //"Sandman moonshot    23	30	68			",
         //"Wrap Assassin	https://youtu.be/hf_YWEBO0bo						",
         //"Force-a-Nature	https://youtu.be/CRkyu4KuCZY	3	7	16	9	13	16",
@@ -611,7 +616,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
         //"Liberty Launcher		18	46	101	42	57	101",
         "Cowmangler 5000	https://youtu.be/9gveiR7brfM	48	122	122	112	151	122",
         //"Cowmangler 5000		24	61	61	56	76	61",
-        "Cowmangler charged shot	https://youtu.be/zyG7LgKB5Mw	122	122	122	151	151	151",
+        "Cowmangler 5000\n>charged shot	https://youtu.be/zyG7LgKB5Mw	122	122	122	151	151	151",//"Cowmangler charged shot	https://youtu.be/zyG7LgKB5Mw	122	122	122	151	151	151",
         "Beggar's Bazooka	https://youtu.be/lBPldb6_AFQ	48	122	270	112	151	270",
         "Air Strike	https://youtu.be/InL_ycMP8sE	40	103	230	95	129	230",
         //"Air Strike		20	52	115	48	64	115",
@@ -620,7 +625,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
         //"Widowmaker	https://youtu.be/vKrbbHCkI6I	3	8	18	9	12	18",
         "Widowmaker					90	121	180",//"Widowmaker		30	80	180	90	121	180",
         //"Widowmaker	https://youtu.be/Mi_MPZ4BdLk	3	9	20	10	13	20",
-        "Widowmaker sentry target					99	133	198", //3.../9.../20... ...99/...133/...198
+        "Widowmaker\n>sentry target					99	133	198", //3.../9.../20... ...99/...133/...198
         //"Frontier Justice	https://youtu.be/a2eT-rfm5rI	3	8	18	9	12	18",
         "Frontier Justice					90	121	180",//"Frontier Justice		30	80	180	90	121	180",
         //"Shotgun	https://youtu.be/Hz3GmGv6YKg	3	8	18	9	12	18",

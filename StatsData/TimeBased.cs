@@ -49,6 +49,14 @@ namespace StatsData
             AlternateModes = new List<Weapon> {
                 new ShortCircuitAlt()
             };
+
+            Ammo = new Ammo(200)
+            {
+                AmmoType = "Metal",
+                AmmoUsed = 5,
+            };
+
+
         }
     }
 
@@ -86,6 +94,12 @@ namespace StatsData
             Effect = new Effect()
             {
                 Name = "Vaporize Projectile"
+            };
+
+            Ammo = new Ammo(200)
+            {
+                AmmoType = "Metal",
+                AmmoUsed = 65,
             };
         }
     }
@@ -199,6 +213,8 @@ WeaponData
 	}
 }
         */
+        //TODO wiki is wrong in that 90% of 75 is not 69.
+        //TODO my obs is probably wrong in that I got 24 far, not 23.
         //TODO wiki long range says 90%, I said 92%, really both are wrong, it's probably 52.8%, but limited by Max Range.
         //((526-512)/512)percent of long range(0.02734375). 1-(percent * (1-.528)) = .98709 (98.7%) equivalent long range ramp.
         // results in a value that would round to 25. obs is 24, wiki says 23.  Maybe 526 is not accurate.
@@ -225,6 +241,10 @@ WeaponData
             {
                 Name = "Afterburn(additive); Pyro Afterburn (1s)"
             };
+
+            Ammo = new Ammo(40)
+            {
+            };
         }
     }
 
@@ -249,8 +269,12 @@ WeaponData
     {
         public DragonsFuryCompressionBlast()
         {
-            //TODO cost
             FireRate = 1.6m;
+
+            Ammo = new Ammo(40)
+            {
+                AmmoUsed = 5,
+            };
         }
     }
 
@@ -347,6 +371,12 @@ WeaponData
                 new CrusadersCrossbowHeal(),
                 new CrusadersCrossbowHealMaxHang()
             };
+
+            Ammo = new Ammo(1, 38)
+            {
+                Reload = 1.5m,
+            };
+
         }
     }
     public class CrusadersCrossbowMaxHang : ABolt

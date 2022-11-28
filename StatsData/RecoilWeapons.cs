@@ -14,12 +14,17 @@ namespace StatsData
                 Damage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_HITSCAN_PISTOL, //Offset = 22, I had 22... probably to try and account for "wiki/obs point blank 22, calc 23; (winger comes out correct)"
-                    ZeroRangeRamp = Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP,
+                    ZeroRangeRamp = Damage.PISTOL_HITSCAN_ZERO_RANGE_RAMP,
                     LongRangeRamp = Damage.NORMAL_LONG_RANGE_RAMP
                 },
                 Recoil = new Recoil(Damage.SPREAD_PISTOL)
             };
             FireRate = 0.15m;
+
+            Ammo = new Ammo(12, 36) // scout carry as typical
+            {
+                Reload = 1.035m, // engineer reload as typical
+            };
         }
     }
 
@@ -30,6 +35,7 @@ namespace StatsData
             Name = "Pistol";
 
             // Ammo is the difference
+            Ammo.Carried = 200;
         }
     }
 
@@ -61,6 +67,8 @@ namespace StatsData
 
             //};
             //FireRate = 0.15;
+
+            Ammo.Reload = 1.005m; // variants use 1.10m in wiki, but with no explanation.  I am assuming this is the accurate one.
         }
     }
 
@@ -89,6 +97,9 @@ namespace StatsData
             //    },
             //};
             //FireRate = 0.15;
+
+            Ammo.Loaded = 5;
+            //Ammo.Reload = 1.10m;//TODO used slower reload number from wiki... but nothing says a difference from pistol in text
         }
     }
 
@@ -116,6 +127,14 @@ namespace StatsData
             //    },
             //};
             FireRate = 0.135m;// 0.1275m;// "The base value is 0.1275 seconds, but in practice it's rounded up to the next multiple of 0.015 seconds (a game tick)."
+
+            Effect = new Effect()
+            {
+                Name = "Leach up to 3hp"//TODO "up to" by weapon text...but isn't it ALWAYS 3? min damage is 8.
+            };
+
+            Ammo.Loaded = 9;
+            //Ammo.Reload = 1.10m;//TODO used slower reload number from wiki... but nothing says a difference from pistol in text
         }
     }
 
@@ -140,6 +159,11 @@ namespace StatsData
 
             };
             FireRate = 0.105m;//used to be 0.1m;, but game tick (like minigun) says that's not quite right.
+
+            Ammo = new Ammo(25, 75)
+            {
+                Reload = 1.1m,
+            };
         }
     }
 
@@ -188,6 +212,8 @@ namespace StatsData
 
             //};
             FireRate = 0.135m;//wiki.  I previously had 0.13m;
+
+            Ammo.Loaded = 20;
         }
     }
 
@@ -212,6 +238,11 @@ namespace StatsData
 
             };
             FireRate = 0.5m; // wiki .. I used to have 0.51m (maybe that was an old wiki value)
+
+            Ammo = new Ammo(6, 24)
+            {
+                Reload = 1.133m,
+            };
         }
     }
 

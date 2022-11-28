@@ -28,6 +28,8 @@ namespace StatsData
         private Weapon W { get; set; }
         private Weapon P { get; set; }
 
+        public Ammo Ammo => W.Ammo;
+
         public IList<WeaponVM> Alts { get; } = new List<WeaponVM>();
 
         public string Name => P != null

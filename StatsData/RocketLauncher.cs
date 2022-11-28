@@ -37,6 +37,11 @@ namespace StatsData
             //};
             //FireRate = 0.8;
 
+            Ammo = new Ammo(4, 20)
+            {
+                ReloadFirst = 0.92m,
+                ReloadAdditional = 0.8m,
+            };
         }
     }
 
@@ -132,6 +137,8 @@ namespace StatsData
             {
                 Name = "Leach up to 20hp"
             };
+
+            Ammo.Loaded = 3;
         }
     }
 
@@ -164,6 +171,8 @@ namespace StatsData
             //    Splash = new AOE(AOE.DEFAULT_SPLASH * 1)
             //};
             //FireRate = 0.8;
+
+            Ammo.Loaded = 5;
         }
     }
 
@@ -202,6 +211,8 @@ namespace StatsData
             {
                 new CowManglerAlt()
             };
+
+            Ammo.Carried = Ammo.INFINITE_AMMO;
         }
     }
 
@@ -229,6 +240,8 @@ namespace StatsData
             {
                 Name = "Mini-crit; vaporize stickybombs",
             });
+            
+            Ammo.Carried = Ammo.INFINITE_AMMO;
         }
     }
 
@@ -265,6 +278,11 @@ namespace StatsData
 
             //TODO but this is after more than one is loaded.. what about when none are loaded? alt mode? activation time?
             FireRate = 0.24m;
+
+            Ammo.InitialLoaded = 0;
+            Ammo.Loaded = 3;
+            Ammo.ReloadFirst = 1.196m;
+            Ammo.ReloadAdditional = 1.04m;
         }
     }
 
@@ -301,24 +319,28 @@ namespace StatsData
 
             AlternateModes = new List<Weapon>
             {
-                //new MaxHeadsAirStrike(),
+                new MaxHeadsAirStrike(),
                 new BlastJumpingAirStrike()
             };
         }
     }
-    //public class MaxHeadsAirStrike : ARocketLauncher
-    //{
-    //    // Clip size increase
-    //    public MaxHeadsAirStrike()
-    //        : base(76.5m,
-    //             1100,
-    //             AOE.DEFAULT_SPLASH * 0.9m)
-    //    {
-    //        Name = "(max heads)";
 
-    //        FireRate = 0.80m;
-    //    }
-    //}
+    public class MaxHeadsAirStrike : ARocketLauncher
+    {
+        // Clip size increase
+        public MaxHeadsAirStrike()
+            : base(76.5m,
+                 1100,
+                 AOE.DEFAULT_SPLASH * 0.9m)
+        {
+            Name = "(max heads)";
+
+            FireRate = 0.80m;
+
+            Ammo.Carried = 8;
+        }
+    }
+
     public class BlastJumpingAirStrike : ARocketLauncher
     {
         // Increased attack speed and smaller blast radius while blast jumping

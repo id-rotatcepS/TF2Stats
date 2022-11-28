@@ -222,6 +222,24 @@ beamdisconnect 	mediguns
             : Visibility.Collapsed;
         public bool AttackIntervalDiff => IfDifferent((f) => f.AttackInterval);
 
+        public string Reload => string.Format("{0:0.####} s", v.Ammo?.Reload);
+        public Visibility ReloadVisibility => ((v.Ammo?.Reload ?? 0) != 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.Reload ?? 0) != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool ReloadDiff => IfDifferent((f) => f.Reload);
+
+        public string ReloadFirst => string.Format("{0:0.####} s", v.Ammo?.ReloadFirst);
+        public Visibility ReloadFirstVisibility => ((v.Ammo?.ReloadFirst ?? 0) != 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.ReloadFirst ?? 0) != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool ReloadFirstDiff => IfDifferent((f) => f.ReloadFirst);
+
+        public string ReloadConsecutive => string.Format("{0:0.####} s", v.Ammo?.ReloadAdditional);
+        public Visibility ReloadConsecutiveVisibility => ((v.Ammo?.ReloadAdditional??0) != 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.ReloadAdditional ?? 0) != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool ReloadConsecutiveDiff => IfDifferent((f) => f.ReloadConsecutive);
+
         /// <summary>
         /// grenade fuse; sticky explode time; melee delay; "zoom charge delay"; huntsman accurate draw time "aim fatigue"; minigun rev "windup time"; banner "taunt duration"
         ///activation time

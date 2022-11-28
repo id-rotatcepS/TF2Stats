@@ -91,7 +91,8 @@ namespace TF2Stats
         {
             string[] SkipColumns = new string[] { 
                 "Alts",
-                "Detail"
+                "Detail",
+                "Ammo"
             };
             if (SkipColumns.Contains((string)e.Column.Header))
             {

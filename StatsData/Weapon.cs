@@ -21,6 +21,7 @@ namespace StatsData
         /// (see Projectile for ArmTime ... but zoom headshot delay is elsewhere)
         /// </summary>
         public decimal ActivationTime { get; protected set; } = 0; // rev up, scope
+        public decimal ChargeTime { get; protected set; } = 0;
 
         // Switch times holster/draw
 
@@ -57,6 +58,8 @@ namespace StatsData
             = WIKI_LONG_RANGE_RAMP;
 
         public const decimal NORMAL_HITSCAN_ZERO_RANGE_RAMP = 1.5m;
+        //TODO new custom value to get get observed values needs discussion (alternatively 1.5 with an offset).
+        public const decimal PISTOL_HITSCAN_ZERO_RANGE_RAMP = 1.49m;//NORMAL_HITSCAN_ZERO_RANGE_RAMP;
         public const decimal SCATTERGUN_HITSCAN_ZERO_RANGE_RAMP = 1.75m;
         public const decimal NORMAL_ARCHED_PROJECTILE_ZERO_RANGE_RAMP = 1.2m;
         //TODO new custom value needs to get argued with people - alternatively: 1.25 with an offset, same difference effectively.
@@ -331,12 +334,31 @@ namespace StatsData
 
     public class Ammo // /Recharge
     {
-        public int InitialLoaded { get; set; }
+        public const int INFINITE_AMMO = -1;
+        public const int NO_LOAD = -1;
+
+        public Ammo(int load, int carry)
+        {
+            Loaded = load;
+            Carried = carry;
+            AmmoUsed = 1;
+        }
+        public Ammo(int carry)
+            :this(NO_LOAD, carry)
+        {
+        }
+
+        public int InitialLoaded { get; set; } = -1;
         public int Loaded { get; set; }
         public int Carried { get; set; }
+
+        public decimal AmmoUseInterval { get; set; }
+        public int AmmoUsed { get; set; }
+
         public decimal Reload { get; set; } // or recharge
         public decimal ReloadFirst { get; set; }
         public decimal ReloadAdditional { get; set; }
+
         public string ReloadUsing { get; set; } // or Recharge type "Time/Damage"
         public string AmmoType { get; set; }
         public string FireType { get; set; }

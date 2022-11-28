@@ -27,6 +27,8 @@ namespace StatsData
             };
             FireRate = 0.105m;// May 6 2021 wiki all changed from .1 to .105.
                               // pocket pistol mentions "rounded up to the next multiple of 0.015 seconds (a game tick)"
+            
+            Ammo = new Ammo(200);
         }
     }
 
@@ -279,7 +281,11 @@ namespace StatsData
             //TODO +25% afterburn damage while weapon is active  Maybe just special afterburn on "burning target" alt.
             Effect = new AfterburnEffect(8m);
 
-            // TODO ammo cost
+            Ammo = new Ammo(200)
+            {
+                AmmoUsed = 4,//TODO wiki (and weapon info)-based...but realistically wouldn't it be 1 per 0.25 s?
+                AmmoUseInterval = 1.0m,
+            };
         }
     }
 

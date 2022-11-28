@@ -28,17 +28,53 @@ namespace StatsData
                 }
             };
             FireRate = 0.625m;
+
+            Ammo = new Ammo(6, 32)
+            {
+                ReloadFirst = 1.0m, // subclasses - TODO undocumented difference from stocks?
+                ReloadAdditional = 0.5m,
+                //TODO wiki says 0.51 for stocks, but that's vs. 0.5, just rounding diff.
+            };
         }
     }
 
+    // Heavy or Engineer
     public class Shotgun : AShotgun
     {
         public Shotgun()
         {
             Name = "Shotgun";
+
+            Ammo.ReloadFirst = 0.87m; // Heavy & Engineer
+
+            //TODO lazy way to show these differences.
+            AlternateModes = new List<Weapon>
+            {
+                new PyroShotgun(),
+                new SoldierShotgun(),
+            };
         }
     }
+    public class PyroShotgun : AShotgun
+    {
+        public PyroShotgun()
+        {
+            Name = "Shotgun (pyro)";
 
+            Ammo.ReloadFirst = 1.035m;
+
+            //TODO taunt kill: Hadouken
+        }
+    }
+    public class SoldierShotgun : AShotgun
+    {
+        public SoldierShotgun()
+        {
+            Name = "Shotgun (soldier)";
+
+            Ammo.ReloadFirst = 1.005m;
+        }
+    }
     public class xShotgun : Weapon
     {
         public xShotgun()
@@ -90,6 +126,9 @@ namespace StatsData
 
             //};
             //FireRate = 0.625;
+
+            Ammo.Loaded = 4;
+
         }
     }
 
@@ -156,7 +195,6 @@ namespace StatsData
 
             //};
             //FireRate = 0.625;
-
         }
     }
 
@@ -166,7 +204,8 @@ namespace StatsData
     /// </summary>
     public class FamilyBusiness : AShotgun
     {
-        //TODO obs/wiki close max is 76, calc is 77  (and long wiki is 26, calc is 27 - relates to stock tho)
+        //TODO obs/wiki close max is 76, calc is 76.5=77  (and long wiki is 26, calc is 27 - relates to stock tho)
+        //TODO maybe default .5 round of "toEven" is what game uses? I'm manually using "awayfromzero"
         public FamilyBusiness()
             :base(51)
         {
@@ -188,6 +227,8 @@ namespace StatsData
 
             //};
             FireRate = 0.53125m;
+
+            Ammo.Loaded = 8;
         }
     }
 
@@ -217,6 +258,8 @@ namespace StatsData
 
             //};
             //FireRate = 0.625;
+
+            Ammo.Loaded = 3;
         }
     }
 
@@ -247,6 +290,12 @@ namespace StatsData
             //};
             //FireRate = 0.625;
 
+            Ammo = new Ammo(200)
+            {
+                AmmoType = "Metal",
+                AmmoUsed = 30,
+            };
+
             AlternateModes = new List<Weapon>()
             {
                 new WidowmakerSentryTarget()
@@ -276,6 +325,13 @@ namespace StatsData
 
             //};
             //FireRate = 0.625;
+
+            Ammo = new Ammo(200)
+            {
+                AmmoType = "Metal",
+                AmmoUsed = 30,
+            };
+
         }
     }
 
