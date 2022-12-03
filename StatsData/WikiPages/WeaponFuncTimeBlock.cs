@@ -140,7 +140,6 @@ namespace StatsData.WikiPages
             //windup time 	
             //consumption time 	
             //zoom charge delay 	
-            //aim fatigue       (not doc'd) 
 
             /// sticky arm time; "zoom headshot delay"; huntsman min charge time (unknown); 
             /// TODO (except arm time is currently held on Projectile, so it doesn't work for headshot delay)
@@ -171,10 +170,12 @@ namespace StatsData.WikiPages
 
                 //afterburn time 	
                 //bleeding time 	
+                //aim fatigue       (not doc'd) 
                 Dictionary<string, string> effectLabelToAttribute = new Dictionary<string, string>()
                 {
                     {"Afterburn", "afterburn time"},
                     {"Bleeding", "bleeding time"},
+                    {"No Aim Fatigue", "aim fatigue"},
                 };
                 string name = effectLabelToAttribute.GetValueOrDefault(effect.EffectLabel ?? string.Empty);
 

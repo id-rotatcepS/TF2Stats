@@ -239,7 +239,7 @@ namespace StatsData
             Effect = new Effect()
             {
                 Name = "No Aim Fatigue",
-                Minimum = 0,
+                Minimum = 5.0m,
                 Maximum = 5.0m
             };
 
