@@ -363,6 +363,7 @@ WeaponData
 
 
             };
+            // TODO: (where's this number from?) single shot reload - usually is functionally its rate, but this one is different.
             FireRate = .24m;// 1.6m;
 
             AlternateModes = new List<Weapon>()
@@ -510,6 +511,7 @@ WeaponData
                 },
                 MaxRangeTime = 1125.0m / 750.0m,
             };
+            ChargeTime = Projectile.MaxRangeTime;
             FireRate = 12;
             //"unable to deal critical damage, but can deal mini-crits under respective buffs or enemy debuffs."
             CanCrit = false;
@@ -537,6 +539,7 @@ WeaponData
                 MaxRangeTime = 1125.0m / 750.0m,
 
             };
+            ChargeTime = Projectile.MaxRangeTime;
             FireRate = 12;
         }
     }
@@ -561,6 +564,7 @@ WeaponData
                 },
                 MaxRangeTime = 1125.0m / 750.0m,
             };
+            ChargeTime = Projectile.MaxRangeTime;
             FireRate = 8;
         }
     }
@@ -585,6 +589,7 @@ WeaponData
                 },
                 MaxRangeTime = 1125.0m / 750.0m,
             };
+            ChargeTime = Projectile.MaxRangeTime;
             FireRate = 12;
         }
     }
@@ -629,6 +634,7 @@ WeaponData
                 },
 
             };
+            //TODO ChargeTime = 
             //FireRate = 0.25;
         }
     }
@@ -655,6 +661,7 @@ WeaponData
                 },
                 Splash = new AOE(AOE.DEFAULT_SPLASH * 0.33m)
             };
+            //TODO ChargeTime = 
             //FireRate = 0.25;
         }
     }
@@ -680,6 +687,7 @@ WeaponData
                 },
 
             };
+            //TODO ChargeTime = 
             //FireRate = 0.25;
 
             Effect = new BleedEffect(5);
@@ -815,6 +823,7 @@ tf_weapon_rocketpack.txt - Jetpack
 
                 //TODO knockback splash isn't damage splash Splash = new AOE(AOE.DEFAULT_RADIUS * ?)
             };
+            //TODO ChargeTime = 
             FireRate = 3.0m;
             AlternateModes = new List<Weapon>()
             {
@@ -839,6 +848,7 @@ tf_weapon_rocketpack.txt - Jetpack
                 },
 
             };
+            //TODO ChargeTime = 
             FireRate = 15.0m;
         }
     }

@@ -21,6 +21,9 @@ namespace StatsData
         /// (see Projectile for ArmTime ... but zoom headshot delay is elsewhere)
         /// </summary>
         public decimal ActivationTime { get; protected set; } = 0; // rev up, scope
+        /// <summary>
+        /// Time required to go from 0% to 100% charge (after any pre-charge activation time)
+        /// </summary>
         public decimal ChargeTime { get; protected set; } = 0;
 
         // Switch times holster/draw

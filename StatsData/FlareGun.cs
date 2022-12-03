@@ -21,7 +21,7 @@ namespace StatsData
 
                 Splash = splashRadius > 0 ? new AOE(splashRadius) : null
             };
-            FireRate = 2;
+            FireRate = 0m; // single shot reload is functionally its rate
 
             Effect = new AfterburnEffect(7.5m);
 

@@ -49,9 +49,37 @@ namespace StatsData
             ? null
             : Damage?.BuildingModifier;
 
-        public decimal? DPS => FireRate == 0
-            ? ((EffectDamageRate??0)==0?null: EffectDamage*(1.0m/ EffectDamageRate))
-            : Damage?.Base * (1.0m / FireRate);
+        public decimal? DPS => GetDPS();
+
+        private decimal? GetDPS()
+        {
+            decimal fireRate = GetEffectiveFireRate();
+
+            if (fireRate == 0)
+            {
+                if ((EffectDamageRate ?? 0) != 0)
+                {
+                    return EffectDamage * (1.0m / EffectDamageRate);
+                }
+
+                return null;
+            }
+
+            return Damage?.Base * (1.0m / fireRate);
+        }
+
+        //TODO use this value in a tooltip or something on fire rate when it's a different value.
+        private decimal GetEffectiveFireRate()
+        {
+            decimal fireRate = FireRate;
+            // single shot weapon reload is functionally part of its rate
+            if (W.Ammo != null && W.Ammo.Loaded == 1 && W.Ammo.Reload > 0 && Damage?.Base != 0)
+            {
+                fireRate += W.Ammo.Reload;
+            }
+
+            return fireRate;
+        }
 
         public decimal? MaxRange => W.Melee?.MaxRange
             ?? (W.Projectile?.MaxRangeTime > 0 ? (W.Projectile.MaxRangeTime * W.Projectile.Speed) : (decimal?)null);
@@ -102,15 +130,15 @@ namespace StatsData
         public decimal? Recovery => W.Hitscan?.Recoil?.Recovery;
         public decimal? Speed => W.Projectile?.Speed;
         public string NoGrav => NoGravBase.HasValue
-            ? (NoGravBase.Value ? "Straight" : "Arch") 
+            ? (NoGravBase.Value ? "Straight" : "Arch")
             : "";
         private bool? NoGravBase => W.Projectile?.Propelled;
-        public string Deflects => DeflectsBase.HasValue 
-            ? (DeflectsBase.Value ? "" : "Immune") 
+        public string Deflects => DeflectsBase.HasValue
+            ? (DeflectsBase.Value ? "" : "Immune")
             : "";
         private bool? DeflectsBase => W.Projectile?.Influenceable;
-        public string Pen => PenBase.HasValue 
-            ? (PenBase.Value ? "Penetrates" : "") 
+        public string Pen => PenBase.HasValue
+            ? (PenBase.Value ? "Penetrates" : "")
             : "";
         private bool? PenBase => W.Projectile?.Penetrating
             ?? W.Hitscan?.Penetrating
@@ -118,12 +146,15 @@ namespace StatsData
         public decimal? SplashRadius => W.Projectile?.Splash?.Radius
             ?? W.Hitscan?.Splash?.Radius;// not including AOE - that's below for Effect
         public string FragmentType => W.Hitscan?.Fragmentation?.FragmentType;
-        public decimal? Arm => W.Projectile?.ArmTime == 0 
-            ? (decimal?)null 
+        public decimal? Arm => W.Projectile?.ArmTime == 0
+            ? (decimal?)null
             : W.Projectile?.ArmTime;
-        public decimal? Activation => W.ActivationTime == 0 
-            ? (decimal?)null 
+        public decimal? Activation => W.ActivationTime == 0
+            ? (decimal?)null
             : W.ActivationTime;
+        public decimal? ChargeTime => W.ChargeTime == 0
+            ? (decimal?)null
+            : W.ChargeTime;
         public decimal FireRate => W.FireRate;
         public string Type => W.WeaponType;
         public int Level => W.Level;

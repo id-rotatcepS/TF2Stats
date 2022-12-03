@@ -271,11 +271,19 @@ beamdisconnect 	mediguns
             : Visibility.Collapsed;
         public bool ArmTimeDiff => IfDifferent((f) => f.ArmTime);
 
+        /// <summary>
         // sticky max charge; sniper max charge time (including delay?); huntsman max charge; minigun rev max warmup; banner timed charge time
-        //max charge time
-        // recharge
-        // drop expiry
-        //TODO public string MaxChargeTime =>
+        ///max charge time
+        /// recharge
+        /// drop expiry
+        /// </summary>
+        public string ChargeTime => v.ChargeTime.HasValue
+            ? string.Format("{0:0.####} s", v.ChargeTime)
+            : null;
+        public Visibility ChargeTimeVisibility => (v.ChargeTime.HasValue && v.ChargeTime != 0) || (v.Alts != null && v.Alts.Any(v => (v.ChargeTime.HasValue && v.ChargeTime != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool ChargeTimeDiff => IfDifferent((f) => f.ChargeTime);
 
         //ammo interval
         //TODO public string AmmoInterval =>

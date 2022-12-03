@@ -193,7 +193,8 @@ namespace StatsData
                 },
                 //TODO ArmTime= - minimum charge time to fire.  Impossible to get exactly 50 damage, possible to not fire.
             };
-            FireRate = 1.94m;
+            //TODO ...or is ActivationTime the right place for minimum charge time? that's how sniper rifle pre-charge delay is recorded now
+            FireRate = 0m; // single shot reload is functionally its rate
             AlternateModes = new List<Weapon>
             {
                 new HuntsmanCharged(),
@@ -230,8 +231,8 @@ namespace StatsData
                 },
 
             };
-            FireRate = 1.94m;
             ChargeTime = 1.0m;
+            FireRate = ChargeTime; // pre-charge delay (0) + charge time
             // Aim Fatigue / Accurate Time
             ActivationTime = 5.0m;
 
@@ -258,9 +259,13 @@ namespace StatsData
                 },
 
             };
-            FireRate = 1.94m;
+            FireRate = 0m; // single shot reload is functionally its rate
 
-            Effect = new AfterburnEffect(10);// TODO time? Wiki doesn't say // TODO crit on headshot, too
+            Effect = new AfterburnEffect(10);// TODO time? Wiki doesn't say
+            Effects.Add(new Effect()
+            {
+                Name = "Crit on Headshot"
+            });
         }
     }
 
@@ -279,7 +284,7 @@ namespace StatsData
     //            },
 
     //        };
-    //        FireRate = 1.94;
+    //        FireRate = 0m; // single shot reload is functionally its rate
     //    }
     //}
 
@@ -429,6 +434,7 @@ namespace StatsData
         {
             Name = "(fully charged)";
 
+            ChargeTime = fireRate;
             FireRate = fireRate;
         }
     }
@@ -564,6 +570,7 @@ namespace StatsData
         {
             Name = "(fully charged)";
 
+            ChargeTime = fireRate;
             FireRate = fireRate;
 
             Ammo.Loaded = 4;
@@ -625,8 +632,12 @@ namespace StatsData
 
             Effect = new Effect()
             {
-                Name = "Leach, Passive Self-damage"
+                Name = "Leach"
             };
+            Effects.Add(new Effect()
+            {
+                Name = "Passive Self-damage"
+            });
         }
     }
 

@@ -910,8 +910,43 @@
         </StackPanel>
 
         <!-- TODO Recharge time 	5.1 s -->
-        <!-- TODO Maximum charge time 	1.0 s (double-meaning - also used for shield activated charge duration-->
+        <!-- Maximum charge time 	1.0 s (double-meaning - also used for shield activated charge duration-->
+        <StackPanel Orientation="Horizontal" Visibility="{Binding ChargeTimeVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding ChargeTimeVisibility}">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding ChargeTimeDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=ChargeTime}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+                        <TextBlock x:Name="ChargeTime" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding ChargeTime}" Style="{StaticResource MainValue}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelChargeTime" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Width="200" Text="Maximum charge time"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
 
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
         <!-- Effect Duration (regardless of damage) -->
         <StackPanel Orientation="Horizontal" Visibility="{Binding EffectDurationVisibility}">
             <StackPanel.Resources>

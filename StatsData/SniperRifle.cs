@@ -23,7 +23,7 @@ namespace StatsData
                 //},
                 // Penetrates teammates, but not enemies
             };
-            FireRate = 1.5m;
+            FireRate = 0m; // single shot reload is functionally its rate
 
             //charge & headshots/scoping are alt modes
 
@@ -65,7 +65,10 @@ namespace StatsData
             : base(150)
         {
             Name = "(fully charged)";
-            ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 2.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
             Effect = new Effect()
             {
                 Name = "Crit on Headshot"
@@ -123,7 +126,10 @@ namespace StatsData
             : base(150)
         {
             Name = "(fully charged)";
-            ActivationTime = 1.5m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 1.5m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 1.5m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
 
             Effect = new Effect()
             {
@@ -171,7 +177,10 @@ namespace StatsData
             : base(150)
         {
             Name = "zero heads (fully charged)";
-            ActivationTime = 5.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 5.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 5.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
             Effect = new Effect()
             {
                 Name = "Crit on Headshot"
@@ -184,7 +193,10 @@ namespace StatsData
             : base(150)
         {
             Name = "six heads (fully charged)";
-            ActivationTime = 0.5m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 0.5m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 0.5m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
             Effect = new Effect()
             {
                 Name = "Crit on Headshot"
@@ -236,7 +248,10 @@ namespace StatsData
             : base(150)
         {
             Name = "(charged)";
-            ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 2.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
             Effect = new Effect()
             {
                 Name = "Crit on Headshot"
@@ -251,7 +266,10 @@ namespace StatsData
         :base(172.5m) 
         {
             Name = "(fully charged)";
-            ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 2.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
 
             // Full charge penetrates, but regular shot doesn't
             Hitscan.Penetrating = true;
@@ -318,7 +336,10 @@ namespace StatsData
             : base(150)
         {
             Name = "(fully charged head shot)";
-            ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 2.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
             Effect = new Effect()
             {
                 Name = "Crit on Headshot"
@@ -331,7 +352,10 @@ namespace StatsData
             : base(120)
         {
             Name = "(fully charged body shot)";
-            ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 2.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
         }
     }
     internal class FocusChargedHitmansHeatmakerHeadshot : ASniperRifle
@@ -340,7 +364,10 @@ namespace StatsData
             : base(150)
         {
             Name = "Focus (fully charged head shot)";
-            ActivationTime = 1.5m + 1.3m;// sec focus charge time + pre-charge delay;
+            //ActivationTime = 1.5m + 1.3m;// sec focus charge time + pre-charge delay;
+            ActivationTime = 0m;//focus has no pre-charge delay;
+            ChargeTime = 1.5m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
             Effect = new Effect()
             {
                 Name = "Crit on Headshot"
@@ -353,7 +380,10 @@ namespace StatsData
             : base(120)
         {
             Name = "Focus (fully charged body shot)";
-            ActivationTime = 1.5m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 1.5m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 0m;//focus has no pre-charge delay;
+            ChargeTime = 1.5m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
         }
     }
 
@@ -402,7 +432,10 @@ namespace StatsData
             : base(150)
         {
             Name = "(fully charged head shot)";
-            ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 2.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
 
             Effect = new Effect()
             {
@@ -416,7 +449,10 @@ namespace StatsData
             : base(135)
         {
             Name = "(fully charged body shot)";
-            ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
+            ActivationTime = 1.3m;// sec pre-charge delay;
+            ChargeTime = 2.0m; // 0-100 time
+            FireRate = ChargeTime + ActivationTime;
         }
     }
 

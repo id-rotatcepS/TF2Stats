@@ -225,6 +225,7 @@ namespace StatsData
         {
             Name = "charged shot";
             ActivationTime = 2;// I had 4 but that was probably from building disable.
+            //TODO by label it feels like this, but functionally it's not ChargeTime = ;
 
             CanCrit = false;
             Projectile.HitDamage.BuildingModifier = .20m;
