@@ -338,7 +338,7 @@ namespace StatsData
 
             FireRate = 0.80m;
 
-            Ammo.Carried = 8;
+            Ammo.Loaded = 8;
         }
     }
 

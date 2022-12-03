@@ -183,6 +183,8 @@ namespace StatsData
         {
             Name = "(burning)";
 
+            Ammo.Carried = Ammo.INFINITE_AMMO;
+
             // 10s on burning players
             Effect = new AfterburnEffect(10m);//according to wiki
         }

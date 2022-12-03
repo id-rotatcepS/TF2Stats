@@ -30,6 +30,7 @@ namespace StatsData
             Effect = new Effect()
             {
                 Name = "Mini-crit Buff",
+                Minimum = 10,
                 Maximum = 10 // TODO value??
             };
         }

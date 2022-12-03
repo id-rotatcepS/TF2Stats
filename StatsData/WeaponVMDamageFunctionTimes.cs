@@ -240,6 +240,23 @@ beamdisconnect 	mediguns
             : Visibility.Collapsed;
         public bool ReloadConsecutiveDiff => IfDifferent((f) => f.ReloadConsecutive);
 
+        public string AmmoLoaded => v.Ammo?.Loaded == Ammo.NO_LOAD 
+            ? null 
+            : string.Format("{0:0.####}", v.Ammo?.Loaded);
+        public Visibility AmmoLoadedVisibility => ((v.Ammo?.Loaded ?? Ammo.NO_LOAD) > 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.Loaded ?? Ammo.NO_LOAD) > 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool AmmoLoadedDiff => IfDifferent((f) => f.AmmoLoaded);
+
+        public string AmmoCarried => v.Ammo?.Carried == Ammo.INFINITE_AMMO
+            ? "infinite"
+            : string.Format("{0:0.####}", v.Ammo?.Carried);
+        public Visibility AmmoCarriedVisibility => ((v.Ammo?.Carried ?? 0) != 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.Carried ?? 0) != 0)))
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        public bool AmmoCarriedDiff => IfDifferent((f) => f.AmmoCarried);
+
+
         /// <summary>
         /// grenade fuse; sticky explode time; melee delay; "zoom charge delay"; huntsman accurate draw time "aim fatigue"; minigun rev "windup time"; banner "taunt duration"
         ///activation time

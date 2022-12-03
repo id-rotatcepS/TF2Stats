@@ -247,6 +247,12 @@ namespace StatsData
             {
                 Name = "Crit on Headshot"
             });
+
+            Ammo = new Ammo(1, 12)
+            {
+                Reload = 1.94m,
+            };
+
         }
     }
 
@@ -273,6 +279,11 @@ namespace StatsData
             {
                 Name = "Crit on Headshot"
             });
+
+            Ammo = new Ammo(1, 12)
+            {
+                Reload = 1.94m,
+            };
         }
     }
 
@@ -292,6 +303,10 @@ namespace StatsData
 
     //        };
     //        FireRate = 0m; // single shot reload is functionally its rate
+    //Ammo = new Ammo(1, 12)
+    //{
+    //    Reload = 1.94m,
+    //        };
     //    }
     //}
 

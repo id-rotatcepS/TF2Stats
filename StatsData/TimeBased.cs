@@ -403,6 +403,11 @@ WeaponData
                 // 101/1.35= 74.81481481481481 close (75*1.35=101.25..101)
             };
             FireRate = .24m;// 1.6m;
+
+            Ammo = new Ammo(1, 38)
+            {
+                Reload = 1.5m,
+            };
         }
     }
 
@@ -426,6 +431,11 @@ WeaponData
 
             CanCrit = false;
             CanMinicrit = false;
+
+            Ammo = new Ammo(1, 38)
+            {
+                Reload = 1.5m,
+            };
         }
     }
     public class CrusadersCrossbowHealMaxHang : CrusadersCrossbowHeal
@@ -447,6 +457,11 @@ WeaponData
 
             CanCrit = false;
             CanMinicrit = false;
+
+            Ammo = new Ammo(1, 38)
+            {
+                Reload = 1.5m,
+            };
         }
     }
 
