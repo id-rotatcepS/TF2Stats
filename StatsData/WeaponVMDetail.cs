@@ -22,6 +22,7 @@ namespace StatsData
         private Weapon p;
 
         public WeaponVMDamageFunctionTimes FunctionTimes { get; }
+        public string FunctionTimeParams => new WikiPages.WeaponFuncTimeBlock(v).GetBody();
 
         public WeaponVMDetail(WeaponVM weaponVM, Weapon w, Weapon p)
         {

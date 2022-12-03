@@ -76,6 +76,8 @@
                     </StackPanel>
                 </StackPanel>
 
+                <TextBlock Text="{Binding Detail.FunctionTimeParams}"/>
+
                 <ItemsControl x:Name="alts" ItemsSource="{Binding Alts}" >
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
