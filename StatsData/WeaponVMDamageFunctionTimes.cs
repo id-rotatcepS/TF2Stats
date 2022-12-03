@@ -235,7 +235,7 @@ beamdisconnect 	mediguns
         public bool ReloadFirstDiff => IfDifferent((f) => f.ReloadFirst);
 
         public string ReloadConsecutive => string.Format("{0:0.####} s", v.Ammo?.ReloadAdditional);
-        public Visibility ReloadConsecutiveVisibility => ((v.Ammo?.ReloadAdditional??0) != 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.ReloadAdditional ?? 0) != 0)))
+        public Visibility ReloadConsecutiveVisibility => ((v.Ammo?.ReloadAdditional ?? 0) != 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.ReloadAdditional ?? 0) != 0)))
             ? Visibility.Visible
             : Visibility.Collapsed;
         public bool ReloadConsecutiveDiff => IfDifferent((f) => f.ReloadConsecutive);
@@ -272,7 +272,7 @@ beamdisconnect 	mediguns
         public bool ArmTimeDiff => IfDifferent((f) => f.ArmTime);
 
         /// <summary>
-        // sticky max charge; sniper max charge time (including delay?); huntsman max charge; minigun rev max warmup; banner timed charge time
+        /// sticky max charge; sniper max charge time (including delay?); huntsman max charge; minigun rev max warmup; banner timed charge time
         ///max charge time
         /// recharge
         /// drop expiry
@@ -336,9 +336,17 @@ beamdisconnect 	mediguns
             ? Visibility.Visible
             : Visibility.Collapsed;
         public bool EffectDiff => IfDifferent((f) => f.EffectDamage);
-        public Visibility EffectDurationVisibility => (v.Effect != null && v.EffectMin.HasValue && v.EffectMin.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.Effect != null && v.EffectMin.HasValue && v.EffectMin.Value != 0)))
+        public Visibility EffectDurationVisibility => IsEffectDurationInteresting(v) || (v.Alts != null && v.Alts.Any(v => IsEffectDurationInteresting(v)))
             ? Visibility.Visible
             : Visibility.Collapsed;
+
+        private static bool IsEffectDurationInteresting(WeaponVM v)
+        {
+            return v.Effect != null 
+                && v.EffectMin.HasValue 
+                && (v.EffectMin.Value != 0 || (v.EffectMax.HasValue && v.EffectMax.Value != 0));
+        }
+
         public bool EffectDurationDiff => IfDifferent((f) => f.EffectDuration);
         public Visibility EffectMinicritVisibility => EffectVisibility == Visibility.Visible && MiniCritVisibility == Visibility.Visible
             ? Visibility.Visible
@@ -352,7 +360,7 @@ beamdisconnect 	mediguns
             ? Visibility.Visible
             : Visibility.Collapsed;
         public bool VelocityDiff => IfDifferent((f) => f.Velocity);
-        
+
         public string SpreadAmount => v.Spread.HasValue
             ? string.Format("{0:0.#####}", v.Spread.Value)
             : null;

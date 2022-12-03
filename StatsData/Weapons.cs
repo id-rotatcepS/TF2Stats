@@ -233,13 +233,20 @@ namespace StatsData
             };
             ChargeTime = 1.0m;
             FireRate = ChargeTime; // pre-charge delay (0) + charge time
-            // Aim Fatigue / Accurate Time
-            ActivationTime = 5.0m;
 
+            //// Aim Fatigue / Accurate Time
+            //ActivationTime = 5.0m;
             Effect = new Effect()
             {
-                Name = "Crit on Headshot"
+                Name = "No Aim Fatigue",
+                Minimum = 0,
+                Maximum = 5.0m
             };
+
+            Effects.Add(new Effect()
+            {
+                Name = "Crit on Headshot"
+            });
         }
     }
 
