@@ -31,6 +31,7 @@
             <controls:DataGrid.ContextFlyout>
                 <MenuFlyout>
                     <ToggleMenuFlyoutItem IsChecked="{Binding IsIncludingAlternates, Mode=TwoWay}" Text="Include Alternate Weapon Modes"/>
+                    <ToggleMenuFlyoutItem IsChecked="{Binding IsWeaponGroups, Mode=TwoWay}" Text="Show Weapon Groups"/>
                 </MenuFlyout>
             </controls:DataGrid.ContextFlyout>
         </controls:DataGrid>

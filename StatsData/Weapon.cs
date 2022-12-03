@@ -12,7 +12,7 @@ namespace StatsData
         public bool UseSimpleOverrides = true;
 
         public string Name { get; protected set; }
-        public List<Weapon> AlternateModes { get; protected set; }
+        public List<Weapon> AlternateModes { get; protected set; } = new List<Weapon>();
 
         public decimal FireRate { get; protected set; }
         /// <summary>

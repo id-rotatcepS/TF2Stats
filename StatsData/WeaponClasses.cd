@@ -566,7 +566,7 @@
   <Class Name="StatsData.Degreaser" Collapsed="true">
     <Position X="21.75" Y="26.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>FlameThrower.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -1206,13 +1206,6 @@
       <FileName>Melee.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StatsData.ScottsmansSkullcutter" Collapsed="true">
-    <Position X="44.75" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Melee.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="StatsData.KillingGlovesOfBoxing" Collapsed="true">
     <Position X="46.75" Y="10.75" Width="1.5" />
     <TypeIdentifier>
@@ -1406,7 +1399,7 @@
   <Class Name="StatsData.Weapon" Collapsed="true">
     <Position X="15.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EiAAAAAAAIgAAAAKAAQAAAQQAABEAAABAAAAAgAAIAA=</HashCode>
+      <HashCode>EiAAAAAAAIgAAAAKAAQAAAQQAABEAAgBABAAAgAAIAA=</HashCode>
       <FileName>Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -1417,7 +1410,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>SCCAAECQKQFBFAAAgSAACQBAQAgBQIAJgFAAgQwAwAQ=</HashCode>
+      <HashCode>SCiAAGCQKQFBFAAAgSAACQBAQAgBQICJgNAAiQgAwAY=</HashCode>
       <FileName>Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -1438,13 +1431,6 @@
         <Point X="38.75" Y="31.381" />
         <Point X="39.734" Y="31.381" />
         <Point X="39.734" Y="32.5" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="Damage" Type="StatsData.Damage" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="38.75" Y="30.94" />
-        <Point X="40.562" Y="30.94" />
-        <Point X="40.562" Y="29.085" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -1473,7 +1459,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAIIAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAIIAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -1514,7 +1500,7 @@
   <Class Name="StatsData.Ammo">
     <Position X="33.5" Y="26.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAgABAAEAAAAAgAAAAAAABAAIEAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AYAAAgAJAAEAAAAAkAAAEAAABAAIEAAACAAAAAAAAAA=</HashCode>
       <FileName>Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -2091,13 +2077,6 @@
       <FileName>SniperRifle.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="StatsData.RighteousBisonTypical" Collapsed="true">
-    <Position X="14" Y="46" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Weapons.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="StatsData.EnforcerDisguised" Collapsed="true">
     <Position X="24" Y="4.25" Width="1.5" />
     <TypeIdentifier>
@@ -2131,6 +2110,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Minigun.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StatsData.ScotsmansSkullcutter" Collapsed="true">
+    <Position X="44.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Melee.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

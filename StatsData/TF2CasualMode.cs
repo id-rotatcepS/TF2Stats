@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 
 namespace StatsData
 {
@@ -226,7 +227,58 @@ namespace StatsData
         static Bushwaka Bushwaka = new Bushwaka();
         static Shahanshah Shahanshah = new Shahanshah();
 
-        public List<Weapon> Weapons
+        public List<Weapon> Weapons => WeaponsBase;
+
+        public List<Weapon> WeaponsGroup
+        {
+            get
+            {
+                List<Weapon> result = //new List<Weapon>(WeaponsBase.ToArray());
+                    new List<Weapon>();
+
+                AddGroup<AShotgun>(result, new Shotgun());
+                AddGroup<AScattergun>(result, new Scattergun());
+                AddGroup<APistol>(result, new ScoutPistol());
+                AddGroup<ABolt>(result, new Huntsman());
+                AddGroup<AFlameThrower>(result, new FlameThrower());
+                AddGroup<AFlareGun>(result, new FlareGun());
+                AddGroup<AGrenadeLauncher>(result, new GrenadeLauncher());
+                AddGroup<AMinigun>(result, new Minigun());
+                AddGroup<ARevolver>(result, new Revolver());
+                AddGroup<ARocketLauncher>(result, new RocketLauncher());
+                AddGroup<ASMG>(result, new SMG());
+                AddGroup<ASniperRifle>(result, new SniperRifle());
+                AddGroup<ASyringeGun>(result, new SyringeGun());
+                AddGroup<Sword>(result, new Eyelander());
+                AddGroup<AStickybombLauncher>(result, new StickybombLauncher());
+                AddGroup<ShieldBash>(result, new CharginTarge());
+                AddGroup<IndivisibleParticleSmasher>(result, new Pomson6000());
+                AddGroup<ThrowableWeapon>(result, new SandmanBall())
+                    // bauble is an alternate-only, same as SandmanBall
+                    .AlternateModes.AddRange(TF2CasualMode.WrapAssassin.AlternateModes);
+                AddGroup<ActiveJumpAssist>(result, new Mantreads());
+
+                AddGroup<AMediGun>(result, new MediGun());
+                AddGroup<AKnife>(result, new Knife());
+                AddGroup<ABat>(result, new Bat());
+                AddGroup<BuildingMaintenance>(result, new Wrench());
+                AddGroup<Sapper>(result, new Sapper());
+
+                //TODO the "other" melees, non-damage or simple items. unique items
+
+                return result;
+            }
+        }
+
+        private T AddGroup<T>(List<Weapon> result, T sg) where T : Weapon
+        {
+            sg.AlternateModes.Clear();
+            sg.AlternateModes.AddRange(WeaponsBase.OfType<T>().Where(s => sg.GetType() != s.GetType()).ToList());
+            result.Add(sg);
+            return sg;
+        }
+
+        public List<Weapon> WeaponsBase
         {
             get;
         } = new List<Weapon>() {
@@ -435,7 +487,8 @@ namespace StatsData
         private ObservableCollection<WeaponVM> CreateWeaponCollection()
         {
             ObservableCollection<WeaponVM> rows = new ObservableCollection<WeaponVM>();
-            foreach (Weapon w in Weapons)
+            List<Weapon> list = IsWeaponGroups ? this.WeaponsGroup : Weapons;
+            foreach (Weapon w in list)
             {
                 rows.Add(new WeaponVM(w));
                 if (IsIncludingAlternates && w.AlternateModes != null)
@@ -457,7 +510,19 @@ namespace StatsData
             get => _IsIncludingAlternates;
             set
             {
-                _IsIncludingAlternates = value; 
+                _IsIncludingAlternates = value;
+                rows = null;
+                NotifyPropertyChanged(nameof(WeaponCollection));
+            }
+        }
+        private bool _IsWeaponGroups = false;
+
+        public bool IsWeaponGroups
+        {
+            get => _IsWeaponGroups;
+            set
+            {
+                _IsWeaponGroups = value;
                 rows = null;
                 NotifyPropertyChanged(nameof(WeaponCollection));
             }
