@@ -262,9 +262,12 @@ namespace StatsData
                 AddGroup<AKnife>(result, new Knife());
                 AddGroup<ABat>(result, new Bat());
                 AddGroup<BuildingMaintenance>(result, new Wrench());
+
+                AddGroup<MeleeWeapon>(result, new PainTrain());
+
                 AddGroup<Sapper>(result, new Sapper());
 
-                //TODO the "other" melees, non-damage or simple items. unique items
+                //TODO the "other" melee subtypes, non-damage or simple items. unique items
 
                 return result;
             }

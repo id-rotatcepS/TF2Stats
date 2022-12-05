@@ -77,7 +77,10 @@
                     </StackPanel>
                 </StackPanel>
 
-                <TextBlock Text="{Binding Detail.FunctionTimeParams}"/>
+                <!-- textbox simulating a textblock for selectability -->
+                <TextBox Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" 
+                         Text="{Binding Detail.FunctionTimeParams, Mode=OneWay}"
+                         FontFamily="Global Monospace,ApparentlyThatDoesn'tExistSo...,Consolas,Courier New" />
 
                 <ItemsControl x:Name="alts" ItemsSource="{Binding Alts}" >
                         <ItemsControl.ItemsPanel>

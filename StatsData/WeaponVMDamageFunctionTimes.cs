@@ -134,6 +134,7 @@ beamdisconnect 	mediguns
         public Visibility BuildingVisibility => PercentVisibility((v) => v.BuildingMod);
         public bool BuildingDiff => IfDifferent((f) => f.BuildingDamage);
 
+        public string FragmentType => v.FragmentType;
         public string Fragment => v.Fragments?.ToString();
         public Visibility FragmentVisibility => NullableVisibility((v) => v.Fragments);
         public bool FragmentDiff => IfDifferent((f) => f.Fragment);
