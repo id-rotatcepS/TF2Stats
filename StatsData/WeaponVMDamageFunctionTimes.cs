@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StatsData.WikiPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
@@ -318,58 +319,24 @@ beamdisconnect 	mediguns
             : Visibility.Collapsed;
         public bool SpreadRecoveryDiff => IfDifferent((f) => f.SpreadRecovery);
 
-        private string EffectDamageFormat = "{0:0.#} / {1:0.#} s\n{2:0} total";
-        public string EffectDamage => v.EffectDamage.HasValue
-            ? string.Format(EffectDamageFormat, WeaponVMDetail.Round(v.EffectDamage.Value), v.EffectDamageRate, EffectDamageTotal(WeaponVMDetail.Round(v.EffectDamage.Value)))
-            : null;
+    
+        public List<Effect> Effects => w.Effects ?? new List<Effect>();
 
-        private decimal EffectDamageTotal(decimal? d)
+        public IEnumerable<EffectVM> EffectVMs => GetAllBaseEffects().Select((e) => EffectVM.GetEffectVM(this, e));
+
+        // Get a name-only effect for effects on alts that aren't on the base, too.
+        private IEnumerable<Effect> GetAllBaseEffects()
         {
-            if (!d.HasValue)
-            {
-                return 0;
-            }
-
-            return d.Value * (v.EffectMax ?? 1) * 1m / (v.EffectDamageRate ?? 1);
+            IEnumerable<string> allEffectNames = Effects.Select(e => e.Name)
+                .Union(
+                Alts.SelectMany(a => a.Effects.Select(e => e.Name))
+                );
+            return allEffectNames.Select((effectName) =>
+                w.Effects.FirstOrDefault(e => e.Name == effectName)
+                ?? new Effect() { Name = effectName }
+                );
         }
 
-        public string EffectMinicrit => v.EffectDamage.HasValue
-            ? string.Format(EffectDamageFormat, MiniCritCalc(v.EffectDamage), v.EffectDamageRate, EffectDamageTotal(MiniCritCalc(v.EffectDamage)))
-            : null;
-        public string EffectDuration => v.EffectMin.HasValue
-            ? string.Format(
-                (v.EffectMin == v.EffectMax)
-                ? "{0:0.#} s"
-                : "{0:0.#}-{1:0.#} s",
-                v.EffectMin, v.EffectMax)
-            : null;
-        public string EffectLabel => v.EffectDamage.HasValue && v.EffectDamage.Value != 0
-            ? v.Effect
-            : v.Alts?.FirstOrDefault(v => (v.Effect != null && v.EffectDamage.HasValue))?.Effect
-            // prefer effect that causes damage, otherwise, anything will do.
-            ?? (v.Effect != null
-            ? v.Effect
-            : v.Alts?.FirstOrDefault(v => v.Effect != null)?.Effect);
-        public Visibility EffectVisibility => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.Effect != null && v.EffectDamage.HasValue && v.EffectDamage.Value != 0)))
-            ? Visibility.Visible
-            : Visibility.Collapsed;
-        public bool EffectDiff => IfDifferent((f) => f.EffectDamage);
-        public Visibility EffectDurationVisibility => IsEffectDurationInteresting(v) || (v.Alts != null && v.Alts.Any(v => IsEffectDurationInteresting(v)))
-            ? Visibility.Visible
-            : Visibility.Collapsed;
-
-        private static bool IsEffectDurationInteresting(WeaponVM v)
-        {
-            return v.Effect != null 
-                && v.EffectMin.HasValue 
-                && (v.EffectMin.Value != 0 || (v.EffectMax.HasValue && v.EffectMax.Value != 0));
-        }
-
-        public bool EffectDurationDiff => IfDifferent((f) => f.EffectDuration);
-        public Visibility EffectMinicritVisibility => EffectVisibility == Visibility.Visible && MiniCritVisibility == Visibility.Visible
-            ? Visibility.Visible
-            : Visibility.Collapsed;
-        public bool EffectMinicritDiff => IfDifferent((f) => f.EffectMinicrit);
 
         public string Velocity => v.Speed.HasValue
             ? string.Format("{0:0.##} HU/s", v.Speed.Value)

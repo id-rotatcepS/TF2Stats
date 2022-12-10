@@ -259,7 +259,6 @@ WeaponData
                 new DragonsFuryBurning(),
                 new DragonsFuryRampage(),
                 new DragonsFuryPostHit(),
-                new DragonsFuryPostCompressionBlast(),
                 new DragonsFuryCompressionBlast(),
             };
         }
@@ -275,16 +274,6 @@ WeaponData
             {
                 AmmoUsed = 5,
             };
-        }
-    }
-
-    internal class DragonsFuryPostCompressionBlast : ADragonsFury
-    {
-        public DragonsFuryPostCompressionBlast()
-        {
-            Name = "(after compression blast)";
-
-            FireRate = 1.6m;
         }
     }
 

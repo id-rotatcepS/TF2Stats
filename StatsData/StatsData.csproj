@@ -142,6 +142,7 @@
     <Compile Include="Weapon.cs" />
     <Compile Include="WeaponVM.cs" />
     <Compile Include="WeaponVMDetail.cs" />
+    <Compile Include="WikiPages\EffectVM.cs" />
     <Compile Include="WikiPages\WeaponFuncTimeBlock.cs" />
     <EmbeddedResource Include="Properties\StatsData.rd.xml" />
   </ItemGroup>

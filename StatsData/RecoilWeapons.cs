@@ -258,7 +258,7 @@ namespace StatsData
     {
         public Ambassador()
             : base(34,
-             1.0m//TODO other spreadsheet AND WIKI have 1, another page has 0.9, discussion page mentions this too
+             1.0m//TODO other spreadsheet AND WIKI have 1, another page has 0.9, discussion page mentions this too.  August 2020 wiki updates changed this from 0.95 to 1 and Enforcer from .95 to 1.25
                  )
         {
             Name = "ambassador";
@@ -299,7 +299,7 @@ namespace StatsData
              1.0m//TODO see note on main
                  )
         {
-            Name = "(headshot)";
+            Name = "headshot";
 
             // Crits (and minicrits??) are affected by distance falloff.
             // Wiki says as low as 54 damage crit, but doesn't show reduction in mini-crit numbers.
@@ -347,8 +347,7 @@ namespace StatsData
     public class Enforcer : ARevolver
     {
         public Enforcer()
-            :base(40, 
-                 0.9m)//other spreadsheet had default 1.25,
+            :base(40)//had 0.9 (or 0.95) recovery in the past, but wiki was restored to same as others in August 2020 ... there was a May 2022 discussion post asking about it because OTHER pages still say smaller number.
         {
             Name = "enforcer";
 
@@ -378,10 +377,9 @@ namespace StatsData
     public class EnforcerDisguised : ARevolver
     {
         public EnforcerDisguised()
-            : base(40 * 1.20m,
-                 0.9m)//other spreadsheet had default 1.25,
+            : base(40 * 1.20m)
         {
-            Name = "(disguised)";
+            Name = "disguised";
 
             FireRate = 0.6m;
         }

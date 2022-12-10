@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Interactions="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
-    d:DesignHeight="500"
+    d:DesignHeight="900"
     d:DesignWidth="400">
     <StackPanel Background="#FFF3EAD9">
         <StackPanel.Resources>
@@ -510,82 +510,94 @@
 
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
-            <StackPanel.Resources>
-                <DataTemplate x:Key="rowBody">
-                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectVisibility}">
-                        <Interactivity:Interaction.Behaviors>
-                            <Interactions:DataTriggerBehavior Binding="{Binding EffectDiff}" ComparisonCondition="Equal" Value="False">
-                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectDamage}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
-                            </Interactions:DataTriggerBehavior>
-                        </Interactivity:Interaction.Behaviors>
-                        <TextBlock x:Name="EffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding EffectDamage}" Style="{StaticResource MainValue}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </StackPanel.Resources>
-            <StackPanel Style="{StaticResource ResourceKey=Label}">
-                <TextBlock x:Name="labelEffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Text="{Binding EffectLabel}" Width="200"/>
-            </StackPanel>
-            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
-
-            <ItemsControl ItemsSource="{Binding Alts}" >
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
-                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+        <!-- effects -->
+        <ItemsControl ItemsSource="{Binding EffectVMs}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding Visibility}">
+                        <StackPanel.Resources>
+                            <DataTemplate x:Key="rowBody">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding Visibility}">
+                                    <Interactivity:Interaction.Behaviors>
+                                        <Interactions:DataTriggerBehavior Binding="{Binding Diff}" ComparisonCondition="Equal" Value="False">
+                                            <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectDamage}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                        </Interactions:DataTriggerBehavior>
+                                    </Interactivity:Interaction.Behaviors>
+                                    <TextBlock x:Name="EffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding Damage}" Style="{StaticResource MainValue}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </StackPanel.Resources>
+                        <StackPanel Style="{StaticResource ResourceKey=Label}">
+                            <TextBlock x:Name="labelEffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding Name}" Width="200"/>
                         </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                        <ContentControl ContentTemplate="{StaticResource rowBody}"/>
 
-        </StackPanel>
-        
-        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectMinicritVisibility}">
-            <StackPanel.Resources>
-                <DataTemplate x:Key="rowBody">
-                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectMinicritVisibility}">
-                        <Interactivity:Interaction.Behaviors>
-                            <Interactions:DataTriggerBehavior Binding="{Binding EffectMinicritDiff}" ComparisonCondition="Equal" Value="False">
-                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectMinicrit}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
-                            </Interactions:DataTriggerBehavior>
-                        </Interactivity:Interaction.Behaviors>
-                        <TextBlock x:Name="EffectMinicrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding EffectMinicrit}" Style="{StaticResource MainValue}"/>
+                        <ItemsControl ItemsSource="{Binding AltEffects}" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                                        <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </StackPanel>
+                    
                 </DataTemplate>
-            </StackPanel.Resources>
-            <StackPanel Style="{StaticResource ResourceKey=Label}">
-                <TextBlock x:Name="labelEffectMinicrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Width="200">
-                    <Run Text="{Binding EffectLabel}"/>
-                    <Run Text=" (mini-crit)"/>
-                </TextBlock>
-            </StackPanel>
-            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ItemsControl ItemsSource="{Binding EffectVMs}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
 
-            <ItemsControl ItemsSource="{Binding Alts}" >
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
-                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding MinicritVisibility}">
+                        <StackPanel.Resources>
+                            <DataTemplate x:Key="rowBody">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding MinicritVisibility}">
+                                    <Interactivity:Interaction.Behaviors>
+                                        <Interactions:DataTriggerBehavior Binding="{Binding MinicritDiff}" ComparisonCondition="Equal" Value="False">
+                                            <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=MinicritEffectDamage}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                        </Interactions:DataTriggerBehavior>
+                                    </Interactivity:Interaction.Behaviors>
+                                    <TextBlock x:Name="MinicritEffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding MinicritDamage}" Style="{StaticResource MainValue}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </StackPanel.Resources>
+                        <StackPanel Style="{StaticResource ResourceKey=Label}">
+                            <TextBlock x:Name="labelEffectDamage" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Minicrit" Width="200"/>
                         </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                        <ContentControl ContentTemplate="{StaticResource rowBody}"/>
 
-        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding AltEffects}" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                                        <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!-- /effects -->
 
         <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3" Visibility="{Binding MinimumSplashVisibility}">
             <TextBlock x:Name="SplashHeading" HorizontalAlignment="Stretch" Text="Splash damage" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
@@ -948,45 +960,50 @@
 
         </StackPanel>
         <!-- Effect Duration (regardless of damage) -->
-        <StackPanel Orientation="Horizontal" Visibility="{Binding EffectDurationVisibility}">
-            <StackPanel.Resources>
-                <DataTemplate x:Key="rowBody">
-                    <StackPanel Orientation="Horizontal" Visibility="{Binding EffectDurationVisibility}">
-                        <Interactivity:Interaction.Behaviors>
-                            <Interactions:DataTriggerBehavior Binding="{Binding EffectDurationDiff}" ComparisonCondition="Equal" Value="False">
-                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectDuration}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
-                            </Interactions:DataTriggerBehavior>
-                        </Interactivity:Interaction.Behaviors>
-                        <TextBlock x:Name="EffectDuration" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding EffectDuration}" Style="{StaticResource MainValue}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </StackPanel.Resources>
-            <StackPanel Style="{StaticResource ResourceKey=Label}">
-                <TextBlock x:Name="labelEffectDuration" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                           Width="200">
-                    <Run Text="{Binding EffectLabel}"/>
-                    <Run Text=" Duration"/>
-                </TextBlock>
-            </StackPanel>
-            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+        <!-- effects -->
+        <ItemsControl ItemsSource="{Binding EffectVMs}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
 
-            <ItemsControl ItemsSource="{Binding Alts}" >
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
-                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding DurationVisibility}">
+                        <StackPanel.Resources>
+                            <DataTemplate x:Key="rowBody">
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding DurationVisibility}">
+                                    <Interactivity:Interaction.Behaviors>
+                                        <Interactions:DataTriggerBehavior Binding="{Binding DurationDiff}" ComparisonCondition="Equal" Value="False">
+                                            <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=EffectDuration}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                        </Interactions:DataTriggerBehavior>
+                                    </Interactivity:Interaction.Behaviors>
+                                    <TextBlock x:Name="EffectDuration" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                                       Text="{Binding Duration}" Style="{StaticResource MainValue}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </StackPanel.Resources>
+                        <StackPanel Style="{StaticResource ResourceKey=Label}">
+                            <TextBlock x:Name="labelEffectDuration" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="{Binding Name}" Width="200"/>
                         </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                        <ContentControl ContentTemplate="{StaticResource rowBody}"/>
 
-        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding AltEffects}" >
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                                        <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <!-- TODO Ammo consumption interval 	0.105 s (followed by afterburn duration)-->
         <StackPanel Orientation="Horizontal" Visibility="{Binding SpreadRecoveryVisibility}">

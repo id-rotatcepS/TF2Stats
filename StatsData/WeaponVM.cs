@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StatsData.WikiPages;
+using System;
 using System.Collections.Generic;
 
 namespace StatsData
@@ -57,9 +58,10 @@ namespace StatsData
 
             if (fireRate == 0)
             {
-                if ((EffectDamageRate ?? 0) != 0)
+                EffectVM effectVM = EffectVM.GetEffectVM(Detail.FunctionTimes, W.Effect);
+                if (effectVM != null && effectVM.DamageRate != 0)
                 {
-                    return EffectDamage * (1.0m / EffectDamageRate);
+                    return effectVM.DamageBase * (1.0m / effectVM.DamageRate);
                 }
 
                 return null;
@@ -171,17 +173,17 @@ namespace StatsData
 
         //public string FireType => W.Ammo?.FireType;
 
-        public string Effect => W.Effect?.Name;
-        public decimal? EffectDamage => W.Effect?.Damage?.Base;
-        // damage details never of interest for an Effect:
-        //public decimal? EffectZeroRangeMod => W.Effect?.Damage?.ZeroRangeRamp;
-        //public decimal? EffectLongRangeMod => W.Effect?.Damage?.LongRangeRamp;
-        //public decimal? EffectClosestRangeOffset => W.Effect?.Damage?.Offset;
-        //public decimal? EffectBuildingMod => W.Effect?.Damage?.BuildingModifier;
-        public decimal? EffectDamageRate => W.Effect?.DamageRate;
-        public decimal? EffectMin => W.Effect?.Minimum;
-        public decimal? EffectMax => W.Effect?.Maximum;
-        public decimal? RadiusOfEffect => W.AreaOfEffect?.Radius;
+        //public string Effect => W.Effect?.Name;
+        //public decimal? EffectDamage => W.Effect?.Damage?.Base;
+        //// damage details never of interest for an Effect:
+        ////public decimal? EffectZeroRangeMod => W.Effect?.Damage?.ZeroRangeRamp;
+        ////public decimal? EffectLongRangeMod => W.Effect?.Damage?.LongRangeRamp;
+        ////public decimal? EffectClosestRangeOffset => W.Effect?.Damage?.Offset;
+        ////public decimal? EffectBuildingMod => W.Effect?.Damage?.BuildingModifier;
+        //public decimal? EffectDamageRate => W.Effect?.DamageRate;
+        //public decimal? EffectMin => W.Effect?.Minimum;
+        //public decimal? EffectMax => W.Effect?.Maximum;
+        //public decimal? RadiusOfEffect => W.AreaOfEffect?.Radius;
 
         public WeaponVMDetail Detail { get; set; }
         public bool CanCrit => W.CanCrit;
