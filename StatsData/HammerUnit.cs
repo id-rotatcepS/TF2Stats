@@ -23,7 +23,7 @@
 
         public string GetDetail()
         {
-            return string.Format("{1:0.#} m ({2:0.#} ft, {0:0.##} HU)", hu, GetMeters(), GetFeet());
+            return string.Format("{1:0.##} m ({2:0.##} ft, {0:0.##} HU)", hu, GetMeters(), GetFeet());
         }
 
         public decimal GetMeters()

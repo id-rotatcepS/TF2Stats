@@ -22,12 +22,13 @@ namespace StatsData
                     LongRangeRamp = 1,
                     BuildingModifier = buildingModifier
                 },
-                Splash = new AOE(splashRadius)
+                Splash = new AOE(splashRadius),
             };
             FireRate = 0.6m;
 
             //fuse (if no impact or contact with surfaces):
             ActivationTime = 2.3m;//wiki text says 2.3s;
+            Projectile.MaxRangeTime = ActivationTime;
 
             Ammo = new Ammo(4, 16)
             {
@@ -71,6 +72,7 @@ namespace StatsData
             FireRate = 0.6m;
             //fuse:
             ActivationTime = 2.3m;//wiki text says 2.3s;
+            Projectile.MaxRangeTime = ActivationTime;
 
             Ammo = new Ammo(4, 16)
             {
@@ -115,6 +117,7 @@ namespace StatsData
             // TODO technically it has explode on fuse expiration flak
             //fuse (if no impact or contact with surfaces):
             ActivationTime = 2.3m;
+            Projectile.MaxRangeTime = ActivationTime;
 
             Ammo.Loaded = 3;
 
@@ -136,6 +139,7 @@ namespace StatsData
         public LooseCannon()
         {
             Name = "loose cannon";
+            Notes += "Needs more obs. ranged fuse in wiki, obs don't think so. obs: maybe falloff starts post-long range (time-based)? crit truly affected by range?\n";
 
             Projectile = new Projectile(1453.9m)// wd; 1440 in other sheet
             {
@@ -175,6 +179,7 @@ namespace StatsData
             Name = "(fuse)";
 
             ActivationTime = 1.0m;// "Cannonballs have a fuse time of 1 second; fuses can be primed to explode earlier by holding down the fire key."
+            Projectile.MaxRangeTime = ActivationTime;
         }
     }
 
@@ -200,6 +205,7 @@ namespace StatsData
             //};
             //FireRate = 0.6;
             ActivationTime = 1.61m;
+            Projectile.MaxRangeTime = ActivationTime;
 
             AlternateModes = new List<Weapon>()
             {
@@ -231,6 +237,7 @@ namespace StatsData
             //FireRate = 0.6;
             ////fuse:
             ActivationTime = 1.61m;//I had 2.0m;... but that's not 2.3m -30%
+            Projectile.MaxRangeTime = ActivationTime;
         }
     }
 

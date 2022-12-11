@@ -68,13 +68,14 @@ namespace StatsData
             //};
             //FireRate = 0.15;
 
-            Ammo.Reload = 1.005m; // variants use 1.10m in wiki, but with no explanation.  I am assuming this is the accurate one.
+            Ammo.Reload = 1.005m; // recently proved value - variants use 1.10m in wiki because they weren't updated to match.
         }
     }
 
     /// <summary>
     /// 26	9	35	23	52	52
     /// wiki: 23-26	9-11	35	23	52
+    /// TODO WIKI update: 1.10 reload was before Perci got better time of 1.0005
     /// </summary>
     public class Winger : ScoutPistol
     {
@@ -82,6 +83,7 @@ namespace StatsData
             :base(17.25m)
         {
             Name = "winger";
+            Notes += "Wiki 1.10 reload was based on scout pistol that since was proven as 1.005\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -112,6 +114,7 @@ namespace StatsData
         public PrettyBoysPocketPistol()
         {
             Name = "pretty boy's pocket pistol";
+            Notes += "Wiki 1.10 reload was based on scout pistol that since was proven as 1.005\n";
 
             //Hitscan = new Hitscan()
             //{

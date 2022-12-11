@@ -13,6 +13,9 @@ namespace StatsData
         public AShotgun(decimal baseDamage = 60, int fragments = 10, decimal spread = Damage.SPREAD_SHOTGUN_SCATTERGUN, decimal zeroRange = Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP)
         {
             Name = "Shotgun";
+            Notes = "wiki 0.51 reload more, but derivatives all use 0.50\n" +
+                "Wiki Long range all pellets is as if 50%, not 52.8%??\n" +
+                "Spread based on 0.0675 - wiki shotgun discussion proof shows that yet mistakenly still uses 0.0625\n";
             Hitscan = new Hitscan()
             {
                 Damage = new Damage(baseDamage)
@@ -175,7 +178,7 @@ namespace StatsData
         public PanicAttack6thShot()
              : base(72,
                  15, 
-                 0.0945m)
+                 0.0945m)//TODO umm.. where's this from? math vs. basis instead?
         {
             Name = "6th shot";
 
@@ -210,6 +213,7 @@ namespace StatsData
             :base(51)
         {
             Name = "family business";
+            Notes += "obs/wiki agree close is 76, not (60*85%=51) 51*150%=76.5 rounds to 77.  That does match 'Round To Even' rule, however.\n";
 
             //Hitscan = new Hitscan()
             //{

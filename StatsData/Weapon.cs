@@ -12,6 +12,10 @@ namespace StatsData
         public bool UseSimpleOverrides = true;
 
         public string Name { get; protected set; }
+        /// <summary>
+        /// Optional notes to explain known differences and issues.
+        /// </summary>
+        public string Notes { get; protected set; } = "";
         public List<Weapon> AlternateModes { get; protected set; } = new List<Weapon>();
 
         public decimal FireRate { get; protected set; }
@@ -279,6 +283,7 @@ namespace StatsData
         }
         public AOE(decimal radius)
         {
+            //TODO does game force rounding of this number? if so, round here.  Direct Hit wiki uses a round HU number instead of the calculated one.
             Radius = radius;
         }
         public decimal Radius { get; }

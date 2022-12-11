@@ -52,6 +52,8 @@ namespace StatsData
         {
             Name = "Scattergun";
 
+            Notes += "wiki/calc close 105, but obs 104; minicrit calc 142 but obs/'wiki' 141\n";
+
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(60)
@@ -83,6 +85,8 @@ namespace StatsData
             12)
         {
             Name = "Force-A-Nature";
+
+            Notes += "minicrit 'wiki'/calc close 153, but obs 152\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -179,6 +183,7 @@ namespace StatsData
         public SodaPopper()
         {
             Name = "Soda Popper";
+            Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -212,6 +217,7 @@ namespace StatsData
         public BabyFacesBlaster()
         {
             Name = "baby face's blaster";
+            Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -247,6 +253,7 @@ namespace StatsData
                  )
         {
             Name = "backscatter";
+            Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
 
             //Hitscan = new Hitscan()
             //{

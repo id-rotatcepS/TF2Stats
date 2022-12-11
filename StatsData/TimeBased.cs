@@ -253,6 +253,7 @@ WeaponData
         public DragonsFury()
         {
             Name = "Dragon's Fury";
+            Notes += "obs falloff 24 (calc/wiki 23); minicrit obs/wiki close 40 (calc 41); wiki mc burning 100-121 (calc 101-122) \n";
 
             AlternateModes = new List<Weapon>
             {

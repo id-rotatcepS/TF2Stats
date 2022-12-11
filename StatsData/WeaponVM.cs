@@ -36,6 +36,7 @@ namespace StatsData
         public string Name => P != null
             ? P.Name + "\n>" + W.Name
             : W.Name;
+
         internal Damage Damage => W.Melee?.Damage
             ?? W.Hitscan?.Damage
             ?? W.Projectile?.HitDamage;

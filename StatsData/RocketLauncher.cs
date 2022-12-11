@@ -12,6 +12,7 @@ namespace StatsData
         public ARocketLauncher(decimal baseDamage = 90, decimal speed = 1100, decimal splashRadius= AOE.DEFAULT_SPLASH)
         {
             Name = "Rocket Launcher";
+            Notes += "Long Range 124.6% I invented as a single value that works with Liberty Launcher and everything else.\n";
             Projectile = new Projectile(speed)
             {
                 HitDamage = new Damage(baseDamage)
@@ -90,6 +91,7 @@ namespace StatsData
                  AOE.DEFAULT_SPLASH * 0.3m)
         {
             Name = "direct hit";
+            Notes += "radius on wiki is rounded - is that editor simplifying or is that how the game uses it?\n";
 
             //Projectile = new Projectile(1980)
             //{

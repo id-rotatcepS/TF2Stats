@@ -53,6 +53,9 @@
                         <TextBlock>Effect:</TextBlock>
                         <TextBlock Text="{Binding Effect}"/>
                     </StackPanel>
+                    
+                    <TextBlock FontStyle="Italic" Text="{Binding Detail.Notes}"/>
+
                     <!--<StackPanel Orientation="Horizontal">
                         <TextBlock>Accuracy:</TextBlock>
                         <StackPanel Orientation="Vertical">

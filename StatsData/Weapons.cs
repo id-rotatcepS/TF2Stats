@@ -506,6 +506,8 @@ namespace StatsData
             :base(102, 0.5m)
         {
             Name = "The Quickiebomb Launcher";
+            Notes += "Wiki says radius 189 - but same date this was added others reduced from 159 to 146\n";
+
             //Projectile = new Projectile(925.38) //wd; other sheet had 900
             //{
             //    HitDamage = new Damage(102)
