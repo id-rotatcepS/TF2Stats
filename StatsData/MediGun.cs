@@ -89,7 +89,6 @@ namespace StatsData
         /// </summary>
         public MediGun()
         {
-            Name = "Medi Gun";
             Name = "Medi Gun"; Level = 1; WeaponType = "Medi Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n3 healing (24 healing per second) \n Beam limited to 105% range"),
 });
             //Melee = new Melee()
@@ -153,7 +152,6 @@ namespace StatsData
     {
         public Kritzkrieg()
         {
-            Name = "kritzkrieg";
             Name = "Kritzkrieg"; Level = 8; WeaponType = "Medi Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("ÜberCharge grants 100% critical chance"),
 new PositiveAttribute("+25% ÜberCharge rate"),
@@ -303,7 +301,6 @@ new DescriptionAttribute("Mirror the blast jumps and shield charges of patients.
     {
         public Vaccinator()
         {
-            Name = "vaccinator";
             Name = "Vaccinator"; Level = 8; WeaponType = "Vaccinator"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+67% Übercharge rate"),
 new PositiveAttribute("Press your reload key to cycle through resist types."),

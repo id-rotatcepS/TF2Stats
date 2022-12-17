@@ -36,7 +36,6 @@ namespace StatsData
     {
         public Minigun()
         {
-            Name = "minigun";
             Name = "Minigun"; Level = 1; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n36 damage (360 dps) 150%-53% by range\n4 pellet spread accurate to 30% range\n 200 carried"),
 });
             //ActivationTime = 0.87;// sec spin up;
@@ -95,7 +94,6 @@ namespace StatsData
         public Natascha()
         : base(27)
         {
-            Name = "natascha";
             Name = "Natascha"; Level = 5; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: 100% chance to slow target"),
 new PositiveAttribute("-20% damage resistance when below 50% health and spun up"),
@@ -141,7 +139,6 @@ new NegativeAttribute("30% slower spin up time"),
         public BrassBeast()
             :base(43.2m)
         {
-            Name = "brass beast";
             Name = "Brass Beast"; Level = 5; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+20% damage bonus"),
 new PositiveAttribute("-20% damage resistance when below 50% health and spun up"),
@@ -187,7 +184,6 @@ new NegativeAttribute("-60% slower move speed while deployed"),
         public Tomislav()
             :base(36, 0.064m)
         {
-            Name = "tomislav";
             Name = "Tomislav"; Level = 5; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+20% faster spin up time"),
 new PositiveAttribute("20% more accurate"),

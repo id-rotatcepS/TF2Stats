@@ -75,7 +75,6 @@ namespace StatsData
     {
         public Pomson6000()
         {
-            Name = "Pomson 6000";
             Name = "Pomson 6000"; Level = 10; WeaponType = "Indivisible Particle Smasher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Does not require ammo"),
 new PositiveAttribute("Projectile cannot be deflected"),
@@ -113,7 +112,6 @@ new DescriptionAttribute("Being an innovative hand-held irradiating utensil capa
         public RighteousBison()
             : base(20)
         {
-            Name = "Righteous Bison";
             Name = "Righteous Bison"; Level = 30; WeaponType = "Indivisible Particle Smasher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Does not require ammo"),
 new PositiveAttribute("Projectile penetrates enemy targets"),
@@ -193,7 +191,6 @@ new NegativeAttribute("Deals only 20% damage to buildings"),
         //TODO Aim Fatigue: 5s
         public Huntsman()
         {
-            Name = "Huntsman";
             Name = "Huntsman"; Level = 10; WeaponType = "Bow"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 });
             Projectile = new Projectile(1875)//wd; had 1812 from other spreadsheet
@@ -332,7 +329,6 @@ new NegativeAttribute("Deals only 20% damage to buildings"),
         //TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
         public RescueRanger()
         {
-            Name = "Rescue Ranger";
             Name = "Rescue Ranger"; Level = 1 - 100; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Alt-Fire: Use 100 metal to pick up your targeted building from long range"),
 new PositiveAttribute("Fires a special bolt that can repair friendly buildings"),
@@ -366,7 +362,6 @@ new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
     {
         public Wrangler()
         {
-            Name = "wrangler";
             Name = "Wrangler"; Level = 5; WeaponType = "Laser Pointer"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new DescriptionAttribute("Take manual control of your Sentry Gun.<br>Wrangled sentries gain a shield that reduces damage and repairs by 66%.<br>Sentries are disabled for 3 seconds after becoming unwrangled."),
 }); 
@@ -413,7 +408,6 @@ new DescriptionAttribute("Take manual control of your Sentry Gun.<br>Wrangled se
     {
         public StickybombLauncher()
         {
-            Name = "Stickybomb Launcher";
             Name = "Stickybomb Launcher"; Level = 1; WeaponType = "Stickybomb Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n120 explosive damage (200 dps) 120%-50% by range\n Arced projectile accurate to 14%, explosion to 100% range\nReloads 8 in 5.8 sec (first in 1.1 sec), 24 carried"),
 new DescriptionAttribute("Alt-Fire: Detonate all Stickybombs"),
 });
@@ -500,7 +494,6 @@ new DescriptionAttribute("Alt-Fire: Detonate all Stickybombs"),
             : base(120,
                   1.72m) // 1.5 in text; 1.72 in function times
         {
-            Name = "scottish resistance";
             Name = "Scottish Resistance"; Level = 5; WeaponType = "Stickybomb Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25% faster firing speed"),
 new PositiveAttribute("+50% max secondary ammo on wearer"),
@@ -680,7 +673,6 @@ new NegativeAttribute("-50% clip size"),
     {
         public SyringeGun()
         {
-            Name = "syringe gun";
             Name = "Syringe Gun"; Level = 1; WeaponType = "Syringe Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n10 damage (100 dps) 120%-50% by range\n Arced projectile accurate to 16% range\nReloads 40 in 1.6 sec (clip), 150 carried"),
 });
         }
@@ -690,7 +682,6 @@ new NegativeAttribute("-50% clip size"),
     {
         public Blutsauger()
         {
-            Name = "blutsauger";
             Name = "Blutsauger"; Level = 5; WeaponType = "Syringe Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: Gain up to +3 health"),
 new NegativeAttribute("-2 health drained per second on wearer"),
@@ -724,7 +715,6 @@ new NegativeAttribute("-2 health drained per second on wearer"),
         public Overdose()
             : base(8.5m) // -15% damage
         {
-            Name = "overdose";
             Name = "Overdose"; Level = 5; WeaponType = "Syringe Gun Prototype"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NegativeAttribute("-15% damage penalty"),
 new DescriptionAttribute("While active, movement speed increases based on ÜberCharge percentage to a maximum of +20%"),

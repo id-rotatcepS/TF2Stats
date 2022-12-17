@@ -41,7 +41,6 @@ namespace StatsData
     {
         public FlareGun()
         {
-            Name = "Flare Gun";
             Name = "Flare Gun"; Level = 10; WeaponType = "Flare Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("100% critical hit vs burning players"),
 new DescriptionAttribute("This weapon will reload when not active"),
@@ -90,7 +89,6 @@ new DescriptionAttribute("This weapon will reload when not active"),
             :base(22.5m,//23
                  2000)
         {
-            Name = "Detonator";
             Name = "Detonator"; Level = 10; WeaponType = "Flare Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("100% mini-crits vs burning players"),
 new NegativeAttribute("-25% damage penalty"),
@@ -162,7 +160,6 @@ new DescriptionAttribute("Alt-Fire: Detonate flare.<br>This weapon will reload a
             :base(30, 
                  3000)
         {
-            Name = "Manmelter";
             Name = "Manmelter"; Level = 30; WeaponType = "Indivisible Particle Smasher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+50% projectile speed"),
 new PositiveAttribute("Does not require ammo"),
@@ -217,7 +214,6 @@ new DescriptionAttribute("This weapon will reload automatically when not active.
                  2000,
                  AOE.FLARE_SPLASH)
         {
-            Name = "Scorch Shot";
             Name = "Scorch Shot"; Level = 10; WeaponType = "Flare Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("100% mini-crits vs burning players"),
 new PositiveAttribute("Flare knocks back target on hit and explodes when it hits the ground."),

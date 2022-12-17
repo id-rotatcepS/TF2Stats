@@ -42,7 +42,6 @@ namespace StatsData
     {
         public GrenadeLauncher()
         {
-            Name = "grenade launcher";
             Name = "Grenade Launcher"; Level = 1; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n100 explosive damage (167 dps) \n Arced projectile accurate to 19%, explosion to 133% range\nReloads 4 in 3 sec (first in 1.2 sec), 16 carried"),
 });
             AlternateModes = new List<Weapon>
@@ -145,7 +144,6 @@ new NegativeAttribute("Launched bombs shatter on surfaces"),
     {
         public LooseCannon()
         {
-            Name = "loose cannon";
             Name = "Loose Cannon"; Level = 10; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("Cannonballs have a fuse time of 1 second; fuses can be primed to explode earlier by holding down the fire key."),
 new PositiveAttribute("+20% projectile speed"),
@@ -204,7 +202,6 @@ new DescriptionAttribute("Double Donk! Bomb explosions after a cannon ball impac
         public IronBomber()
             :base(AOE.DEFAULT_SPLASH * 0.85m)
         {
-            Name = "iron bomber";
             Name = "Iron Bomber"; Level = 1 - 99; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Grenades have very little bounce and roll"),
 new PositiveAttribute("-30% fuse time on grenades"),

@@ -46,7 +46,6 @@ namespace StatsData
     {
         public Shotgun()
         {
-            Name = "Shotgun";
             Name = "Shotgun"; Level = 1; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n60 damage (96 dps) 150%-53% by range\n10 pellet spread accurate to 36% range\nReloads 6 in 3.5 sec (first in 1 sec), 32 carried"),
 });
             Ammo.ReloadFirst = 0.87m; // Heavy & Engineer
@@ -112,7 +111,6 @@ namespace StatsData
     {
         public ReserveShooter()
         {
-            Name = "reserve shooter";
             Name = "Reserve Shooter"; Level = 10; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Mini-crits targets launched airborne by explosions, grapple hooks or rocket packs"),
 new PositiveAttribute("This weapon deploys 20% faster"),
@@ -152,7 +150,6 @@ new NegativeAttribute("-34% clip size"),
             :base(72, 
                  15)
         {
-            Name = "panic attack";
             Name = "Panic Attack"; Level = 1 - 99; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+50% bullets per shot"),
 new PositiveAttribute("This weapon deploys 50% faster"),
@@ -223,7 +220,6 @@ new NegativeAttribute("Successive shots become less accurate"),
         public FamilyBusiness()
             :base(51)
         {
-            Name = "family business";
             Name = "Family Business"; Level = 10; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+33% clip size"),
 new PositiveAttribute("+15% faster firing speed"),
@@ -260,7 +256,6 @@ new NegativeAttribute("-15% damage penalty"),
     {
         public FrontierJustice()
         {
-            Name = "frontier justice";
             Name = "Frontier Justice"; Level = 5; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Gain 2 revenge crits for each sentry kill and 1 for each sentry assist when your sentry is destroyed."),
 new NegativeAttribute("-50% clip size"),
@@ -296,7 +291,6 @@ new NegativeAttribute("Revenge crits are lost on death"),
     {
         public Widowmaker()
         {
-            Name = "widowmaker";
             Name = "Widowmaker"; Level = 5; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On hit: damage dealt is returned as ammo"),
 new PositiveAttribute("No reload necessary"),

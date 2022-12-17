@@ -78,7 +78,6 @@ new DescriptionAttribute("Applies a bonus effect for a limited amount of time wh
     {
         public Wrench()
         {
-            Name = "wrench";
             Name = "Wrench"; Level = 1; WeaponType = "Wrench"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n65 damage (81 dps)"),
 new DescriptionAttribute("Upgrades, repairs and speeds up construction of friendly buildings on hit."),
 });
@@ -178,7 +177,6 @@ new DescriptionAttribute("Being a tool that eliminates exertion by harnessing th
     {
         public Gunslinger()
         {
-            Name = "Gunslinger";
             Name = "Gunslinger"; Level = 15; WeaponType = "Robot Arm"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25 max health on wearer"),
 new PositiveAttribute("Sentry build speed increased by 150%"),
@@ -221,7 +219,6 @@ new NegativeAttribute("Replaces the Sentry with a Mini-Sentry"),
         public Knife(decimal baseDamage = 40)
             :base(baseDamage)
         {
-            Name = "knife";
             Name = "Knife"; Level = 1; WeaponType = "Knife"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n40 damage (50 dps)"),
 new DescriptionAttribute("Attack an enemy from behind to Backstab them for a one hit kill."),
 });
@@ -232,7 +229,6 @@ new DescriptionAttribute("Attack an enemy from behind to Backstab them for a one
     {
         public YourEternalReward()
         {
-            Name = "your eternal reward";
             Name = "Your Eternal Reward"; Level = 1; WeaponType = "Knife"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Upon a successful backstab against a human target, you rapidly disguise as your victim"),
 new PositiveAttribute("Silent Killer: No attack noise from backstabs"),
@@ -252,7 +248,6 @@ new NegativeAttribute("Normal disguises require (and consume) a full cloak meter
     {
         public ConniversKunai()
         {
-            Name = "conniver's kunai";
             Name = "Conniver's Kunai"; Level = 1; WeaponType = "Kunai"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Backstab: Absorbs the health from your victim"),
 new NegativeAttribute("-55 max health on wearer"),
@@ -271,7 +266,6 @@ new DescriptionAttribute("Start off with low health<br />Kill somebody with this
     {
         public BigEarner()
         {
-            Name = "big earner";
             Name = "Big Earner"; Level = 1; WeaponType = "Knife"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+30% cloak on kill"),
 new PositiveAttribute("Gain a speed boost on kill"),
@@ -329,7 +323,6 @@ new DescriptionAttribute("It's the perfect gift for the man who has everything: 
     {
         public Bat()
         {
-            Name = "bat";
             Name = "Bat"; Level = 1; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n35 damage (70 dps)"),
 });
             //            Name = "Holy Mackerel"; Level = 42; WeaponType = "Fish"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
@@ -342,7 +335,6 @@ new DescriptionAttribute("It's the perfect gift for the man who has everything: 
     {
         public Sandman()
         {
-            Name = "sandman";
             Name = "Sandman"; Level = 15; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Alt-Fire: Launches a ball that slows opponents"),
 new NegativeAttribute("-15 max health on wearer"),
@@ -366,7 +358,6 @@ new NegativeAttribute("-15 max health on wearer"),
     {
         public CandyCane()
         {
-            Name = "candy cane";
             Name = "Candy Cane"; Level = 25; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Kill: A small health pack is dropped"),
 new NegativeAttribute("25% explosive damage vulnerability on wearer"),
@@ -384,7 +375,6 @@ new NegativeAttribute("25% explosive damage vulnerability on wearer"),
     {
         public BostonBasher()
         {
-            Name = "boston basher";
             Name = "Boston Basher"; Level = 25; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: Bleed for 5 seconds"),
 new NegativeAttribute("On Miss: Hit yourself. Idiot."),
@@ -410,7 +400,6 @@ new NegativeAttribute("On Miss: Hit yourself. Idiot."),
         public SunOnAStick()
             :base(26.25m)
         {
-            Name = "sun-on-a-stick";
             Name = "Sun-on-a-Stick"; Level = 10; WeaponType = "RIFT Fire Mace"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("100% critical hit vs burning players"),
 new PositiveAttribute("+25% fire damage resistance while deployed"),
@@ -436,7 +425,6 @@ new DescriptionAttribute("Spiky end goes into other man."),
         public FanOWar()
             : base(8.75m)
         {
-            Name = "fan o'war";
             Name = "Fan O'War"; Level = 5; WeaponType = "Gunbai"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Crits whenever it would normally mini-crit"),
 new PositiveAttribute("On Hit: One target at a time is Marked-For-Death, causing all damage taken to be mini-crits"),
@@ -473,7 +461,6 @@ new DescriptionAttribute("Winds of Gravel Pit<br />Scout brings on his deadly fa
         public Atomizer()
             : base(29.75m)
         {
-            Name = "atomizer";
             Name = "Atomizer"; Level = 10; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Grants Triple Jump while deployed"),
 new PositiveAttribute("Melee attacks mini-crit while airborne."),
@@ -497,7 +484,6 @@ new NegativeAttribute("This weapon deploys 50% slower"),
         public WrapAssassin()
             :base(8.75m)
         {
-            Name = "wrap assassin";
             Name = "Wrap Assassin"; Level = 15; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25% increase in recharge rate"),
 new PositiveAttribute("Alt-Fire: Launches a festive ornament that shatters causing bleed"),
@@ -535,7 +521,6 @@ new DescriptionAttribute("These lovely festive ornaments are so beautifully craf
     {
         public EscapePlan()
         {
-            Name = "escape plan";
             Name = "Escape Plan"; Level = 10; WeaponType = "Pickaxe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("Move speed increases as the user becomes injured"),
@@ -554,7 +539,6 @@ new NegativeAttribute("-90% less healing from Medic sources"),
     {
         public DisciplinaryAction() // long range.
         {
-            Name = "disciplinary action";
             Name = "Disciplinary Action"; Level = 10; WeaponType = "Riding Crop"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit Teammate: Boosts both players' speed for several seconds"),
 new NegativeAttribute("-25% damage penalty"),
@@ -576,7 +560,6 @@ new NegativeAttribute("-25% damage penalty"),
     {
         public HotHand()
         {
-            Name = "hot hand";
             Name = "Hot Hand";/*Level*/WeaponType = "Slap"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Gain a speed boost when you hit an enemy player"),
 new NegativeAttribute("-20% damage penalty"),
@@ -599,7 +582,6 @@ new DescriptionAttribute("This melee slap tells your opponent, and anyone watchi
     {
         public PowerJack()
         {
-            Name = "powerjack";
             Name = "Powerjack"; Level = 5; WeaponType = "Sledgehammer"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("+15% faster move speed on wearer"),
@@ -618,7 +600,6 @@ new NegativeAttribute("20% damage vulnerability on wearer"),
     {
         public GlovesOfRunningUrgently()
         {
-            Name = "gloves of running urgently";
             Name = "Gloves of Running Urgently"; Level = 10; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
             new PositiveAttribute("+30% faster move speed on wearer"),
             new NegativeAttribute("This weapon holsters 50% slower"),
@@ -637,7 +618,6 @@ new NegativeAttribute("20% damage vulnerability on wearer"),
     {
         public EvictionNotice()
         {
-            Name = "eviction notice";
             Name = "Eviction Notice"; Level = 10; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+40% faster firing speed"),
 new PositiveAttribute("On Hit: Gain a speed boost"),
@@ -660,7 +640,6 @@ new NegativeAttribute("Maximum health is drained while item is active"),
     {
         public PainTrain()
         {
-            Name = "pain train";
             Name = "Pain Train"; Level = 5; WeaponType = "Makeshift Club"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+1 capture rate on wearer"),
 new NegativeAttribute("10% bullet damage vulnerability on wearer"),
@@ -703,7 +682,6 @@ new NeutralAttribute("Soldiers and Demos<br>Can duel with katanas<br>For a one-h
         public Equalizer()
             :base(32.5m)
         {
-            Name = "equalizer";
             Name = "Equalizer"; Level = 10; WeaponType = "Pickaxe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("Damage increases as the user becomes injured"),
@@ -724,7 +702,6 @@ new NegativeAttribute("-90% less healing from Medic sources"),
     {
         public MarketGardener()
         {
-            Name = "market gardener";
             Name = "Market Gardener"; Level = 10; WeaponType = "Shovel"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Deals crits while the wielder is rocket jumping"),
 new NegativeAttribute("20% slower firing speed"),
@@ -791,7 +768,6 @@ new NegativeAttribute("-25% damage vs players"),
         public BackScratcher()
             :base(81.25m)
         {
-            Name = "back scratcher";
             Name = "Back Scratcher"; Level = 10; WeaponType = "Garden Rake"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25% damage bonus"),
 new PositiveAttribute("+50% health from packs on wearer"),
@@ -813,7 +789,6 @@ new NegativeAttribute("-75% health from healers on wearer"),
         public SharpenedVolcanoFragment()
             :base(52)
         {
-            Name = "sharpened volcano fragment";
             Name = "Sharpened Volcano Fragment"; Level = 10; WeaponType = "RIFT Fire Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: target is engulfed in flames"),
 new NegativeAttribute("-20% damage penalty"),
@@ -836,7 +811,6 @@ new DescriptionAttribute("Improves upon Mother Nature's original design for volc
     {
         public ThirdDegree()
         {
-            Name = "third degree";
             Name = "Third Degree"; Level = 10; WeaponType = "Fire Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("All players connected via Medigun beams are hit"),
 new DescriptionAttribute("Being a boon to tree-fellers, backwoodsmen and atom-splitters the world over, this miraculous matter-hewing device burns each individual molecule as it cleaves it."),
@@ -855,7 +829,6 @@ new DescriptionAttribute("Being a boon to tree-fellers, backwoodsmen and atom-sp
     {
         public NeonAnnihilator()
         {
-            Name = "neon annihilator";
             Name = "Neon Annihilator"; Level = 1 - 100; WeaponType = "Sign"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Damage removes Sappers"),
 new PositiveAttribute("100% critical hit vs wet players"),
@@ -917,7 +890,6 @@ new DescriptionAttribute("Gives increased speed and health with every head you t
     {
         public UllapoolCaber()
         {
-            Name = "ullapool caber";
             Name = "Ullapool Caber"; Level = 10; WeaponType = "Stick Bomb"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NegativeAttribute("20% slower firing speed"),
 new NegativeAttribute("This weapon deploys 100% slower"),
@@ -941,7 +913,6 @@ new DescriptionAttribute("High-yield Scottish face removal.<br/>A sober person w
     {
         public ClaidheamhMor()
         {
-            Name = "Claidheamh Mòr";
             Name = "Claidheamh Mòr"; Level = 5; WeaponType = "Sword"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new NeutralAttribute("This Weapon has a large melee range and deploys and holsters slower"),
@@ -966,7 +937,6 @@ new NegativeAttribute("15% damage vulnerability on wearer"),
     {
         public PersionPersuader()
         {
-            Name = "persian persuader";
             Name = "Persian Persuader"; Level = 10; WeaponType = "Sword"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
 new PositiveAttribute("Ammo boxes collected give Charge"),
@@ -992,7 +962,6 @@ new NegativeAttribute("No random critical hits"),
         public ScotsmansSkullcutter()
             :base(65*1.20m)
         {
-            Name = "scotsman's skullcutter";
             Name = "Scotsman's Skullcutter"; Level = 5; WeaponType = "Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
 new NeutralAttribute("When weapon is active:"),
@@ -1015,7 +984,6 @@ new NegativeAttribute("15% slower move speed on wearer"),
     {
         public KillingGlovesOfBoxing()
         {
-            Name = "killing gloves of boxing";
             Name = "Killing Gloves of Boxing"; Level = 7; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Kill: 5 seconds of 100% critical chance"),
 new NegativeAttribute("-20% slower firing speed"),
@@ -1034,7 +1002,6 @@ new NegativeAttribute("-20% slower firing speed"),
         public WarriorsSpirit()
             :base(84.5m)
         {
-            Name = "warrior's spirit";
             Name = "Warrior's Spirit"; Level = 10; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("+30% damage bonus"),
@@ -1056,7 +1023,6 @@ new NegativeAttribute("30% damage vulnerability on wearer"),
     {
         public HolidayPunch()
         {
-            Name = "holiday punch";
             Name = "Holiday Punch"; Level = 10; WeaponType = "Fists"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Critical hit forces victim to laugh"),
 new PositiveAttribute("Always critical hit from behind"),
@@ -1076,7 +1042,6 @@ new DescriptionAttribute("Be the life of the war party with these laugh-inducing
     {
         public FistsOfSteel()
         {
-            Name = "fists of steel";
             Name = "Fists of Steel"; Level = 10; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("-40% damage from ranged sources while active"),
 new NegativeAttribute("+100% damage from melee sources while active"),
@@ -1096,7 +1061,6 @@ new NegativeAttribute("-40% health from healers on wearer"),
     {
         public Ubersaw()
         {
-            Name = "ubersaw";
             Name = "Ubersaw"; Level = 10; WeaponType = "Bonesaw"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: 25% ÜberCharge added"),
 new NegativeAttribute("20% slower firing speed"),
@@ -1132,7 +1096,6 @@ new DescriptionAttribute("A percentage of your ÜberCharge level is retained on 
         public Amputator()
             :base(52)
         {
-            Name = "amputator";
             Name = "Amputator"; Level = 15; WeaponType = "Bonesaw"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("+3 health regenerated per second on wearer"),
@@ -1154,7 +1117,6 @@ new NegativeAttribute("-20% damage penalty"),
     {
         public SolemnVow()
         {
-            Name = "solemn vow";
             Name = "Solemn Vow"; Level = 10; WeaponType = "Bust of Hippocrates"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Allows you to see enemy health"),
 new NegativeAttribute("10% slower firing speed"),
@@ -1173,7 +1135,6 @@ new DescriptionAttribute("'Do no harm.'"),
         public TribalmansShiv()
             :base(32.5m)
         {
-            Name = "tribalman's shiv";
             Name = "Tribalman's Shiv"; Level = 5; WeaponType = "Kukri"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: Bleed for 6 seconds"),
 new NegativeAttribute("-50% damage penalty"),
@@ -1220,7 +1181,6 @@ new NegativeAttribute("20% damage vulnerability on wearer"),
     {
         public Shahanshah()
         {
-            Name = "shahanshah";
             Name = "Shahanshah"; Level = 5; WeaponType = "Kukri"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25% increase in damage when health <50% of max"),
 new NegativeAttribute("-25% decrease in damage when health >50% of max"),

@@ -24,7 +24,6 @@ namespace StatsData
         public BuffBanner()
         {
             //Offset = 23.5,
-            Name = "buff banner";
             Name = "Buff Banner"; Level = 5; WeaponType = "Battle Banner"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new DescriptionAttribute("Provides an offensive buff that causes nearby team members to do mini-crits. Rage increases through damage done."),
 });
@@ -44,7 +43,6 @@ new DescriptionAttribute("Provides an offensive buff that causes nearby team mem
         public BatallionsBackup()
         {
             //Offset = 23.5,
-            Name = "batallion's backup";
             Name = "Battalion's Backup"; Level = 10; WeaponType = "Battle Banner"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+20 max health on wearer"),
 new DescriptionAttribute("Provides a defensive buff that protects nearby team members from crits, incoming sentry damage by 50% and 35% from all other sources.<br>Rage increases through damage done."),
@@ -64,7 +62,6 @@ new DescriptionAttribute("Provides a defensive buff that protects nearby team me
         public Concheror()
         {
             //Offset = 23.5,
-            Name = "concheror";
             Name = "Concheror"; Level = 5; WeaponType = "Sashimono"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+4 health regenerated per second on wearer"),
 new DescriptionAttribute("Provides group speed buff<br>with damage done giving health.<br>Gain rage with damage."),
@@ -114,7 +111,6 @@ new DescriptionAttribute("Press 'JUMP' key in the air to deploy.<br>Deployed Par
         public Gunboats()
         {
             //Offset = 23.5,
-            Name = "gunboats";
             Name = "Gunboats"; Level = 10; WeaponType = "Boots"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("-60% blast damage from rocket jumps"),
 }); 
@@ -165,7 +161,6 @@ new PositiveAttribute("Melee kills refill 25% of your charge meter."),
         public Razorback()
         {
             //Offset = 23.5,
-            Name = "razorback";
             Name = "Razorback"; Level = 10; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Blocks a single backstab attempt"),
 new NegativeAttribute("-100% maximum overheal on wearer"),
@@ -178,7 +173,6 @@ new NegativeAttribute("-100% maximum overheal on wearer"),
         public DarwinsDangerShield()
         {
             //Offset = 23.5,
-            Name = "darwin's danger shield";
             Name = "Darwin's Danger Shield"; Level = 10; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+50% fire damage resistance on wearer"),
 new PositiveAttribute("Immune to the effects of afterburn."),
@@ -191,7 +185,6 @@ new PositiveAttribute("Immune to the effects of afterburn."),
         public CozyCamper()
         {
             //Offset = 23.5,
-            Name = "cozy camper";
             Name = "Cozy Camper"; Level = 10; WeaponType = "Backpack"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+4 health regenerated per second on wearer"),
 new PositiveAttribute("No flinching when aiming and fully charged"),
@@ -235,7 +228,6 @@ new PositiveAttribute("Knockback reduced by 20% when aiming"),
         public Sandvich()
         {
             //Offset = 23.5,
-            Name = "sandvich";
             Name = "Sandvich"; Level = 1; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new DescriptionAttribute("Eat to regain up to 300 health.<br>Alt-fire: Share a Sandvich with a friend (Medium Health Kit)"),
 });
@@ -282,7 +274,6 @@ new DescriptionAttribute("Eat to gain up to 100 health.<br>Alt-fire: Share choco
         public BuffaloSteakSandvich()
         {
             //Offset = 23.5,
-            Name = "buffalo steak sandvich";
             Name = "Buffalo Steak Sandvich"; Level = 1; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new DescriptionAttribute("After consuming, move speed is increased, attacks mini-crit, and the player may only use melee weapons. Lasts 16 seconds.<br>Alt-fire: Share with a friend (Medium Health Kit)<br><br>Who needs bread?"),
 });
@@ -307,7 +298,6 @@ new DescriptionAttribute("After consuming, move speed is increased, attacks mini
         public SecondBanana()
         {
             //Offset = 23.5,
-            Name = "second banana";
             Name = "Second Banana"; Level = 1; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+50% increase in charge recharge rate"),
 new NegativeAttribute("-33% healing effect"),
@@ -341,7 +331,6 @@ new DescriptionAttribute("Eat to gain health<br />Alt-fire: Share banana with a 
         public BonkAtomicPunch()
         {
             //Offset = 23.5,
-            Name = "bonk! atomic punch";
             Name = "Bonk! Atomic Punch"; Level = 5; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new DescriptionAttribute("Drink to become invulnerable for 8 seconds. Cannot attack during this time.<br>Damage absorbed will slow you when the effect ends."),
 });
@@ -424,7 +413,6 @@ new NeutralAttribute("While effect is active: each attack mini-crits and sets Ma
     {
         public Jarate()
         {
-            Name = "jarate";
             Name = "Jarate"; Level = 5; WeaponType = "Jar Based Karate"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("Coated enemies take mini-crits"),
 new NeutralAttribute("Can be used to extinguish fires."),
@@ -448,7 +436,6 @@ new PositiveAttribute("Extinguishing teammates reduces cooldown by -20%"),
     {
         public MadMilk()
         {
-            Name = "mad milk";
             Name = "Mad Milk"; Level = 5; WeaponType = "Non-Milk Substance"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Extinguishing teammates reduces cooldown by -20%"),
 new DescriptionAttribute("Players heal 60% of the damage done to an enemy covered with milk.<br>Can be used to extinguish fires."),
@@ -471,7 +458,6 @@ new DescriptionAttribute("Players heal 60% of the damage done to an enemy covere
     {
         public GasPasser()
         {
-            Name = "gas passer";
             Name = "Gas Passer"; Level = 1 - 100; WeaponType = "Gas-Like Substance"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Gas meter builds with damage done and/or time"),
 new NegativeAttribute("Spawning and resupply do not affect the Gas meter"),
@@ -498,7 +484,6 @@ new DescriptionAttribute("Creates a horrific visible gas that coats enemies with
     {
         public Sapper()
         {
-            Name = "sapper";
             Name = "Sapper"; Level = 1; WeaponType = "Sapper"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n"),
 new DescriptionAttribute("Place on enemy buildings to disable and slowly drain away its health. Placing a sapper does not remove your disguise"),
 });
@@ -543,7 +528,6 @@ new NegativeAttribute("-100% Sapper damage penalty"),
     {
         public InvisWatch()
         {
-            Name = "invis watch";
             Name = "Invis Watch"; Level = 1; WeaponType = "Invis Watch"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new DescriptionAttribute("Alt-Fire: Turn invisible. Cannot attack while invisible. Bumping in to enemies will make you slightly visible to enemies"),
 });

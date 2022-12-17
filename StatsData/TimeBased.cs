@@ -27,7 +27,7 @@ namespace StatsData
         /// </summary>
         public ShortCircuit()
         {
-            Name = "Short Circuit"; // arc-thrower
+            // arc-thrower
             Name = "Short Circuit"; Level = 5; WeaponType = "Robot Arm"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Alt-Fire: Launches a projectile-consuming energy ball. Costs 65 metal."),
 new PositiveAttribute("No reload necessary"),
@@ -259,7 +259,6 @@ WeaponData
     {
         public DragonsFury()
         {
-            Name = "Dragon's Fury";
             Name = "Dragon's Fury"; Level = 1 - 100; WeaponType = "Flame Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("Uses a shared pressure tank for Primary Fire and Alt-Fire.<br/><br/>Primary Fire: Launches a fast moving projectile that briefly ignites enemies<br/><br/>Alt-Fire: Release a blast of air that pushes enemies and projectiles, and extinguishes teammates that are on fire."),
 new PositiveAttribute("Extinguishing teammates restores 20 health"),
@@ -342,7 +341,6 @@ new DescriptionAttribute("This powerful, single-shot flamethrower rewards consec
         //TODO Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)
         public CrusadersCrossbow()
         {
-            Name = "Crusader's Crossbow";
             Name = "Crusader's Crossbow"; Level = 15; WeaponType = "Crossbow"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NegativeAttribute("No headshots"),
 new NegativeAttribute("-75% max primary ammo on wearer"),
@@ -550,7 +548,6 @@ new DescriptionAttribute("Fires special bolts that heal teammates and deals dama
     {
         public CharginTarge()
         {
-            Name = "Chargin' Targe";
             Name = "Chargin' Targe"; Level = 1 - 99; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+50% fire damage resistance on wearer"),
 new PositiveAttribute("+30% explosive damage resistance on wearer"),
@@ -580,7 +577,6 @@ new DescriptionAttribute("Alt-Fire: Charge toward your enemies and remove debuff
     {
         public SplendidScreen()
         {
-            Name = "Splendid Screen";
             Name = "Splendid Screen"; Level = 10; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+20% fire damage resistance on wearer"),
 new PositiveAttribute("+20% explosive damage resistance on wearer"),
@@ -611,7 +607,6 @@ new DescriptionAttribute("Alt-Fire: Charge toward your enemies and remove debuff
     {
         public TideTurner()
         {
-            Name = "Tide Turner";
             Name = "Tide Turner"; Level = 1 - 100; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+15% fire damage resistance on wearer"),
 new PositiveAttribute("+15% explosive damage resistance on wearer"),
@@ -716,7 +711,6 @@ new DescriptionAttribute("Alt-Fire: Charge toward your enemies and remove debuff
     {
         public FlyingGuillotine()
         {
-            Name = "Flying Guillotine";
             Name = "Flying Guillotine";/*Level*/WeaponType = "Cleaver"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Throw at your enemies to make them bleed! Long distance hits reduce recharge time"),
 new NegativeAttribute("No random critical hits"),
@@ -854,7 +848,6 @@ tf_weapon_rocketpack.txt - Jetpack
 
         public ThermalThruster()
         {
-            Name = "Thermal Thruster";
             Name = "Thermal Thruster"; Level = 1 - 100; WeaponType = "Rocket Pack"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Push enemies back when you land (force and radius based on velocity)"),
 new DescriptionAttribute("Death from above! Fires a short-duration blast that launches the Pyro in the direction they are aiming. Deal 3x falling damage to anyone you land on!"),
@@ -904,7 +897,6 @@ new DescriptionAttribute("Death from above! Fires a short-duration blast that la
     {
         public Mantreads()
         {
-            Name = "Mantreads";
             Name = "Mantreads"; Level = 10; WeaponType = "Boots"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("-75% reduction in push force taken from damage"),
 new PositiveAttribute("Deals 3x falling damage to the player you land on"),

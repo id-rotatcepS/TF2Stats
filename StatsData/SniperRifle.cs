@@ -82,7 +82,6 @@ namespace StatsData
     {
         public SydneySleeper()
         {
-            Name = "sydney sleeper";
             Name = "Sydney Sleeper"; Level = 1; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25% charge rate"),
 new PositiveAttribute("On Scoped Hit: Apply Jarate for 2 to 5 seconds based on charge level."),
@@ -153,7 +152,6 @@ new NegativeAttribute("No headshots"),
     {
         public BazaarBargain()
         {
-            Name = "bazaar bargain";
             Name = "Bazaar Bargain"; Level = 10; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NegativeAttribute("Base charge rate decreased by 50%"),
 new DescriptionAttribute("Each scoped headshot kill increases the weapon's charge rate by 25% up to 200%."),
@@ -306,7 +304,6 @@ new NegativeAttribute("Fires tracer rounds"),
         public HitmansHeatmaker()
             : base(40)
         {
-            Name = "hitman's heatmaker";
             Name = "Hitman's Heatmaker"; Level = 1; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Gain Focus on kills and assists"),
 new PositiveAttribute("Press 'Reload' to activate focus"),
@@ -420,7 +417,6 @@ new DescriptionAttribute("Heads will roll."),
         public Classic()
             : base(45)
         {
-            Name = "Classic";
             Name = "Classic"; Level = 1 - 100; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Charge and fire shots independent of zoom"),
 new NegativeAttribute("No headshots when not fully charged"),
