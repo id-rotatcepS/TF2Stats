@@ -25,6 +25,9 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "buff banner";
+            Name = "Buff Banner"; Level = 5; WeaponType = "Battle Banner"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new DescriptionAttribute("Provides an offensive buff that causes nearby team members to do mini-crits. Rage increases through damage done."),
+});
             ActivationTime = 3;
 
             Effect = new Effect()
@@ -42,6 +45,10 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "batallion's backup";
+            Name = "Battalion's Backup"; Level = 10; WeaponType = "Battle Banner"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+20 max health on wearer"),
+new DescriptionAttribute("Provides a defensive buff that protects nearby team members from crits, incoming sentry damage by 50% and 35% from all other sources.<br>Rage increases through damage done."),
+}); 
             ActivationTime = 2.645m;
 
             Effect = new Effect()
@@ -58,6 +65,10 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "concheror";
+            Name = "Concheror"; Level = 5; WeaponType = "Sashimono"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+4 health regenerated per second on wearer"),
+new DescriptionAttribute("Provides group speed buff<br>with damage done giving health.<br>Gain rage with damage."),
+}); 
             ActivationTime = 3;
 
             Effect = new Effect()
@@ -92,7 +103,9 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "BASE jumper";
-
+            Name = "B.A.S.E. Jumper";/*Level*/WeaponType = "Parachute"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new DescriptionAttribute("Press 'JUMP' key in the air to deploy.<br>Deployed Parachutes slow your descent."),
+}); 
         }
     }
 
@@ -102,7 +115,9 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "gunboats";
-
+            Name = "Gunboats"; Level = 10; WeaponType = "Boots"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("-60% blast damage from rocket jumps"),
+}); 
         }
     }
 
@@ -124,7 +139,12 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "ali baba's wee booties / bootlegger";
-
+            Name = "Ali Baba's Wee Booties"; Level = 10; WeaponType = "Boots"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+25 max health on wearer"),
+new PositiveAttribute("+200% increase in turning control while charging"),
+new PositiveAttribute("+10% faster move speed on wearer (shield required)"),
+new PositiveAttribute("Melee kills refill 25% of your charge meter."),
+}); 
         }
     }
 
@@ -146,7 +166,10 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "razorback";
-
+            Name = "Razorback"; Level = 10; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Blocks a single backstab attempt"),
+new NegativeAttribute("-100% maximum overheal on wearer"),
+}); 
         }
     }
 
@@ -156,7 +179,10 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "darwin's danger shield";
-
+            Name = "Darwin's Danger Shield"; Level = 10; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+50% fire damage resistance on wearer"),
+new PositiveAttribute("Immune to the effects of afterburn."),
+}); 
         }
     }
 
@@ -166,7 +192,11 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "cozy camper";
-
+            Name = "Cozy Camper"; Level = 10; WeaponType = "Backpack"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+4 health regenerated per second on wearer"),
+new PositiveAttribute("No flinching when aiming and fully charged"),
+new PositiveAttribute("Knockback reduced by 20% when aiming"),
+});
             Effect = new Effect()
             {
                 Name = "Heal",
@@ -206,6 +236,9 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "sandvich";
+            Name = "Sandvich"; Level = 1; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new DescriptionAttribute("Eat to regain up to 300 health.<br>Alt-fire: Share a Sandvich with a friend (Medium Health Kit)"),
+});
             ActivationTime = 4.3m;
 
             Effect = new Effect()
@@ -223,6 +256,10 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "dalokahs bar";
+            Name = "Dalokohs Bar"; Level = 1; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Adds +50 max health for 30 seconds"),
+new DescriptionAttribute("Eat to gain up to 100 health.<br>Alt-fire: Share chocolate with a friend (Small Health Kit)"),
+}); 
             ActivationTime = 4.3m;
 
             Effect = new Effect()
@@ -246,6 +283,9 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "buffalo steak sandvich";
+            Name = "Buffalo Steak Sandvich"; Level = 1; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new DescriptionAttribute("After consuming, move speed is increased, attacks mini-crit, and the player may only use melee weapons. Lasts 16 seconds.<br>Alt-fire: Share with a friend (Medium Health Kit)<br><br>Who needs bread?"),
+});
             ActivationTime = 4.3m;
 
             Effect = new Effect()
@@ -268,6 +308,11 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "second banana";
+            Name = "Second Banana"; Level = 1; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+50% increase in charge recharge rate"),
+new NegativeAttribute("-33% healing effect"),
+new DescriptionAttribute("Eat to gain health<br />Alt-fire: Share banana with a friend (Small Health Kit)"),
+});
             ActivationTime = 4.3m;
 
             Effect = new Effect()
@@ -297,6 +342,9 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "bonk! atomic punch";
+            Name = "Bonk! Atomic Punch"; Level = 5; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new DescriptionAttribute("Drink to become invulnerable for 8 seconds. Cannot attack during this time.<br>Damage absorbed will slow you when the effect ends."),
+});
             ActivationTime = 1.2m;
 
             Effect = new Effect()
@@ -313,6 +361,9 @@ namespace StatsData
         {
             //Offset = 23.5,
             Name = "crit - a - cola";
+            Name = "Crit-a-Cola"; Level = 5; WeaponType = "Lunch Box"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("While effect is active: each attack mini-crits and sets Mark-For-Death for 5 seconds."),
+});
             ActivationTime = 1.2m;
 
             Effect = new Effect()
@@ -374,6 +425,11 @@ namespace StatsData
         public Jarate()
         {
             Name = "jarate";
+            Name = "Jarate"; Level = 5; WeaponType = "Jar Based Karate"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("Coated enemies take mini-crits"),
+new NeutralAttribute("Can be used to extinguish fires."),
+new PositiveAttribute("Extinguishing teammates reduces cooldown by -20%"),
+}); 
             Projectile = new Projectile(1017.9m)//wd
             {
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
@@ -393,7 +449,10 @@ namespace StatsData
         public MadMilk()
         {
             Name = "mad milk";
-
+            Name = "Mad Milk"; Level = 5; WeaponType = "Non-Milk Substance"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Extinguishing teammates reduces cooldown by -20%"),
+new DescriptionAttribute("Players heal 60% of the damage done to an enemy covered with milk.<br>Can be used to extinguish fires."),
+});
             Projectile = new Projectile(1019.9m)//wd
             {
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
@@ -413,6 +472,12 @@ namespace StatsData
         public GasPasser()
         {
             Name = "gas passer";
+            Name = "Gas Passer"; Level = 1 - 100; WeaponType = "Gas-Like Substance"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Gas meter builds with damage done and/or time"),
+new NegativeAttribute("Spawning and resupply do not affect the Gas meter"),
+new NegativeAttribute("Gas meter starts empty"),
+new DescriptionAttribute("Creates a horrific visible gas that coats enemies with a flammable material, which then ignites into afterburn if they take damage (even enemy Pyros!)"),
+});
             ActivationTime = 60;
             Projectile = new Projectile(2009.2m)//basis? 2009.2 on wd
             {
@@ -434,7 +499,9 @@ namespace StatsData
         public Sapper()
         {
             Name = "sapper";
-
+            Name = "Sapper"; Level = 1; WeaponType = "Sapper"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n"),
+new DescriptionAttribute("Place on enemy buildings to disable and slowly drain away its health. Placing a sapper does not remove your disguise"),
+});
             Melee = new Melee()
             {
                 Damage = new Damage(0)
@@ -457,7 +524,10 @@ namespace StatsData
         public RedTapeRecorder()
         {
             Name = "red tape recorder";
-
+            Name = "Red-Tape Recorder"; Level = 1 - 100; WeaponType = "Sapper"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Reverses enemy building construction"),
+new NegativeAttribute("-100% Sapper damage penalty"),
+});
             Melee = new Melee()
             {
                 //{
@@ -474,6 +544,10 @@ namespace StatsData
         public InvisWatch()
         {
             Name = "invis watch";
+            Name = "Invis Watch"; Level = 1; WeaponType = "Invis Watch"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new DescriptionAttribute("Alt-Fire: Turn invisible. Cannot attack while invisible. Bumping in to enemies will make you slightly visible to enemies"),
+});
+
             CanCrit = false;
             CanMinicrit = false;
 
@@ -486,7 +560,13 @@ namespace StatsData
         public Deadringer()
         {
             Name = "deadringer";
-
+            Name = "Dead Ringer"; Level = 5; WeaponType = "Invis Watch"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("Cloak Type: Feign Death"),
+new NeutralAttribute("Leave a fake corpse on taking damage<br>and temporarily gain invisibility, speed and damage resistance"),
+new PositiveAttribute("+50% cloak regen rate"),
+new PositiveAttribute("+40% cloak duration"),
+new NegativeAttribute("-50% cloak meter when Feign Death is activated"),
+}); 
         }
     }
 
@@ -495,7 +575,14 @@ namespace StatsData
         public CloakAndDagger()
         {
             Name = "Cloak & Dagger";
-
+            Name = "Cloak and Dagger"; Level = 5; WeaponType = "Invis Watch"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("Cloak Type: Motion Sensitive"),
+new NeutralAttribute("Alt-Fire: Turn invisible. Cannot attack while invisible. Bumping in to enemies will make you slightly visible to enemies."),
+new NeutralAttribute("Cloak drain rate based on movement speed"),
+new PositiveAttribute("+100% cloak regen rate"),
+new NegativeAttribute("No cloak meter from ammo boxes when invisible"),
+new NegativeAttribute("-35% cloak meter from ammo boxes"),
+});
         }
     }
 

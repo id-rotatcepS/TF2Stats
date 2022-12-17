@@ -42,7 +42,10 @@ namespace StatsData
         public FlareGun()
         {
             Name = "Flare Gun";
-
+            Name = "Flare Gun"; Level = 10; WeaponType = "Flare Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("100% critical hit vs burning players"),
+new DescriptionAttribute("This weapon will reload when not active"),
+}); 
             //Projectile = new Projectile(2000)
             //{
             //    HitDamage = new Damage(30)
@@ -88,7 +91,12 @@ namespace StatsData
                  2000)
         {
             Name = "Detonator";
-
+            Name = "Detonator"; Level = 10; WeaponType = "Flare Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("100% mini-crits vs burning players"),
+new NegativeAttribute("-25% damage penalty"),
+new NegativeAttribute("+50% damage to self"),
+new DescriptionAttribute("Alt-Fire: Detonate flare.<br>This weapon will reload automatically when not active."),
+});
             //Projectile = new Projectile(2000)
             //{
             //    HitDamage = new Damage(22.5)//23)
@@ -155,7 +163,14 @@ namespace StatsData
                  3000)
         {
             Name = "Manmelter";
-
+            Name = "Manmelter"; Level = 30; WeaponType = "Indivisible Particle Smasher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+50% projectile speed"),
+new PositiveAttribute("Does not require ammo"),
+new PositiveAttribute("Alt-Fire: Extinguish teammates to gain guaranteed critical hits"),
+new PositiveAttribute("Extinguishing teammates restores 20 health"),
+new NegativeAttribute("No random critical hits"),
+new DescriptionAttribute("This weapon will reload automatically when not active.<br><br>Being a device that flouts conventional scientific consensus that the molecules composing the human body must be arranged \"just so\", and not, for example, across a square-mile radius."),
+}); 
             //Projectile = new Projectile(3000)
             //{
             //    HitDamage = new Damage(30)
@@ -203,7 +218,14 @@ namespace StatsData
                  AOE.FLARE_SPLASH)
         {
             Name = "Scorch Shot";
-
+            Name = "Scorch Shot"; Level = 10; WeaponType = "Flare Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("100% mini-crits vs burning players"),
+new PositiveAttribute("Flare knocks back target on hit and explodes when it hits the ground."),
+new PositiveAttribute("Increased knockback on burning players"),
+new NegativeAttribute("-35% self damage force"),
+new NegativeAttribute("-35% damage penalty"),
+new DescriptionAttribute("This weapon will reload automatically when not active."),
+});
             //Projectile = new Projectile(2000)
             //{
             //    HitDamage = new Damage(19.5)//20)

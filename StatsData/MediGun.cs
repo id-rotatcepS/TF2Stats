@@ -90,6 +90,8 @@ namespace StatsData
         public MediGun()
         {
             Name = "Medi Gun";
+            Name = "Medi Gun"; Level = 1; WeaponType = "Medi Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n3 healing (24 healing per second) \n Beam limited to 105% range"),
+});
             //Melee = new Melee()
             //{
             //    //Damage = new Damage(0)
@@ -152,7 +154,10 @@ namespace StatsData
         public Kritzkrieg()
         {
             Name = "kritzkrieg";
-
+            Name = "Kritzkrieg"; Level = 8; WeaponType = "Medi Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("ÜberCharge grants 100% critical chance"),
+new PositiveAttribute("+25% ÜberCharge rate"),
+}); 
 
             Melee = new Melee()
             {
@@ -185,7 +190,13 @@ namespace StatsData
         public QuickFix()
         {
             Name = "quick - fix";
-
+            Name = "Quick-Fix"; Level = 8; WeaponType = "Medi Gun Prototype"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("ÜberCharge increases healing to 300% and grants immunity to movement-impairing effects"),
+new PositiveAttribute("+40% heal rate"),
+new PositiveAttribute("+10% ÜberCharge rate"),
+new NegativeAttribute("50% max overheal"),
+new DescriptionAttribute("Mirror the blast jumps and shield charges of patients."),
+}); 
 
             Melee = new Melee()
             {
@@ -293,7 +304,14 @@ namespace StatsData
         public Vaccinator()
         {
             Name = "vaccinator";
-
+            Name = "Vaccinator"; Level = 8; WeaponType = "Vaccinator"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+67% Übercharge rate"),
+new PositiveAttribute("Press your reload key to cycle through resist types."),
+new PositiveAttribute("While healing, provides you and your target with a constant 10% resistance to the selected damage type."),
+new NegativeAttribute("-33% ÜberCharge rate on Overhealed patients"),
+new NegativeAttribute("-66% Overheal build rate."),
+new DescriptionAttribute("Übercharge provides a 2.5 second resistance bubble that blocks 75% base damage and 100% crit damage of the selected type to the Medic and Patient."),
+});
 
             Melee = new Melee()
             {

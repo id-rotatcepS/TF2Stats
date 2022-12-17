@@ -47,7 +47,8 @@ namespace StatsData
         public Shotgun()
         {
             Name = "Shotgun";
-
+            Name = "Shotgun"; Level = 1; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n60 damage (96 dps) 150%-53% by range\n10 pellet spread accurate to 36% range\nReloads 6 in 3.5 sec (first in 1 sec), 32 carried"),
+});
             Ammo.ReloadFirst = 0.87m; // Heavy & Engineer
 
             //TODO lazy way to show these differences.
@@ -112,7 +113,11 @@ namespace StatsData
         public ReserveShooter()
         {
             Name = "reserve shooter";
-
+            Name = "Reserve Shooter"; Level = 10; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Mini-crits targets launched airborne by explosions, grapple hooks or rocket packs"),
+new PositiveAttribute("This weapon deploys 20% faster"),
+new NegativeAttribute("-34% clip size"),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(60)
@@ -148,7 +153,13 @@ namespace StatsData
                  15)
         {
             Name = "panic attack";
-
+            Name = "Panic Attack"; Level = 1 - 99; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+50% bullets per shot"),
+new PositiveAttribute("This weapon deploys 50% faster"),
+new PositiveAttribute("Fires a fixed shot pattern"),
+new NegativeAttribute("-20% damage penalty"),
+new NegativeAttribute("Successive shots become less accurate"),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(72)
@@ -213,6 +224,11 @@ namespace StatsData
             :base(51)
         {
             Name = "family business";
+            Name = "Family Business"; Level = 10; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+33% clip size"),
+new PositiveAttribute("+15% faster firing speed"),
+new NegativeAttribute("-15% damage penalty"),
+});
             Notes += "obs/wiki agree close is 76, not (60*85%=51) 51*150%=76.5 rounds to 77.  That does match 'Round To Even' rule, however.\n";
 
             //Hitscan = new Hitscan()
@@ -245,7 +261,12 @@ namespace StatsData
         public FrontierJustice()
         {
             Name = "frontier justice";
-
+            Name = "Frontier Justice"; Level = 5; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Gain 2 revenge crits for each sentry kill and 1 for each sentry assist when your sentry is destroyed."),
+new NegativeAttribute("-50% clip size"),
+new NegativeAttribute("No random critical hits"),
+new NegativeAttribute("Revenge crits are lost on death"),
+}); 
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(60)
@@ -276,7 +297,13 @@ namespace StatsData
         public Widowmaker()
         {
             Name = "widowmaker";
-
+            Name = "Widowmaker"; Level = 5; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("On hit: damage dealt is returned as ammo"),
+new PositiveAttribute("No reload necessary"),
+new PositiveAttribute("10% increased damage to your sentry's target"),
+new NegativeAttribute("Per Shot: -30 ammo"),
+new NegativeAttribute("Uses metal for ammo"),
+}); 
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(60)

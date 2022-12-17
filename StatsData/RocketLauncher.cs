@@ -51,6 +51,16 @@ namespace StatsData
         public RocketLauncher()
         {
             Name = "Rocket Launcher";
+            Name = "Rocket Launcher"; Level = 1; WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n90 explosive damage (113 dps) 124%-53% by range\n Straight projectile accurate to 18%, explosion to 122% range\nReloads 4 in 3.3 sec (first in 0.9 sec), 20 carried"),
+});
+//            Name = "Rocket Jumper"; Level = 1; WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+//new PositiveAttribute("+200% max primary ammo on wearer"),
+//new PositiveAttribute("No self inflicted blast damage taken"),
+//new NegativeAttribute("-100% damage penalty"),
+//new NegativeAttribute("No random critical hits"),
+//new NegativeAttribute("Wearer cannot carry the intelligence briefcase or PASS Time JACK"),
+//new DescriptionAttribute("A special rocket launcher for learning <br> rocket jump tricks and patterns. <br> This weapon deals ZERO damage."),
+//}); 
         }
     }
 
@@ -90,6 +100,12 @@ namespace StatsData
                  1980,
                  AOE.DEFAULT_SPLASH * 0.3m)
         {
+            Name = "Direct Hit"; Level = 1; WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+25% damage bonus"),
+new PositiveAttribute("+80% projectile speed"),
+new PositiveAttribute("Mini-crits targets launched airborne by explosions, grapple hooks or rocket packs."),
+new NegativeAttribute("-70% explosion radius"),
+});
             Name = "direct hit";
             Notes += "radius on wiki is rounded - is that editor simplifying or is that how the game uses it?\n";
 
@@ -121,7 +137,10 @@ namespace StatsData
         public BlackBox()
         {
             Name = "black box";
-
+            Name = "Black Box"; Level = 5; WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("On Hit: Gain up to +20 health per attack"),
+new NegativeAttribute("-25% clip size"),
+});
             //Projectile = new Projectile(1100)
             //{
             //    HitDamage = new Damage(90)
@@ -160,7 +179,12 @@ namespace StatsData
             1540)
         {
             Name = "Liberty Launcher";
-
+            Name = "Liberty Launcher"; Level = 25; WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+25% clip size"),
+new PositiveAttribute("+40% projectile speed"),
+new PositiveAttribute("-25% blast damage from rocket jumps"),
+new NegativeAttribute("-25% damage penalty"),
+}); 
             //Projectile = new Projectile(1540)
             //{
             //    HitDamage = new Damage(67.5)//67.5=90*.75, had that in weapon_damage, wiki says:68, results work if ZeroRange is 1.25
@@ -189,7 +213,13 @@ namespace StatsData
         public CowMangler5000()
         {
             Name = "Cowmangler 5000";
-
+            Name = "Cow Mangler 5000"; Level = 30; WeaponType = "Focused Wave Projector"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Does not require ammo"),
+new PositiveAttribute("Alt-Fire: A charged shot that<br>mini-crits players, sets them on fire<br>and disables buildings for 4 sec"),
+new NegativeAttribute("No random critical hits"),
+new NegativeAttribute("Deals only 20% damage to buildings"),
+new NegativeAttribute("Minicrits whenever it would normally crit"),
+});
             //Projectile = new Projectile(1100)
             //{
             //    HitDamage = new Damage(90)
@@ -261,7 +291,14 @@ namespace StatsData
                  AOE.DEFAULT_SPLASH * 0.8m)
         {
             Name = "Beggar's Bazooka";
-
+            Name = "Beggar's Bazooka";/*Level*/WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Hold Fire to load up to three rockets"),
+new PositiveAttribute("Release Fire to unleash the barrage"),
+new NegativeAttribute("-20% explosion radius"),
+new NegativeAttribute("+3 degrees random projectile deviation"),
+new NegativeAttribute("Overloading the chamber will cause a misfire"),
+new NegativeAttribute("No ammo from dispensers when active"),
+}); 
             // +3 degrees random projectile deviation
             Projectile.Spread = 0.05236m;
 
@@ -306,7 +343,13 @@ namespace StatsData
                  AOE.DEFAULT_SPLASH * 0.9m)
         {
             Name = "Air Strike";
-
+            Name = "Air Strike";/*Level*/WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("-15% blast damage from rocket jumps"),
+new PositiveAttribute("Increased attack speed and smaller blast radius while blast jumping"),
+new PositiveAttribute("Clip size increased on kill"),
+new NegativeAttribute("-15% damage penalty"),
+new NegativeAttribute("-10% explosion radius"),
+});
             //Projectile = new Projectile(1100)
             //{
             //    HitDamage = new Damage(76.5)

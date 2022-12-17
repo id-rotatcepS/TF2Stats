@@ -43,7 +43,8 @@ namespace StatsData
         public GrenadeLauncher()
         {
             Name = "grenade launcher";
-
+            Name = "Grenade Launcher"; Level = 1; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n100 explosive damage (167 dps) \n Arced projectile accurate to 19%, explosion to 133% range\nReloads 4 in 3 sec (first in 1.2 sec), 16 carried"),
+});
             AlternateModes = new List<Weapon>
             {
                 new GrenadeLauncherRoller()
@@ -98,7 +99,13 @@ namespace StatsData
             1.20m)
         {
             Name = "loch n load";
-
+            Name = "Loch-n-Load"; Level = 10; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+20% damage vs buildings"),
+new PositiveAttribute("+25% projectile speed"),
+new NegativeAttribute("-25% clip size"),
+new NegativeAttribute("-25% explosion radius"),
+new NegativeAttribute("Launched bombs shatter on surfaces"),
+});
             //Projectile = new Projectile(1513.3)// wd; 1500 in other sheet
             //{
             //    HitDamage = new Damage(100)
@@ -139,6 +146,13 @@ namespace StatsData
         public LooseCannon()
         {
             Name = "loose cannon";
+            Name = "Loose Cannon"; Level = 10; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("Cannonballs have a fuse time of 1 second; fuses can be primed to explode earlier by holding down the fire key."),
+new PositiveAttribute("+20% projectile speed"),
+new PositiveAttribute("Cannonballs push players back on impact"),
+new NegativeAttribute("Cannonballs do not explode on impact"),
+new DescriptionAttribute("Double Donk! Bomb explosions after a cannon ball impact will deal mini-crits to impact victims"),
+});
             Notes += "Needs more obs. ranged fuse in wiki, obs don't think so. obs: maybe falloff starts post-long range (time-based)? crit truly affected by range?\n";
 
             Projectile = new Projectile(1453.9m)// wd; 1440 in other sheet
@@ -191,7 +205,11 @@ namespace StatsData
             :base(AOE.DEFAULT_SPLASH * 0.85m)
         {
             Name = "iron bomber";
-
+            Name = "Iron Bomber"; Level = 1 - 99; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Grenades have very little bounce and roll"),
+new PositiveAttribute("-30% fuse time on grenades"),
+new NegativeAttribute("-15% explosion radius"),
+});
             //Projectile = new Projectile(1216.6)//wd; 1200 in other sheet
             //{
             //    HitDamage = new Damage(100)

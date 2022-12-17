@@ -76,7 +76,14 @@ namespace StatsData
         public Pomson6000()
         {
             Name = "Pomson 6000";
-
+            Name = "Pomson 6000"; Level = 10; WeaponType = "Indivisible Particle Smasher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Does not require ammo"),
+new PositiveAttribute("Projectile cannot be deflected"),
+new PositiveAttribute("On Hit: Victim loses up to 10% Medigun charge"),
+new PositiveAttribute("On Hit: Victim loses up to 20% cloak"),
+new NegativeAttribute("Deals only 20% damage to buildings"),
+new DescriptionAttribute("Being an innovative hand-held irradiating utensil capable of producing rapid pulses of high-amplitude radiation in sufficient quantity as to immolate, maim and otherwise incapacitate the Irish."),
+}); 
             //Projectile = new Projectile(1200)
             //{
             //    HitDamage = new Damage(60)
@@ -107,7 +114,12 @@ namespace StatsData
             : base(20)
         {
             Name = "Righteous Bison";
-
+            Name = "Righteous Bison"; Level = 30; WeaponType = "Indivisible Particle Smasher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Does not require ammo"),
+new PositiveAttribute("Projectile penetrates enemy targets"),
+new PositiveAttribute("Projectile cannot be deflected"),
+new NegativeAttribute("Deals only 20% damage to buildings"),
+}); 
             //TODO damage rate... damage always hits twice within one frame (could hit more times in theory).
 
             //Projectile = new Projectile(1200)//wd
@@ -182,7 +194,8 @@ namespace StatsData
         public Huntsman()
         {
             Name = "Huntsman";
-
+            Name = "Huntsman"; Level = 10; WeaponType = "Bow"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+});
             Projectile = new Projectile(1875)//wd; had 1812 from other spreadsheet
             {
                 HitDamage = new Damage(50)
@@ -320,7 +333,14 @@ namespace StatsData
         public RescueRanger()
         {
             Name = "Rescue Ranger";
-
+            Name = "Rescue Ranger"; Level = 1 - 100; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Alt-Fire: Use 100 metal to pick up your targeted building from long range"),
+new PositiveAttribute("Fires a special bolt that can repair friendly buildings"),
+new NegativeAttribute("-34% clip size"),
+new NegativeAttribute("-50% max primary ammo on wearer"),
+new NegativeAttribute("Self mark for death when hauling buildings"),
+new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
+}); 
             Projectile = new Projectile(2400)
             {
                 HitDamage = new Damage(40)
@@ -347,7 +367,9 @@ namespace StatsData
         public Wrangler()
         {
             Name = "wrangler";
-
+            Name = "Wrangler"; Level = 5; WeaponType = "Laser Pointer"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new DescriptionAttribute("Take manual control of your Sentry Gun.<br>Wrangled sentries gain a shield that reduces damage and repairs by 66%.<br>Sentries are disabled for 3 seconds after becoming unwrangled."),
+}); 
 
             //{
             //    Offset = 23.5,
@@ -392,7 +414,18 @@ namespace StatsData
         public StickybombLauncher()
         {
             Name = "Stickybomb Launcher";
-
+            Name = "Stickybomb Launcher"; Level = 1; WeaponType = "Stickybomb Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n120 explosive damage (200 dps) 120%-50% by range\n Arced projectile accurate to 14%, explosion to 100% range\nReloads 8 in 5.8 sec (first in 1.1 sec), 24 carried"),
+new DescriptionAttribute("Alt-Fire: Detonate all Stickybombs"),
+});
+//            Name = "Sticky Jumper"; Level = 1; WeaponType = "Stickybomb Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+//new PositiveAttribute("+200% max secondary ammo on wearer"),
+//new PositiveAttribute("No self inflicted blast damage taken"),
+//new NegativeAttribute("-100% damage penalty"),
+//new NegativeAttribute("No random critical hits"),
+//new NegativeAttribute("-6 max stickybombs out"),
+//new NegativeAttribute("Wearer cannot carry the intelligence briefcase or PASS Time JACK"),
+//new DescriptionAttribute("A special no-damage stickybomb launcher for learning stickybomb jump tricks and patterns."),
+//}); 
             AlternateModes = new List<Weapon>
             {
                 new ChargedStickybomb(Projectile.ArmTime, 4.0m),// maximum charge time
@@ -468,6 +501,14 @@ namespace StatsData
                   1.72m) // 1.5 in text; 1.72 in function times
         {
             Name = "scottish resistance";
+            Name = "Scottish Resistance"; Level = 5; WeaponType = "Stickybomb Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+25% faster firing speed"),
+new PositiveAttribute("+50% max secondary ammo on wearer"),
+new PositiveAttribute("+6 max pipebombs out"),
+new PositiveAttribute("Detonates stickybombs near the crosshair and directly under your feet"),
+new PositiveAttribute("Able to destroy enemy stickybombs"),
+new NegativeAttribute("0.8 sec slower bomb arm time"),
+});
             //Projectile = new Projectile(925.38) //wd; other sheet had 900
             //{
             //    HitDamage = new Damage(120)
@@ -506,7 +547,15 @@ namespace StatsData
             :base(102, 0.5m)
         {
             Name = "The Quickiebomb Launcher";
-            Notes += "Wiki says radius 189 - but same date this was added others reduced from 159 to 146\n";
+            Name = "Quickiebomb Launcher"; Level = 1 - 99; WeaponType = "Stickybomb Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Able to destroy enemy stickybombs"),
+new PositiveAttribute("-0.2 sec faster bomb arm time"),
+new PositiveAttribute("Max charge time decreased by 70%"),
+new PositiveAttribute("Up to +35% damage based on charge"),
+new NegativeAttribute("-15% damage penalty"),
+new NegativeAttribute("-50% clip size"),
+});
+            Notes += "Wiki says radius 189 - but same date this weapon was added others reduced from 159 to 146\n";
 
             //Projectile = new Projectile(925.38) //wd; other sheet had 900
             //{
@@ -632,6 +681,8 @@ namespace StatsData
         public SyringeGun()
         {
             Name = "syringe gun";
+            Name = "Syringe Gun"; Level = 1; WeaponType = "Syringe Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n10 damage (100 dps) 120%-50% by range\n Arced projectile accurate to 16% range\nReloads 40 in 1.6 sec (clip), 150 carried"),
+});
         }
     }
 
@@ -640,7 +691,10 @@ namespace StatsData
         public Blutsauger()
         {
             Name = "blutsauger";
-
+            Name = "Blutsauger"; Level = 5; WeaponType = "Syringe Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("On Hit: Gain up to +3 health"),
+new NegativeAttribute("-2 health drained per second on wearer"),
+}); 
             //Projectile = new Projectile(1000) //wd; other sheet said 990
             //{
             //    HitDamage = new Damage(10)
@@ -671,6 +725,10 @@ namespace StatsData
             : base(8.5m) // -15% damage
         {
             Name = "overdose";
+            Name = "Overdose"; Level = 5; WeaponType = "Syringe Gun Prototype"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NegativeAttribute("-15% damage penalty"),
+new DescriptionAttribute("While active, movement speed increases based on ÜberCharge percentage to a maximum of +20%"),
+});
             //TODO wiki claims 8 against buildings... find out why, that makes 0 sense.
             //NOTE no stat or wiki text says it should have different ramps, but it shows 111% in wiki stats box (probably because they were using 9 as base, not 8.5).  We use 120% like the rest of the syringe guns.
 

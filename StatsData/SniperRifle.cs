@@ -38,6 +38,8 @@ namespace StatsData
     {
         public SniperRifle()
         {
+            Name = "Sniper Rifle"; Level = 1; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n50 damage (33 dps) \n Accurate at any range\n 25 carried"),
+});
             AlternateModes = new List<Weapon>
             {
                 new ScopedSniperRifle(),
@@ -81,6 +83,13 @@ namespace StatsData
         public SydneySleeper()
         {
             Name = "sydney sleeper";
+            Name = "Sydney Sleeper"; Level = 1; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+25% charge rate"),
+new PositiveAttribute("On Scoped Hit: Apply Jarate for 2 to 5 seconds based on charge level."),
+new PositiveAttribute("Nature's Call: Scoped headshots always mini-crit and reduce the remaining cooldown of Jarate by 1 second."),
+new NegativeAttribute("No random critical hits"),
+new NegativeAttribute("No headshots"),
+}); 
             //ActivationTime = 1.3;// sec pre-charge delay;
             //Hitscan = new Hitscan()
             //{
@@ -145,6 +154,10 @@ namespace StatsData
         public BazaarBargain()
         {
             Name = "bazaar bargain";
+            Name = "Bazaar Bargain"; Level = 10; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NegativeAttribute("Base charge rate decreased by 50%"),
+new DescriptionAttribute("Each scoped headshot kill increases the weapon's charge rate by 25% up to 200%."),
+});
             //ActivationTime = 1.3;// sec pre-charge delay;
             //Hitscan = new Hitscan()
             //{
@@ -211,6 +224,12 @@ namespace StatsData
             : base(50)
         {
             Name = "Machina (scoped, no charge)";
+            Name = "Machina"; Level = 5; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("On Full Charge: +15% damage per shot"),
+new PositiveAttribute("On Full Charge: Projectiles penetrate players"),
+new NegativeAttribute("Cannot fire unless zoomed"),
+new NegativeAttribute("Fires tracer rounds"),
+});
             //ActivationTime = 1.3;// sec pre-charge delay;
             //Hitscan = new Hitscan()
             //{
@@ -266,6 +285,8 @@ namespace StatsData
         :base(172.5m) 
         {
             Name = "(fully charged)";
+
+
             //ActivationTime = 2.0m + 1.3m;// sec charge time + pre-charge delay;
             ActivationTime = 1.3m;// sec pre-charge delay;
             ChargeTime = 2.0m; // 0-100 time
@@ -286,6 +307,13 @@ namespace StatsData
             : base(40)
         {
             Name = "hitman's heatmaker";
+            Name = "Hitman's Heatmaker"; Level = 1; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Gain Focus on kills and assists"),
+new PositiveAttribute("Press 'Reload' to activate focus"),
+new PositiveAttribute("In Focus: +25% faster charge and no unscoping"),
+new NegativeAttribute("-20% damage on body shot"),
+new DescriptionAttribute("Heads will roll."),
+}); 
             //ActivationTime = 1.3;// sec pre-charge delay, none with focus;
             //Hitscan = new Hitscan()
             //{
@@ -393,6 +421,11 @@ namespace StatsData
             : base(45)
         {
             Name = "Classic";
+            Name = "Classic"; Level = 1 - 100; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Charge and fire shots independent of zoom"),
+new NegativeAttribute("No headshots when not fully charged"),
+new NegativeAttribute("-10% damage on body shot"),
+});
             ActivationTime = 0;// no delay;
             //Hitscan = new Hitscan()
             //{

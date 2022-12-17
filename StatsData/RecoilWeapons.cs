@@ -33,7 +33,7 @@ namespace StatsData
         public EngineerPistol()
         {
             Name = "Pistol";
-
+            Name = "Pistol"; Level = 1; WeaponType = "Pistol";//Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n15 damage (100 dps) 147%-53% by range\nRecoil accurate to 61% range\nReloads 12 in 1.2 sec (clip), 36 carried"),});
             // Ammo is the difference
             Ammo.Carried = 200;
         }
@@ -51,7 +51,8 @@ namespace StatsData
             :base(baseDamage)
         {
             Name = "Pistol";
-
+            Name = "Pistol"; Level = 1; WeaponType = "Pistol"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n15 damage (100 dps) 147%-53% by range\nRecoil accurate to 61% range\nReloads 12 in 1.2 sec (clip), 36 carried"),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(baseDamage)
@@ -83,6 +84,11 @@ namespace StatsData
             :base(17.25m)
         {
             Name = "winger";
+            Name = "Winger"; Level = 15; WeaponType = "Pistol"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+15% damage bonus"),
+new PositiveAttribute("+25% greater jump height when active"),
+new NegativeAttribute("-60% clip size"),
+});
             Notes += "Wiki 1.10 reload was based on scout pistol that since was proven as 1.005\n";
 
             //Hitscan = new Hitscan()
@@ -114,6 +120,12 @@ namespace StatsData
         public PrettyBoysPocketPistol()
         {
             Name = "pretty boy's pocket pistol";
+            Name = "Pretty Boy's Pocket Pistol"; Level = 10; WeaponType = "Pistol"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("When weapon is active:"),
+new PositiveAttribute("+15% faster firing speed"),
+new PositiveAttribute("On Hit: Gain up to +3 health"),
+new NegativeAttribute("-25% clip size"),
+});
             Notes += "Wiki 1.10 reload was based on scout pistol that since was proven as 1.005\n";
 
             //Hitscan = new Hitscan()
@@ -175,7 +187,8 @@ namespace StatsData
         public SMG()
         {
             Name = "smg";
-
+            Name = "SMG"; Level = 1; WeaponType = "SMG"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n8 damage (80 dps) 150%-50% by range\nRecoil accurate to 98% range\nReloads 25 in 1.1 sec (clip), 75 carried"),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(8)
@@ -199,7 +212,13 @@ namespace StatsData
         public CleanersCarbine()
         {
             Name = "cleaner's carbine";
-
+            Name = "Cleaner's Carbine"; Level = 1; WeaponType = "SMG"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Dealing damage fills charge meter."),
+new PositiveAttribute("Secondary fire when charged grants mini-crits for 8 seconds."),
+new NegativeAttribute("-20% clip size"),
+new NegativeAttribute("-25% slower firing speed"),
+new NegativeAttribute("No random critical hits"),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(8)
@@ -254,6 +273,8 @@ namespace StatsData
         public Revolver()
         {
             Name = "revolver";
+            Name = "Revolver"; Level = 1; WeaponType = "Revolver"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n40 damage (78 dps) 150%-53% by range\nRecoil accurate to 98% range\nReloads 6 in 1.2 sec (clip), 24 carried"),
+});
         }
     }
 
@@ -265,7 +286,13 @@ namespace StatsData
                  )
         {
             Name = "ambassador";
-
+            Name = "Ambassador"; Level = 5; WeaponType = "Revolver"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Crits on headshot"),
+new NegativeAttribute("-15% damage penalty"),
+new NegativeAttribute("20% slower firing speed"),
+new NegativeAttribute("No random critical hits"),
+new NegativeAttribute("Critical damage is affected by range"),
+}); 
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(34)
@@ -328,7 +355,11 @@ namespace StatsData
             :base(32)
         {
             Name = "l'etranger";
-
+            Name = "L'Etranger"; Level = 5; WeaponType = "Revolver"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+40% cloak duration"),
+new PositiveAttribute("+15 cloak on hit"),
+new NegativeAttribute("-20% damage penalty"),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(32)
@@ -353,7 +384,12 @@ namespace StatsData
             :base(40)//had 0.9 (or 0.95) recovery in the past, but wiki was restored to same as others in August 2020 ... there was a May 2022 discussion post asking about it because OTHER pages still say smaller number.
         {
             Name = "enforcer";
-
+            Name = "Enforcer"; Level = 5; WeaponType = "Revolver"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+20% damage bonus while disguised"),
+new PositiveAttribute("Attacks pierce damage resistance effects and bonuses"),
+new NegativeAttribute("20% slower firing speed"),
+new NegativeAttribute("No random critical hits"),
+}); 
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(40)
@@ -395,7 +431,11 @@ namespace StatsData
             :base(34)
         {
             Name = "diamondback";
-
+            Name = "Diamondback"; Level = 5; WeaponType = "Revolver"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Gives one guaranteed critical hit for each building destroyed with your sapper attached or backstab kill"),
+new NegativeAttribute("-15% damage penalty"),
+new NegativeAttribute("No random critical hits"),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(34)

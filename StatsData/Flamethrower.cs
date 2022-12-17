@@ -108,7 +108,18 @@ namespace StatsData
         public FlameThrower()
         {
             Name = "Flame Thrower";
-
+            Name = "Flame Thrower"; Level = 1; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n7 fire damage (81 dps) 200%-0% by range\n Penetrating flames limited to 64% range\n 200 carried"),
+new PositiveAttribute("Extinguishing teammates restores 20 health"),
+new DescriptionAttribute("Afterburn reduces Medi Gun healing and resist shield effects.<br>Alt-Fire: Release a blast of air that pushes enemies and projectiles and extinguish teammates that are on fire."),
+});
+//            Name = "Rainblower"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+//new PositiveAttribute("On Equip: Visit Pyroland"),
+//new PositiveAttribute("Extinguishing teammates restores 20 health"),
+//new NegativeAttribute("Only visible in Pyroland"),
+//new DescriptionAttribute("Your friends (enemies) will squeal with delight (be consumed with fire) when you cover them in sparkly rainbows (all-consuming fire). (Equips Pyrovision.)"),
+//}); Name = "Nostromo Napalmer"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+//new PositiveAttribute("Extinguishing teammates restores 20 health"),
+//}); 
             AlternateModes = new List<Weapon>
             {
                 new FlameThrowerMaxExposure(),
@@ -163,7 +174,11 @@ namespace StatsData
         public BackBurner()
         {
             Name = "backburner";
-
+            Name = "Backburner"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("100% critical hits from behind"),
+new PositiveAttribute("Extinguishing teammates restores 20 health"),
+new NegativeAttribute("+150% airblast cost"),
+}); 
             AlternateModes = new List<Weapon>
             {
                 new FlameThrowerMaxExposure(),
@@ -179,7 +194,13 @@ namespace StatsData
         public Degreaser()
         {
             Name = "degreaser";
-
+            Name = "Degreaser"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("This weapon deploys 60% faster"),
+new PositiveAttribute("This weapon holsters 30% faster"),
+new PositiveAttribute("Extinguishing teammates restores 20 health"),
+new NegativeAttribute("-66% afterburn damage penalty"),
+new NegativeAttribute("+25% airblast cost"),
+}); 
             AlternateModes = new List<Weapon>
             {
                 new DegreaserMaxExposure(),
@@ -227,7 +248,14 @@ namespace StatsData
         public Phlogistinator()
         {
             Name = "phlogistinator";
-
+            Name = "Phlogistinator"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Build 'Mmmph' by dealing damage."),
+new PositiveAttribute("Alt-Fire on full 'Mmmph': Taunt to gain crit for several seconds."),
+new PositiveAttribute("Invulnerable while 'Mmmph' taunting."),
+new NegativeAttribute("No random critical hits"),
+new NegativeAttribute("No airblast"),
+new DescriptionAttribute("Being a revolutionary appliance capable of awakening the fire element phlogiston that exists in all combustible creatures, which is to say, all of them."),
+}); 
             // no compression blast
             AlternateModes = new List<Weapon>
             {

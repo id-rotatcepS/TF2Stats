@@ -37,6 +37,8 @@ namespace StatsData
         public Minigun()
         {
             Name = "minigun";
+            Name = "Minigun"; Level = 1; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n36 damage (360 dps) 150%-53% by range\n4 pellet spread accurate to 30% range\n 200 carried"),
+});
             //ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -94,6 +96,12 @@ namespace StatsData
         : base(27)
         {
             Name = "natascha";
+            Name = "Natascha"; Level = 5; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("On Hit: 100% chance to slow target"),
+new PositiveAttribute("-20% damage resistance when below 50% health and spun up"),
+new NegativeAttribute("-25% damage penalty"),
+new NegativeAttribute("30% slower spin up time"),
+});
             ActivationTime = 1.16m;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -134,6 +142,12 @@ namespace StatsData
             :base(43.2m)
         {
             Name = "brass beast";
+            Name = "Brass Beast"; Level = 5; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+20% damage bonus"),
+new PositiveAttribute("-20% damage resistance when below 50% health and spun up"),
+new NegativeAttribute("50% slower spin up time"),
+new NegativeAttribute("-60% slower move speed while deployed"),
+});
             ActivationTime = 1.31m;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -174,6 +188,12 @@ namespace StatsData
             :base(36, 0.064m)
         {
             Name = "tomislav";
+            Name = "Tomislav"; Level = 5; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+20% faster spin up time"),
+new PositiveAttribute("20% more accurate"),
+new PositiveAttribute("Silent Killer: No barrel spin sound"),
+new NegativeAttribute("-20% slower firing speed"),
+});
             ActivationTime = 0.696m;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -218,6 +238,12 @@ namespace StatsData
             :base(32.4m)
         {
             Name = "huo - long heater";
+            Name = "Huo-Long Heater"; Level = 1 - 100; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Creates a ring of flames while spun up"),
+new PositiveAttribute("25% damage bonus vs burning players"),
+new NegativeAttribute("-10% damage penalty"),
+new NegativeAttribute("Consumes an additional 4 ammo per second while spun up"),
+});
             ////ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{

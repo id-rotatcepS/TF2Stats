@@ -51,7 +51,8 @@ namespace StatsData
         public Scattergun()
         {
             Name = "Scattergun";
-
+            Name = "Scattergun"; Level = 1; WeaponType = "Scattergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n60 damage (96 dps) 175%-53% by range\n10 pellet spread accurate to 36% range\nReloads 6 in 3.2 sec (first in 0.7 sec), 32 carried"),
+});
             Notes += "wiki/calc close 105, but obs 104; minicrit calc 142 but obs/'wiki' 141\n";
 
             //Hitscan = new Hitscan()
@@ -85,7 +86,14 @@ namespace StatsData
             12)
         {
             Name = "Force-A-Nature";
-
+            Name = "Force-A-Nature"; Level = 10; WeaponType = "Scattergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+50% faster firing speed"),
+new PositiveAttribute("Knockback on the target and shooter"),
+new PositiveAttribute("+20% bullets per shot"),
+new NegativeAttribute("-10% damage penalty"),
+new NegativeAttribute("-66% clip size"),
+new DescriptionAttribute("This weapon reloads its entire clip at once"),
+});
             Notes += "minicrit 'wiki'/calc close 153, but obs 152\n";
 
             //Hitscan = new Hitscan()
@@ -127,7 +135,11 @@ namespace StatsData
                  Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP) // yes, normal, not scattergun
         {
             Name = "Shortstop";
-
+            Name = "Shortstop"; Level = 1; WeaponType = "Peppergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("When weapon is active:"),
+new NegativeAttribute("Increase in push force taken from damage and airblast"),
+new DescriptionAttribute("Holds a 4-shot clip and reloads its entire clip at once.<br> Alt-Fire to reach and shove someone! <br><br>Mann Co.'s latest in high attitude break-action personal defense."),
+});
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(48)
@@ -183,6 +195,13 @@ namespace StatsData
         public SodaPopper()
         {
             Name = "Soda Popper";
+            Name = "Soda Popper"; Level = 10; WeaponType = "Scattergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+50% faster firing speed"),
+new PositiveAttribute("25% faster reload time"),
+new PositiveAttribute("On Hit: Builds Hype"),
+new NegativeAttribute("-66% clip size"),
+new DescriptionAttribute("When Hype is full, Alt-Fire to activate Hype mode for multiple air jumps.<br>This weapon reloads its entire clip at once."),
+});
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
 
             //Hitscan = new Hitscan()
@@ -217,6 +236,14 @@ namespace StatsData
         public BabyFacesBlaster()
         {
             Name = "baby face's blaster";
+            Name = "Baby Face's Blaster"; Level = 10; WeaponType = "Scattergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("On Hit: Builds Boost"),
+new PositiveAttribute("Run speed increased with Boost"),
+new NegativeAttribute("-34% clip size"),
+new NegativeAttribute("10% slower move speed on wearer"),
+new NegativeAttribute("Boost reduced on air jumps"),
+new NegativeAttribute("Boost reduced when hit"),
+}); 
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
 
             //Hitscan = new Hitscan()
@@ -253,6 +280,12 @@ namespace StatsData
                  )
         {
             Name = "backscatter";
+            Name = "Back Scatter";/*Level*/WeaponType = "Scattergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Mini-crits targets when fired at their back from close range"),
+new NegativeAttribute("-34% clip size"),
+new NegativeAttribute("No random critical hits"),
+new NegativeAttribute("20% less accurate"),
+});
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
 
             //Hitscan = new Hitscan()

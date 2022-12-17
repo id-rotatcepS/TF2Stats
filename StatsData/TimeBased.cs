@@ -28,6 +28,13 @@ namespace StatsData
         public ShortCircuit()
         {
             Name = "Short Circuit"; // arc-thrower
+            Name = "Short Circuit"; Level = 5; WeaponType = "Robot Arm"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Alt-Fire: Launches a projectile-consuming energy ball. Costs 65 metal."),
+new PositiveAttribute("No reload necessary"),
+new NegativeAttribute("No random critical hits"),
+new NegativeAttribute("Per Shot: -5 ammo"),
+new NegativeAttribute("Uses metal for ammo"),
+});
             ActivationTime = 0;
             Melee = new Melee()
             {
@@ -253,6 +260,14 @@ WeaponData
         public DragonsFury()
         {
             Name = "Dragon's Fury";
+            Name = "Dragon's Fury"; Level = 1 - 100; WeaponType = "Flame Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NeutralAttribute("Uses a shared pressure tank for Primary Fire and Alt-Fire.<br/><br/>Primary Fire: Launches a fast moving projectile that briefly ignites enemies<br/><br/>Alt-Fire: Release a blast of air that pushes enemies and projectiles, and extinguishes teammates that are on fire."),
+new PositiveAttribute("Extinguishing teammates restores 20 health"),
+new PositiveAttribute("Deals 300% damage to burning players"),
+new PositiveAttribute("+50% repressurization rate on hit"),
+new NegativeAttribute("-50% repressurization rate on Alt-Fire"),
+new DescriptionAttribute("This powerful, single-shot flamethrower rewards consecutive hits with faster reloads and bonus damage."),
+});
             Notes += "obs falloff 24 (calc/wiki 23); minicrit obs/wiki close 40 (calc 41); wiki mc burning 100-121 (calc 101-122) \n";
 
             AlternateModes = new List<Weapon>
@@ -328,7 +343,11 @@ WeaponData
         public CrusadersCrossbow()
         {
             Name = "Crusader's Crossbow";
-
+            Name = "Crusader's Crossbow"; Level = 15; WeaponType = "Crossbow"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new NegativeAttribute("No headshots"),
+new NegativeAttribute("-75% max primary ammo on wearer"),
+new DescriptionAttribute("Fires special bolts that heal teammates and deals damage<br>based on distance traveled<br>This weapon will reload automatically when not active"),
+});
             Projectile = new Projectile(2400)
             {
                 // damages buildings the same amount based on hang time.
@@ -532,7 +551,11 @@ WeaponData
         public CharginTarge()
         {
             Name = "Chargin' Targe";
-
+            Name = "Chargin' Targe"; Level = 1 - 99; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+50% fire damage resistance on wearer"),
+new PositiveAttribute("+30% explosive damage resistance on wearer"),
+new DescriptionAttribute("Alt-Fire: Charge toward your enemies and remove debuffs. Gain a critical melee strike after impacting an enemy at distance."),
+});
             Projectile = new Projectile(750)//wd
             {
                 HitDamage = new Damage(50)
@@ -558,7 +581,13 @@ WeaponData
         public SplendidScreen()
         {
             Name = "Splendid Screen";
-
+            Name = "Splendid Screen"; Level = 10; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+20% fire damage resistance on wearer"),
+new PositiveAttribute("+20% explosive damage resistance on wearer"),
+new PositiveAttribute("+70% increase in charge impact damage"),
+new PositiveAttribute("+50% increase in charge recharge rate"),
+new DescriptionAttribute("Alt-Fire: Charge toward your enemies and remove debuffs. Gain a critical melee strike after impacting an enemy."),
+}); 
             Projectile = new Projectile(750)//wd
             {
                 HitDamage = new Damage(85)
@@ -583,7 +612,14 @@ WeaponData
         public TideTurner()
         {
             Name = "Tide Turner";
-
+            Name = "Tide Turner"; Level = 1 - 100; WeaponType = "Shield"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("+15% fire damage resistance on wearer"),
+new PositiveAttribute("+15% explosive damage resistance on wearer"),
+new PositiveAttribute("Full turning control while charging"),
+new PositiveAttribute("Melee kills refill 75% of your charge meter."),
+new NegativeAttribute("Taking damage while shield charging reduces remaining charging time"),
+new DescriptionAttribute("Alt-Fire: Charge toward your enemies and remove debuffs. Gain a mini-crit melee strike after impacting an enemy at distance."),
+}); 
             Projectile = new Projectile(750)//wd
             {
                 HitDamage = new Damage(50)
@@ -681,7 +717,10 @@ WeaponData
         public FlyingGuillotine()
         {
             Name = "Flying Guillotine";
-
+            Name = "Flying Guillotine";/*Level*/WeaponType = "Cleaver"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Throw at your enemies to make them bleed! Long distance hits reduce recharge time"),
+new NegativeAttribute("No random critical hits"),
+});
             Projectile = new Projectile(3000)
             {
                 HitDamage = new Damage(50)
@@ -816,7 +855,10 @@ tf_weapon_rocketpack.txt - Jetpack
         public ThermalThruster()
         {
             Name = "Thermal Thruster";
-
+            Name = "Thermal Thruster"; Level = 1 - 100; WeaponType = "Rocket Pack"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("Push enemies back when you land (force and radius based on velocity)"),
+new DescriptionAttribute("Death from above! Fires a short-duration blast that launches the Pyro in the direction they are aiming. Deal 3x falling damage to anyone you land on!"),
+}); 
             Projectile = new Projectile(651)
             {
                 HitDamage = new Damage(67)
@@ -863,7 +905,12 @@ tf_weapon_rocketpack.txt - Jetpack
         public Mantreads()
         {
             Name = "Mantreads";
-
+            Name = "Mantreads"; Level = 10; WeaponType = "Boots"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+new PositiveAttribute("-75% reduction in push force taken from damage"),
+new PositiveAttribute("Deals 3x falling damage to the player you land on"),
+new PositiveAttribute("-75% reduction in airblast vulnerability"),
+new PositiveAttribute("200% increased air control when blast jumping."),
+});
             Projectile = new Projectile(651)
             {
                 HitDamage = new Damage(75)
