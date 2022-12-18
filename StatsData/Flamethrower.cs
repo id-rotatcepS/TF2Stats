@@ -107,6 +107,16 @@ namespace StatsData
     {
         public FlameThrower()
         {
+            Attributes.AddRange(new WeaponAttribute[] { 
+            new NeutralAttribute("Dual-use: Flames or Airblast"),
+            new PositiveAttribute("Extinguishing teammates restores 20 health"),
+            new PositiveAttribute("On Hit: Afterburn for 3-10 seconds by exposure"),
+            new NegativeAttribute("No effect underwater"),
+            new NeutralAttribute("Afterburn: 8 dps, reduces Medi Gun healing and resist shield effects"),
+            new NeutralAttribute("Does not destroy stickybombs"),
+            new DescriptionAttribute("Flames: Steady exposure grants up to +100% damage<br/>0.9 second max exposure<br/>Alt-Fire: -20 ammo to release a blast of air that pushes enemies, redirects projectiles, and extinguishes teammates<br/>Deflected projectiles (except stickybombs) deal mini-crits to enemies"),
+            });
+            
             Name = "Flame Thrower";
             Name = "Flame Thrower"; Level = 1; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n7 fire damage (81 dps) 200%-0% by range\n Penetrating flames limited to 64% range\n 200 carried"),
 new PositiveAttribute("Extinguishing teammates restores 20 health"),

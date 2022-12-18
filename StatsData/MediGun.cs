@@ -89,6 +89,16 @@ namespace StatsData
         /// </summary>
         public MediGun()
         {
+            Attributes.AddRange(new WeaponAttribute[] { 
+            new PositiveAttribute("Does not require ammo"),
+            new PositiveAttribute("100% healing at any range"),
+            new PositiveAttribute("Match move speed of faster heal target"),
+            new PositiveAttribute("Overheal target to 150%"),
+            new NegativeAttribute("Lock-on within 88% range only"),
+            new NeutralAttribute("Up to +200% healing rate out of combat"),
+            new DescriptionAttribute("Healing charges Über up to 2.5% per second<br/>Random critical hit chance includes damage by heal targets<br/>?Random critical hit chance includes healing done the last 20 seconds?<br/>Alt-Fire: Activate ÜberCharge for 8 seconds of damage invulnerability and no capture rate"),
+            });
+            
             Name = "Medi Gun"; Level = 1; WeaponType = "Medi Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n3 healing (24 healing per second) \n Beam limited to 105% range"),
 });
             //Melee = new Melee()

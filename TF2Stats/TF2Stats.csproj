@@ -122,6 +122,9 @@
     <Compile Include="DamageAndFunctionTimesTable.xaml.cs">
       <DependentUpon>DamageAndFunctionTimesTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoadoutStats.xaml.cs">
+      <DependentUpon>LoadoutStats.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="DamageAndFunctionTimesTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadoutStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

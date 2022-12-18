@@ -484,6 +484,15 @@ new DescriptionAttribute("Creates a horrific visible gas that coats enemies with
     {
         public Sapper()
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("100 sapper health"),
+            new PositiveAttribute("Does not require ammo"),
+            new PositiveAttribute("On Hit: Sap until destroyed"),
+            new PositiveAttribute("Sapper is immune to most damage"),
+            new NegativeAttribute("Only damages buildings"),
+            new NegativeAttribute("-33% damage from spy on sapped sentries"),
+            new DescriptionAttribute("Sap: 25 dps, disables building function<br/>Sap affects both ends of teleporters<br/><br/>Place on enemy buildings to disable and slowly drain away its health<br/>Placing a sapper does not remove your disguise"),
+            });
             Name = "Sapper"; Level = 1; WeaponType = "Sapper"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n"),
 new DescriptionAttribute("Place on enemy buildings to disable and slowly drain away its health. Placing a sapper does not remove your disguise"),
 });
@@ -508,6 +517,7 @@ new DescriptionAttribute("Place on enemy buildings to disable and slowly drain a
     {
         public RedTapeRecorder()
         {
+            Attributes.Clear();
             Name = "red tape recorder";
             Name = "Red-Tape Recorder"; Level = 1 - 100; WeaponType = "Sapper"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Reverses enemy building construction"),
@@ -528,6 +538,16 @@ new NegativeAttribute("-100% Sapper damage penalty"),
     {
         public InvisWatch()
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Full Invisibility cloak and near-invisible to teammates"),
+            new PositiveAttribute("-20% damage resistance and shorter debuffs while cloaked"),
+            new NegativeAttribute("Cannot attack or capture while invisible"),
+            new NegativeAttribute("Cannot be healed by Medi Guns while invisible"),
+            new NeutralAttribute("Alt-Fire: Turn invisible for up to 10 seconds"),
+            new NeutralAttribute("Taking damage or bumping enemies will make you slightly visible"),
+            new DescriptionAttribute("Cloak recharges in 30 seconds<br/>Use dispensers and ammo to recharge faster<br/><br/>Invisibly slip behind enemy lines, running across ammo packs to extend your range"),
+            });
+            
             Name = "Invis Watch"; Level = 1; WeaponType = "Invis Watch"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new DescriptionAttribute("Alt-Fire: Turn invisible. Cannot attack while invisible. Bumping in to enemies will make you slightly visible to enemies"),
 });
@@ -543,6 +563,7 @@ new DescriptionAttribute("Alt-Fire: Turn invisible. Cannot attack while invisibl
     {
         public Deadringer()
         {
+            Attributes.Clear();
             Name = "deadringer";
             Name = "Dead Ringer"; Level = 5; WeaponType = "Invis Watch"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("Cloak Type: Feign Death"),
@@ -558,6 +579,7 @@ new NegativeAttribute("-50% cloak meter when Feign Death is activated"),
     {
         public CloakAndDagger()
         {
+            Attributes.Clear();
             Name = "Cloak & Dagger";
             Name = "Cloak and Dagger"; Level = 5; WeaponType = "Invis Watch"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("Cloak Type: Motion Sensitive"),

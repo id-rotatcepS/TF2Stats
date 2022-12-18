@@ -56,6 +56,8 @@
                     
                     <TextBlock FontStyle="Italic" Text="{Binding Detail.Notes}"/>
 
+                    <local:LoadoutStats HorizontalAlignment="Left" Width="300" x:Name="LoadoutStats" DataContext="{Binding LoadoutStats}"/>
+
                     <!--<StackPanel Orientation="Horizontal">
                         <TextBlock>Accuracy:</TextBlock>
                         <StackPanel Orientation="Vertical">

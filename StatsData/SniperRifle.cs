@@ -38,6 +38,16 @@ namespace StatsData
     {
         public SniperRifle()
         {
+            Attributes.AddRange(new WeaponAttribute[] { 
+            new NeutralAttribute("Dual-use: Hipshot or Headshot"),
+            new PositiveAttribute("Deals 100% damage at any range"),
+            new PositiveAttribute("Scoped headshots always critical hit"),
+            new NegativeAttribute("No random critical hits"),
+            new NegativeAttribute("-73% move speed while zoomed"),
+            new NeutralAttribute("Shots pass through teammates"),
+            new DescriptionAttribute("Alt-Fire: Zoom in for headshots, charge up to +200% damage<br/>Charge: 1.3 second delay, 3.3 second max charge"),
+            });
+            
             Name = "Sniper Rifle"; Level = 1; WeaponType = "Sniper Rifle"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n50 damage (33 dps) \n Accurate at any range\n 25 carried"),
 });
             AlternateModes = new List<Weapon>

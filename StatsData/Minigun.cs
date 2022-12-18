@@ -36,6 +36,16 @@ namespace StatsData
     {
         public Minigun()
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NegativeAttribute("-63% move speed while spun up"),
+            new NegativeAttribute("-15% damage penalty to level 2 sentries"),
+            new NegativeAttribute("-20% damage penalty to level 3 sentries"),
+            new NeutralAttribute("0.87 second deployment spin up"),
+            new NeutralAttribute("-50% fading damage penalty until spun up 1 second"),
+            new NeutralAttribute("Alt-Fire: Spin up without firing"),
+            new DescriptionAttribute("\"Sasha,\" an enormous Gatling-style machine gun"),
+            });
+            
             Name = "Minigun"; Level = 1; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n36 damage (360 dps) 150%-53% by range\n4 pellet spread accurate to 30% range\n 200 carried"),
 });
             //ActivationTime = 0.87;// sec spin up;

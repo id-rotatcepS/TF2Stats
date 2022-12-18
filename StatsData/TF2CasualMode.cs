@@ -262,6 +262,7 @@ namespace StatsData
                 AddGroup<AKnife>(result, new Knife());
                 AddGroup<ABat>(result, new Bat());
                 AddGroup<BuildingMaintenance>(result, new Wrench());
+                AddGroup<Sword>(result, new Eyelander());
 
                 AddGroup<MeleeWeapon>(result, new PainTrain());
 

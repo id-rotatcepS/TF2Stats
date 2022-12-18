@@ -15,6 +15,7 @@ namespace StatsData
             W = w;
             P = parent;
             Detail = new WeaponVMDetail(this, w, parent);
+            LoadoutStats = new LoadoutStatsVM(w);
 
             if (parent == null && w?.AlternateModes != null)
             {
@@ -187,6 +188,8 @@ namespace StatsData
         //public decimal? RadiusOfEffect => W.AreaOfEffect?.Radius;
 
         public WeaponVMDetail Detail { get; set; }
+        public LoadoutStatsVM LoadoutStats { get; }
+
         public bool CanCrit => W.CanCrit;
         public bool CanMinicrit => W.CanMinicrit;
 

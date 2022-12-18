@@ -17,6 +17,31 @@ namespace StatsData
 }); Name = "Bonesaw"; Level = 1; WeaponType = "Bonesaw"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n65 damage (81 dps)"),
 }); Name = "Kukri"; Level = 1; WeaponType = "Kukri"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n65 damage (81 dps)"),
 });
+
+            Attributes.AddRange(new WeaponAttribute[] { 
+            new NeutralAttribute("Alt-Fire: Right cross"),
+            new NeutralAttribute("Kill Taunt: Showdown"),
+
+            });
+            Attributes.AddRange(new WeaponAttribute[] { 
+            new NeutralAttribute("Selects building to construct"),
+            new PositiveAttribute("Buildings are immune to crits and mini-crits"),
+            new NegativeAttribute("Buildings take 100% damage at any range"),
+            new NeutralAttribute("Cannot pass through own buildings"),
+            new NeutralAttribute("Metal cost: 130 (Sentry), 100 (Dispenser), or 50 (Teleporter)"),
+            new DescriptionAttribute("Every building begins with a solid foundation, showing your mettle, and striking at the heart of the problem"),
+            });
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Look and sound like others to the enemy"),
+            new PositiveAttribute("Disguises fool enemy buildings"),
+            new NegativeAttribute("Match move speed of slower disguise"),
+            new NeutralAttribute("Attacking removes your disguise"),
+            new NeutralAttribute("Cannot capture or taunt while disguised"),
+            new NeutralAttribute("Taking damage or bumping enemies may give you away"),
+            new DescriptionAttribute("Avoid suspicion by facing away from the enemy or running from your team's bullets to get behind the enemy"),
+            });
+           
+
             //            Name = "Lollichop"; Level = 1 - 100; WeaponType = "Fire Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
             //new PositiveAttribute("On Equip: Visit Pyroland"),
             //new NegativeAttribute("Only visible in Pyroland"),
@@ -65,6 +90,9 @@ new DescriptionAttribute("Applies a bonus effect for a limited amount of time wh
         public BuildingMaintenance(decimal baseDamage = 65)
             :base(baseDamage)
         {
+            Attributes.Clear(); Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n65 damage (81 dps)"),
+new DescriptionAttribute("Upgrades, repairs and speeds up construction of friendly buildings on hit."),
+});
             Name = "wrench";
 
             Effect = new BuildingEffect()
@@ -78,9 +106,15 @@ new DescriptionAttribute("Applies a bonus effect for a limited amount of time wh
     {
         public Wrench()
         {
-            Name = "Wrench"; Level = 1; WeaponType = "Wrench"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n65 damage (81 dps)"),
-new DescriptionAttribute("Upgrades, repairs and speeds up construction of friendly buildings on hit."),
-});
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Dual-use: Melee or Maintenance"),
+            new PositiveAttribute("Damages sappers"),
+            new NegativeAttribute("-10% move speed while hauling"),
+            new NeutralAttribute("Alt-Fire: Haul own building"),
+            new DescriptionAttribute("Maintenance: Use metal to repair, reload, or upgrade friendly buildings on hit<br/>Speeds up construction of friendly buildings on hit<br/>Cannot repair old damage during redeploy"),
+            });
+            
+            Name = "Wrench"; Level = 1; WeaponType = "Wrench";
             //ActivationTime = 0.2;// hits at end of swing;
             //Melee = new Melee()
             //{
@@ -201,6 +235,9 @@ new NegativeAttribute("Replaces the Sentry with a Mini-Sentry"),
             : base(baseDamage,
                  activationTime: 0)// hits immediately;
         {
+            Attributes.Clear();Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n40 damage (50 dps)"),
+new DescriptionAttribute("Attack an enemy from behind to Backstab them for a one hit kill."),
+            });
             Name = "knife";
             //ActivationTime = 0;// hits immediately;
             //Melee = new Melee()
@@ -219,9 +256,18 @@ new NegativeAttribute("Replaces the Sentry with a Mini-Sentry"),
         public Knife(decimal baseDamage = 40)
             :base(baseDamage)
         {
-            Name = "Knife"; Level = 1; WeaponType = "Knife"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n40 damage (50 dps)"),
-new DescriptionAttribute("Attack an enemy from behind to Backstab them for a one hit kill."),
-});
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Dual-use: Butterknife or Backstab"),
+            new PositiveAttribute("Backstab: Instant kill"),
+            new PositiveAttribute("Hits at beginning of swing"),
+            new NegativeAttribute("-23% damage penalty"),
+            new NegativeAttribute("No random critical hits"),
+            new NeutralAttribute("Kill Taunt: Fencing"),
+            new DescriptionAttribute("Attack an enemy from behind to Backstab them for a one hit kill."),
+            });
+           
+            Name = "Knife"; Level = 1; WeaponType = "Knife"; 
+
         }
     }
 
@@ -306,6 +352,7 @@ new DescriptionAttribute("It's the perfect gift for the man who has everything: 
         public ABat(decimal baseDamage = 35)
             : base(baseDamage)
         {
+            Attributes.Clear();
             Name = "bat";
             //ActivationTime = 0.2;// hits at end of swing;
             //Melee = new Melee()
@@ -323,7 +370,13 @@ new DescriptionAttribute("It's the perfect gift for the man who has everything: 
     {
         public Bat()
         {
-            Name = "Bat"; Level = 1; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n35 damage (70 dps)"),
+            Attributes.AddRange(new WeaponAttribute[] { 
+            new NeutralAttribute("Wielded by the Scout:"),
+            new PositiveAttribute("+60% faster firing speed"),
+            new NegativeAttribute("-47% damage penalty"),
+
+            });
+             Name = "Bat"; Level = 1; WeaponType = "Bat"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n35 damage (70 dps)"),
 });
             //            Name = "Holy Mackerel"; Level = 42; WeaponType = "Fish"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
             //new DescriptionAttribute("Getting hit by a fish has got to be humiliating."),
@@ -511,6 +564,7 @@ new DescriptionAttribute("These lovely festive ornaments are so beautifully craf
     {
         public ActiveMovementeMelee()
         {
+            Attributes.Clear();
             Name = "active movement modifying melee";
 
             //FireRate = -1;
@@ -640,6 +694,7 @@ new NegativeAttribute("Maximum health is drained while item is active"),
     {
         public PainTrain()
         {
+            Attributes.Clear();
             Name = "Pain Train"; Level = 5; WeaponType = "Makeshift Club"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+1 capture rate on wearer"),
 new NegativeAttribute("10% bullet damage vulnerability on wearer"),
@@ -658,7 +713,7 @@ new NegativeAttribute("10% bullet damage vulnerability on wearer"),
         {
             Name = "half - zatoichi";
             Name = "Half-Zatoichi"; Level = 5; WeaponType = "Katana"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
-new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
+//new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
 new PositiveAttribute("Gain 50% of base health on kill"),
 new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("Honorbound: Once drawn sheathing deals 50 damage to yourself unless it kills."),
@@ -682,6 +737,7 @@ new NeutralAttribute("Soldiers and Demos<br>Can duel with katanas<br>For a one-h
         public Equalizer()
             :base(32.5m)
         {
+            Attributes.Clear();
             Name = "Equalizer"; Level = 10; WeaponType = "Pickaxe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("Damage increases as the user becomes injured"),
@@ -702,6 +758,7 @@ new NegativeAttribute("-90% less healing from Medic sources"),
     {
         public MarketGardener()
         {
+            Attributes.Clear();
             Name = "Market Gardener"; Level = 10; WeaponType = "Shovel"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Deals crits while the wielder is rocket jumping"),
 new NegativeAttribute("20% slower firing speed"),
@@ -720,6 +777,7 @@ new NegativeAttribute("No random critical hits"),
         public Axtinguisher()
             :base(43.3333333333333m)
         {
+            Attributes.Clear();
             Name = "axtinguisher / postal pummeler";
             Name = "Axtinguisher"; Level = 10; WeaponType = "Fire Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Mini-crits burning targets and extinguishes them."),
@@ -744,6 +802,7 @@ new NegativeAttribute("This weapon holsters 35% slower"),
     {
         public Homewrecker()
         {
+            Attributes.Clear();
             Name = "homewrecker / maul";
             Name = "Homewrecker"; Level = 5; WeaponType = "Sledgehammer"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+100% damage vs buildings"),
@@ -768,6 +827,7 @@ new NegativeAttribute("-25% damage vs players"),
         public BackScratcher()
             :base(81.25m)
         {
+            Attributes.Clear();
             Name = "Back Scratcher"; Level = 10; WeaponType = "Garden Rake"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25% damage bonus"),
 new PositiveAttribute("+50% health from packs on wearer"),
@@ -789,6 +849,7 @@ new NegativeAttribute("-75% health from healers on wearer"),
         public SharpenedVolcanoFragment()
             :base(52)
         {
+            Attributes.Clear();
             Name = "Sharpened Volcano Fragment"; Level = 10; WeaponType = "RIFT Fire Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: target is engulfed in flames"),
 new NegativeAttribute("-20% damage penalty"),
@@ -811,6 +872,7 @@ new DescriptionAttribute("Improves upon Mother Nature's original design for volc
     {
         public ThirdDegree()
         {
+            Attributes.Clear();
             Name = "Third Degree"; Level = 10; WeaponType = "Fire Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("All players connected via Medigun beams are hit"),
 new DescriptionAttribute("Being a boon to tree-fellers, backwoodsmen and atom-splitters the world over, this miraculous matter-hewing device burns each individual molecule as it cleaves it."),
@@ -829,6 +891,7 @@ new DescriptionAttribute("Being a boon to tree-fellers, backwoodsmen and atom-sp
     {
         public NeonAnnihilator()
         {
+            Attributes.Clear();
             Name = "Neon Annihilator"; Level = 1 - 100; WeaponType = "Sign"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Damage removes Sappers"),
 new PositiveAttribute("100% critical hit vs wet players"),
@@ -851,6 +914,9 @@ new NegativeAttribute("-20% damage penalty vs players"),
     {
         public Sword(decimal baseDamage = 65)
         {
+            Attributes.Clear(); Attributes.AddRange(new WeaponAttribute[] {
+new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
+});
             Name = "long melee range";
 
             Melee = new Melee()
@@ -869,7 +935,7 @@ new NegativeAttribute("-20% damage penalty vs players"),
         {
             Name = "eyelander / 9 - iron / HHHH";
             Name = "Eyelander"; Level = 5; WeaponType = "Sword"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
-new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
+//new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
 new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("-25 max health on wearer"),
 new DescriptionAttribute("Gives increased speed and health with every head you take."),
@@ -890,6 +956,7 @@ new DescriptionAttribute("Gives increased speed and health with every head you t
     {
         public UllapoolCaber()
         {
+            Attributes.Clear();
             Name = "Ullapool Caber"; Level = 10; WeaponType = "Stick Bomb"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NegativeAttribute("20% slower firing speed"),
 new NegativeAttribute("This weapon deploys 100% slower"),
@@ -915,7 +982,7 @@ new DescriptionAttribute("High-yield Scottish face removal.<br/>A sober person w
         {
             Name = "Claidheamh Mòr"; Level = 5; WeaponType = "Sword"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
-new NeutralAttribute("This Weapon has a large melee range and deploys and holsters slower"),
+//new NeutralAttribute("This Weapon has a large melee range and deploys and holsters slower"),
 new PositiveAttribute("0.5 sec increase in charge duration"),
 new PositiveAttribute("Melee kills refill 25% of your charge meter."),
 new NegativeAttribute("No random critical hits"),
@@ -938,7 +1005,7 @@ new NegativeAttribute("15% damage vulnerability on wearer"),
         public PersionPersuader()
         {
             Name = "Persian Persuader"; Level = 10; WeaponType = "Sword"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
-new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
+//new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
 new PositiveAttribute("Ammo boxes collected give Charge"),
 new PositiveAttribute("Melee hits refill 20% of your charge meter."),
 new NegativeAttribute("-80% max primary ammo on wearer"),
@@ -963,7 +1030,7 @@ new NegativeAttribute("No random critical hits"),
             :base(65*1.20m)
         {
             Name = "Scotsman's Skullcutter"; Level = 5; WeaponType = "Axe"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
-new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
+//new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("+20% damage bonus"),
 new NegativeAttribute("15% slower move speed on wearer"),
@@ -984,6 +1051,7 @@ new NegativeAttribute("15% slower move speed on wearer"),
     {
         public KillingGlovesOfBoxing()
         {
+            Attributes.Clear();
             Name = "Killing Gloves of Boxing"; Level = 7; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Kill: 5 seconds of 100% critical chance"),
 new NegativeAttribute("-20% slower firing speed"),
@@ -1002,6 +1070,7 @@ new NegativeAttribute("-20% slower firing speed"),
         public WarriorsSpirit()
             :base(84.5m)
         {
+            Attributes.Clear();
             Name = "Warrior's Spirit"; Level = 10; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("+30% damage bonus"),
@@ -1023,6 +1092,7 @@ new NegativeAttribute("30% damage vulnerability on wearer"),
     {
         public HolidayPunch()
         {
+            Attributes.Clear();
             Name = "Holiday Punch"; Level = 10; WeaponType = "Fists"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Critical hit forces victim to laugh"),
 new PositiveAttribute("Always critical hit from behind"),
@@ -1042,6 +1112,7 @@ new DescriptionAttribute("Be the life of the war party with these laugh-inducing
     {
         public FistsOfSteel()
         {
+            Attributes.Clear();
             Name = "Fists of Steel"; Level = 10; WeaponType = "Boxing Gloves"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("-40% damage from ranged sources while active"),
 new NegativeAttribute("+100% damage from melee sources while active"),
@@ -1061,6 +1132,7 @@ new NegativeAttribute("-40% health from healers on wearer"),
     {
         public Ubersaw()
         {
+            Attributes.Clear();
             Name = "Ubersaw"; Level = 10; WeaponType = "Bonesaw"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: 25% ÜberCharge added"),
 new NegativeAttribute("20% slower firing speed"),
@@ -1077,6 +1149,7 @@ new NegativeAttribute("20% slower firing speed"),
     {
         public Vitasaw()
         {
+            Attributes.Clear();
             Name = "vitasaw";
             Name = "Vita-Saw"; Level = 5; WeaponType = "Bonesaw"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Collect the organs of people you hit"),
@@ -1096,6 +1169,7 @@ new DescriptionAttribute("A percentage of your ÜberCharge level is retained on 
         public Amputator()
             :base(52)
         {
+            Attributes.Clear();
             Name = "Amputator"; Level = 15; WeaponType = "Bonesaw"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
 new PositiveAttribute("+3 health regenerated per second on wearer"),
@@ -1117,6 +1191,7 @@ new NegativeAttribute("-20% damage penalty"),
     {
         public SolemnVow()
         {
+            Attributes.Clear();
             Name = "Solemn Vow"; Level = 10; WeaponType = "Bust of Hippocrates"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("Allows you to see enemy health"),
 new NegativeAttribute("10% slower firing speed"),
@@ -1135,6 +1210,7 @@ new DescriptionAttribute("'Do no harm.'"),
         public TribalmansShiv()
             :base(32.5m)
         {
+            Attributes.Clear();
             Name = "Tribalman's Shiv"; Level = 5; WeaponType = "Kukri"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("On Hit: Bleed for 6 seconds"),
 new NegativeAttribute("-50% damage penalty"),
@@ -1156,6 +1232,7 @@ new NegativeAttribute("-50% damage penalty"),
     {
         public Bushwaka()
         {
+            Attributes.Clear();
             Name = "bushwaka";
             Name = "Bushwacka"; Level = 5; WeaponType = "Kukri"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new NeutralAttribute("When weapon is active:"),
@@ -1181,6 +1258,7 @@ new NegativeAttribute("20% damage vulnerability on wearer"),
     {
         public Shahanshah()
         {
+            Attributes.Clear();
             Name = "Shahanshah"; Level = 5; WeaponType = "Kukri"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 new PositiveAttribute("+25% increase in damage when health <50% of max"),
 new NegativeAttribute("-25% decrease in damage when health >50% of max"),

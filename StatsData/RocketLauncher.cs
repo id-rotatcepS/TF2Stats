@@ -50,6 +50,16 @@ namespace StatsData
     {
         public RocketLauncher()
         {
+            Attributes.AddRange(new WeaponAttribute[] { 
+            new NeutralAttribute("Dual-use: Impact or Rocket Jump"),
+            new PositiveAttribute("+11% self push force from rocket jumps"),
+            new NegativeAttribute("Self inflicted blast damage"),
+            new NegativeAttribute("-44% self push force on ground"),
+            new NeutralAttribute("Explosive: 50%-100% damage in explosion radius"),
+            new NeutralAttribute("Blasts push enemy stickybombs away"),
+            new DescriptionAttribute("Impact: Explodes on contact with players, buildings, and surfaces<br/>Rocket Jump: Mobility from self-damage"),
+            });
+           
             Name = "Rocket Launcher";
             Name = "Rocket Launcher"; Level = 1; WeaponType = "Rocket Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n90 explosive damage (113 dps) 124%-53% by range\n Straight projectile accurate to 18%, explosion to 122% range\nReloads 4 in 3.3 sec (first in 0.9 sec), 20 carried"),
 });

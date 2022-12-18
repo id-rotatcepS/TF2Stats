@@ -32,6 +32,12 @@ namespace StatsData
     {
         public EngineerPistol()
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Wielded by the Engineer:"),
+            new PositiveAttribute("+455% max secondary ammo"),
+
+            });
+          
             Name = "Pistol"; Level = 1; WeaponType = "Pistol";//Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n15 damage (100 dps) 147%-53% by range\nRecoil accurate to 61% range\nReloads 12 in 1.2 sec (clip), 36 carried"),});
             // Ammo is the difference
             Ammo.Carried = 200;
@@ -49,6 +55,11 @@ namespace StatsData
         public ScoutPistol(decimal baseDamage = 15)
             :base(baseDamage)
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Wielded by the Scout:"),
+            new PositiveAttribute("-8% faster clip reload"),
+
+            }); 
             Name = "Pistol"; Level = 1; WeaponType = "Pistol"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n15 damage (100 dps) 147%-53% by range\nRecoil accurate to 61% range\nReloads 12 in 1.2 sec (clip), 36 carried"),
 });
             //Hitscan = new Hitscan()

@@ -42,6 +42,15 @@ namespace StatsData
     {
         public GrenadeLauncher()
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Dual-use: Impact or Roller"),
+            new PositiveAttribute("Deals 100% damage at any range"),
+            new NegativeAttribute("Self inflicted blast damage"),
+            new NeutralAttribute("Explosive: 50%-100% damage in explosion radius"),
+            new NeutralAttribute("Blast knocks away enemy stickybombs"),
+            new DescriptionAttribute("Impact: Explodes on contact with players and buildings<br/>Roller: -40% damage penalty from surface bounces, 2.3 second fuse"),
+            });
+            
             Name = "Grenade Launcher"; Level = 1; WeaponType = "Grenade Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n100 explosive damage (167 dps) \n Arced projectile accurate to 19%, explosion to 133% range\nReloads 4 in 3 sec (first in 1.2 sec), 16 carried"),
 });
             AlternateModes = new List<Weapon>

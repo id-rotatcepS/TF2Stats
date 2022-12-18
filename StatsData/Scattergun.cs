@@ -51,6 +51,12 @@ namespace StatsData
         public Scattergun()
         {
             Name = "Scattergun";
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Double-barreled lever-action shotgun:"),
+            new PositiveAttribute("+17% close range damage bonus"),
+            new PositiveAttribute("-30% faster first shot reload"),
+            });
+           
             Name = "Scattergun"; Level = 1; WeaponType = "Scattergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n60 damage (96 dps) 175%-53% by range\n10 pellet spread accurate to 36% range\nReloads 6 in 3.2 sec (first in 0.7 sec), 32 carried"),
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc 142 but obs/'wiki' 141\n";

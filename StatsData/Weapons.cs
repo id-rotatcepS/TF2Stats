@@ -408,6 +408,16 @@ new DescriptionAttribute("Take manual control of your Sentry Gun.<br>Wrangled se
     {
         public StickybombLauncher()
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Multi-use: Spam/Flak, Trap, or Sticky Jump"),
+            new NegativeAttribute("Self inflicted blast damage"),
+            new NeutralAttribute("No impact damage"),
+            new NeutralAttribute("Explosive: 50%-100% damage in explosion radius"),
+            new NeutralAttribute("Blast knocks away enemy stickybombs"),
+            new NeutralAttribute("Alt-Fire: Detonate all stickybombs"),
+            new DescriptionAttribute("8 max stickybombs out<br/>Hold primary fire to charge projectile speed<br/>Max charge in 4.0 seconds for +160% accuracy<br/><br/>Spam: 0.7 second minimum arm time to detonate<br/>Flak: -15% fading explosion radius penalty in air<br/>Trap: Bombs armed 5 seconds deal 100% damage at any range<br/>Sticky Jump: High mobility from high self-damage"),
+            });
+            
             Name = "Stickybomb Launcher"; Level = 1; WeaponType = "Stickybomb Launcher"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n120 explosive damage (200 dps) 120%-50% by range\n Arced projectile accurate to 14%, explosion to 100% range\nReloads 8 in 5.8 sec (first in 1.1 sec), 24 carried"),
 new DescriptionAttribute("Alt-Fire: Detonate all Stickybombs"),
 });
@@ -673,6 +683,11 @@ new NegativeAttribute("-50% clip size"),
     {
         public SyringeGun()
         {
+            Attributes.AddRange(new WeaponAttribute[] {
+            new NeutralAttribute("Syringes are immune to projectile influencers"),
+
+            });
+            
             Name = "Syringe Gun"; Level = 1; WeaponType = "Syringe Gun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n10 damage (100 dps) 120%-50% by range\n Arced projectile accurate to 16% range\nReloads 40 in 1.6 sec (clip), 150 carried"),
 });
         }
