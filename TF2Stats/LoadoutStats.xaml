@@ -9,7 +9,8 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
     <StackPanel Background="#242015" Margin="10" Padding="5">
-        <TextBlock Text="{Binding LevelAndType, FallbackValue=Level}" Foreground="Gray"/>
+        <TextBlock Text="{Binding LevelAndType, FallbackValue=Level}" TextWrapping="WrapWholeWords" Foreground="Gray"/>
+        <TextBlock Text="{Binding MiniStats}" TextWrapping="WrapWholeWords" Foreground="DarkGreen"/>
         <ItemsControl ItemsSource="{Binding Attributes}" >
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>

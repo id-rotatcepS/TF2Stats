@@ -273,7 +273,52 @@ namespace StatsData
                 return result;
             }
         }
+        public List<Weapon> StockWeapons
+        {
+            get
+            {
+                List<Weapon> result = //new List<Weapon>(WeaponsBase.ToArray());
+                    new List<Weapon>();
 
+                result.Add(new Scattergun());
+                result.Add(new ScoutPistol());
+                result.Add(new Bat());
+
+                result.Add(new RocketLauncher());
+                result.Add(new SoldierShotgun());
+
+                result.Add(new FlameThrower());
+                result.Add(new PyroShotgun());
+
+                result.Add(new GrenadeLauncher());
+                result.Add(new StickybombLauncher());
+
+                result.Add(new Minigun());
+                //result.Add(new HeavyShotgun());
+
+                result.Add(new Shotgun());
+                result.Add(new EngineerPistol());
+                result.Add(new Wrench());
+                //PDA
+
+                result.Add(new SyringeGun());
+                result.Add(new MediGun());
+
+                result.Add(new SniperRifle());
+                result.Add(new SMG());
+
+                result.Add(new Revolver());
+                result.Add(new Sapper());
+                result.Add(new Knife());
+                // disguise kit
+                result.Add(new InvisWatch());
+
+                //result.Add(new MeleeWeapon());
+
+
+                return result;
+            }
+        }
         private T AddGroup<T>(List<Weapon> result, T sg) where T : Weapon
         {
             sg.AlternateModes.Clear();
@@ -491,7 +536,7 @@ namespace StatsData
         private ObservableCollection<WeaponVM> CreateWeaponCollection()
         {
             ObservableCollection<WeaponVM> rows = new ObservableCollection<WeaponVM>();
-            List<Weapon> list = IsWeaponGroups ? this.WeaponsGroup : Weapons;
+            List<Weapon> list = IsWeaponGroups ? this.WeaponsGroup : (IsStockOnly?StockWeapons:Weapons);
             foreach (Weapon w in list)
             {
                 rows.Add(new WeaponVM(w));
@@ -519,6 +564,7 @@ namespace StatsData
                 NotifyPropertyChanged(nameof(WeaponCollection));
             }
         }
+
         private bool _IsWeaponGroups = false;
 
         public bool IsWeaponGroups
@@ -527,8 +573,26 @@ namespace StatsData
             set
             {
                 _IsWeaponGroups = value;
+                _IsStockOnly = false;
                 rows = null;
                 NotifyPropertyChanged(nameof(WeaponCollection));
+                NotifyPropertyChanged(nameof(IsStockOnly));
+
+            }
+        }
+
+        private bool _IsStockOnly = false;
+
+        public bool IsStockOnly
+        {
+            get => _IsStockOnly;
+            set
+            {
+                _IsStockOnly = value;
+                _IsWeaponGroups = false;
+                rows = null;
+                NotifyPropertyChanged(nameof(WeaponCollection));
+                NotifyPropertyChanged(nameof(IsWeaponGroups));
             }
         }
 

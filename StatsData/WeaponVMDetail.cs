@@ -42,13 +42,13 @@ namespace StatsData
             + "-" +
             RangePercent(v.Damage?.LongRangeRamp)
             )
-
-            + "\n"+"\n"+
-            RangePercent(v.Damage?.ZeroRangeRamp)
-            + ClosePracticalInfo()
-            + "-" +
-            RangePercent(v.Damage?.LongRangeRamp)
-            + rangeBonusInfoForWhut();
+;
+            //+ "\n"+"\n"+
+            //RangePercent(v.Damage?.ZeroRangeRamp)
+            //+ ClosePracticalInfo()
+            //+ "-" +
+            //RangePercent(v.Damage?.LongRangeRamp)
+            //+ rangeBonusInfoForWhut();
 
         private string ClosePracticalInfo()
         {
@@ -76,7 +76,7 @@ namespace StatsData
                 : $"[{RangePercent(Damage.WIKI_LONG_RANGE_RAMP)}]";
         }
 
-        private string RangePercent(decimal? RangeRamp)
+        public static string RangePercent(decimal? RangeRamp)
         {
             return (RangeRamp == null || RangeRamp == 1.0m)
                 ? string.Empty
@@ -85,9 +85,10 @@ namespace StatsData
 
         public string RangeDamage =>
             v.Damage == null ? string.Empty
-            : GetRangeIntDamage(v.Damage) 
-            + "\n" + "\n" +
-            GetRangeIntDamage2(v.Damage) + "|" + GetRangeDecimalDamage(v.Damage);
+            : GetRangeIntDamage(v.Damage)
+            ;
+            //+ "\n" + "\n" +
+            //GetRangeIntDamage2(v.Damage) + "|" + GetRangeDecimalDamage(v.Damage);
 
         private string GetRangeIntDamage(Damage d)
         {
