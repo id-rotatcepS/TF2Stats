@@ -896,6 +896,10 @@ namespace StatsData
 
         public string Name { get; protected set; }
         /// <summary>
+        /// ID of the entry in the "items" collection in items_game.txt
+        /// </summary>
+        public string ItemsID { get; internal set; }
+        /// <summary>
         /// Optional notes to explain known differences and issues.
         /// </summary>
         public string Notes { get; protected set; } = "";

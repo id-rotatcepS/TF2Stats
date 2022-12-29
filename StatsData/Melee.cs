@@ -382,6 +382,7 @@ new DescriptionAttribute("It's the perfect gift for the man who has everything: 
             //new DescriptionAttribute("Getting hit by a fish has got to be humiliating."),
             //}); 
         }
+
     }
 
     public class Sandman : ABat
@@ -1000,9 +1001,9 @@ new NegativeAttribute("15% damage vulnerability on wearer"),
         }
     }
 
-    public class PersionPersuader : Sword
+    public class PersianPersuader : Sword
     {
-        public PersionPersuader()
+        public PersianPersuader()
         {
             Name = "Persian Persuader"; Level = 10; WeaponType = "Sword"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 //new NeutralAttribute("This weapon has a large melee range and deploys and holsters slower"),

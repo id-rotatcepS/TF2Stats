@@ -33,6 +33,8 @@
                     <ToggleMenuFlyoutItem IsChecked="{Binding IsIncludingAlternates, Mode=TwoWay}" Text="Include Alternate Weapon Modes"/>
                     <ToggleMenuFlyoutItem IsChecked="{Binding IsWeaponGroups, Mode=TwoWay}" Text="Show Weapon Groups"/>
                     <ToggleMenuFlyoutItem IsChecked="{Binding IsStockOnly, Mode=TwoWay}" Text="Show Stock Weapons Only"/>
+                    <MenuFlyoutSeparator/>
+                    <ToggleMenuFlyoutItem IsChecked="{Binding IsGameFilesLoaded, Mode=TwoWay}" Text="Game Files Loaded"/>
                 </MenuFlyout>
             </controls:DataGrid.ContextFlyout>
         </controls:DataGrid>
@@ -124,6 +126,8 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
+                <TextBlock Text="--Game File Info--"/>
+                <TextBlock Text="{Binding Detail.GameItemSummary}"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

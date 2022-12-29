@@ -22,6 +22,7 @@ namespace StatsData
         private Weapon p;
 
         public string Notes => w.Notes;
+        public string GameItemSummary => GameFiles.GameItem.Get(w.ItemsID)?.Summary;
 
         public WeaponVMDamageFunctionTimes FunctionTimes { get; }
         public string FunctionTimeParams => new WikiPages.WeaponFuncTimeBlock(v).GetBody();

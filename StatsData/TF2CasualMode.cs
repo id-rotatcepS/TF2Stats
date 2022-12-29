@@ -1,8 +1,13 @@
-﻿using System;
+﻿using StatsData.GameFiles;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.UI.Xaml.Controls;
 
 namespace StatsData
 {
@@ -15,15 +20,15 @@ namespace StatsData
         }
 
 
-        static Scout Scout = new Scout();
-        static Soldier Soldier = new Soldier();
-        static Pyro Pyro = new Pyro();
-        static Demoman Demoman = new Demoman();
-        static Heavy Heavy = new Heavy();
-        static Engineer Engineer = new Engineer();
-        static Medic Medic = new Medic();
-        static Sniper Sniper = new Sniper();
-        static Spy Spy = new Spy();
+        static Scout Scout = new Scout();// { File = "" };
+        static Soldier Soldier = new Soldier();// { File = "" };
+        static Pyro Pyro = new Pyro();// { File = "" };
+        static Demoman Demoman = new Demoman();// { File = "" };
+        static Heavy Heavy = new Heavy();// { File = "" };
+        static Engineer Engineer = new Engineer();// { File = "" };
+        static Medic Medic = new Medic();// { File = "" };
+        static Sniper Sniper = new Sniper();// { File = "" };
+        static Spy Spy = new Spy();// { File = "" };
 
         public List<PlayerClass> Classes
         {
@@ -40,192 +45,213 @@ namespace StatsData
             Spy
         };
 
-        static Pomson6000 Pomson6000 = new Pomson6000();
-        static RighteousBison RighteousBison = new RighteousBison();
+        // { ItemsID = "1152" }tf_weapon_grapplinghook
+        // { ItemsID = "1132" }tf_weapon_spellbook
+        // { ItemsID = "25" }tf_weapon_pda_engineer_build tf_weapon_builder: "28"
+        // { ItemsID = "26" }tf_weapon_pda_engineer_destroy
+        // { ItemsID = "27" }tf_weapon_pda_spy
+        // { ItemsID = "1155" } //tf_weapon_passtime_gun jack, I think
+        // power up canteen (mvm)"489","1163"
 
-        static FlareGun FlareGun = new FlareGun();
-        static Detonator Detonator = new Detonator();
-        static Manmelter Manmelter = new Manmelter();
-        static ScorchShot ScorchShot = new ScorchShot();
+        static Pomson6000 Pomson6000 = new Pomson6000() { ItemsID = "588" };
+        static RighteousBison RighteousBison = new RighteousBison() { ItemsID = "442" };
 
-        static Huntsman Huntsman = new Huntsman();
-        static CrusadersCrossbow CrusadersCrossbow = new CrusadersCrossbow();
-        static RescueRanger RescueRanger = new RescueRanger();
+        static FlareGun FlareGun = new FlareGun() { ItemsID = "39" };
+        static Detonator Detonator = new Detonator() { ItemsID = "351" };
+        static Manmelter Manmelter = new Manmelter() { ItemsID = "595" };
+        static ScorchShot ScorchShot = new ScorchShot() { ItemsID = "740" };
 
-        static CharginTarge CharginTarge = new CharginTarge();
-        static SplendidScreen SplendidScreen = new SplendidScreen();
-        static TideTurner TideTurner = new TideTurner();
+        static Huntsman Huntsman = new Huntsman() { ItemsID = "56" };
+        static CrusadersCrossbow CrusadersCrossbow = new CrusadersCrossbow() { ItemsID = "305" };
+        static RescueRanger RescueRanger = new RescueRanger() { ItemsID = "997" };
 
-        static BuffBanner BuffBanner = new BuffBanner();
-        static BatallionsBackup BatallionsBackup = new BatallionsBackup();
-        static Concheror Concheror = new Concheror();
+        static CharginTarge CharginTarge = new CharginTarge() { ItemsID = "131" };
+        static SplendidScreen SplendidScreen = new SplendidScreen() { ItemsID = "406" };
+        static TideTurner TideTurner = new TideTurner() { ItemsID = "1099" };
 
-        static ThermalThruster ThermalThruster = new ThermalThruster();
-        static Mantreads Mantreads = new Mantreads();
+        static BuffBanner BuffBanner = new BuffBanner() { ItemsID = "129" };
+        static BatallionsBackup BatallionsBackup = new BatallionsBackup() { ItemsID = "226" };
+        static Concheror Concheror = new Concheror() { ItemsID = "354" };
 
-        static BASEJumper BASEJumper = new BASEJumper();
-        static Gunboats Gunboats = new Gunboats();
-        static AliBabasWeeBooties AliBabasWeeBooties = new AliBabasWeeBooties();
-        static Razorback Razorback = new Razorback();
-        static DarwinsDangerShield DarwinsDangerShield = new DarwinsDangerShield();
-        static CozyCamper CozyCamper = new CozyCamper();
+        static ThermalThruster ThermalThruster = new ThermalThruster() { ItemsID = "1179" };
+        static Mantreads Mantreads = new Mantreads() { ItemsID = "444" };
 
-        static Sandvich Sandvich = new Sandvich();
-        static DalokahsBar DalokahsBar = new DalokahsBar();
-        static BuffaloSteakSandvich BuffaloSteakSandvich = new BuffaloSteakSandvich();
-        static SecondBanana SecondBanana = new SecondBanana();
+        static BASEJumper BASEJumper = new BASEJumper() { ItemsID = "1101" };
+        static Gunboats Gunboats = new Gunboats() { ItemsID = "133" };
+        static AliBabasWeeBooties AliBabasWeeBooties = new AliBabasWeeBooties() { ItemsID = "405" };
+        static Razorback Razorback = new Razorback() { ItemsID = "57" };
+        static DarwinsDangerShield DarwinsDangerShield = new DarwinsDangerShield() { ItemsID = "231" };
+        static CozyCamper CozyCamper = new CozyCamper() { ItemsID = "642" };
 
-        static BonkAtomicPunch BonkAtomicPunch = new BonkAtomicPunch();
-        static CritACola CritACola = new CritACola();
+        static Sandvich Sandvich = new Sandvich() { ItemsID = "42" };
+        static DalokahsBar DalokahsBar = new DalokahsBar() { ItemsID = "159" };
+        static BuffaloSteakSandvich BuffaloSteakSandvich = new BuffaloSteakSandvich() { ItemsID = "311" };
+        static SecondBanana SecondBanana = new SecondBanana() { ItemsID = "1190" };
 
-        static FlyingGuillotine FlyingGuillotine = new FlyingGuillotine();
+        static BonkAtomicPunch BonkAtomicPunch = new BonkAtomicPunch() { ItemsID = "46" };//guess uses same printname as lunchbox, and mentions spy pda
+        static CritACola CritACola = new CritACola() { ItemsID = "163" };
 
-        static Jarate Jarate = new Jarate();
-        static MadMilk MadMilk = new MadMilk();
-        static GasPasser GasPasser = new GasPasser();
+        static FlyingGuillotine FlyingGuillotine = new FlyingGuillotine() { ItemsID = "812" };
 
-        static EngineerPistol EngineerPistol = new EngineerPistol();
-        static ShortCircuit ShortCircuit = new ShortCircuit();
-        static Wrangler Wrangler = new Wrangler();
+        static Jarate Jarate = new Jarate() { ItemsID = "58" };
+        static MadMilk MadMilk = new MadMilk() { ItemsID = "222" };
+        static GasPasser GasPasser = new GasPasser() { ItemsID = "1180" };
 
-        static ScoutPistol ScoutPistol = new ScoutPistol();
-        static Winger Winger = new Winger();
-        static PrettyBoysPocketPistol PrettyBoysPocketPistol = new PrettyBoysPocketPistol();
+        static EngineerPistol EngineerPistol = new EngineerPistol() { ItemsID = "22" };
+        static ShortCircuit ShortCircuit = new ShortCircuit() { ItemsID = "528" };
+        static Wrangler Wrangler = new Wrangler() { ItemsID = "140" };
 
-        static RocketLauncher RocketLauncher = new RocketLauncher();
-        static DirectHit DirectHit = new DirectHit();
-        static BlackBox BlackBox = new BlackBox();
-        static LibertyLauncher LibertyLauncher = new LibertyLauncher();
-        static CowMangler5000 CowMangler5000 = new CowMangler5000();
-        static BeggarsBazooka BeggarsBazooka = new BeggarsBazooka();
-        static AirStrike AirStrike = new AirStrike();
+        static ScoutPistol ScoutPistol = new ScoutPistol() { ItemsID = "23" };
+        static Winger Winger = new Winger() { ItemsID = "449" };
+        static PrettyBoysPocketPistol PrettyBoysPocketPistol = new PrettyBoysPocketPistol() { ItemsID = "773" };
 
-        static Shotgun Shotgun = new Shotgun();
-        static ReserveShooter ReserveShooter = new ReserveShooter();
-        static PanicAttack PanicAttack = new PanicAttack();
-        static FamilyBusiness FamilyBusiness = new FamilyBusiness();
-        static FrontierJustice FrontierJustice = new FrontierJustice();
-        static Widowmaker Widowmaker = new Widowmaker();
+        static RocketLauncher RocketLauncher = new RocketLauncher() { ItemsID = "18" };
+        static DirectHit DirectHit = new DirectHit() { ItemsID = "127" };
+        static BlackBox BlackBox = new BlackBox() { ItemsID = "228" };
+        static LibertyLauncher LibertyLauncher = new LibertyLauncher() { ItemsID = "414" };
+        static CowMangler5000 CowMangler5000 = new CowMangler5000() { ItemsID = "441" };
+        static BeggarsBazooka BeggarsBazooka = new BeggarsBazooka() { ItemsID = "730" };
+        static AirStrike AirStrike = new AirStrike() { ItemsID = "1104" };
 
-        static Scattergun Scattergun = new Scattergun();
-        static ForceANature ForceANature = new ForceANature();
-        static Shortstop Shortstop = new Shortstop();
-        static SodaPopper SodaPopper = new SodaPopper();
-        static BabyFacesBlaster BabyFacesBlaster = new BabyFacesBlaster();
-        static BackScatter BackScatter = new BackScatter();
+        static Shotgun Shotgun = new Shotgun() { ItemsID = "9" };
+        // { ItemsID = "12" }//pyro
+        // { ItemsID = "10" }//soldier
+        // { ItemsID = "11" } // heavy
+        static ReserveShooter ReserveShooter = new ReserveShooter() { ItemsID = "415" };
+        static PanicAttack PanicAttack = new PanicAttack() { ItemsID = "1153" };
+        static FamilyBusiness FamilyBusiness = new FamilyBusiness() { ItemsID = "425" };
+        static FrontierJustice FrontierJustice = new FrontierJustice() { ItemsID = "141" };
+        static Widowmaker Widowmaker = new Widowmaker() { ItemsID = "527" };
 
-        static FlameThrower Flamethrower = new FlameThrower();
-        static BackBurner BackBurner = new BackBurner();
-        static Degreaser Degreaser = new Degreaser();
-        static Phlogistinator Phlogistinator = new Phlogistinator();
+        static Scattergun Scattergun = new Scattergun() { ItemsID = "13" };
+        static ForceANature ForceANature = new ForceANature() { ItemsID = "45" };
+        static Shortstop Shortstop = new Shortstop() { ItemsID = "220" };
+        static SodaPopper SodaPopper = new SodaPopper() { ItemsID = "448" };
+        static BabyFacesBlaster BabyFacesBlaster = new BabyFacesBlaster() { ItemsID = "772" };
+        static BackScatter BackScatter = new BackScatter() { ItemsID = "1103" };
 
-        static DragonsFury DragonsFury = new DragonsFury();
+        static FlameThrower Flamethrower = new FlameThrower() { ItemsID = "21" };
+        static BackBurner BackBurner = new BackBurner() { ItemsID = "40" };
+        static Degreaser Degreaser = new Degreaser() { ItemsID = "215" };
+        static Phlogistinator Phlogistinator = new Phlogistinator() { ItemsID = "594" };
+        static DragonsFury DragonsFury = new DragonsFury() { ItemsID = "1178" };
 
-        static GrenadeLauncher GrenadeLauncher = new GrenadeLauncher();
-        static LochNLoad LochNLoad = new LochNLoad();
-        static LooseCannon LooseCannon = new LooseCannon();
-        static IronBomber IronBomber = new IronBomber();
+        static GrenadeLauncher GrenadeLauncher = new GrenadeLauncher() { ItemsID = "19" };
+        static LochNLoad LochNLoad = new LochNLoad() { ItemsID = "308" };
+        static LooseCannon LooseCannon = new LooseCannon() { ItemsID = "996" };
+        static IronBomber IronBomber = new IronBomber() { ItemsID = "1151" };
 
-        static StickybombLauncher StickybombLauncher = new StickybombLauncher();
-        static ScottishResistance ScottishResistance = new ScottishResistance();
-        static QuickiebombLauncher QuickiebombLauncher = new QuickiebombLauncher();
+        static StickybombLauncher StickybombLauncher = new StickybombLauncher() { ItemsID = "20" };
+        static ScottishResistance ScottishResistance = new ScottishResistance() { ItemsID = "130" };
+        static QuickiebombLauncher QuickiebombLauncher = new QuickiebombLauncher() { ItemsID = "1150" };
 
-        static Minigun Minigun = new Minigun();
-        static Natascha Natascha = new Natascha();
-        static BrassBeast BrassBeast = new BrassBeast();
-        static Tomislav Tomislav = new Tomislav();
-        static HuoLongHeater HuoLongHeater = new HuoLongHeater();
+        static Minigun Minigun = new Minigun() { ItemsID = "15" };
+        static Natascha Natascha = new Natascha() { ItemsID = "41" };
+        static BrassBeast BrassBeast = new BrassBeast() { ItemsID = "312" };
+        static Tomislav Tomislav = new Tomislav() { ItemsID = "424" };
+        static HuoLongHeater HuoLongHeater = new HuoLongHeater() { ItemsID = "811" };// "The Huo Long Heatmaker" not "heater"
 
-        static SyringeGun SyringeGun = new SyringeGun();
-        static Blutsauger Blutsauger = new Blutsauger();
-        static Overdose Overdose = new Overdose();
+        static SyringeGun SyringeGun = new SyringeGun() { ItemsID = "17" };
+        static Blutsauger Blutsauger = new Blutsauger() { ItemsID = "36" };
+        static Overdose Overdose = new Overdose() { ItemsID = "412" };
 
-        static MediGun MediGun = new MediGun();
-        static Kritzkrieg Kritzkrieg = new Kritzkrieg();
-        static QuickFix QuickFix = new QuickFix();
-        static Vaccinator Vaccinator = new Vaccinator();
+        static MediGun MediGun = new MediGun() { ItemsID = "29" };
+        static Kritzkrieg Kritzkrieg = new Kritzkrieg() { ItemsID = "35" };
+        static QuickFix QuickFix = new QuickFix() { ItemsID = "411" };
+        static Vaccinator Vaccinator = new Vaccinator() { ItemsID = "998" };
 
-        static SniperRifle SniperRifle = new SniperRifle();
-        static SydneySleeper SydneySleeper = new SydneySleeper();
-        static BazaarBargain BazaarBargain = new BazaarBargain();
-        static Machina Machina = new Machina();
-        static HitmansHeatmaker HitmansHeatmaker = new HitmansHeatmaker();
-        static Classic Classic = new Classic();
+        static SniperRifle SniperRifle = new SniperRifle() { ItemsID = "14" };
+        static SydneySleeper SydneySleeper = new SydneySleeper() { ItemsID = "230" };
+        static BazaarBargain BazaarBargain = new BazaarBargain() { ItemsID = "402" };
+        static Machina Machina = new Machina() { ItemsID = "526" };
+        static HitmansHeatmaker HitmansHeatmaker = new HitmansHeatmaker() { ItemsID = "752" };
+        static Classic Classic = new Classic() { ItemsID = "1098" };
 
-        static SMG SMG = new SMG();
-        static CleanersCarbine CleanersCarbine = new CleanersCarbine();
+        static SMG SMG = new SMG() { ItemsID = "16" };
+        static CleanersCarbine CleanersCarbine = new CleanersCarbine() { ItemsID = "751" };
 
-        static Revolver Revolver = new Revolver();
-        static Ambassador Ambassador = new Ambassador();
-        static LEtranger LEtranger = new LEtranger();
-        static Enforcer Enforcer = new Enforcer();
-        static Diamondback Diamondback = new Diamondback();
+        static Revolver Revolver = new Revolver() { ItemsID = "24" };
+        static Ambassador Ambassador = new Ambassador() { ItemsID = "61" };
+        static LEtranger LEtranger = new LEtranger() { ItemsID = "224" };
+        static Enforcer Enforcer = new Enforcer() { ItemsID = "460" };
+        static Diamondback Diamondback = new Diamondback() { ItemsID = "525" };
 
-        static Sapper Sapper = new Sapper();
-        static RedTapeRecorder RedTapeRecorder = new RedTapeRecorder();
+        static Sapper Sapper = new Sapper() { ItemsID = "735" };
+        static RedTapeRecorder RedTapeRecorder = new RedTapeRecorder() { ItemsID = "810" };
 
-        static InvisWatch InvisWatch = new InvisWatch();
-        static Deadringer Deadringer = new Deadringer();
-        static CloakAndDagger CloakAndDagger = new CloakAndDagger();
+        static InvisWatch InvisWatch = new InvisWatch() { ItemsID = "30" };
+        static Deadringer Deadringer = new Deadringer() { ItemsID = "59" };
+        static CloakAndDagger CloakAndDagger = new CloakAndDagger() { ItemsID = "60" };
 
-        static Wrench Wrench = new Wrench();
-        static SouthernHospitality SouthernHospitality = new SouthernHospitality();
-        static Jag Jag = new Jag();
-        static EurekaEffect EurekaEffect = new EurekaEffect();
+        static Wrench Wrench = new Wrench() { ItemsID = "7" };
+        static SouthernHospitality SouthernHospitality = new SouthernHospitality() { ItemsID = "155" };
+        static Jag Jag = new Jag() { ItemsID = "329" };
+        static EurekaEffect EurekaEffect = new EurekaEffect() { ItemsID = "589" };
 
-        static Gunslinger Gunslinger = new Gunslinger();
+        static Gunslinger Gunslinger = new Gunslinger() { ItemsID = "142" };
 
-        static Knife Knife = new Knife();
-        static YourEternalReward YourEternalReward = new YourEternalReward();
-        static ConniversKunai ConniversKunai = new ConniversKunai();
-        static BigEarner BigEarner = new BigEarner();
-        static Spycicle Spycicle = new Spycicle();
+        static Knife Knife = new Knife() { ItemsID = "4" };
+        static YourEternalReward YourEternalReward = new YourEternalReward() { ItemsID = "225" };
+        static ConniversKunai ConniversKunai = new ConniversKunai() { ItemsID = "356" };
+        static BigEarner BigEarner = new BigEarner() { ItemsID = "461" };
+        static Spycicle Spycicle = new Spycicle() { ItemsID = "649" };
 
-        static Bat Bat = new Bat();
-        static Sandman Sandman = new Sandman();
-        static CandyCane CandyCane = new CandyCane();
-        static BostonBasher BostonBasher = new BostonBasher();
-        static SunOnAStick SunOnAStick = new SunOnAStick();
-        static FanOWar FanOWar = new FanOWar();
-        static Atomizer Atomizer = new Atomizer();
-        static WrapAssassin WrapAssassin = new WrapAssassin();
+        static Bat Bat = new Bat() { ItemsID = "0" };
+        // { ItemsID = "221"} "tf_weapon_fish"
+        static Sandman Sandman = new Sandman() { ItemsID = "44" };
+        static CandyCane CandyCane = new CandyCane() { ItemsID = "317" };
+        static BostonBasher BostonBasher = new BostonBasher() { ItemsID = "325" };
+        static SunOnAStick SunOnAStick = new SunOnAStick() { ItemsID = "349" };
+        static FanOWar FanOWar = new FanOWar() { ItemsID = "355" };
+        static Atomizer Atomizer = new Atomizer() { ItemsID = "450" };
+        static WrapAssassin WrapAssassin = new WrapAssassin() { ItemsID = "648" };
 
-        static EscapePlan EscapePlan = new EscapePlan();
-        static DisciplinaryAction DisciplinaryAction = new DisciplinaryAction();
-        static HotHand HotHand = new HotHand();
-        static PowerJack PowerJack = new PowerJack();
-        static GlovesOfRunningUrgently GlovesOfRunningUrgently = new GlovesOfRunningUrgently();
-        static EvictionNotice EvictionNotice = new EvictionNotice();
+
+        static EscapePlan EscapePlan = new EscapePlan() { ItemsID = "775" };
+        static DisciplinaryAction DisciplinaryAction = new DisciplinaryAction() { ItemsID = "447" };
+        static HotHand HotHand = new HotHand() { ItemsID = "1181" };
+        static PowerJack PowerJack = new PowerJack() { ItemsID = "214" };
+        static GlovesOfRunningUrgently GlovesOfRunningUrgently = new GlovesOfRunningUrgently() { ItemsID = "239" };
+        static EvictionNotice EvictionNotice = new EvictionNotice() { ItemsID = "426" };
 
         // stock Melees ...
+        // 0:bat
+        // { ItemsID = "1" }tf_weapon_bottle
+        // { ItemsID = "2" }tf_weapon_fireaxe
+        //  { ItemsID = "3" } //tf_weapon_club "machete" probably sniper stock
+        // 4: knife
+        // { ItemsID = "5" }tf_weapon_fists
+        // { ItemsID = "6" }tf_weapon_shovel
+        // 7: wrench
+        // { ItemsID = "8" }tf_weapon_bonesaw
 
-        static PainTrain PainTrain = new PainTrain();
-        static HalfZatoichi HalfZatoichi = new HalfZatoichi();
+        static PainTrain PainTrain = new PainTrain() { ItemsID = "154" };
+        static HalfZatoichi HalfZatoichi = new HalfZatoichi() { ItemsID = "357" };
 
-        static Equalizer Equalizer = new Equalizer();
-        static MarketGardener MarketGardener = new MarketGardener();
-        static Axtinguisher Axtinguisher = new Axtinguisher();
-        static Homewrecker Homewrecker = new Homewrecker();
-        static BackScratcher BackScratcher = new BackScratcher();
-        static SharpenedVolcanoFragment SharpenedVolcanoFragment = new SharpenedVolcanoFragment();
-        static ThirdDegree ThirdDegree = new ThirdDegree();
-        static NeonAnnihilator NeonAnnihilator = new NeonAnnihilator();
-        static Eyelander Eyelander = new Eyelander();
-        static UllapoolCaber UllapoolCaber = new UllapoolCaber();
-        static ClaidheamhMor ClaidheamhMor = new ClaidheamhMor();
-        static PersionPersuader PersionPersuader = new PersionPersuader();
-        static ScotsmansSkullcutter ScottsmansSkullcutter = new ScotsmansSkullcutter();
-        static KillingGlovesOfBoxing KillingGlovesOfBoxing = new KillingGlovesOfBoxing();
-        static WarriorsSpirit WarriorsSpirit = new WarriorsSpirit();
-        static HolidayPunch HolidayPunch = new HolidayPunch();
-        static FistsOfSteel FistsOfSteel = new FistsOfSteel();
-        static Ubersaw Ubersaw = new Ubersaw();
-        static Vitasaw Vitasaw = new Vitasaw();
-        static Amputator Amputator = new Amputator();
-        static SolemnVow SolemnVow = new SolemnVow();
-        static TribalmansShiv TribalmansShiv = new TribalmansShiv();
-        static Bushwaka Bushwaka = new Bushwaka();
-        static Shahanshah Shahanshah = new Shahanshah();
+        static Equalizer Equalizer = new Equalizer() { ItemsID = "128" };
+        static MarketGardener MarketGardener = new MarketGardener() { ItemsID = "416" };
+        static Axtinguisher Axtinguisher = new Axtinguisher() { ItemsID = "38" };
+        static Homewrecker Homewrecker = new Homewrecker() { ItemsID = "153" };
+        static BackScratcher BackScratcher = new BackScratcher() { ItemsID = "326" };
+        static SharpenedVolcanoFragment SharpenedVolcanoFragment = new SharpenedVolcanoFragment() { ItemsID = "348" };
+        static ThirdDegree ThirdDegree = new ThirdDegree() { ItemsID = "593" };
+        static NeonAnnihilator NeonAnnihilator = new NeonAnnihilator() { ItemsID = "813" };
+        static Eyelander Eyelander = new Eyelander() { ItemsID = "132" };
+        static UllapoolCaber UllapoolCaber = new UllapoolCaber() { ItemsID = "307" };
+        static ClaidheamhMor ClaidheamhMor = new ClaidheamhMor() { ItemsID = "327" };
+        static PersianPersuader PersianPersuader = new PersianPersuader() { ItemsID = "404" };
+        static ScotsmansSkullcutter ScottsmansSkullcutter = new ScotsmansSkullcutter() { ItemsID = "172" };
+        static KillingGlovesOfBoxing KillingGlovesOfBoxing = new KillingGlovesOfBoxing() { ItemsID = "43" };
+        static WarriorsSpirit WarriorsSpirit = new WarriorsSpirit() { ItemsID = "310" };
+        static HolidayPunch HolidayPunch = new HolidayPunch() { ItemsID = "656" };
+        static FistsOfSteel FistsOfSteel = new FistsOfSteel() { ItemsID = "331" };
+        static Ubersaw Ubersaw = new Ubersaw() { ItemsID = "37" };
+        static Vitasaw Vitasaw = new Vitasaw() { ItemsID = "173" };
+        static Amputator Amputator = new Amputator() { ItemsID = "304" };
+        static SolemnVow SolemnVow = new SolemnVow() { ItemsID = "413" };
+        static TribalmansShiv TribalmansShiv = new TribalmansShiv() { ItemsID = "171" };
+        static Bushwaka Bushwaka = new Bushwaka() { ItemsID = "232" };
+        static Shahanshah Shahanshah = new Shahanshah() { ItemsID = "401" };
 
         public List<Weapon> Weapons => WeaponsBase;
 
@@ -505,7 +531,7 @@ namespace StatsData
             Eyelander,
             UllapoolCaber,
             ClaidheamhMor,
-            PersionPersuader,
+            PersianPersuader,
             ScottsmansSkullcutter,
             KillingGlovesOfBoxing,
             WarriorsSpirit,
@@ -593,6 +619,130 @@ namespace StatsData
                 rows = null;
                 NotifyPropertyChanged(nameof(WeaponCollection));
                 NotifyPropertyChanged(nameof(IsWeaponGroups));
+            }
+        }
+
+        private bool _IsGameFilesLoaded = false;
+
+        public bool IsGameFilesLoaded
+        {
+            get => _IsGameFilesLoaded;
+            set
+            {
+                // one-way boolean - we load files and that's it.
+                if (_IsGameFilesLoaded) return;
+                _IsGameFilesLoaded = value;
+
+                LoadGameFileItems();
+
+                NotifyPropertyChanged(nameof(WeaponCollection));
+            }
+        }
+
+        private static async void LoadGameFileItems()
+        {
+            _ = await NotifyUserAsync("Select Folder of Decoded Game Files, if any.", "Folder containing GCFScape & Vice extracted tf_weapon*.txt files.");
+            await LoadItemClasses();// new DirectoryInfo(@"C:\Users\...\Desktop\class stats\TF File Extraction\tf_scripts_ctx_decodes")
+            _ = await NotifyUserAsync("Select Folder of items_game.txt File", @"items_game.txt is likely in your steamapps\common\Team Fortress 2\tf\scripts\items\ folder.");
+            await LoadItems("items_game.txt");// new FileInfo(@"C:\Users\...\Desktop\class stats\TF File Extraction\steamapps_common_Team Fortress 2_tf_scripts_items\items_game.txt"));
+        }
+
+        private static async Task<ContentDialogResult> NotifyUserAsync(string title, string content)
+        {
+            ContentDialog noWifiDialog = new ContentDialog()
+            {
+                Title = title,
+                Content = content,
+                CloseButtonText = "Ok"
+            };
+
+            return await noWifiDialog.ShowAsync();
+        }
+
+        ////https://stackoverflow.com/questions/37541923/how-to-create-informative-toast-notification-in-uwp-app
+        //private static void ShowSystemToastNotification(string title, string stringContent)
+        //{
+        //    Windows.Data.Xml.Dom.XmlDocument toastXml = CreateToastXmlDocument(title, stringContent);
+
+        //    Windows.UI.Notifications.ToastNotification toast = new Windows.UI.Notifications.ToastNotification(toastXml);
+        //    // 4 seconds: expire it as it goes to the system notification list.
+        //    toast.ExpirationTime = DateTime.Now.AddSeconds(4);
+
+        //    Windows.UI.Notifications.ToastNotifier toastNotifier = Windows.UI.Notifications.ToastNotificationManager.CreateToastNotifier();
+        //    toastNotifier.Show(toast);
+        //}
+        //private static Windows.Data.Xml.Dom.XmlDocument CreateToastXmlDocument(string title, string stringContent)
+        //{
+        //    Windows.Data.Xml.Dom.XmlDocument toastXml = Windows.UI.Notifications.ToastNotificationManager.GetTemplateContent(Windows.UI.Notifications.ToastTemplateType.ToastText02);
+        //    Windows.Data.Xml.Dom.XmlNodeList toastNodeList = toastXml.GetElementsByTagName("text");
+        //    toastNodeList.Item(0).AppendChild(toastXml.CreateTextNode(title));
+        //    toastNodeList.Item(1).AppendChild(toastXml.CreateTextNode(stringContent));
+        //    Windows.Data.Xml.Dom.IXmlNode toastNode = toastXml.SelectSingleNode("/toast");
+        //    Windows.Data.Xml.Dom.XmlElement audio = toastXml.CreateElement("audio");
+        //    audio.SetAttribute("src", "ms-winsoundevent:Notification.SMS");
+        //    return toastXml;
+        //}
+
+        //DirectoryInfo path
+        private static async Task LoadItemClasses()
+        {
+            Windows.UI.Core.CoreCursor oldCursor = Windows.UI.Xaml.Window.Current.CoreWindow.PointerCursor;
+            try
+            {
+                Windows.UI.Xaml.Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.Wait, 1);
+
+                var folderPicker = new Windows.Storage.Pickers.FolderPicker();
+                folderPicker.CommitButtonText = "Load tf_weapon files (ctx decoded to txt) from Here";
+                folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
+                folderPicker.FileTypeFilter.Add("*");
+                StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+                if (folder == null) return;
+                //Windows.Storage.StorageFolder folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(path.FullName);
+                IReadOnlyList<StorageFile> files = await folder.GetFilesAsync();
+                foreach (StorageFile file in files.Where(IsItemfile))
+                {
+                    string filename = Path.GetFileNameWithoutExtension(file.Name);
+                    string content = await FileIO.ReadTextAsync(file);
+
+                    new ItemClass(filename, content);
+                }
+
+                ItemClass.ResolveItemClasses();
+            }
+            finally
+            {
+                Windows.UI.Xaml.Window.Current.CoreWindow.PointerCursor = oldCursor;
+            }
+
+        }
+
+        private static bool IsItemfile(StorageFile arg)
+        {
+            return arg.FileType == ".TXT";
+        }
+
+        //FileInfo items_game_txt
+        private static async Task LoadItems(string items_game_txt_Name)
+        {
+            Windows.UI.Core.CoreCursor oldCursor = Windows.UI.Xaml.Window.Current.CoreWindow.PointerCursor;
+            try
+            {
+                Windows.UI.Xaml.Window.Current.CoreWindow.PointerCursor = new Windows.UI.Core.CoreCursor(Windows.UI.Core.CoreCursorType.Wait, 1);
+
+                var folderPicker = new Windows.Storage.Pickers.FolderPicker();
+                folderPicker.CommitButtonText = "Load items_game.txt from Here";
+                folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
+                folderPicker.FileTypeFilter.Add("*");
+                StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+                if (folder == null) return;
+                StorageFile file = await folder.GetFileAsync(items_game_txt_Name);
+                string fileContent = await FileIO.ReadTextAsync(file);
+
+                GameItem.LoadPrefabsItemsAndResolve(fileContent);
+            }
+            finally
+            {
+                Windows.UI.Xaml.Window.Current.CoreWindow.PointerCursor = oldCursor;
             }
         }
 
