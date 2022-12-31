@@ -20,6 +20,7 @@ namespace StatsData
     public class ShortCircuit : Weapon
     {
         //TODO wiki went with base + falloff which doesn't really make any sense and they also didn't show mini-crit range
+        //TODO minicrit more testing... math & game files max range 256 say I should be able to get 12 if I'm far enough away. 13 means I was more like 170 away... that's like an additional melee distance which is hard to believe.
         /// <summary>
         /// myobs: pb	lr	pmc	lmc	pbc	lrc
         /// myobs: 10	9	14	13	10	9
@@ -51,7 +52,7 @@ new NegativeAttribute("Uses metal for ammo"),
                     //LongRangeRamp = 1,//TODO not accurate, there is some small variation
                     // if we use damage=7 and do a typical ramp up of like 1.5 and max "long range" of 256, does it match results?? YES - well 10.5 point blank with 1.5 ramp up - as close as other weapons sometimes are.
                     ZeroRangeRamp = Damage.PISTOL_HITSCAN_ZERO_RANGE_RAMP,//replaces pistol, also rounding needs to result in 10, not 10.5=11.
-                    LongRangeRamp = Damage.NORMAL_LONG_RANGE_RAMP,//not relevant, max range doesn't even get to Mid range.
+                    //LongRangeRamp = 1.0m,//realistically, Damage.NORMAL_LONG_RANGE_RAMP, but not relevant since max range doesn't even get to Mid range.
 
                     //BuildingModifier = 0.07m// -93%
                     BuildingModifier = 0.20m// typical energy weapon modifier works with base 7 damage to round to 1 damage vs. building same as wiki

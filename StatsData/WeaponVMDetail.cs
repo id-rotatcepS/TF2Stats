@@ -86,12 +86,12 @@ namespace StatsData
 
         public string RangeDamage =>
             v.Damage == null ? string.Empty
-            : GetRangeIntDamage(v.Damage)
+            : GetRangeIntDamage(v.Damage, v.MaxRange)
             ;
             //+ "\n" + "\n" +
             //GetRangeIntDamage2(v.Damage) + "|" + GetRangeDecimalDamage(v.Damage);
 
-        private string GetRangeIntDamage(Damage d)
+        private string GetRangeIntDamage(Damage d, decimal? maxRange)
         {
             string format;
 
@@ -113,9 +113,9 @@ namespace StatsData
             string.Format(format,
                 Close(d, v.ClosestRangeOffset ?? 23.5m),
                 Building(d),
-                Far(d));
+                Far(d, maxRange));
         }
-        private string GetRangeIntDamage2(Damage d)
+        private string GetRangeIntDamage2(Damage d, decimal? maxRange)
         {
             string format;
 
@@ -138,7 +138,7 @@ namespace StatsData
             string.Format(format,
                 Close(d, v.ClosestRangeOffset ?? 23.5m),
                 Building(d),
-                Far(d))
+                Far(d, maxRange))
             + RangeIntBonusInfoForWhut(d);
         }
         private string RangeIntBonusInfoForWhut(Damage d)
@@ -206,12 +206,64 @@ namespace StatsData
             return Round(d.Base * d.BuildingModifier);
         }
 
-        private int Far(Damage d)
+        private int Far(Damage d, decimal? maxRange)
         {
+            if (maxRange.HasValue)
+            {
+                decimal medRange = 512m;
+                decimal max = maxRange.Value;
+                if (max < medRange)
+                {
+                    // Max far is actually in the close range (512=0%, 0=100%)
+                    decimal percentOfClose = (medRange - max) / medRange;
+                    decimal rampValue = PercentOfRamp(percentOfClose, d.ZeroRangeRamp);
+                    return Round(d.Base * rampValue);
+                }
+                else if (max < medRange * 2)
+                {
+                    // Max far is not the entire long range ramp (1024=100%, 512=0%)
+                    decimal percentOfLong = (max - medRange) / medRange;
+                    decimal rampValue = PercentOfRamp(percentOfLong, d.LongRangeRamp);
+                    return Round(d.Base * rampValue);
+                }
+                // max uses usual range... probably
+            }
             return Round(d.Base * d.LongRangeRamp);
         }
-        private int FarMinicrit(Damage d)
+
+        // we want percent of difference from 1.0
+        private decimal PercentOfRamp(decimal percent, decimal rampValue)
         {
+            if (rampValue > 1.0m)
+            {
+                decimal midIncr = rampValue - 1.0m;
+                return 1.0m + (percent * midIncr);
+            }
+            else if (rampValue < 1.0m)
+            {
+                decimal midReduc = 1.0m - rampValue;
+                return 1.0m - (percent * midReduc);
+            }
+            else
+                return 1.0m;
+        }
+
+        private int FarMinicrit(Damage d, decimal? maxRange)
+        {
+            if (maxRange.HasValue)
+            {
+                decimal medRange = 512m;
+                decimal max = maxRange.Value;
+                if (max < medRange)
+                {
+                    // Max far is actually in the close range (512=0%, 0=100%)
+                    decimal percentOfClose = (medRange - max) / medRange;
+                    decimal rampValue = PercentOfRamp(percentOfClose, d.ZeroRangeRamp);
+                    return Round(d.Base * rampValue * 1.35m);
+                }
+                // max uses usual range... probably
+            }
+
             return Round(d.Base * 1.35m);
         }
         private int FarCrit(Damage d)
@@ -433,9 +485,11 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             {
                 decimal closeOffset = v.ClosestRangeOffset ?? 23.5m;
                 Damage d = v.Damage;
+                decimal? maxRange = v.MaxRange;
+
                 if (d == null) return "";
                 string sep = "\t";
-                string r = ColsForCloseOffset(closeOffset, d, sep);
+                string r = ColsForCloseOffset(closeOffset, d, sep, maxRange,v.CanCrit,v.CanMinicrit);
 
                 WeaponTestData observed = GetWeaponTestData(v.Name, p?.Name);
                 if (observed != null)
@@ -472,7 +526,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
                         if (x == closeOffset) continue;
                         string nofar = $"0{sep}0{sep}0{sep}";
 
-                        string rt = ColsForCloseOffset(x, d, sep);
+                        string rt = ColsForCloseOffset(x, d, sep, maxRange,v.CanCrit,v.CanMinicrit);
                         if (rt.Equals(observedRow))
                         {
                             result += "     -------match-------" + x + "\n";
@@ -494,23 +548,23 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             }
         }
 
-        private string ColsForCloseOffset(decimal y, Damage d, string sep)
+        private string ColsForCloseOffset(decimal y, Damage d, string sep, decimal? maxRange, bool canCrit, bool canMinicrit)
         {
             string result = string.Empty;
             //far	far minicrit	far crit	close	close minicrit	close crit
-            result += Far(d);
+            result += Far(d, maxRange);
             result += sep;
-            result += FarMinicrit(d);
+            result += canMinicrit ? FarMinicrit(d, maxRange) : (canCrit ? FarCrit(d) : Far(d, maxRange));
             result += sep;
-            result += FarCrit(d);
+            result += canCrit ? FarCrit(d) : Far(d, maxRange);
             result += sep;
             result += Close(d, y);
             //result += "|" + CloseB(d);
             result += sep;
-            result += CloseMinicrit(d, y);
+            result += canMinicrit ? CloseMinicrit(d, y) : (canCrit ? CloseCrit(d) : Close(d,y));
             //result += "|" + CloseMinicritB(d);
             result += sep;
-            result += CloseCrit(d);
+            result += canCrit ? CloseCrit(d) : Close(d, y);
             return result;
         }
 
@@ -572,7 +626,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
         "Pomson 6000	https://youtu.be/-K0HGz1kKs4	32	81	180	72	97	180",
         "Righteous Bison	https://youtu.be/P8oY8jX68MI	22	54	120	48	64	120",
         "Short Circuit	https://youtu.be/PBjJp3wUyoo	9	13	9	10	14	10",
-        "Short Circuit\n>alt (orb blast)	https://youtu.be/eti3ZoTLWzE	15	20	15	15	20	15",//"alt Short Circuit(orb blast)	https://youtu.be/eti3ZoTLWzE	15	20	15	15	20	15",
+        "Short Circuit\n>electrical airblast	https://youtu.be/eti3ZoTLWzE	15	20	15	15	20	15",//"alt Short Circuit(orb blast)	https://youtu.be/eti3ZoTLWzE	15	20	15	15	20	15",
         "Dragon's Fury	https://youtu.be/aK90XPG2a_Q	24	34	75	30	40	75",
         "Dragon's Fury\n>(burning)	flaming	72	106	225	90	121	225",//"Dragon's Fury	flaming	72	106	225	90	121	225",
         //"Dragon's Fury	https://youtu.be/aLt6NL8iOKk	24	34	75			",
@@ -619,7 +673,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
         "Rocket Jumper	https://youtu.be/ixpSAIsEazs						",
         "Liberty Launcher	https://youtu.be/xm6bKrioSlY	36	91	203	84	114	203",
         //"Liberty Launcher		18	46	101	42	57	101",
-        "Cowmangler 5000	https://youtu.be/9gveiR7brfM	48	122	122	112	151	122",
+        "Cow mangler 5000	https://youtu.be/9gveiR7brfM	48	122	122	112	151	122",//"Cowmangler 5000	https://youtu.be/9gveiR7brfM	48	122	122	112	151	122",
         //"Cowmangler 5000		24	61	61	56	76	61",
         "Cowmangler 5000\n>charged shot	https://youtu.be/zyG7LgKB5Mw	122	122	122	151	151	151",//"Cowmangler charged shot	https://youtu.be/zyG7LgKB5Mw	122	122	122	151	151	151",
         "Beggar's Bazooka	https://youtu.be/lBPldb6_AFQ	48	122	270	112	151	270",

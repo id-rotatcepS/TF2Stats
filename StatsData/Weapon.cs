@@ -938,9 +938,16 @@ namespace StatsData
         public int Level { get; protected set; }
         public string WeaponType { get; protected set; }
         public List<WeaponAttribute> Attributes { get; } = new List<WeaponAttribute>();
-        //https://wiki.teamfortress.com/wiki/Critical_hits#Special_cases
+        /// <summary>
+        /// https://wiki.teamfortress.com/wiki/Critical_hits#Special_cases
+        /// generally only false for shield bash and Short Circuit (both modes), also Cow Mangler 5000 does a post-crit downgrade to simulate minicrits except supposedly a crit-boosted reflect,
+        /// and of course healing or non-damage items
+        /// </summary>
         public bool CanCrit { get; internal set; } = true;
-        // for A few things like heal bolts or things that upgrade it to crits
+        /// <summary>
+        /// generally only false for things that upgrade it to crits (fan-o-war and Bushwacka),
+        /// and of course healing or non-damage items
+        /// </summary>
         public bool CanMinicrit { get; internal set; } = true;
     }
 
