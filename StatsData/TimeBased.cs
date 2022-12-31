@@ -40,17 +40,21 @@ new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("Per Shot: -5 ammo"),
 new NegativeAttribute("Uses metal for ammo"),
 });
+            Notes += "7 damage but point blank ~150% ramp up for 10 damage, max range is still 125% ramp up for 9 damage";
             ActivationTime = 0;
             Melee = new Melee()
             {
-                Damage = new Damage(9.26m)//10) // 9.26 @wd  // tf_weapon_mechanical_arm Damage=7, TimeFireDelay=0.15, Spread=0.04
+                Damage = new Damage(7)//9.26m)//10) // 9.26 @wd  // tf_weapon_mechanical_arm Damage=7, TimeFireDelay=0.15, Spread=0.04
                 {
                     Offset = Damage.OFFSET_HITSCAN_SHORTCIRCUIT,
-                    //TODO if we use damage=7 and do a typical ramp up of like 1.5 and max "long range" of 256, does it match results?? YES - well 10.5 point blank with 1.5 ramp up - as close as other weapons sometimes are.
-                    ZeroRangeRamp = 1.12m,
-                    LongRangeRamp = 1,//TODO not accurate, there is some small variation
+                    //ZeroRangeRamp = 1.12m,
+                    //LongRangeRamp = 1,//TODO not accurate, there is some small variation
+                    // if we use damage=7 and do a typical ramp up of like 1.5 and max "long range" of 256, does it match results?? YES - well 10.5 point blank with 1.5 ramp up - as close as other weapons sometimes are.
+                    ZeroRangeRamp = Damage.PISTOL_HITSCAN_ZERO_RANGE_RAMP,//replaces pistol, also rounding needs to result in 10, not 10.5=11.
+                    LongRangeRamp = Damage.NORMAL_LONG_RANGE_RAMP,//not relevant, max range doesn't even get to Mid range.
 
-                    BuildingModifier = 0.07m// -93%
+                    //BuildingModifier = 0.07m// -93%
+                    BuildingModifier = 0.20m// typical energy weapon modifier works with base 7 damage to round to 1 damage vs. building same as wiki
                 },
                 MaxRange = 256 // from tf_weapon_mechanical_arm.ctx
             };
@@ -82,7 +86,7 @@ new NegativeAttribute("Uses metal for ammo"),
         //TODO building modifier Test - wiki talks about it but no number. not sure where I got it. 
         public ShortCircuitAlt()
         {
-            Name = "alt (orb blast)";
+            Name = "electrical airblast";
 
             Projectile = new Projectile(400)//wd (guessed)
             {
@@ -92,7 +96,7 @@ new NegativeAttribute("Uses metal for ammo"),
                     ZeroRangeRamp = 1,
                     LongRangeRamp = 1,
 
-                    BuildingModifier = 0.10m
+                    BuildingModifier = 0.20m//TODO test for actual value( is it really 3?) had 0.10m but based on what? Wiki just says "insignificant" and doesn't supply a number.
                 },
                 Penetrating = true,
                 Propelled = true,
