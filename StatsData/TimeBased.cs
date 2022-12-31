@@ -24,6 +24,11 @@ namespace StatsData
         /// myobs: pb	lr	pmc	lmc	pbc	lrc
         /// myobs: 10	9	14	13	10	9
         /// wiki: 10 point blank, 15 mc point blank
+        /// 
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Range: 256
+        /// tf_weapon_mechanical_arm
         /// </summary>
         public ShortCircuit()
         {
@@ -38,15 +43,16 @@ new NegativeAttribute("Uses metal for ammo"),
             ActivationTime = 0;
             Melee = new Melee()
             {
-                Damage = new Damage(9.26m)//10) // 9.26 @wd
+                Damage = new Damage(9.26m)//10) // 9.26 @wd  // tf_weapon_mechanical_arm Damage=7, TimeFireDelay=0.15, Spread=0.04
                 {
                     Offset = Damage.OFFSET_HITSCAN_SHORTCIRCUIT,
+                    //TODO if we use damage=7 and do a typical ramp up of like 1.5 and max "long range" of 256, does it match results?? YES - well 10.5 point blank with 1.5 ramp up - as close as other weapons sometimes are.
                     ZeroRangeRamp = 1.12m,
                     LongRangeRamp = 1,//TODO not accurate, there is some small variation
 
                     BuildingModifier = 0.07m// -93%
                 },
-                MaxRange = 275
+                MaxRange = 256 // from tf_weapon_mechanical_arm.ctx
             };
             FireRate = 0.15m;
 
@@ -350,6 +356,7 @@ new DescriptionAttribute("Fires special bolts that heal teammates and deals dama
             {
                 // damages buildings the same amount based on hang time.
                 HitDamage = new Damage(38.4m)//38.4 functional min hang time.  theoretical min: 37.5=75/2
+                //tf_weapon_crossbow Damage=75 Range=0 TimeFireDelay=0.23 TimeReload=1.5
                 {
                     //Offset = ,
                     ZeroRangeRamp = 1,
@@ -371,7 +378,7 @@ new DescriptionAttribute("Fires special bolts that heal teammates and deals dama
 
             };
             // TODO: (where's this number from?) single shot reload - usually is functionally its rate, but this one is different.
-            FireRate = .24m;// 1.6m;
+            FireRate = .24m;// 1.6m;//TODO would rather use file value 0.23
 
             AlternateModes = new List<Weapon>()
             {
@@ -717,7 +724,7 @@ new NegativeAttribute("No random critical hits"),
 });
             Projectile = new Projectile(3000)
             {
-                HitDamage = new Damage(50)
+                HitDamage = new Damage(50) // Note Weird Values: tf_weapon_cleaver MeleeWeapon=1 WeaponType=item1 Damage=5 DamageRadius=200 TimeFireDelay=0.8
                 {
                     Offset = Damage.OFFSET_4_BALLS_CLEAVER,
                     ZeroRangeRamp = 1,
@@ -854,7 +861,7 @@ new DescriptionAttribute("Death from above! Fires a short-duration blast that la
 }); 
             Projectile = new Projectile(651)
             {
-                HitDamage = new Damage(67)
+                HitDamage = new Damage(67) // tf_weapon_rocketpack Damage=35 (like bat) WeaponType=melee MeleeWeapon=1 TimeFireDelay=0.5 clip_size=-1 default_clip=2
                 {
                     Offset = Damage.OFFSET_STOMP,//32,
                     ZeroRangeRamp = 1,

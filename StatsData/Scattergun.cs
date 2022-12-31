@@ -137,8 +137,9 @@ new DescriptionAttribute("This weapon reloads its entire clip at once"),
         //Wiki claims "has approximately 40% less pellet spread" although it's not listed in stats
         public Shortstop() // closer to a pistol than defaults
             :base(48, 4,
-                 Damage.SPREAD_PISTOL,//TODO get real value from weapon script files (wiki translates value to 50:1 vs. 48:1 pistol)
+                 Damage.SPREAD_PISTOL,// (wiki translates value to 50:1 vs. 48:1 pistol)
                  Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP) // yes, normal, not scattergun
+            //tf_weapon_handgun_scout_primary Damage=12 BulletsPerShot=4, Spread=0.04 (pistol), TimeFireDelay=0.35
         {
             Name = "Shortstop";
             Name = "Shortstop"; Level = 1; WeaponType = "Peppergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
@@ -161,7 +162,7 @@ new DescriptionAttribute("Holds a 4-shot clip and reloads its entire clip at onc
             //    },
 
             //};
-            FireRate = 0.36m;
+            FireRate = 0.36m; //TODO 0.36 in wiki. would prefer file value 0.35
 
             Ammo = new Ammo(4, 32)
             {

@@ -195,7 +195,7 @@ new NegativeAttribute("Deals only 20% damage to buildings"),
 });
             Projectile = new Projectile(1875)//wd; had 1812 from other spreadsheet
             {
-                HitDamage = new Damage(50)
+                HitDamage = new Damage(50)  // TODO tf_weapon_compound_bow Damage=70 TimeFireDelay=2.0 TimeReload=1.0 Spread=0.0
                 {
                     Offset = Damage.OFFSET_2_ENERGY_COWMANGLER_ARROWLIKE,
                     ZeroRangeRamp = 1,
@@ -218,7 +218,7 @@ new NegativeAttribute("Deals only 20% damage to buildings"),
 
             Ammo = new Ammo(1, 12)
             {
-                Reload = 1.94m,
+                Reload = 1.94m, //TODO would prefer file TimeFireDelay value of 2.0
             };
 
         }
@@ -339,7 +339,7 @@ new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
 }); 
             Projectile = new Projectile(2400)
             {
-                HitDamage = new Damage(40)
+                HitDamage = new Damage(40) // tf_weapon_shotgun_building_rescue Damage=40
                 {
                     //Offset = ,
                     ZeroRangeRamp = Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP, // like shotgun
@@ -379,7 +379,7 @@ new DescriptionAttribute("Take manual control of your Sentry Gun.<br>Wrangled se
         //Maybe projectile facts with no damage, then alt mode of triggered (which has its own explode activation time beyond arm time)
         public AStickybombLauncher(decimal baseDamage = 120, decimal armTime = 0.7m, decimal splashRadius = AOE.DEFAULT_SPLASH * 1,
             decimal speed = 925.38m //wd; other sheet had 900; wiki text says 805
-            )
+            ) // tf_weapon_pipebomblauncher Damage=120
         {
             Name = "Stickybomb Launcher";
             ActivationTime = 0.135m;//time to explode after right-click
@@ -655,7 +655,7 @@ new NegativeAttribute("-50% clip size"),
 
     public abstract class ASyringeGun : Weapon
     {
-        public ASyringeGun(decimal baseDamage = 10)
+        public ASyringeGun(decimal baseDamage = 10) // tf_weapon_syringegun_medic Damage=10
         {
             Name = "syringe gun";
 

@@ -966,22 +966,76 @@ namespace StatsData
         /// but the linked image (https://imgur.com/a/ZmWeqe9) says 0.0675 (28:1), same as reddit post!
         /// I think they accidentally conflated it with the firing rate.
         /// I have not done the legwork of extracting and decrypting the tf/scripts files they're talking about.
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Spread: 0.0675
+        /// tf_weapon_soda_popper
+        /// tf_weapon_shotgun_soldier
+        /// tf_weapon_shotgun_pyro
+        /// tf_weapon_shotgun_primary
+        /// tf_weapon_shotgun_hwg
+        /// tf_weapon_sentry_revenge
+        /// tf_weapon_scattergun
+        /// tf_weapon_raygun
+        /// tf_weapon_pep_brawler_blaster
+        /// tf_weapon_drg_pomson
         /// </summary>
         public const decimal SPREAD_SHOTGUN_SCATTERGUN = 0.0675m;
         /// <summary>
         /// https://www.reddit.com/r/truetf2/comments/1gyb8g/comment/cap37c1
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Spread: 0.025
+        /// tf_weapon_smg
+        /// tf_weapon_revolver
+        /// tf_weapon_charged_smg
         /// </summary>
         public const decimal SPREAD_SMG_REVOLVER = 0.025m;
         /// <summary>
         /// https://www.reddit.com/r/truetf2/comments/1gyb8g/comment/cap37c1
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Spread: 0.0
+        /// tf_weapon_syringegun_medic
+        /// tf_weapon_sniperrifle_decap
+        /// tf_weapon_sniperrifle_classic
+        /// tf_weapon_sniperrifle
+        /// tf_weapon_shotgun_building_rescue
+        /// tf_weapon_rocketlauncher_fireball
+        /// tf_weapon_rocketlauncher_directhit
+        /// tf_weapon_rocketlauncher_airstrike
+        /// tf_weapon_rocketlauncher
+        /// tf_weapon_pipebomblauncher
+        /// tf_weapon_particle_cannon
+        /// tf_weapon_laser_pointer
+        /// tf_weapon_grenadelauncher
+        /// tf_weapon_grapplinghook
+        /// tf_weapon_flaregun_revenge
+        /// tf_weapon_flaregun
+        /// tf_weapon_flamethrower
+        /// tf_weapon_crossbow
+        /// tf_weapon_compound_bow
+        /// tf_weapon_cannon
         /// </summary>
         public const decimal SPREAD_SNIPER = 0;
         /// <summary>
         /// https://www.reddit.com/r/truetf2/comments/1gyb8g/comment/cap37c1
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Spread: 0.04
+        /// tf_weapon_pistol_scout
+        /// tf_weapon_pistol
+        /// tf_weapon_mechanical_arm
+        /// tf_weapon_handgun_scout_secondary
+        /// tf_weapon_handgun_scout_primary
         /// </summary>
         public const decimal SPREAD_PISTOL = 0.04m;
         /// <summary>
         /// https://www.reddit.com/r/truetf2/comments/1gyb8g/comment/cap37c1
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Spread: 0.08
+        /// tf_weapon_minigun
         /// </summary>
         public const decimal SPREAD_MINIGUN = 0.08m;
 
@@ -1085,6 +1139,57 @@ namespace StatsData
         public static readonly decimal DEFAULT_RANGE = 48;
 
         public Damage Damage { get; set; }
+        /// <summary>
+        /// TODO store this documentation and these values somewhere other than Melee class
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Range: 0
+        /// tf_weapon_shotgun_building_rescue
+        /// tf_weapon_rocketlauncher_fireball
+        /// tf_weapon_rocketlauncher_directhit
+        /// tf_weapon_rocketlauncher_airstrike
+        /// tf_weapon_rocketlauncher
+        /// tf_weapon_particle_cannon
+        /// tf_weapon_grapplinghook
+        /// tf_weapon_flamethrower
+        /// tf_weapon_crossbow
+        /// 
+        /// Range: 8192
+        /// tf_weapon_syringegun_medic
+        /// tf_weapon_soda_popper
+        /// tf_weapon_sniperrifle_decap
+        /// tf_weapon_sniperrifle_classic
+        /// tf_weapon_sniperrifle
+        /// tf_weapon_smg
+        /// tf_weapon_shotgun_soldier
+        /// tf_weapon_shotgun_pyro
+        /// tf_weapon_shotgun_primary
+        /// tf_weapon_shotgun_hwg
+        /// tf_weapon_sentry_revenge
+        /// tf_weapon_scattergun
+        /// tf_weapon_raygun
+        /// tf_weapon_pep_brawler_blaster
+        /// tf_weapon_minigun
+        /// tf_weapon_laser_pointer
+        /// tf_weapon_handgun_scout_primary
+        /// tf_weapon_flaregun_revenge
+        /// tf_weapon_flaregun
+        /// tf_weapon_drg_pomson
+        /// tf_weapon_compound_bow
+        /// tf_weapon_charged_smg
+        /// 
+        /// Range: 4096
+        /// tf_weapon_revolver
+        /// tf_weapon_pistol_scout
+        /// tf_weapon_pistol
+        /// tf_weapon_handgun_scout_secondary
+        /// 
+        /// Range: 450
+        /// tf_weapon_medigun
+        /// 
+        /// Range: 256
+        /// tf_weapon_mechanical_arm
+        /// </summary>
         public decimal MaxRange { get; set; } = DEFAULT_RANGE;
     }
 
@@ -1158,12 +1263,47 @@ namespace StatsData
 
     public class AOE
     {
+        /// <summary>
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// DamageRadius: 200
+        /// tf_weapon_spellbook
+        /// tf_weapon_jar_milk
+        /// tf_weapon_jar_gas
+        /// tf_weapon_jar
+        /// tf_weapon_cleaver
+        /// 
+        /// DamageRadius: 146
+        /// tf_weapon_pipebomblauncher
+        /// tf_weapon_grenadelauncher
+        /// tf_weapon_cannon
+        /// </summary>
         public const decimal DEFAULT_SPLASH = 146;//Hu
         //"...a small blast radius which damages and ignites nearby enemy players..."
         //July 2, 2015 Patch #1 (Gun Mettle Update)
         // Increased the blast radius from flares from 92Hu to 110Hu.
         public const decimal FLARE_SPLASH = 110m;
-        public const decimal DEFAULT_BANNER = 450;
+        /// <summary>
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// DamageRadius: 146
+        /// tf_weapon_pipebomblauncher
+        /// tf_weapon_grenadelauncher
+        /// tf_weapon_cannon
+        /// </summary>
+        public const decimal EXPLOSIVE_SPLASH = DEFAULT_SPLASH;
+        /// <summary>
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// DamageRadius: 200
+        /// tf_weapon_spellbook
+        /// tf_weapon_jar_milk
+        /// tf_weapon_jar_gas
+        /// tf_weapon_jar
+        /// tf_weapon_cleaver
+        /// </summary>
+        public const decimal EFFECT_SPLASH = 200m;
+        public const decimal DEFAULT_BANNER = 450; // basis? none? this (450) is the connect range of the medigun
         public AOE() : this(DEFAULT_SPLASH)
         {
 
@@ -1190,6 +1330,56 @@ namespace StatsData
         public Damage HitDamage { get; set; }
         public AOE Splash { get; set; }
 
+        /// <summary>
+        /// 
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Range: 8192
+        /// tf_weapon_syringegun_medic
+        /// tf_weapon_soda_popper
+        /// tf_weapon_sniperrifle_decap
+        /// tf_weapon_sniperrifle_classic
+        /// tf_weapon_sniperrifle
+        /// tf_weapon_smg
+        /// tf_weapon_shotgun_soldier
+        /// tf_weapon_shotgun_pyro
+        /// tf_weapon_shotgun_primary
+        /// tf_weapon_shotgun_hwg
+        /// tf_weapon_sentry_revenge
+        /// tf_weapon_scattergun
+        /// tf_weapon_raygun
+        /// tf_weapon_pep_brawler_blaster
+        /// tf_weapon_minigun
+        /// tf_weapon_laser_pointer
+        /// tf_weapon_handgun_scout_primary
+        /// tf_weapon_flaregun_revenge
+        /// tf_weapon_flaregun
+        /// tf_weapon_drg_pomson
+        /// tf_weapon_compound_bow
+        /// tf_weapon_charged_smg
+        /// 
+        /// Range: 0
+        /// tf_weapon_shotgun_building_rescue
+        /// tf_weapon_rocketlauncher_fireball
+        /// tf_weapon_rocketlauncher_directhit
+        /// tf_weapon_rocketlauncher_airstrike
+        /// tf_weapon_rocketlauncher
+        /// tf_weapon_particle_cannon
+        /// tf_weapon_grapplinghook
+        /// tf_weapon_flamethrower
+        /// tf_weapon_crossbow
+        /// 
+        /// Range: 4096
+        /// tf_weapon_revolver
+        /// tf_weapon_pistol_scout
+        /// tf_weapon_pistol
+        /// tf_weapon_handgun_scout_secondary
+        /// 
+        /// Range: 450
+        /// tf_weapon_medigun
+        /// 
+        /// Range: 256
+        /// tf_weapon_mechanical_arm
+        /// </summary>
         public decimal MaxRangeTime { get; set; } = 0;
         public decimal Spread { get; set; } = 0;
 

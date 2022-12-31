@@ -15,7 +15,7 @@ namespace StatsData
 
             Projectile = new Projectile(speed)
             {
-                HitDamage = new Damage(100)
+                HitDamage = new Damage(100) // tf_weapon_grenadelauncher Damage=100 TimeFireDelay=0.6
                 {
                     Offset = Damage.OFFSET_3_GRENADE_STICKY_JARS,
                     ZeroRangeRamp = 1,

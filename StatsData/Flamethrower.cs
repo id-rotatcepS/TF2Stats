@@ -3,14 +3,52 @@
 namespace StatsData
 {
 
-
+    /// <summary>
+    /// from tf_weapon_flamethrower.ctx:
+    /// 	 "Damage"		"170"	// per second
+    /// 	 "Range"			"0"
+    /// 	 "BulletsPerShot"	"1"
+    /// 	 "Spread"		"0.0"
+    /// 	 "TimeFireDelay"	"0.04"
+    /// 	 "UseRapidFireCrits"	"1"
+    /// from items_game.txt:
+    /// 		"weapon_flamethrower"
+    /// 						"can_deal_damage"			"1"
+    /// 						"can_reflect_projectiles"	"1"
+    /// 						"can_extinguish"			"1"
+    /// 						"can_deal_posthumous_damage"	"1"
+    /// 						"can_deal_critical_damage"	"1"
+    /// 						"is_flamethrower" "1"
+    ///		"weapon_baseflamethrower"
+    /// 				"extinguish restores health"			"20"
+    ///		"weapon_newflame"
+    /// 				"flame_gravity"							"0"
+    /// 				"flame_drag"							"8.5"
+    /// 				"flame_up_speed"						"50"
+    /// 				"flame_speed"							"2450"
+    /// 				"flame_spread_degree"					"2.8"
+    /// 				"flame_lifetime"						"0.6"
+    /// 				"flame_random_life_time_offset"			"0.1"
+    /// </summary>
     public abstract class AFlameThrower : Weapon
     {
+        #region weapon_newflame constants
+        public const decimal flame_gravity = 0m;
+        // I am guessing this is a percent reduction in speed per game tick.  Result makes sense.
+        public const decimal flame_drag = 8.5m;
+        public const decimal flame_up_speed = 50m;
+        public const decimal flame_speed = 2450m;
+        public const decimal flame_spread_degree = 2.8m;
+        public const decimal flame_lifetime = 0.6m;
+        public const decimal flame_random_life_time_offset = 0.1m;
+        #endregion weapon_newflame constants
+
+        //TODO where is 6.5 or .5 from?  items_game 170DPS * .04(TimeFireDelay) = 6.8.  170 * .075(Wiki FireRate) = 12.75
         public AFlameThrower(decimal baseDamage = 6.5m*.5m)
         {
             Name = "flamethrower";
 
-            Projectile = new Projectile(2450m)//TODO taken from items_game.txt weapon_newflame, but that also includes Drag value that changes everything.  What will the wiki think? equivalent for 0.6s lifespan would be ~641 Hu/s
+            Projectile = new Projectile(flame_speed)//TODO 2450 from items_game.txt, but that also has Drag that changes meaning.  What will the wiki think? equivalent for 0.6s lifespan would be ~641 Hu/s
             {
                 //"Note: Flame damage is proportional to particle lifetime instead of distance from target. Unlike most weapons, Critical hits are also affected by the scaling."
                 HitDamage = new Damage(baseDamage)
@@ -30,9 +68,8 @@ namespace StatsData
                 //    FragmentType = "particle",
                 //},
                 
-                MaxRangeTime = GetMaxRangeWeaponNewFlame() / 2450m,// 385 Hu based on below calculation accounting for drag.  can't use 0.6 with 2450 Hu/s (that'd be 1470Hu range!)
+                MaxRangeTime = GetMaxRangeWeaponNewFlame() / flame_speed,// 385 Hu based on below calculation accounting for drag.
                 // was using 330... from ? I dont' even know. wiki text has 340 
-                //TODO I maybe 350 in other spreadsheet? or I made it up
 
                 Penetrating = true,
                 Influenceable = false
@@ -52,25 +89,14 @@ namespace StatsData
 
         protected decimal GetMaxRangeWeaponNewFlame()
         {
-            /*
-             * from tf/scripts/items/items_game.txt "weapon_newflame"
-             * 				
-            "flame_gravity"							"0"
-            "flame_drag"							"8.5"
-            "flame_up_speed"						"50"
-            "flame_speed"							"2450"
-            "flame_spread_degree"					"2.8"
-            "flame_lifetime"						"0.6"
-            "flame_random_life_time_offset"			"0.1"
-             */
-            // ASSUME drag is percent reduction in speed per game tick (0.015 s).
-            // Apply that, the speed, and the lifetime as follows to get a max range of 385:
+            // ASSUME drag is PERCENT reduction in speed per game tick (0.015 s).
+            // Apply that, the speed, and the lifetime as follows to get a max range of 385.
+            // not using flame_up_speed or flame_gravity, just care about horizontal distance
+            // not using flame_spread_degree, currently. the random spread direction of 2.8 degrees would shorten it negligibly, like 99.8%
+            // not including flame_random_life_time_offset, currently. random offset of .1 to the lifetime results in 376 to 389 (vs 385).
+            // (FYI, life time of 5s still only gets range of 395HU)
             decimal gameTick = 0.015m;
-            decimal flame_drag = 8.5m;
-            decimal flame_lifetime = 0.6m;
-            decimal flame_speed = 2450m;
             decimal maxRange = MaxRangeWithDrag(flame_lifetime, gameTick, flame_speed, flame_drag);
-            // ... but random offset of .1 to the lifetime (result 376 to 389), (the random spread direction of 2.8 degrees would shorten it negligibly, like 99.8%).
             return maxRange;
         }
 
@@ -81,9 +107,11 @@ namespace StatsData
             for (decimal i = 0; i <= travelTime; i += dragIncrement)
             {
                 speed = speed * (100.0m - drag) / 100.0m;
-                if (speed <= 0) return answer;
+                if (speed <= 0)
+                    return answer;
                 answer += speed * dragIncrement;
-                if (answer < 0) return 0;
+                if (answer < 0)
+                    return 0;
             }
             return answer;
         }

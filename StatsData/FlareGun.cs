@@ -7,6 +7,7 @@ namespace StatsData
     public abstract class AFlareGun : Weapon
     {
         public AFlareGun(decimal baseDamage = 30, decimal speed = 2000, decimal splashRadius = 0)
+            //tf_weapon_flaregun Damage=30 Spread=0.0 TimeFireDelay=2.0
         {
             Name = "flare guns";
 

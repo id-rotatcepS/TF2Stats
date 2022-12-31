@@ -6,7 +6,7 @@ namespace StatsData
 
     public abstract class AMinigun : Weapon
     {
-        public AMinigun(decimal baseDamage = 36, decimal spread = Damage.SPREAD_MINIGUN)
+        public AMinigun(decimal baseDamage = 36, decimal spread = Damage.SPREAD_MINIGUN) // Oddly, tf_weapon_minigun Damage=9
         {
             Name = "minigun";
             ActivationTime = 0.87m;// sec spin up;
@@ -25,6 +25,7 @@ namespace StatsData
                 },
 
             };
+            // tf_weapon_minigun TimeFireDelay=0.1
             FireRate = 0.105m;// May 6 2021 wiki all changed from .1 to .105.
                               // pocket pistol mentions "rounded up to the next multiple of 0.015 seconds (a game tick)"
             

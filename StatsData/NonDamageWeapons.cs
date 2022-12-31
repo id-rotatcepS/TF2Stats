@@ -400,7 +400,7 @@ new NeutralAttribute("While effect is active: each attack mini-crits and sets Ma
 
             Projectile = new Projectile(0)//TODO FIXME VALUE!
             {
-                Splash = new AOE(AOE.DEFAULT_SPLASH * 1)//TODO FIXME value?
+                Splash = new AOE(AOE.EFFECT_SPLASH)
 
             };
             CanCrit = false;
@@ -421,7 +421,7 @@ new PositiveAttribute("Extinguishing teammates reduces cooldown by -20%"),
             Projectile = new Projectile(1017.9m)//wd
             {
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
-                Splash = new AOE(AOE.DEFAULT_SPLASH * 1.0m),//TODO FIXME value?
+                Splash = new AOE(AOE.EFFECT_SPLASH),
             };
 
             Effect = new Effect()
@@ -443,7 +443,7 @@ new DescriptionAttribute("Players heal 60% of the damage done to an enemy covere
             Projectile = new Projectile(1019.9m)//wd
             {
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
-                Splash = new AOE(AOE.DEFAULT_SPLASH * 1),//TODO FIXME value?
+                Splash = new AOE(AOE.EFFECT_SPLASH),
             };
 
             Effect = new Effect()
@@ -468,7 +468,7 @@ new DescriptionAttribute("Creates a horrific visible gas that coats enemies with
             Projectile = new Projectile(2009.2m)//basis? 2009.2 on wd
             {
                 //no damage, but Offset = 32,.. but Damage.OFFSET_3_GRENADE_STICKY_JARS which is 23.5!
-                Splash = new AOE(AOE.DEFAULT_SPLASH * 1.0m),//TODO FIXME value?
+                Splash = new AOE(AOE.EFFECT_SPLASH),
             };
 
             //TODO Splash Hang Time

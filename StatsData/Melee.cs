@@ -231,9 +231,9 @@ new NegativeAttribute("Replaces the Sentry with a Mini-Sentry"),
 
     public abstract class AKnife : MeleeWeapon
     {
-        public AKnife(decimal baseDamage = 40)
+        public AKnife(decimal baseDamage = 40) //tf_weapon_knife Damage=40 TimeFireDelay=0.8 SmackDelay=0.1 Secondary_SmackDelay=0.3 WeaponType=melee MeleeWeapon=1
             : base(baseDamage,
-                 activationTime: 0)// hits immediately;
+                 activationTime: 0)// hits immediately; // TODO use "smackdelay" values
         {
             Attributes.Clear();Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n40 damage (50 dps)"),
 new DescriptionAttribute("Attack an enemy from behind to Backstab them for a one hit kill."),
@@ -622,7 +622,7 @@ new DescriptionAttribute("This melee slap tells your opponent, and anyone watchi
 });
             Melee = new Melee()
             {
-                Damage = new Damage(52)
+                Damage = new Damage(52) // HOWEVER tf_weapon_slap Damage=35 (implies fish) TimeFireDelay=1.f (huh?) SmackDelay=0.2 Secondary_SmackDelay=0.3
                 {
                     Offset = Damage.OFFSET_HITSCAN_MELEE,//23.5,
                 }
@@ -955,7 +955,7 @@ new DescriptionAttribute("Gives increased speed and health with every head you t
 
     public class UllapoolCaber : MeleeWeapon
     {
-        public UllapoolCaber()
+        public UllapoolCaber() // TODO oddly: tf_weapon_stickbomb Damage=55
         {
             Attributes.Clear();
             Name = "Ullapool Caber"; Level = 10; WeaponType = "Stick Bomb"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),

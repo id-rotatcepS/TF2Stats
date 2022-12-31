@@ -6,7 +6,7 @@ namespace StatsData
     // different stats depending on who wields it.
     abstract public class APistol : Weapon
     {
-        public APistol(decimal baseDamage = 15)
+        public APistol(decimal baseDamage = 15) // tf_weapon_pistol Damage=15
         {
             Name = "Pistol";
             Hitscan = new Hitscan()
@@ -168,7 +168,7 @@ new NegativeAttribute("-25% clip size"),
 
             Hitscan = new Hitscan()
             {
-                Damage = new Damage(8)
+                Damage = new Damage(8) // tf_weapon_smg Damage=8
                 {
                     Offset = Damage.OFFSET_HITSCAN_SMG,
                     ZeroRangeRamp = Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP,
@@ -246,7 +246,7 @@ new NegativeAttribute("No random critical hits"),
 
     public abstract class ARevolver : Weapon
     {
-        public ARevolver(decimal baseDamage = 40, decimal recovery = 1.25m)
+        public ARevolver(decimal baseDamage = 40, decimal recovery = 1.25m) // tf_weapon_revolver Damage=40
         {
             Name = "revolver";
 

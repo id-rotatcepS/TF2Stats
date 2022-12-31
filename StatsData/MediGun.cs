@@ -13,7 +13,7 @@ namespace StatsData
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = AMediGun.MEDIGUN_MAX_RANGE
             };
             CanCrit = false;
             CanMinicrit = false;
@@ -42,8 +42,15 @@ namespace StatsData
             };
         }
     }
+
     public abstract class AMediGun : Weapon
     {
+        /// <summary>
+        /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
+        /// Range: 450
+        /// tf_weapon_medigun
+        /// </summary>
+        public static decimal MEDIGUN_MAX_RANGE = 450; // from tf_weapon_medigun.ctx
         /// <summary>
         /// Medigun hits people within a long range, 
         /// invoking an AOE healing effect between medic and that target (represented by beam) until they leave the radius.
@@ -58,11 +65,11 @@ namespace StatsData
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = MEDIGUN_MAX_RANGE
             };
             Effect = new Effect() {
                 Name = "Target Healing",
-                Damage = new Damage(-3),
+                Damage = new Damage(-3),  // Note (matches healing per second): tf_weapon_medigun Damage=24 also TimeFireDelay=0.5... other unused values.
                 DamageRate = 0.125m,
             };
             AreaOfEffect = new AOE(540);
@@ -107,7 +114,7 @@ namespace StatsData
             //    //{
             //    //    Offset = 23.5,
             //    //},
-            //    MaxRange = 450
+            //    MaxRange = MEDIGUN_MAX_RANGE
             //};
             //Effect = new Effect()
             //{
@@ -173,7 +180,7 @@ new PositiveAttribute("+25% ÜberCharge rate"),
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = MEDIGUN_MAX_RANGE
             };
             Effects.Clear();
             Effect = new Effect()
@@ -212,7 +219,7 @@ new DescriptionAttribute("Mirror the blast jumps and shield charges of patients.
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = MEDIGUN_MAX_RANGE
             };
             Effects.Clear();
             Effect = new Effect()
@@ -242,7 +249,7 @@ new DescriptionAttribute("Mirror the blast jumps and shield charges of patients.
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = MEDIGUN_MAX_RANGE
             };
             AreaOfEffect = new AOE(540);
             Effects.Clear();
@@ -268,7 +275,7 @@ new DescriptionAttribute("Mirror the blast jumps and shield charges of patients.
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = MEDIGUN_MAX_RANGE
             };
             Effects.Clear();
             Effect = new Effect()
@@ -293,7 +300,7 @@ new DescriptionAttribute("Mirror the blast jumps and shield charges of patients.
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = MEDIGUN_MAX_RANGE
             };
             AreaOfEffect = new AOE(540);
             Effects.Clear();
@@ -326,7 +333,7 @@ new DescriptionAttribute("Übercharge provides a 2.5 second resistance bubble th
                 //{
                 //    Offset = 23.5,
                 //},
-                MaxRange = 450
+                MaxRange = MEDIGUN_MAX_RANGE
             };
             Effects.Clear();
             Effect = new Effect()

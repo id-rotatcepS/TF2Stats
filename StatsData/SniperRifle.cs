@@ -5,7 +5,7 @@ namespace StatsData
 
     public abstract class ASniperRifle : Weapon
     {
-        public ASniperRifle(decimal baseDamage = 50)
+        public ASniperRifle(decimal baseDamage = 50) // oddly tf_weapon_sniperrifle/_decap/_classic Damage=4
         {
             Name = "sniper rifle";
             //not activation of a hip shot, though. ActivationTime = 1.3m;// sec pre-charge delay;
