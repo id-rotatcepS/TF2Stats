@@ -89,8 +89,9 @@ namespace TF2Stats
 
         private void WeaponGrid_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            string[] SkipColumns = new string[] { 
+            string[] SkipColumns = new string[] {
                 "Alts",
+                "Separates",
                 "Detail",
                 "Ammo",
                 "LoadoutStats",

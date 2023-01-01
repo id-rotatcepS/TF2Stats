@@ -44,39 +44,6 @@ namespace StatsData
             RangePercent(v.Damage?.LongRangeRamp)
             )
 ;
-            //+ "\n"+"\n"+
-            //RangePercent(v.Damage?.ZeroRangeRamp)
-            //+ ClosePracticalInfo()
-            //+ "-" +
-            //RangePercent(v.Damage?.LongRangeRamp)
-            //+ rangeBonusInfoForWhut();
-
-        private string ClosePracticalInfo()
-        {
-            decimal? practical = CloseRangePractical(v);
-            if (!practical.HasValue)
-                return string.Empty;
-            return $"{{{RangePercent(practical)}}}";
-        }
-
-        private decimal? CloseRangePractical(WeaponVM v)
-        {
-            if (v == null) return null;
-            if (v.Damage == null) return null;
-
-            decimal closeRamp = CloseRamp(v.Damage, v.Damage.Offset);
-            if (v.Damage.ZeroRangeRamp == closeRamp) return null;
-            return closeRamp;
-        }
-
-        private string rangeBonusInfoForWhut()
-        {
-            return (v.Damage?.ZeroRangeRamp == Damage.WIKI_LONG_RANGE_RAMP
-                || (v.Damage?.LongRangeRamp ?? 1.0m) == 1.0m)
-                ? ""
-                : $"[{RangePercent(Damage.WIKI_LONG_RANGE_RAMP)}]";
-        }
-
         public static string RangePercent(decimal? RangeRamp)
         {
             return (RangeRamp == null || RangeRamp == 1.0m)
@@ -88,8 +55,6 @@ namespace StatsData
             v.Damage == null ? string.Empty
             : GetRangeIntDamage(v.Damage, v.MaxRange)
             ;
-            //+ "\n" + "\n" +
-            //GetRangeIntDamage2(v.Damage) + "|" + GetRangeDecimalDamage(v.Damage);
 
         private string GetRangeIntDamage(Damage d, decimal? maxRange)
         {
@@ -111,96 +76,47 @@ namespace StatsData
 
             return
             string.Format(format,
-                Close(d, v.ClosestRangeOffset ?? 23.5m),
+                Close(d),
                 Building(d),
                 Far(d, maxRange));
         }
-        private string GetRangeIntDamage2(Damage d, decimal? maxRange)
+
+        private int Close(Damage d)
         {
-            string format;
-
-            bool isNotRanged = d.ZeroRangeRamp == d.LongRangeRamp;
-            if (d.BuildingModifier != 1.0m)
-            {
-                format = isNotRanged
-                    ? "({1}bld)"
-                    : "{0} ({1}bld) {2}";
-            }
-            else
-            {
-                format = isNotRanged
-                    ? "{0}"
-                    : "{0} - {2}";
-            }
-
-
-            return
-            string.Format(format,
-                Close(d, v.ClosestRangeOffset ?? 23.5m),
-                Building(d),
-                Far(d, maxRange))
-            + RangeIntBonusInfoForWhut(d);
-        }
-        private string RangeIntBonusInfoForWhut(Damage d)
-        {
-            return (d.LongRangeRamp == Damage.WIKI_LONG_RANGE_RAMP
-                || d.LongRangeRamp == 1.0m)
-                ? ""
-                : $"[{Round(d.Base * Damage.WIKI_LONG_RANGE_RAMP)}]";
+            decimal x = d?.Offset ?? 23.5m;
+            return CloseWithOffset(d, x);
         }
 
-        private int Close(Damage d, decimal x)
-        {
-            decimal closeRamp = CloseRamp(d, x);
-
-            return Round(d.Base * closeRamp);
-        }
-        private int CloseB(Damage d)
-        {
-            decimal closeRamp = CloseRampB(d);
-
-            return Round(d.Base * closeRamp);
-        }
-
-        private decimal CloseRampB(Damage d)
-        {
-            return d.ZeroRangeRamp;
-        }
-
-        //private decimal CloseRamp(Damage d)
-        //{
-        //    decimal offset = v.ClosestRangeOffset ?? 23.5;
-        //    return CloseRamp(d, offset);
-        //}
-
-        private decimal CloseRamp(Damage d, decimal offset)
+        private int CloseWithOffset(Damage d, decimal offset)
         {
             // offset is distance from eye, so it's a REDUCTION in range... I assume the collision box size of 32 keeps the eyes apart by half each (so 32 total).
             // I assume the hit target is the middle of the collision box and the eyes are at the middle of the collision box ( just higher up )
             // I assume the offset is where the start of range is measured from (could be wrong, in which case all offsets become 0, but calculation still needs to happen)
             // so closest distance is (32-offset)
             // That means offsets of 32 are "as close as possible" and offsets of 0 are "as far as possible"
-            decimal percentCloseToZeroAtMost = ((512 - (32 - (offset))) / 512);
-            decimal closeRamp = 1.0m + ((d.ZeroRangeRamp - 1.0m) * percentCloseToZeroAtMost);
-            return closeRamp;
+            decimal offsetRange = 32 - offset;
+
+            return Round(GetDamageAtRange(d, offsetRange));
         }
 
-        private int CloseMinicrit(Damage d, decimal x)
+        private int CloseMinicritWithOffset(Damage d, decimal x)
         {
-            decimal closeRamp = CloseRamp(d, x);
+            decimal offsetRange = 32 - x;
 
-            return Round(d.Base * closeRamp * 1.35m);
+            return Round(GetDamageAtRange(d, offsetRange) * 1.35m);
         }
-        private int CloseMinicritB(Damage d)
-        {
-            decimal closeRamp = CloseRampB(d);
 
-            return Round(d.Base * closeRamp * 1.35m);
-        }
         private int CloseCrit(Damage d)
         {
+            if (d.CritIncludesRamp)
+            {
+                decimal x = 32;//TODO pass this in like others?
+                decimal offsetRange = 32 - x;
+                return Round(GetDamageAtRange(d, offsetRange) * 3.0m);
+            }
             return Round(d.Base * 3.0m);
         }
+
         private int Building(Damage d)
         {
             return Round(d.Base * d.BuildingModifier);
@@ -210,25 +126,31 @@ namespace StatsData
         {
             if (maxRange.HasValue)
             {
-                decimal medRange = 512m;
                 decimal max = maxRange.Value;
-                if (max < medRange)
-                {
-                    // Max far is actually in the close range (512=0%, 0=100%)
-                    decimal percentOfClose = (medRange - max) / medRange;
-                    decimal rampValue = PercentOfRamp(percentOfClose, d.ZeroRangeRamp);
-                    return Round(d.Base * rampValue);
-                }
-                else if (max < medRange * 2)
-                {
-                    // Max far is not the entire long range ramp (1024=100%, 512=0%)
-                    decimal percentOfLong = (max - medRange) / medRange;
-                    decimal rampValue = PercentOfRamp(percentOfLong, d.LongRangeRamp);
-                    return Round(d.Base * rampValue);
-                }
-                // max uses usual range... probably
+                return Round(GetDamageAtRange(d, max));
             }
             return Round(d.Base * d.LongRangeRamp);
+        }
+
+        private decimal GetDamageAtRange(Damage d, decimal distance)
+        {
+            decimal medRange = 512m;
+            if (distance < medRange)
+            {
+                // Max far is actually in the close range (512=0%, 0=100%)
+                decimal percentOfClose = (medRange - distance) / medRange;
+                decimal rampValue = PercentOfRamp(percentOfClose, d.ZeroRangeRamp);
+                return d.Base * rampValue;
+            }
+            else if (distance < medRange * 2)
+            {
+                // Max far is not the entire long range ramp (1024=100%, 512=0%)
+                decimal percentOfLong = (distance - medRange) / medRange;
+                decimal rampValue = PercentOfRamp(percentOfLong, d.LongRangeRamp);
+                return d.Base * rampValue;
+            }
+            else
+                return d.Base * d.LongRangeRamp;
         }
 
         // we want percent of difference from 1.0
@@ -250,24 +172,33 @@ namespace StatsData
 
         private int FarMinicrit(Damage d, decimal? maxRange)
         {
+            decimal far = 1024m;
             if (maxRange.HasValue)
             {
-                decimal medRange = 512m;
                 decimal max = maxRange.Value;
+                decimal medRange = 512m;
                 if (max < medRange)
                 {
-                    // Max far is actually in the close range (512=0%, 0=100%)
-                    decimal percentOfClose = (medRange - max) / medRange;
-                    decimal rampValue = PercentOfRamp(percentOfClose, d.ZeroRangeRamp);
-                    return Round(d.Base * rampValue * 1.35m);
+                    return Round(GetDamageAtRange(d, max) * 1.35m);
                 }
                 // max uses usual range... probably
+                if(max < far)
+                    far = max;
             }
 
+            if (d.CritIncludesRamp)
+            {
+                return Round(GetDamageAtRange(d, far) * 1.35m);
+            }
             return Round(d.Base * 1.35m);
         }
+
         private int FarCrit(Damage d)
         {
+            if (d.CritIncludesRamp)
+            {
+                return Round(GetDamageAtRange(d, 1024m) * 3.0m);
+            }
             return Round(d.Base * 3.0m);
         }
 
@@ -292,29 +223,29 @@ Bullet weapons likely also would include the target body part's distance adding 
 | fragment-close = {{#expr:{{{D|0}}}/{{{F}}}*{{{H|1}}}}}         
 */
 
-        private string GetRangeDecimalDamage(Damage d)
-        {
-            string format;
+        //private string GetRangeDecimalDamage(Damage d)
+        //{
+        //    string format;
 
-            bool isNotRanged = d.ZeroRangeRamp == d.LongRangeRamp;
-            if (d.BuildingModifier != 1.0m)
-            {
-                format = isNotRanged
-                    ? "({1:0.##}bld)"
-                    : "{0:0.##} ({1:0.##}bld) {2:0.##}";
-            }
-            else
-            {
-                format = isNotRanged
-                    ? "{0:0.##}"
-                    : "{0:0.##} - {2:0.##}";
-            }
+        //    bool isNotRanged = d.ZeroRangeRamp == d.LongRangeRamp;
+        //    if (d.BuildingModifier != 1.0m)
+        //    {
+        //        format = isNotRanged
+        //            ? "({1:0.##}bld)"
+        //            : "{0:0.##} ({1:0.##}bld) {2:0.##}";
+        //    }
+        //    else
+        //    {
+        //        format = isNotRanged
+        //            ? "{0:0.##}"
+        //            : "{0:0.##} - {2:0.##}";
+        //    }
 
-            return string.Format(format,
-                d.Base * d.ZeroRangeRamp,
-                d.Base * d.BuildingModifier,
-                d.Base * d.LongRangeRamp);
-        }
+        //    return string.Format(format,
+        //        d.Base * d.ZeroRangeRamp,
+        //        d.Base * d.BuildingModifier,
+        //        d.Base * d.LongRangeRamp);
+        //}
 
 
         public string DPS => v?.DPS != null
@@ -483,8 +414,8 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
         {
             get
             {
-                decimal closeOffset = v.ClosestRangeOffset ?? 23.5m;
                 Damage d = v.Damage;
+                decimal closeOffset = d?.Offset ?? 23.5m;
                 decimal? maxRange = v.MaxRange;
 
                 if (d == null) return "";
@@ -558,13 +489,11 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             result += sep;
             result += canCrit ? FarCrit(d) : Far(d, maxRange);
             result += sep;
-            result += Close(d, y);
-            //result += "|" + CloseB(d);
+            result += CloseWithOffset(d, y);
             result += sep;
-            result += canMinicrit ? CloseMinicrit(d, y) : (canCrit ? CloseCrit(d) : Close(d,y));
-            //result += "|" + CloseMinicritB(d);
+            result += canMinicrit ? CloseMinicritWithOffset(d, y) : (canCrit ? CloseCrit(d) : CloseWithOffset(d,y));
             result += sep;
-            result += canCrit ? CloseCrit(d) : Close(d, y);
+            result += canCrit ? CloseCrit(d) : CloseWithOffset(d, y);
             return result;
         }
 

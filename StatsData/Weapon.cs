@@ -903,7 +903,14 @@ namespace StatsData
         /// Optional notes to explain known differences and issues.
         /// </summary>
         public string Notes { get; protected set; } = "";
+        /// <summary>
+        /// Different states of the weapon's function
+        /// </summary>
         public List<Weapon> AlternateModes { get; protected set; } = new List<Weapon>();
+        /// <summary>
+        /// wholly different weapons functions build into the same weapon
+        /// </summary>
+        public List<Weapon> SeparateModes { get; protected set; } = new List<Weapon>();
 
         public decimal FireRate { get; protected set; }
         /// <summary>

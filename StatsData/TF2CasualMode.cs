@@ -281,7 +281,7 @@ namespace StatsData
                 AddGroup<IndivisibleParticleSmasher>(result, new Pomson6000());
                 AddGroup<ThrowableWeapon>(result, new SandmanBall())
                     // bauble is an alternate-only, same as SandmanBall
-                    .AlternateModes.AddRange(TF2CasualMode.WrapAssassin.AlternateModes);
+                    .SeparateModes.AddRange(TF2CasualMode.WrapAssassin.SeparateModes);
                 AddGroup<ActiveJumpAssist>(result, new Mantreads());
 
                 AddGroup<AMediGun>(result, new MediGun());
@@ -347,6 +347,7 @@ namespace StatsData
         }
         private T AddGroup<T>(List<Weapon> result, T sg) where T : Weapon
         {
+            //TODO consider sg.SeparateModes
             sg.AlternateModes.Clear();
             sg.AlternateModes.AddRange(WeaponsBase.OfType<T>().Where(s => sg.GetType() != s.GetType()).ToList());
             result.Add(sg);
@@ -572,6 +573,18 @@ namespace StatsData
                     {
                         if (x != null)
                             rows.Add(new WeaponVM(x, w));
+                    }
+                    foreach (Weapon x in w.SeparateModes)
+                    {
+                        if (x != null)
+                        {
+                            rows.Add(new WeaponVM(x, w));//TODO in constructor I passed null here, I don't recall how this is meant to work.
+                            foreach (Weapon t in x.AlternateModes)
+                            {
+                                if (t != null)
+                                    rows.Add(new WeaponVM(t, w));
+                            }
+                        }
                     }
                 }
             }
@@ -1006,6 +1019,12 @@ namespace StatsData
             if (w.AlternateModes != null)
                 foreach (Weapon w2 in w.AlternateModes)
                 {
+                    result += "\n>" + WeaponCSV(w2);
+                }
+            if (w.SeparateModes != null)
+                foreach (Weapon w2 in w.SeparateModes)
+                {
+                    //TODO add separatemodes.alternatemodes, too.
                     result += "\n>" + WeaponCSV(w2);
                 }
 

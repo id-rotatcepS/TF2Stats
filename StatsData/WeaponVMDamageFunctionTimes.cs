@@ -102,6 +102,7 @@ beamdisconnect 	mediguns
         }
 
         public string Name => w.Name;
+        // Note: no v.Separates equivalent because those are meant to be...separate.
         public IEnumerable<WeaponVMDamageFunctionTimes> Alts => v.Alts?.Select(vm => new WeaponVMDamageFunctionTimes(vm.Detail.FunctionTimes, this));
 
         //public string ShotType => "Hitscan", etc.

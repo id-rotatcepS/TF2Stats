@@ -273,6 +273,9 @@ new NegativeAttribute("Consumes an additional 4 ammo per second while spun up"),
                 new HuoLongHeaterBurningTarget(),
                 new HuoLongHeaterCold(),
                 //TODO and coldburning
+            };
+            SeparateModes = new List<Weapon>
+            {
                 new HuoLongHeaterFireRing(),
             };
         }

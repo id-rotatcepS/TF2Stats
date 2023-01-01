@@ -402,6 +402,9 @@ new NegativeAttribute("-15 max health on wearer"),
 
             AlternateModes = new List<Weapon>
             {
+            };
+            SeparateModes = new List<Weapon>
+            {
                 AltFire
             };
         }
@@ -555,6 +558,9 @@ new DescriptionAttribute("These lovely festive ornaments are so beautifully craf
             ////FireRate = 0.5;
 
             AlternateModes = new List<Weapon>
+            {
+            };
+            SeparateModes = new List<Weapon>
             {
                 new WrapAssassinBauble()
             };

@@ -65,6 +65,9 @@ new NegativeAttribute("Uses metal for ammo"),
             CanCrit = false;
 
             AlternateModes = new List<Weapon> {
+            };
+            SeparateModes = new List<Weapon>
+            {
                 new ShortCircuitAlt()
             };
 
@@ -278,13 +281,17 @@ new PositiveAttribute("+50% repressurization rate on hit"),
 new NegativeAttribute("-50% repressurization rate on Alt-Fire"),
 new DescriptionAttribute("This powerful, single-shot flamethrower rewards consecutive hits with faster reloads and bonus damage."),
 });
-            Notes += "obs falloff 24 (calc/wiki 23); minicrit obs/wiki close 40 (calc 41); wiki mc burning 100-121 (calc 101-122) \n";
+            Notes += "obs falloff 24 (calc/wiki 23); minicrit obs/wiki close 40 (calc 41); wiki mc burning 100-121 (calc 101-122) \n" +
+                "Interestingly it's 'based on' a 90dmg rocket...which is how much it gets on burning point blank hits";
 
             AlternateModes = new List<Weapon>
             {
                 new DragonsFuryBurning(),
                 new DragonsFuryRampage(),
                 new DragonsFuryPostHit(),
+            };
+            SeparateModes = new List<Weapon>
+            {
                 new DragonsFuryCompressionBlast(),
             };
         }
@@ -388,8 +395,10 @@ new DescriptionAttribute("Fires special bolts that heal teammates and deals dama
             AlternateModes = new List<Weapon>()
             {
                 new CrusadersCrossbowMaxHang(),
+            };
+            SeparateModes = new List<Weapon>
+            {
                 new CrusadersCrossbowHeal(),
-                new CrusadersCrossbowHealMaxHang()
             };
 
             Ammo = new Ammo(1, 38)
@@ -451,13 +460,18 @@ new DescriptionAttribute("Fires special bolts that heal teammates and deals dama
             CanCrit = false;
             CanMinicrit = false;
 
+            AlternateModes = new List<Weapon>()
+            {
+                new CrusadersCrossbowHealMaxHang()
+            };
+
             Ammo = new Ammo(1, 38)
             {
                 Reload = 1.5m,
             };
         }
     }
-    public class CrusadersCrossbowHealMaxHang : CrusadersCrossbowHeal
+    public class CrusadersCrossbowHealMaxHang : ABolt
     {
         public CrusadersCrossbowHealMaxHang()
         {
@@ -473,6 +487,7 @@ new DescriptionAttribute("Fires special bolts that heal teammates and deals dama
                 },
 
             };
+            FireRate = .24m;// 1.6m;
 
             CanCrit = false;
             CanMinicrit = false;

@@ -25,6 +25,15 @@ namespace StatsData
                         Alts.Add(new WeaponVM(alt, w));
                 }
             }
+
+            if (parent == null && w?.SeparateModes != null)
+            {
+                foreach (Weapon alt in w.SeparateModes)
+                {
+                    if (alt != null)
+                        Separates.Add(new WeaponVM(alt, null));//TODO passing null because I don't remember why it works this way and need to populate Alts in these VMs
+                }
+            }
         }
 
         private Weapon W { get; set; }
@@ -33,6 +42,7 @@ namespace StatsData
         public Ammo Ammo => W.Ammo;
 
         public IList<WeaponVM> Alts { get; } = new List<WeaponVM>();
+        public IList<WeaponVM> Separates { get; } = new List<WeaponVM>();
 
         public string Name => P != null
             ? P.Name + "\n>" + W.Name

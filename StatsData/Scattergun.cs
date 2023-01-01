@@ -171,6 +171,9 @@ new DescriptionAttribute("Holds a 4-shot clip and reloads its entire clip at onc
 
             AlternateModes = new List<Weapon>
             {
+            };
+            SeparateModes = new List<Weapon>
+            {
                 new ShortstopShove()
             };
         }

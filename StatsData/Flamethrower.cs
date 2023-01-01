@@ -43,8 +43,16 @@ namespace StatsData
         public const decimal flame_random_life_time_offset = 0.1m;
         #endregion weapon_newflame constants
 
-        //TODO where is 6.5 or .5 from?  items_game 170DPS * .04(TimeFireDelay) = 6.8.  170 * .075(Wiki FireRate) = 12.75
-        public AFlameThrower(decimal baseDamage = 6.5m*.5m)
+        // items_game 170DPS * .04(TimeFireDelay) = 6.8.  170 * .075(Wiki FireRate) = 12.75 (full exposure & close range - half as min: 6.375 vs. 6.5)
+
+        // 0.075 from wiki.  used to have 0.08.  tf_weapon_flamethrower has half that: 0.04 - maybe that reflects flame particle generation, not damage time.
+        public const decimal flame_damage_period = 0.075m;
+        // 170 dps per tf_weapon_flamethrower.ctx
+        public const decimal flame_max_damage = 170m * flame_damage_period;//12.75
+        public const decimal flame_full_exposure_damage = flame_max_damage * .5m;//6.375
+        //public const decimal flame_base_damage = 6.5m;// what was 6.5 based on? lots of conjecture based on the wiki, I think.
+
+        public AFlameThrower(decimal baseDamage = flame_full_exposure_damage * .5m)
         {
             Name = "flamethrower";
 
@@ -75,6 +83,7 @@ namespace StatsData
                 Influenceable = false
             };
 
+            // fire rate as shown in wiki, currently matches flame_damage_period which may not be appropriate.
             FireRate = 0.075m;//recent wiki change? used to have 0.08m;
 
             Effect = new AfterburnEffect(4, 10);//TODO flamethrower says 4-10 (increase by .4s per hit), others show 3-10 or other nonsense
@@ -119,7 +128,7 @@ namespace StatsData
 
     public abstract class AFullFlameThrower : AFlameThrower
     {
-        public AFullFlameThrower(decimal baseDamage = 6.5m)
+        public AFullFlameThrower(decimal baseDamage = flame_full_exposure_damage)
             : base(baseDamage)
         {
             Name = "flamethrower (max exposure/buildings)";
@@ -150,17 +159,20 @@ namespace StatsData
 new PositiveAttribute("Extinguishing teammates restores 20 health"),
 new DescriptionAttribute("Afterburn reduces Medi Gun healing and resist shield effects.<br>Alt-Fire: Release a blast of air that pushes enemies and projectiles and extinguish teammates that are on fire."),
 });
-//            Name = "Rainblower"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
-//new PositiveAttribute("On Equip: Visit Pyroland"),
-//new PositiveAttribute("Extinguishing teammates restores 20 health"),
-//new NegativeAttribute("Only visible in Pyroland"),
-//new DescriptionAttribute("Your friends (enemies) will squeal with delight (be consumed with fire) when you cover them in sparkly rainbows (all-consuming fire). (Equips Pyrovision.)"),
-//}); Name = "Nostromo Napalmer"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
-//new PositiveAttribute("Extinguishing teammates restores 20 health"),
-//}); 
+            //            Name = "Rainblower"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+            //new PositiveAttribute("On Equip: Visit Pyroland"),
+            //new PositiveAttribute("Extinguishing teammates restores 20 health"),
+            //new NegativeAttribute("Only visible in Pyroland"),
+            //new DescriptionAttribute("Your friends (enemies) will squeal with delight (be consumed with fire) when you cover them in sparkly rainbows (all-consuming fire). (Equips Pyrovision.)"),
+            //}); Name = "Nostromo Napalmer"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
+            //new PositiveAttribute("Extinguishing teammates restores 20 health"),
+            //}); 
             AlternateModes = new List<Weapon>
             {
                 new FlameThrowerMaxExposure(),
+            };
+            SeparateModes = new List<Weapon>
+            { 
                 new CompressionBlast(),
             };
         }
@@ -193,6 +205,9 @@ new DescriptionAttribute("Afterburn reduces Medi Gun healing and resist shield e
                 },
             };
 
+            CanCrit = false;
+            CanMinicrit = false;
+
             FireRate = 0.75m;
 
             Effect = new Effect()
@@ -221,6 +236,9 @@ new NegativeAttribute("+150% airblast cost"),
             {
                 new FlameThrowerMaxExposure(),
                 //TODO ?FromBack, Effect: crit
+            };
+            SeparateModes = new List<Weapon>
+            {
                 new CompressionBlast(30),
             };
         }
@@ -242,6 +260,9 @@ new NegativeAttribute("+25% airblast cost"),
             AlternateModes = new List<Weapon>
             {
                 new DegreaserMaxExposure(),
+            };
+            SeparateModes = new List<Weapon>
+            {
                 new CompressionBlast(25),
             };
 

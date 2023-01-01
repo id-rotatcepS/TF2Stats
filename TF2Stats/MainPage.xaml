@@ -51,6 +51,21 @@
                 <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
 
                     <local:DamageAndFunctionTimesTable x:Name="DamageAndFunctionTimes" DataContext="{Binding Detail.FunctionTimes}"/>
+                    <ItemsControl x:Name="Separates" ItemsSource="{Binding Separates}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Name}"/>
+                                    <local:DamageAndFunctionTimesTable DataContext="{Binding Detail.FunctionTimes}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock>Effect:</TextBlock>
