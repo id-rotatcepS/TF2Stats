@@ -120,6 +120,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DamageCalculations.cs" />
     <Compile Include="GameFiles\BalanceException.cs" />
     <Compile Include="GameFiles\CtxToWeapon.cs" />
     <Compile Include="GameFiles\GameItem.cs" />

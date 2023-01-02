@@ -966,8 +966,10 @@ namespace StatsData
             = WIKI_LONG_RANGE_RAMP;
 
         public const decimal NORMAL_HITSCAN_ZERO_RANGE_RAMP = 1.5m;
-        //TODO new custom value to get get observed values needs discussion (alternatively 1.5 with an offset).
-        public const decimal PISTOL_HITSCAN_ZERO_RANGE_RAMP = 1.49m;//NORMAL_HITSCAN_ZERO_RANGE_RAMP;
+
+        //    1.49m; //TODO new custom value to get get observed values needs discussion (alternatively 1.5 with an offset).
+        public const decimal PISTOL_HITSCAN_ZERO_RANGE_RAMP = NORMAL_HITSCAN_ZERO_RANGE_RAMP;
+
         public const decimal SCATTERGUN_HITSCAN_ZERO_RANGE_RAMP = 1.75m;
         public const decimal NORMAL_ARCHED_PROJECTILE_ZERO_RANGE_RAMP = 1.2m;
         // I think wiki(?) made me believe we needed 1.24444444444444m, but sensible number works with offsets.
@@ -1076,16 +1078,16 @@ namespace StatsData
         // made up to fit my theories:
         public static readonly decimal OFFSET_HITSCAN_SHOTGUN = 25;//using 25 instead of hitscan's 30 (all shotguns still work) to make panic attack and all scatterguns work.
         public static readonly decimal OFFSET_HITSCAN_SCATTERGUN = OFFSET_HITSCAN_SHOTGUN;
+        public static readonly decimal OFFSET_HITSCAN_PISTOL = 25;//22? // using 25 instead of hitscan 30 and 150% instead of 149% to match shotgun
         public static readonly decimal OFFSET_NO_SEPARATION = 32;
         public static readonly decimal OFFSET_HITSCAN = 30;
         public static readonly decimal OFFSET_HITSCAN_MINIGUN = OFFSET_HITSCAN;
         public static readonly decimal OFFSET_HITSCAN_REVOLVER = OFFSET_HITSCAN;
-        public static readonly decimal OFFSET_HITSCAN_PISTOL = OFFSET_HITSCAN;//22?
         public static readonly decimal OFFSET_HITSCAN_SMG = OFFSET_HITSCAN;
 
         public static readonly decimal OFFSET_HITSCAN_MELEE = OFFSET_HITSCAN;
 
-        public static readonly decimal OFFSET_HITSCAN_SHORTCIRCUIT = OFFSET_HITSCAN;
+        public static readonly decimal OFFSET_HITSCAN_SHORTCIRCUIT = OFFSET_HITSCAN_PISTOL;
 
         public static readonly decimal OFFSET_SHIELDBASH = OFFSET_NO_SEPARATION;
 
@@ -1129,21 +1131,21 @@ namespace StatsData
         // for ambassador (headshots - it's complicated) and flamethrowers (crossbow, too, but that's handled with hang time as a "charged" alternate)
         public bool CritIncludesRamp { get; set; } = false;
 
-        //TODO probably better off with a crit calculator object that can be overridden for special weapons like the cowmangler.
+        ////TODO probably better off with a crit calculator object that can be overridden for special weapons like the cowmangler.
 
-        public decimal MinicritZeroRangeRamp => ZeroRangeRamp;
+        //public decimal MinicritZeroRangeRamp => ZeroRangeRamp;
         
-        public decimal MinicritLongRangeRamp => CritIncludesRamp
-            ? LongRangeRamp
-            : 1.0m;
+        //public decimal MinicritLongRangeRamp => CritIncludesRamp
+        //    ? LongRangeRamp
+        //    : 1.0m;
 
-        public decimal CritZeroRangeRamp => CritIncludesRamp
-            ? ZeroRangeRamp
-            : 1.0m;
+        //public decimal CritZeroRangeRamp => CritIncludesRamp
+        //    ? ZeroRangeRamp
+        //    : 1.0m;
         
-        public decimal CritLongRangeRamp => CritIncludesRamp
-            ? LongRangeRamp
-            : 1.0m;
+        //public decimal CritLongRangeRamp => CritIncludesRamp
+        //    ? LongRangeRamp
+        //    : 1.0m;
 
     }
 

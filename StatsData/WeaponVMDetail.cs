@@ -36,14 +36,21 @@ namespace StatsData
             this.FunctionTimes = new WeaponVMDamageFunctionTimes(v, w);
         }
 
-        public string RangePercents => (v.Damage?.ZeroRangeRamp == v.Damage?.LongRangeRamp
-            ? "any range"
-            :
-            RangePercent(v.Damage?.ZeroRangeRamp)
-            + "-" +
-            RangePercent(v.Damage?.LongRangeRamp)
-            )
+        public string RangePercents => GetRangePercents()
 ;
+
+        private string GetRangePercents()
+        {
+            DamageCalculations c = new DamageCalculations(v);
+            return (c.ZeroRangeRamp == c.LongRangeRamp
+                        ? "any range"
+                        :
+                        RangePercent(c.ZeroRangeRamp)
+                        + "-" +
+                        RangePercent(c.LongRangeRamp)
+                        );
+        }
+
         public static string RangePercent(decimal? RangeRamp)
         {
             return (RangeRamp == null || RangeRamp == 1.0m)
@@ -53,14 +60,18 @@ namespace StatsData
 
         public string RangeDamage =>
             v.Damage == null ? string.Empty
-            : GetRangeIntDamage(v.Damage, v.MaxRange)
+            : GetRangeIntDamage(v)
             ;
 
-        private string GetRangeIntDamage(Damage d, decimal? maxRange)
+        private string GetRangeIntDamage(WeaponVM v)
         {
+            Damage d = v.Damage;
+            //decimal? maxRange = v.MaxRange;
+            DamageCalculations c = new DamageCalculations(v);
+
             string format;
 
-            bool isNotRanged = d.ZeroRangeRamp == d.LongRangeRamp;
+            bool isNotRanged = c.ZeroRangeRamp == c.LongRangeRamp;
             if (d.BuildingModifier != 1.0m)
             {
                 format = isNotRanged
@@ -76,131 +87,12 @@ namespace StatsData
 
             return
             string.Format(format,
-                Close(d),
-                Building(d),
-                Far(d, maxRange));
+                c.Close,
+                c.Building,
+                c.Far);
         }
 
-        private int Close(Damage d)
-        {
-            decimal x = d?.Offset ?? 23.5m;
-            return CloseWithOffset(d, x);
-        }
 
-        private int CloseWithOffset(Damage d, decimal offset)
-        {
-            // offset is distance from eye, so it's a REDUCTION in range... I assume the collision box size of 32 keeps the eyes apart by half each (so 32 total).
-            // I assume the hit target is the middle of the collision box and the eyes are at the middle of the collision box ( just higher up )
-            // I assume the offset is where the start of range is measured from (could be wrong, in which case all offsets become 0, but calculation still needs to happen)
-            // so closest distance is (32-offset)
-            // That means offsets of 32 are "as close as possible" and offsets of 0 are "as far as possible"
-            decimal offsetRange = 32 - offset;
-
-            return Round(GetDamageAtRange(d, offsetRange));
-        }
-
-        private int CloseMinicritWithOffset(Damage d, decimal x)
-        {
-            decimal offsetRange = 32 - x;
-
-            return Round(GetDamageAtRange(d, offsetRange) * 1.35m);
-        }
-
-        private int CloseCrit(Damage d)
-        {
-            if (d.CritIncludesRamp)
-            {
-                decimal x = 32;//TODO pass this in like others?
-                decimal offsetRange = 32 - x;
-                return Round(GetDamageAtRange(d, offsetRange) * 3.0m);
-            }
-            return Round(d.Base * 3.0m);
-        }
-
-        private int Building(Damage d)
-        {
-            return Round(d.Base * d.BuildingModifier);
-        }
-
-        private int Far(Damage d, decimal? maxRange)
-        {
-            if (maxRange.HasValue)
-            {
-                decimal max = maxRange.Value;
-                return Round(GetDamageAtRange(d, max));
-            }
-            return Round(d.Base * d.LongRangeRamp);
-        }
-
-        private decimal GetDamageAtRange(Damage d, decimal distance)
-        {
-            decimal medRange = 512m;
-            if (distance < medRange)
-            {
-                // Max far is actually in the close range (512=0%, 0=100%)
-                decimal percentOfClose = (medRange - distance) / medRange;
-                decimal rampValue = PercentOfRamp(percentOfClose, d.ZeroRangeRamp);
-                return d.Base * rampValue;
-            }
-            else if (distance < medRange * 2)
-            {
-                // Max far is not the entire long range ramp (1024=100%, 512=0%)
-                decimal percentOfLong = (distance - medRange) / medRange;
-                decimal rampValue = PercentOfRamp(percentOfLong, d.LongRangeRamp);
-                return d.Base * rampValue;
-            }
-            else
-                return d.Base * d.LongRangeRamp;
-        }
-
-        // we want percent of difference from 1.0
-        private decimal PercentOfRamp(decimal percent, decimal rampValue)
-        {
-            if (rampValue > 1.0m)
-            {
-                decimal midIncr = rampValue - 1.0m;
-                return 1.0m + (percent * midIncr);
-            }
-            else if (rampValue < 1.0m)
-            {
-                decimal midReduc = 1.0m - rampValue;
-                return 1.0m - (percent * midReduc);
-            }
-            else
-                return 1.0m;
-        }
-
-        private int FarMinicrit(Damage d, decimal? maxRange)
-        {
-            decimal far = 1024m;
-            if (maxRange.HasValue)
-            {
-                decimal max = maxRange.Value;
-                decimal medRange = 512m;
-                if (max < medRange)
-                {
-                    return Round(GetDamageAtRange(d, max) * 1.35m);
-                }
-                // max uses usual range... probably
-                if(max < far)
-                    far = max;
-            }
-
-            if (d.CritIncludesRamp)
-            {
-                return Round(GetDamageAtRange(d, far) * 1.35m);
-            }
-            return Round(d.Base * 1.35m);
-        }
-
-        private int FarCrit(Damage d)
-        {
-            if (d.CritIncludesRamp)
-            {
-                return Round(GetDamageAtRange(d, 1024m) * 3.0m);
-            }
-            return Round(d.Base * 3.0m);
-        }
 
         /*
 <!-- D*H, but accounting for hitbox separation try (1+(({{{H|1}}}-1)*(508/512)))   (1+(({{{MH|{{{H|1}}}}}}-1)*(508/512)))   (1+(({{{CH|1.0}}}-1)*(508/512))) 
@@ -267,10 +159,10 @@ Bullet weapons likely also would include the target body part's distance adding 
             : ((v?.Spread ?? 0) > 0 ? GetSpreadAccuracy()
             //: (((v?.SplashRadius ?? 0) > 0 && (v?.Speed ?? 0) > 0) ? GetSplashSpeedAccuracy()
             : ((v?.Speed ?? 0) > 0 ? GetSpeedAccuracy()
-            : ((v?.MaxRange ?? 0) == 0 ? "infinite" 
+            : ((v?.MaxRange ?? 0) == 0 ? "infinite"
             : "melee"
             )))
-            //)
+        //)
         ;
         public string AccuracySplash =>
             (v?.SplashRadius ?? 0) > 0
@@ -415,12 +307,10 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             get
             {
                 Damage d = v.Damage;
-                decimal closeOffset = d?.Offset ?? 23.5m;
-                decimal? maxRange = v.MaxRange;
-
                 if (d == null) return "";
+                decimal closeOffset = d.Offset;
                 string sep = "\t";
-                string r = ColsForCloseOffset(closeOffset, d, sep, maxRange,v.CanCrit,v.CanMinicrit);
+                string r = ColsForCloseOffset(new DamageCalculations(v) { CloseOffset = closeOffset }, sep);
 
                 WeaponTestData observed = GetWeaponTestData(v.Name, p?.Name);
                 if (observed != null)
@@ -457,7 +347,7 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
                         if (x == closeOffset) continue;
                         string nofar = $"0{sep}0{sep}0{sep}";
 
-                        string rt = ColsForCloseOffset(x, d, sep, maxRange,v.CanCrit,v.CanMinicrit);
+                        string rt = ColsForCloseOffset(new DamageCalculations(v) { CloseOffset = x }, sep);
                         if (rt.Equals(observedRow))
                         {
                             result += "     -------match-------" + x + "\n";
@@ -479,21 +369,21 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
             }
         }
 
-        private string ColsForCloseOffset(decimal y, Damage d, string sep, decimal? maxRange, bool canCrit, bool canMinicrit)
+        private string ColsForCloseOffset(DamageCalculations c, string sep)
         {
             string result = string.Empty;
             //far	far minicrit	far crit	close	close minicrit	close crit
-            result += Far(d, maxRange);
+            result += c.Far;
             result += sep;
-            result += canMinicrit ? FarMinicrit(d, maxRange) : (canCrit ? FarCrit(d) : Far(d, maxRange));
+            result += c.FarMinicritOrEquivalent;
             result += sep;
-            result += canCrit ? FarCrit(d) : Far(d, maxRange);
+            result += c.FarCritOrEquivalent;
             result += sep;
-            result += CloseWithOffset(d, y);
+            result += c.Close;
             result += sep;
-            result += canMinicrit ? CloseMinicritWithOffset(d, y) : (canCrit ? CloseCrit(d) : CloseWithOffset(d,y));
+            result += c.CloseMinicritOrEquivalent;
             result += sep;
-            result += canCrit ? CloseCrit(d) : CloseWithOffset(d, y);
+            result += c.CloseCritOrEquivalent;
             return result;
         }
 
@@ -528,8 +418,8 @@ pointblank -90%close-45%med-close0medium+45%med-long+90long+135xlong+180xxlong+2
                     if (
                         (parts[0].Equals(name, StringComparison.OrdinalIgnoreCase)
                         || name.EndsWith(parts[0], StringComparison.OrdinalIgnoreCase)
-                        //|| ((parts.Length > 1) && parts[0].Equals(parentName, StringComparison.OrdinalIgnoreCase) && parts[1].Equals(name, StringComparison.OrdinalIgnoreCase))
-                        //|| (parts[0].Equals(parentName + " " + name, StringComparison.OrdinalIgnoreCase))
+                    //|| ((parts.Length > 1) && parts[0].Equals(parentName, StringComparison.OrdinalIgnoreCase) && parts[1].Equals(name, StringComparison.OrdinalIgnoreCase))
+                    //|| (parts[0].Equals(parentName + " " + name, StringComparison.OrdinalIgnoreCase))
                     ))
                     {
                         return parts;

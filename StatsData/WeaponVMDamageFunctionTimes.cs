@@ -109,7 +109,7 @@ beamdisconnect 	mediguns
         //public string DamageType => "Bullet" etc.
         //public string RangedOrMeleeDamage => "Ranged"
         public string MaximumRampUpPercent => PercentString(v.ZeroRangeMod);
-        public string MaximumRampUp => FragmentDamage(v.ZeroRangeMod);
+        public string MaximumRampUp => FragmentDamageClose();
         public Visibility CloseRampVisibility => PercentVisibility((v) => v.ZeroRangeMod);
         public bool CloseRampDiff => IfDifferent((f) => f.MaximumRampUp);
 
@@ -119,7 +119,7 @@ beamdisconnect 	mediguns
         }
 
         public string BaseDamagePercent => PercentString(1.0m);
-        public string BaseDamage => FragmentDamage(1.0m);
+        public string BaseDamage => FragmentDamageMid();
         public Visibility BaseDamageVisibility => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0) || (v.Alts != null && v.Alts.Any(v => (v.BaseDamage.HasValue && v.BaseDamage.Value != 0)))
             ? Visibility.Visible
             : Visibility.Collapsed;
@@ -127,12 +127,12 @@ beamdisconnect 	mediguns
 
 
         public string MaximumFallOffPercent => PercentString(v.LongRangeMod);
-        public string MaximumFallOff => FragmentDamage(v.LongRangeMod);
+        public string MaximumFallOff => FragmentDamageFar();
         public Visibility FarRampVisibility => PercentVisibility((v) => v.LongRangeMod);
         public bool FarRampDiff => IfDifferent((f) => f.MaximumFallOff);
 
         public string BuildingDamagePercent => PercentString(v.BuildingMod);
-        public string BuildingDamage => FragmentDamage(v.BuildingMod);
+        public string BuildingDamage => FragmentDamageBuilding();
         public Visibility BuildingVisibility => PercentVisibility((v) => v.BuildingMod);
         public bool BuildingDiff => IfDifferent((f) => f.BuildingDamage);
 
@@ -141,13 +141,13 @@ beamdisconnect 	mediguns
         public Visibility FragmentVisibility => NullableVisibility((v) => v.Fragments);
         public bool FragmentDiff => IfDifferent((f) => f.Fragment);
 
-        public string PointBlank => FullDamage(v.ZeroRangeMod);
+        public string PointBlank => FullDamageClose();
         public Visibility PointBlankVisibility => FullDamageVisibility((v) => v.ZeroRangeMod);
         public bool PointBlankDiff => IfDifferent((f) => f.PointBlank);
-        public string MediumRange => FullDamage(1.0m);
+        public string MediumRange => FullDamageMid();
         public Visibility MediumRangeVisibility => FullDamageVisibility((v) => 1.0m);
         public bool MediumRangeDiff => IfDifferent((f) => f.MediumRange);
-        public string LongRange => FullDamage(v.LongRangeMod);
+        public string LongRange => FullDamageFar();
         public Visibility LongRangeVisibility => FullDamageVisibility((v) => v.LongRangeMod);
         public bool LongRangeDiff => IfDifferent((f) => f.LongRange);
 
@@ -243,8 +243,8 @@ beamdisconnect 	mediguns
             : Visibility.Collapsed;
         public bool ReloadConsecutiveDiff => IfDifferent((f) => f.ReloadConsecutive);
 
-        public string AmmoLoaded => v.Ammo?.Loaded == Ammo.NO_LOAD 
-            ? null 
+        public string AmmoLoaded => v.Ammo?.Loaded == Ammo.NO_LOAD
+            ? null
             : string.Format("{0:0.####}", v.Ammo?.Loaded);
         public Visibility AmmoLoadedVisibility => ((v.Ammo?.Loaded ?? Ammo.NO_LOAD) > 0) || (v.Alts != null && v.Alts.Any(v => ((v.Ammo?.Loaded ?? Ammo.NO_LOAD) > 0)))
             ? Visibility.Visible
@@ -320,7 +320,7 @@ beamdisconnect 	mediguns
             : Visibility.Collapsed;
         public bool SpreadRecoveryDiff => IfDifferent((f) => f.SpreadRecovery);
 
-    
+
         public List<Effect> Effects => w.Effects ?? new List<Effect>();
 
         public IEnumerable<EffectVM> EffectVMs => GetAllBaseEffects().Select((e) => EffectVM.GetEffectVM(this, e));
@@ -417,9 +417,7 @@ beamdisconnect 	mediguns
         private string SpreadRatio(decimal? spread)
         {
             if (!spread.HasValue)
-            {
                 return string.Empty;
-            }
 
             decimal defaultSpread = 1.9m;// "1.9 +/- 0.025"
             //2.0m; //"cures" shotgun values, but breaks others
@@ -443,38 +441,43 @@ beamdisconnect 	mediguns
                 WeaponVMDetail.Round(spreadToOne));
         }
 
-        private string FullDamage(decimal? longRangeMod)
+        private string FullDamageClose()
+        {
+            DamageCalculations c = new DamageCalculations(v);
+            return FullDamage(c.Close, c.CloseDecimal);
+        }
+        private string FullDamageMid()
+        {
+            decimal midDecimal = v.Damage.Base;
+            return FullDamage(WeaponVMDetail.Round(midDecimal), midDecimal);
+        }
+        private string FullDamageFar()
+        {
+            DamageCalculations c = new DamageCalculations(v);
+            return FullDamage(c.Far, c.FarDecimal);
+        }
+
+        private string FullDamage(int damage, decimal damageDecimal)
         {
             decimal? baseDamage = v.BaseDamage;
-            int? fragments = v.Fragments;
-
             if (!baseDamage.HasValue)
-            {
                 return string.Empty;
-            }
 
-            decimal rangeMod = longRangeMod ?? 1.0m;
-            decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
+            int? fragments = v.Fragments;
             if (fragments.HasValue)
-            {
-                decimal oneFragDamage = rangeMod * baseDamage.Value / fragments.Value;
                 return string.Format("{1:0}-{0:0}",
-                    fullDamage,
-                    oneFragDamage,
+                    damage,
+                    damageDecimal / fragments.Value,
                     v.FragmentType);
-            }
 
             if (v.SplashRadius.HasValue)
-            {
-                decimal splashMinMod = 0.5m;
-                decimal splashMinDamage = splashMinMod * rangeMod * baseDamage.Value;
                 return string.Format("{1:0}-{0:0}",
-                    fullDamage,
-                    splashMinDamage,
+                    damage,
+                    0.5m * damageDecimal,
                     v.SplashRadius.Value);
-            }
+
             return string.Format("{0:0}",
-                    fullDamage);
+                damage);
         }
 
         private Visibility FullDamageVisibility(Func<WeaponVM, decimal?> rangeMod)
@@ -489,111 +492,123 @@ beamdisconnect 	mediguns
 
         private string CriticalDamage()
         {
-            decimal crit = 3.0m;
-            decimal longRangeMod = v.CritLongRangeMod ?? 1.0m;
-            decimal closeRangeMod = v.CritZeroRangeMod ?? 1.0m;
-            if (closeRangeMod == longRangeMod)
-                return CritifiedDamage(crit * longRangeMod, v.CanCrit);
-            else
-                return CritifiedDamage(crit * longRangeMod, crit * closeRangeMod, v.CanCrit);
-        }
+            DamageCalculations c = new DamageCalculations(v);
+            decimal longRangeMod = c.CritLongRangeRamp; // TODO was v.Crit__Mod ?? 1.0m but I think I'm good with this.
+            decimal closeRangeMod = c.CritZeroRangeRamp;
 
-        private decimal? MiniCritCalc(decimal? baseDamage, decimal range = 1.0m)
-        {
-            if (!baseDamage.HasValue || !v.CanMinicrit)
+            decimal? baseDamage = v.BaseDamage;
+            if (!baseDamage.HasValue || !v.CanCrit)
+                return string.Empty;
+
+            bool isRanged = closeRangeMod != longRangeMod;
+            if (isRanged)
             {
-                return null;
+                if (v.Fragments.HasValue)
+                    return DamageRangeFragments(c.FarCrit, c.FarCritDecimal / v.Fragments.Value,
+                        c.CloseCrit, c.CloseCritDecimal / v.Fragments.Value);
+
+                return DamageRange(c.FarCrit,
+                    c.CloseCrit);
             }
 
-            decimal rangeMod = 1.35m * range;
-            decimal fullDamage = WeaponVMDetail.Round(rangeMod * baseDamage.Value);
-            return fullDamage;
+            if (v.Fragments.HasValue)
+                return DamageFragments(c.FarCrit, c.FarCritDecimal / v.Fragments.Value);
+
+            return Damage(c.FarCrit);
         }
+
         private string MiniCritDamage()
         {
-            decimal minicrit = 1.35m;
-            decimal longRangeMod = v.MinicritLongRangeMod ?? 1.0m;
-            decimal closeRangeMod = v.MinicritZeroRangeMod ?? 1.0m;
-            if (closeRangeMod == longRangeMod)
-                return CritifiedDamage(minicrit * longRangeMod, v.CanMinicrit);
-            else
-                return CritifiedDamage(minicrit * longRangeMod, minicrit * closeRangeMod, v.CanMinicrit);
-        }
+            DamageCalculations c = new DamageCalculations(v);
+            decimal longRangeMod = c.MinicritLongRangeRamp;
+            decimal closeRangeMod = c.MinicritZeroRangeRamp;
 
-        private string CritifiedDamage(decimal longRangeMod, decimal closeRangeMod, bool can)
-        {
             decimal? baseDamage = v.BaseDamage;
-            int? fragments = v.Fragments;
-
-            if (!baseDamage.HasValue || !can)
-            {
+            if (!baseDamage.HasValue || !v.CanMinicrit)
                 return string.Empty;
-            }
-            decimal fullDamage = WeaponVMDetail.Round(longRangeMod * baseDamage.Value);
-            if (fragments.HasValue)
-            {
-                decimal oneFragDamage = longRangeMod * baseDamage.Value / fragments.Value;
-                decimal closeDamage = WeaponVMDetail.Round(closeRangeMod * baseDamage.Value);
-                decimal oneCloseFragDamage = closeRangeMod * baseDamage.Value / fragments.Value;
-                return string.Format("{1:0} - {4:0} ({0:0.####} - {3:0.####} / {2})",
-                    oneFragDamage, fullDamage,
-                    v.FragmentType,
-                    oneCloseFragDamage, closeDamage);
-            }
-            else
-            {
-                decimal closeDamage = WeaponVMDetail.Round(closeRangeMod * baseDamage.Value);
-                return string.Format("{0:0} - {1:0}",
-                    fullDamage, closeDamage);
-            }
-        }
-        private string CritifiedDamage(decimal longRangeMod, bool can)
-        {
-            decimal? baseDamage = v.BaseDamage;
-            int? fragments = v.Fragments;
 
-            if (!baseDamage.HasValue || !can)
+            bool isRanged = closeRangeMod != longRangeMod;
+            if (isRanged)
             {
-                return string.Empty;
-            }
-            decimal fullDamage = WeaponVMDetail.Round(longRangeMod * baseDamage.Value);
-            if (fragments.HasValue)
-            {
-                decimal oneFragDamage = longRangeMod * baseDamage.Value / fragments.Value;
+                if (v.Fragments.HasValue)
+                    return DamageRangeFragments(c.FarMinicrit, c.FarMinicritDecimal / v.Fragments.Value,
+                        c.CloseMinicrit, c.CloseMinicritDecimal / v.Fragments.Value);
 
-                return string.Format("{0:0} ({1:0.####} / {2})",
-                    fullDamage,
-                     oneFragDamage,
-                     v.FragmentType);
+                return DamageRange(c.FarMinicrit,
+                    c.CloseMinicrit);
             }
-            else
-            {
-                return string.Format("{0:0}",
-                    fullDamage);
-            }
+
+            if (v.Fragments.HasValue)
+                return DamageFragments(c.FarMinicrit, c.FarMinicritDecimal / v.Fragments.Value);
+
+            return Damage(c.FarMinicrit);
         }
 
-        private string FragmentDamage(decimal? longRangeMod)
+
+        private string FragmentDamageClose()
+        {
+            DamageCalculations c = new DamageCalculations(v);
+            return FragmentDamage(c.Close, c.CloseDecimal);
+        }
+        private string FragmentDamageMid()
+        {
+            decimal midDecimal = v.Damage.Base;
+            return FragmentDamage(WeaponVMDetail.Round(midDecimal), midDecimal);
+        }
+        private string FragmentDamageFar()
+        {
+            DamageCalculations c = new DamageCalculations(v);
+            return FragmentDamage(c.Far, c.FarDecimal);
+        }
+        private string FragmentDamageBuilding()
+        {
+            decimal buildingDecimal = v.Damage.Base * v.Damage.BuildingModifier;
+            return FragmentDamage(WeaponVMDetail.Round(buildingDecimal), buildingDecimal);
+        }
+
+
+        private string FragmentDamage(int close, decimal closeDecimal)
         {
             decimal? baseDamage = v.BaseDamage;
-            int? fragments = v.Fragments;
-
             if (!baseDamage.HasValue)
-            {
                 return string.Empty;
-            }
 
-            decimal rangeMod = longRangeMod ?? 1.0m;
-            if (fragments.HasValue)
-            {
+            if (v.Fragments.HasValue)
                 return string.Format("{0:0.####} / {1}",
-                     rangeMod * baseDamage.Value / fragments.Value,
+                     closeDecimal / v.Fragments.Value,
                      v.FragmentType);
-            }
 
             // some things on the wiki use decimals but most don't
             return string.Format("{0:0}",
-                WeaponVMDetail.Round(rangeMod * baseDamage.Value));
+                close);
+        }
+
+        private string Damage(int fullDamage)
+        {
+            return string.Format("{0:0}",
+                fullDamage);
+        }
+
+        private string DamageFragments(int fullDamage, decimal oneFragDamage)
+        {
+            return string.Format("{0:0} ({1:0.####} / {2})",
+                fullDamage,
+                 oneFragDamage,
+                 v.FragmentType);
+        }
+
+        private string DamageRange(int fullDamage, int closeDamage)
+        {
+            return string.Format("{0:0} - {1:0}",
+                fullDamage, closeDamage);
+        }
+
+        private string DamageRangeFragments(int fullDamage, decimal oneFragDamage, int closeDamage, decimal oneCloseFragDamage)
+        {
+            return string.Format("{1:0} - {4:0} ({0:0.####} - {3:0.####} / {2})",
+                oneFragDamage, fullDamage,
+                v.FragmentType,
+                oneCloseFragDamage, closeDamage);
         }
 
         private string PercentString(decimal? zeroRangeMod)
