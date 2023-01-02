@@ -970,8 +970,8 @@ namespace StatsData
         public const decimal PISTOL_HITSCAN_ZERO_RANGE_RAMP = 1.49m;//NORMAL_HITSCAN_ZERO_RANGE_RAMP;
         public const decimal SCATTERGUN_HITSCAN_ZERO_RANGE_RAMP = 1.75m;
         public const decimal NORMAL_ARCHED_PROJECTILE_ZERO_RANGE_RAMP = 1.2m;
-        //TODO new custom value needs to get argued with people - alternatively: 1.25 with an offset, same difference effectively.
-        public const decimal NORMAL_ROCKET_PROJECTILE_ZERO_RANGE_RAMP = 1.246m;// had in several places, but not quite high enough for liberty launcher math: 1.24444444444444m;//original simple number: 1.25m;
+        // I think wiki(?) made me believe we needed 1.24444444444444m, but sensible number works with offsets.
+        public const decimal NORMAL_ROCKET_PROJECTILE_ZERO_RANGE_RAMP = 1.25m;// at one time I thought this didn't work with liberty launcher, I guess I wasn't figuring in offset correctly at the time.
         public const decimal NORMAL_ENERGY_PROJECTILE_ZERO_RANGE_RAMP = 1.2m;
 
         /// <summary>
@@ -1074,10 +1074,11 @@ namespace StatsData
         // gas passer I assume is a "jar"
 
         // made up to fit my theories:
+        public static readonly decimal OFFSET_HITSCAN_SHOTGUN = 25;//using 25 instead of hitscan's 30 (all shotguns still work) to make panic attack and all scatterguns work.
+        public static readonly decimal OFFSET_HITSCAN_SCATTERGUN = OFFSET_HITSCAN_SHOTGUN;
+        public static readonly decimal OFFSET_NO_SEPARATION = 32;
         public static readonly decimal OFFSET_HITSCAN = 30;
         public static readonly decimal OFFSET_HITSCAN_MINIGUN = OFFSET_HITSCAN;
-        public static readonly decimal OFFSET_HITSCAN_SHOTGUN = OFFSET_HITSCAN;
-        public static readonly decimal OFFSET_HITSCAN_SCATTERGUN = OFFSET_HITSCAN;
         public static readonly decimal OFFSET_HITSCAN_REVOLVER = OFFSET_HITSCAN;
         public static readonly decimal OFFSET_HITSCAN_PISTOL = OFFSET_HITSCAN;//22?
         public static readonly decimal OFFSET_HITSCAN_SMG = OFFSET_HITSCAN;
@@ -1086,9 +1087,10 @@ namespace StatsData
 
         public static readonly decimal OFFSET_HITSCAN_SHORTCIRCUIT = OFFSET_HITSCAN;
 
+        public static readonly decimal OFFSET_SHIELDBASH = OFFSET_NO_SEPARATION;
+
         // don't really care:
         public static readonly decimal OFFSET_MEDIGUN = OFFSET_6_FLAMETHROWER;
-        public static readonly decimal OFFSET_SHIELDBASH = OFFSET_6_FLAMETHROWER;
         public static readonly decimal OFFSET_STOMP = OFFSET_6_FLAMETHROWER;
         public static readonly decimal OFFSET_HITSCAN_SNIPER = OFFSET_HITSCAN;
 

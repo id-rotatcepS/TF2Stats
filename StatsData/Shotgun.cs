@@ -15,7 +15,8 @@ namespace StatsData
             Name = "Shotgun";
             Notes = "wiki 0.51 reload more, but derivatives all use 0.50\n" +
                 "Wiki Long range all pellets is as if 50%, not 52.8%??\n" +
-                "Spread based on 0.0675 - wiki shotgun discussion proof shows that yet mistakenly still uses 0.0625\n";
+                "Spread based on 0.0675 - wiki shotgun discussion proof shows that yet mistakenly still uses 0.0625\n" +
+                "CLOSE RANGE REQUIRES OFFSET (32 doesn't match obs) or <150%\n";
             Hitscan = new Hitscan()
             {
                 Damage = new Damage(baseDamage)
@@ -261,7 +262,8 @@ new PositiveAttribute("Gain 2 revenge crits for each sentry kill and 1 for each 
 new NegativeAttribute("-50% clip size"),
 new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("Revenge crits are lost on death"),
-}); 
+});
+
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(60)

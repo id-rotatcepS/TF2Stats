@@ -20,6 +20,7 @@ namespace StatsData
                  spread, zeroRange)
         {
             Name = "scattergun";
+            Notes = "";// blank out from shotgun.
 
             //Hitscan = new Hitscan()
             //{
@@ -60,6 +61,7 @@ namespace StatsData
             Name = "Scattergun"; Level = 1; WeaponType = "Scattergun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n60 damage (96 dps) 175%-53% by range\n10 pellet spread accurate to 36% range\nReloads 6 in 3.2 sec (first in 0.7 sec), 32 carried"),
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc 142 but obs/'wiki' 141\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -101,6 +103,7 @@ new NegativeAttribute("-66% clip size"),
 new DescriptionAttribute("This weapon reloads its entire clip at once"),
 });
             Notes += "minicrit 'wiki'/calc close 153, but obs 152\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -147,6 +150,7 @@ new NeutralAttribute("When weapon is active:"),
 new NegativeAttribute("Increase in push force taken from damage and airblast"),
 new DescriptionAttribute("Holds a 4-shot clip and reloads its entire clip at once.<br> Alt-Fire to reach and shove someone! <br><br>Mann Co.'s latest in high attitude break-action personal defense."),
 });
+            Notes += "Close range works with 30, 25 (scatter current default), also most anything else (23.5-32)\n";
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(48)
@@ -213,6 +217,7 @@ new NegativeAttribute("-66% clip size"),
 new DescriptionAttribute("When Hype is full, Alt-Fire to activate Hype mode for multiple air jumps.<br>This weapon reloads its entire clip at once."),
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -255,6 +260,7 @@ new NegativeAttribute("Boost reduced on air jumps"),
 new NegativeAttribute("Boost reduced when hit"),
 }); 
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -297,6 +303,7 @@ new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("20% less accurate"),
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
 
             //Hitscan = new Hitscan()
             //{

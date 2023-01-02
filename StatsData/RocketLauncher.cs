@@ -12,7 +12,8 @@ namespace StatsData
         public ARocketLauncher(decimal baseDamage = 90, decimal speed = 1100, decimal splashRadius= AOE.DEFAULT_SPLASH)
         {
             Name = "Rocket Launcher";
-            Notes += "Long Range 124.6% I invented as a single value that works with Liberty Launcher and everything else.\n";
+            Notes += "Close Range 124.6% I invented as a single value that works with Liberty Launcher and everything else - When using offset=32 (no min separation).\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET - 125% works with all when using offset=23.5 (documented value) but NOT with 32 (no min separation).\n";
             Projectile = new Projectile(speed)
             {
                 HitDamage = new Damage(baseDamage)

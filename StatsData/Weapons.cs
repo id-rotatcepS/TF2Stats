@@ -341,7 +341,7 @@ new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
             {
                 HitDamage = new Damage(40) // tf_weapon_shotgun_building_rescue Damage=40
                 {
-                    //Offset = ,
+                    Offset = Damage.OFFSET_2_ENERGY_COWMANGLER_ARROWLIKE,
                     ZeroRangeRamp = Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP, // like shotgun
                     LongRangeRamp = Damage.NORMAL_LONG_RANGE_RAMP,//0.528,
                 },
@@ -370,6 +370,9 @@ new DescriptionAttribute("Take manual control of your Sentry Gun.<br>Wrangled se
             //    Offset = 23.5,
             //    }
             FireRate = -1;
+
+            CanCrit = false;
+            CanMinicrit = false;
         }
     }
 
