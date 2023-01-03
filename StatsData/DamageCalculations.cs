@@ -50,18 +50,18 @@
         private bool canCrit => v.CanCrit;
 
         //TODO adjust these based on calculations maybe... or delete them and inline the stuff again.
-        public decimal ZeroRangeRamp => d.ZeroRangeRamp; // TODO was d? and decimal? but I think I'm ok with this.
-        public decimal LongRangeRamp => d.LongRangeRamp;
+        public decimal ZeroRangeRamp => d?.ZeroRangeRamp ?? 1.0m; // TODO was d? and decimal? but I think I'm ok with this.
+        public decimal LongRangeRamp => d?.LongRangeRamp ?? 1.0m;
 
         public decimal MinicritZeroRangeRamp => ZeroRangeRamp;
-        public decimal MinicritLongRangeRamp => d.CritIncludesRamp
+        public decimal MinicritLongRangeRamp => d?.CritIncludesRamp??false
             ? LongRangeRamp
             : 1.0m;
 
-        public decimal CritZeroRangeRamp => d.CritIncludesRamp
+        public decimal CritZeroRangeRamp => d?.CritIncludesRamp??false
             ? ZeroRangeRamp
             : 1.0m;
-        public decimal CritLongRangeRamp => d.CritIncludesRamp
+        public decimal CritLongRangeRamp => d?.CritIncludesRamp??false
             ? LongRangeRamp
             : 1.0m;
 
@@ -101,6 +101,7 @@
             => Round(CloseCritDecimalx(d));
         private decimal CloseCritDecimalx(Damage d)
         {
+            if (d == null) return 0;
             if (d.CritIncludesRamp)
             {
                 decimal x = 32;//TODO pass this in like others?
@@ -114,6 +115,7 @@
             => Round(BuildingDecimalx(d));
         private decimal BuildingDecimalx(Damage d)
         {
+            if (d == null) return 0;
             return d.Base * d.BuildingModifier;
         }
 
@@ -121,6 +123,7 @@
             => Round(FarDecimalx(d, maxRange));
         private decimal FarDecimalx(Damage d, decimal? maxRange)
         {
+            if (d == null) return 0;
             if (maxRange.HasValue)
             {
                 decimal max = maxRange.Value;
@@ -131,6 +134,7 @@
 
         private decimal GetDamageAtRange(Damage d, decimal distance)
         {
+            if (d == null) return 0;
             decimal medRange = 512m;
             if (distance < medRange)
             {
@@ -171,6 +175,7 @@
             => Round(FarMinicritDecimalx(d, maxRange));
         private decimal FarMinicritDecimalx(Damage d, decimal? maxRange)
         {
+            if (d == null) return 0;
             decimal far = 1024m;
             if (maxRange.HasValue)
             {
@@ -194,6 +199,7 @@
             => Round(FarCritDecimalx(d));
         private decimal FarCritDecimalx(Damage d)
         {
+            if (d == null) return 0;
             return d.CritIncludesRamp 
                 ? GetDamageAtRange(d, 1024m) * 3.0m
                 : d.Base * 3.0m;

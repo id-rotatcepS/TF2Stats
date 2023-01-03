@@ -108,10 +108,16 @@ beamdisconnect 	mediguns
         //public string ShotType => "Hitscan", etc.
         //public string DamageType => "Bullet" etc.
         //public string RangedOrMeleeDamage => "Ranged"
+
+        //TODO public string AchievableRampUpPercent => PercentString(v.ZeroRangeMod, CloseOffSet);
         public string MaximumRampUpPercent => PercentString(v.ZeroRangeMod);
-        public string MaximumRampUp => FragmentDamageClose();
+        public string AchievableRampUp => FragmentDamageClose(new DamageCalculations(v));
+        public string MaximumRampUp => FragmentDamageClose(new DamageCalculations(v) { CloseOffset = 32 });
+        public Visibility AchievableCloseRampVisibility => (CloseRampVisibility == Visibility.Visible && v.Damage?.Offset != 32)
+            ? Visibility.Visible
+            : Visibility.Collapsed;
         public Visibility CloseRampVisibility => PercentVisibility((v) => v.ZeroRangeMod);
-        public bool CloseRampDiff => IfDifferent((f) => f.MaximumRampUp);
+        public bool CloseRampDiff => IfDifferent((f) => f.MaximumRampUp);// no "achievable" different check required.
 
         private bool IfDifferent(Func<WeaponVMDamageFunctionTimes, string> x)
         {
@@ -141,7 +147,8 @@ beamdisconnect 	mediguns
         public Visibility FragmentVisibility => NullableVisibility((v) => v.Fragments);
         public bool FragmentDiff => IfDifferent((f) => f.Fragment);
 
-        public string PointBlank => FullDamageClose();
+        public string PointBlank => FullDamageClose(new DamageCalculations(v));
+        public string MaximumPointBlank => FullDamageClose(new DamageCalculations(v) { CloseOffset = 32 });
         public Visibility PointBlankVisibility => FullDamageVisibility((v) => v.ZeroRangeMod);
         public bool PointBlankDiff => IfDifferent((f) => f.PointBlank);
         public string MediumRange => FullDamageMid();
@@ -151,10 +158,12 @@ beamdisconnect 	mediguns
         public Visibility LongRangeVisibility => FullDamageVisibility((v) => v.LongRangeMod);
         public bool LongRangeDiff => IfDifferent((f) => f.LongRange);
 
-        public string Critical => CriticalDamage();
+        public string Critical => CriticalDamage(new DamageCalculations(v));
+        public string CriticalMax => CriticalDamage(new DamageCalculations(v) { CloseOffset = 32 });
         public Visibility CriticalVisibility => (v.CanCrit || (v.Alts != null && v.Alts.Any((v) => v.CanCrit))) ? Visibility.Visible : Visibility.Collapsed;
         public bool CriticalDiff => IfDifferent((f) => f.Critical);
-        public string MiniCrit => MiniCritDamage();
+        public string MiniCrit => MiniCritDamage(new DamageCalculations(v));
+        public string MiniCritMax => MiniCritDamage(new DamageCalculations(v) { CloseOffset = 32 });
         public Visibility MiniCritVisibility => (v.CanMinicrit || (v.Alts != null && v.Alts.Any((v) => v.CanMinicrit))) ? Visibility.Visible : Visibility.Collapsed;
         public bool MiniCritDiff => IfDifferent((f) => f.MiniCrit);
 
@@ -441,13 +450,13 @@ beamdisconnect 	mediguns
                 WeaponVMDetail.Round(spreadToOne));
         }
 
-        private string FullDamageClose()
+        private string FullDamageClose(DamageCalculations c)
         {
-            DamageCalculations c = new DamageCalculations(v);
             return FullDamage(c.Close, c.CloseDecimal);
         }
         private string FullDamageMid()
         {
+            if (v.Damage == null) return string.Empty;
             decimal midDecimal = v.Damage.Base;
             return FullDamage(WeaponVMDetail.Round(midDecimal), midDecimal);
         }
@@ -490,9 +499,8 @@ beamdisconnect 	mediguns
                 : Visibility.Collapsed;
         }
 
-        private string CriticalDamage()
+        private string CriticalDamage(DamageCalculations c)
         {
-            DamageCalculations c = new DamageCalculations(v);
             decimal longRangeMod = c.CritLongRangeRamp; // TODO was v.Crit__Mod ?? 1.0m but I think I'm good with this.
             decimal closeRangeMod = c.CritZeroRangeRamp;
 
@@ -517,9 +525,8 @@ beamdisconnect 	mediguns
             return Damage(c.FarCrit);
         }
 
-        private string MiniCritDamage()
+        private string MiniCritDamage(DamageCalculations c)
         {
-            DamageCalculations c = new DamageCalculations(v);
             decimal longRangeMod = c.MinicritLongRangeRamp;
             decimal closeRangeMod = c.MinicritZeroRangeRamp;
 
@@ -545,13 +552,13 @@ beamdisconnect 	mediguns
         }
 
 
-        private string FragmentDamageClose()
+        private string FragmentDamageClose(DamageCalculations c)
         {
-            DamageCalculations c = new DamageCalculations(v);
             return FragmentDamage(c.Close, c.CloseDecimal);
         }
         private string FragmentDamageMid()
         {
+            if (v.Damage == null) return string.Empty;
             decimal midDecimal = v.Damage.Base;
             return FragmentDamage(WeaponVMDetail.Round(midDecimal), midDecimal);
         }
@@ -562,6 +569,7 @@ beamdisconnect 	mediguns
         }
         private string FragmentDamageBuilding()
         {
+            if (v.Damage == null) return string.Empty;
             decimal buildingDecimal = v.Damage.Base * v.Damage.BuildingModifier;
             return FragmentDamage(WeaponVMDetail.Round(buildingDecimal), buildingDecimal);
         }

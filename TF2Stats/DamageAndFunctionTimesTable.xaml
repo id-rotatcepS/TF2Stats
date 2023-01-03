@@ -31,6 +31,10 @@
             <Style x:Key="MainValue" TargetType="TextBlock">
                 <Setter Property="Width" Value="100"/>
             </Style>
+            <Style x:Key="MainValueTooltip" TargetType="TextBlock">
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="TextDecorations" Value="Underline"/>
+            </Style>
         </StackPanel.Resources>
         <StackPanel Style="{StaticResource Heading}" Grid.ColumnSpan="3">
             <TextBlock x:Name="MainHeading" FontWeight="Bold"  HorizontalAlignment="Stretch" Text="Damage and Function Times" TextWrapping="Wrap" VerticalAlignment="Stretch" TextAlignment="Center"/>
@@ -118,6 +122,49 @@
             </ItemsControl>
             
         </StackPanel>
+        <StackPanel Orientation="Horizontal" Visibility="{Binding AchievableCloseRampVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding CloseRampDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=CloseRampPercent}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=CloseRamp}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+
+                        <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding AchievableCloseRampVisibility}">
+                            <TextBlock x:Name="CloseRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                               Text="{Binding AchievableRampUpPercent}"/>
+                        </StackPanel>
+                        <TextBlock x:Name="CloseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                               Text="{Binding AchievableRampUp}" Style="{StaticResource MainValue}" Visibility="{Binding AchievableCloseRampVisibility}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelAchievableCloseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Achievable ramp-up" Width="150"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+
         <StackPanel Orientation="Horizontal" Visibility="{Binding BaseDamageVisibility}">
             <StackPanel.Resources>
                 <DataTemplate x:Key="rowBody">
@@ -294,7 +341,8 @@
                             </Interactions:DataTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="PointBlank" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding PointBlank}" Style="{StaticResource MainValue}" Visibility="{Binding PointBlankVisibility}"/>
+                                       Text="{Binding PointBlank}" Style="{StaticResource MainValueTooltip}" Visibility="{Binding PointBlankVisibility}"
+                                   ToolTipService.ToolTip="{Binding MaximumPointBlank}"/>
                     </StackPanel>
                 </DataTemplate>
             </StackPanel.Resources>
@@ -444,7 +492,8 @@
                             </Interactions:DataTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="Critical" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding Critical}" Style="{StaticResource MainValue}" Visibility="{Binding CriticalVisibility}"/>
+                                       Text="{Binding Critical}" Style="{StaticResource MainValueTooltip}" Visibility="{Binding CriticalVisibility}"
+                                   ToolTipService.ToolTip="{Binding CriticalMax}"/>
 
                     </StackPanel>
                 </DataTemplate>
@@ -482,7 +531,8 @@
                             </Interactions:DataTriggerBehavior>
                         </Interactivity:Interaction.Behaviors>
                         <TextBlock x:Name="MiniCrit" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
-                                       Text="{Binding MiniCrit}" Style="{StaticResource MainValue}" Visibility="{Binding MiniCritVisibility}"/>
+                                       Text="{Binding MiniCrit}" Style="{StaticResource MainValueTooltip}" Visibility="{Binding MiniCritVisibility}"
+                                   ToolTipService.ToolTip="{Binding MiniCritMax}"/>
 
                     </StackPanel>
                 </DataTemplate>
