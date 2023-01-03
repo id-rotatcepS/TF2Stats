@@ -326,7 +326,6 @@ new NegativeAttribute("Deals only 20% damage to buildings"),
     /// </summary>
     public class RescueRanger : ABolt
     {
-        //TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
         public RescueRanger()
         {
             Name = "Rescue Ranger"; Level = 1 - 100; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
@@ -336,7 +335,8 @@ new NegativeAttribute("-34% clip size"),
 new NegativeAttribute("-50% max primary ammo on wearer"),
 new NegativeAttribute("Self mark for death when hauling buildings"),
 new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
-}); 
+});
+            Notes += "TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)\n";
             Projectile = new Projectile(2400)
             {
                 HitDamage = new Damage(40) // tf_weapon_shotgun_building_rescue Damage=40

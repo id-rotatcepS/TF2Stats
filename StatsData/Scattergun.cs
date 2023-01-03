@@ -11,8 +11,6 @@ namespace StatsData
     /// </summary>
     public abstract class AScattergun : AShotgun // literally "Scout Shotgun" in some languages.
     {
-        //TODO (from AShotgun) wiki spread 30:1, but calc is 28:1 (28.148repeating).  calc is 30 if I use 2.0 instead of 1.9 for spread divisor. (but back-scatter is slightly too HIGH calc, then)
-        //TODO (from AShotgun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off
         public AScattergun(decimal baseDamage = 60, int fragments = 10,
             decimal spread = Damage.SPREAD_SHOTGUN_SCATTERGUN, 
             decimal zeroRange = Damage.SCATTERGUN_HITSCAN_ZERO_RANGE_RAMP)
@@ -62,6 +60,9 @@ namespace StatsData
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc 142 but obs/'wiki' 141\n";
             Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
+            Notes += "obs close 10-104 matches my offsets and not wiki\n" +
+                "TODO (from AShotgun) wiki spread 30:1, but calc is 28:1 (28.148repeating).  calc is 30 if I use 2.0 instead of 1.9 for spread divisor. (but back-scatter is slightly too HIGH calc, then)\n" +
+                "TODO (from AShotgun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -88,7 +89,6 @@ namespace StatsData
     /// </summary>
     public class ForceANature : AScattergun
     {
-        //TODO wiki all pellets far 32, but calc is 34, need evidence
         public ForceANature()
             : base(64.8m,
             12)
@@ -103,7 +103,8 @@ new NegativeAttribute("-66% clip size"),
 new DescriptionAttribute("This weapon reloads its entire clip at once"),
 });
             Notes += "minicrit 'wiki'/calc close 153, but obs 152\n";
-            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n" +
+                "TODO wiki all pellets far 32, but calc is 34, need evidence\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -135,9 +136,6 @@ new DescriptionAttribute("This weapon reloads its entire clip at once"),
     /// </summary>
     public class Shortstop : AScattergun
     {
-        //TODO wiki spread 50:1, but calc is 47:1 (47.49999repeating so real math probably rounds to 48)
-        //TODO wiki all pellets far 24, but calc is 25, need evidence
-        //Wiki claims "has approximately 40% less pellet spread" although it's not listed in stats
         public Shortstop() // closer to a pistol than defaults
             :base(48, 4,
                  Damage.SPREAD_PISTOL,// (wiki translates value to 50:1 vs. 48:1 pistol)
@@ -150,7 +148,10 @@ new NeutralAttribute("When weapon is active:"),
 new NegativeAttribute("Increase in push force taken from damage and airblast"),
 new DescriptionAttribute("Holds a 4-shot clip and reloads its entire clip at once.<br> Alt-Fire to reach and shove someone! <br><br>Mann Co.'s latest in high attitude break-action personal defense."),
 });
-            Notes += "Close range works with 30, 25 (scatter current default), also most anything else (23.5-32)\n";
+            Notes += "Close range works with 30, 25 (scatter current default), also most anything else (23.5-32)\n" +
+                "TODO wiki spread 50:1, but calc is 47:1 (47.49999repeating so real math probably rounds to 48)\n" +
+                "TODO wiki all pellets far 24, but calc is 25, need evidence\n" +
+                "Wiki claims \"has approximately 40% less pellet spread\" although it's not listed in stats\n";
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(48)
@@ -289,7 +290,6 @@ new NegativeAttribute("Boost reduced when hit"),
     /// </summary>
     public class BackScatter : AScattergun
     {
-        //TODO, wiki says spread is 24:1, but *1.20m rounds to 23:1 (23.456790... interesting number, just missing the 8)
         public BackScatter()
             :base(60, 10, 
                  Damage.SPREAD_SHOTGUN_SCATTERGUN*1.20m// stats: "20% less accurate"
@@ -303,7 +303,8 @@ new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("20% less accurate"),
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
-            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n" +
+                "TODO, wiki says spread is 24:1, but *1.20m rounds to 23:1 (23.456790... interesting number, just missing the 8)\n";
 
             //Hitscan = new Hitscan()
             //{

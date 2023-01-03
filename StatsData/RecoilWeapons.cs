@@ -9,6 +9,7 @@ namespace StatsData
         public APistol(decimal baseDamage = 15) // tf_weapon_pistol Damage=15
         {
             Name = "Pistol";
+            Notes += "TODO wiki spread 48:1, calc rounding issue 47.4999repeating\n";
             Hitscan = new Hitscan()
             {
                 Damage = new Damage(baseDamage)
@@ -50,8 +51,7 @@ namespace StatsData
     /// </summary>
     public class ScoutPistol : APistol
     {
-        // TODO wiki/obs point blank 22, calc 23; (winger comes out correct)
-        // TODO wiki spread 48:1, calc rounding issue 47.4999repeating
+        // TODO (Addressed with offsets) wiki/obs point blank 22, calc 23; (winger comes out correct)
         public ScoutPistol(decimal baseDamage = 15)
             :base(baseDamage)
         {

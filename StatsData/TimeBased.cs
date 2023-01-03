@@ -356,7 +356,6 @@ new DescriptionAttribute("This powerful, single-shot flamethrower rewards consec
     public class CrusadersCrossbow : ABolt
     {
         //TODO I had 1.6 FireRate. Wiki lists attack interval as 0.24 s, 1.5 reload (1.75 s with reload) 
-        //TODO Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)
         public CrusadersCrossbow()
         {
             Name = "Crusader's Crossbow"; Level = 15; WeaponType = "Crossbow"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
@@ -364,6 +363,7 @@ new NegativeAttribute("No headshots"),
 new NegativeAttribute("-75% max primary ammo on wearer"),
 new DescriptionAttribute("Fires special bolts that heal teammates and deals damage<br>based on distance traveled<br>This weapon will reload automatically when not active"),
 });
+            Notes += "TODO Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)\n";
             Projectile = new Projectile(2400)
             {
                 // damages buildings the same amount based on hang time.

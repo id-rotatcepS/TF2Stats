@@ -12,7 +12,7 @@ namespace StatsData
         public ARocketLauncher(decimal baseDamage = 90, decimal speed = 1100, decimal splashRadius= AOE.DEFAULT_SPLASH)
         {
             Name = "Rocket Launcher";
-            Notes += "Close Range 124.6% I invented as a single value that works with Liberty Launcher and everything else - When using offset=32 (no min separation).\n";
+            //Notes += "Close Range 124.6% I invented as a single value that works with Liberty Launcher and everything else - When using offset=32 (no min separation).\n";
             Notes += "**CLOSE RANGE REQUIRES OFFSET - 125% works with all when using offset=23.5 (documented value) but NOT with 32 (no min separation).\n";
             Projectile = new Projectile(speed)
             {
@@ -118,6 +118,7 @@ new PositiveAttribute("Mini-crits targets launched airborne by explosions, grapp
 new NegativeAttribute("-70% explosion radius"),
 });
             Name = "direct hit";
+            Notes += "Wiki base rounded down from 112.5, game conditions on similar cases seem to round up...right?\n";
             Notes += "radius on wiki is rounded - is that editor simplifying or is that how the game uses it?\n";
 
             //Projectile = new Projectile(1980)
@@ -347,7 +348,6 @@ new NegativeAttribute("No ammo from dispensers when active"),
         // -15% blast damage from rocket jumps
         // -10% explosion radius
 
-        // TODO my calc (now) & my obs & point blank wiki of 95; wiki Ramp as 96 (my calc USED to do that too)
         public AirStrike()
             :base(76.5m,
                  1100, 
@@ -361,6 +361,9 @@ new PositiveAttribute("Clip size increased on kill"),
 new NegativeAttribute("-15% damage penalty"),
 new NegativeAttribute("-10% explosion radius"),
 });
+            Notes += "base 76.5 wiki rounds down, also wiki-ramp-up & point-blank don't agree, nor do wiki base and medium\n";
+            Notes += "TODO my calc (now) & my obs & point blank wiki of 95; wiki Ramp as 96 (my calc USED to do that too)\n";
+
             //Projectile = new Projectile(1100)
             //{
             //    HitDamage = new Damage(76.5)
