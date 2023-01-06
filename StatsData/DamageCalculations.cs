@@ -1,4 +1,6 @@
-﻿namespace StatsData
+﻿using System;
+
+namespace StatsData
 {
 
     public class DamageCalculations
@@ -11,9 +13,15 @@
             this.v = v;
             d = v.Damage;
             closeOffset = d?.Offset ?? 23.5m;
+            maxRange = v.MaxRange;
         }
 
         public decimal CloseOffset { private get => closeOffset; set => closeOffset = value; }
+        public decimal? MaxRange { private get => maxRange; set => maxRange = value; }
+
+        public decimal ClosestRamp => GetRampAtOffset(d, CloseOffset);
+
+        public decimal FurthestRamp => GetRampAtRange(d, maxRange ?? 1024);
 
         public int Far => Farx(d, maxRange);
         public int FarMinicritOrEquivalent => canMinicrit 
@@ -45,7 +53,7 @@
 
         public int Building => Buildingx(d);
 
-        private decimal? maxRange => v.MaxRange;
+        private decimal? maxRange;
         private bool canMinicrit => v.CanMinicrit;
         private bool canCrit => v.CanCrit;
 
@@ -76,14 +84,7 @@
             => Round(CloseWithOffsetDecimal(d, offset));
         private decimal CloseWithOffsetDecimal(Damage d, decimal offset)
         {
-            // offset is distance from eye, so it's a REDUCTION in range... I assume the collision box size of 32 keeps the eyes apart by half each (so 32 total).
-            // I assume the hit target is the middle of the collision box and the eyes are at the middle of the collision box ( just higher up )
-            // I assume the offset is where the start of range is measured from (could be wrong, in which case all offsets become 0, but calculation still needs to happen)
-            // so closest distance is (32-offset)
-            // That means offsets of 32 are "as close as possible" and offsets of 0 are "as far as possible"
-            decimal offsetRange = 32 - offset;
-
-            return GetDamageAtRange(d, offsetRange);
+            return GetDamageAtOffset(d, offset);
         }
 
         private int Round(decimal d) => WeaponVMDetail.Round(d);
@@ -92,9 +93,7 @@
             => Round(CloseMinicritWithOffsetDecimal(d, x));
         private decimal CloseMinicritWithOffsetDecimal(Damage d, decimal x)
         {
-            decimal offsetRange = 32 - x;
-
-            return GetDamageAtRange(d, offsetRange) * 1.35m;
+            return GetDamageAtOffset(d, x) * 1.35m;
         }
 
         private int CloseCritx(Damage d)
@@ -105,8 +104,7 @@
             if (d.CritIncludesRamp)
             {
                 decimal x = 32;//TODO pass this in like others?
-                decimal offsetRange = 32 - x;
-                return GetDamageAtRange(d, offsetRange) * 3.0m;
+                return GetDamageAtOffset(d, x) * 3.0m;
             }
             return d.Base * 3.0m;
         }
@@ -132,26 +130,48 @@
             return d.Base * d.LongRangeRamp;
         }
 
+        private decimal GetDamageAtOffset(Damage d, decimal closeOffset)
+        {
+            // offset is distance from eye, so it's a REDUCTION in range... I assume the collision box size of 32 keeps the eyes apart by half each (so 32 total).
+            // I assume the hit target is the middle of the collision box and the eyes are at the middle of the collision box ( just higher up )
+            // I assume the offset is where the start of range is measured from (could be wrong, in which case all offsets become 0, but calculation still needs to happen)
+            // so closest distance is (32-offset)
+            // That means offsets of 32 are "as close as possible" and offsets of 0 are "as far as possible"
+            return GetDamageAtRange(d, 32m - CloseOffset);
+        }
+
         private decimal GetDamageAtRange(Damage d, decimal distance)
         {
             if (d == null) return 0;
+            return d.Base * GetRampAtRange(d, distance);
+        }
+
+        private decimal GetRampAtOffset(Damage d, decimal closeOffset)
+        {
+            return GetRampAtRange(d, 32m - CloseOffset);
+        }
+
+        private decimal GetRampAtRange(Damage d, decimal distance)
+        {
+            if (d == null) return 1.0m;
+
             decimal medRange = 512m;
             if (distance < medRange)
             {
                 // Max far is actually in the close range (512=0%, 0=100%)
                 decimal percentOfClose = (medRange - distance) / medRange;
                 decimal rampValue = PercentOfRamp(percentOfClose, d.ZeroRangeRamp);
-                return d.Base * rampValue;
+                return rampValue;
             }
             else if (distance < medRange * 2)
             {
                 // Max far is not the entire long range ramp (1024=100%, 512=0%)
                 decimal percentOfLong = (distance - medRange) / medRange;
                 decimal rampValue = PercentOfRamp(percentOfLong, d.LongRangeRamp);
-                return d.Base * rampValue;
+                return rampValue;
             }
             else
-                return d.Base * d.LongRangeRamp;
+                return  d.LongRangeRamp;
         }
 
         // we want percent of difference from 1.0

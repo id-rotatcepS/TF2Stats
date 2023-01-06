@@ -249,6 +249,49 @@
             </ItemsControl>
 
         </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Visibility="{Binding MaxRangeDamageVisibility}">
+            <StackPanel.Resources>
+                <DataTemplate x:Key="rowBody">
+                    <StackPanel Orientation="Horizontal">
+                        <Interactivity:Interaction.Behaviors>
+                            <Interactions:DataTriggerBehavior Binding="{Binding FarRampDiff}" ComparisonCondition="Equal" Value="False">
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=FarRampPercent}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                                <Interactions:ChangePropertyAction TargetObject="{Binding ElementName=FarRamp}" PropertyName="Foreground" Value="{StaticResource NoDiff}"/>
+                            </Interactions:DataTriggerBehavior>
+                        </Interactivity:Interaction.Behaviors>
+
+                        <StackPanel Style="{StaticResource ResourceKey=Percent}" Visibility="{Binding MaxRangeDamageVisibility}">
+                            <TextBlock x:Name="FarRampPercent" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                               Text="{Binding MaxRangePercent}"/>
+                        </StackPanel>
+                        <TextBlock x:Name="FarRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                               Text="{Binding MaxRangeFallOff}" Style="{StaticResource MainValue}" Visibility="{Binding MaxRangeDamageVisibility}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </StackPanel.Resources>
+            <StackPanel Style="{StaticResource ResourceKey=Label}">
+                <TextBlock x:Name="labelMaxRangeCloseRamp" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" 
+                           Text="Max Range fall-off" Width="150"/>
+            </StackPanel>
+            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+
+            <ItemsControl ItemsSource="{Binding Alts}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Style="{StaticResource AltBlock}">
+                            <ContentControl ContentTemplate="{StaticResource rowBody}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
         
         <StackPanel Orientation="Horizontal" Visibility="{Binding FarRampVisibility}">
             <StackPanel.Resources>

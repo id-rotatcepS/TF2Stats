@@ -243,18 +243,25 @@ WeaponData
         {
             Name = "fireball launcher";
 
+            Notes += "TODO I made up max range 549 to get observed 24 (72 minicrit) at max range vs. 52.8% long range\n";
+
             Projectile = new Projectile(3000)
             {
                 HitDamage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_DRAGONSFURY,
                     ZeroRangeRamp = 1.2m,
-                    LongRangeRamp = 0.92m, // Not really, probably standard, but small max range gives us this percent of base.
+                    LongRangeRamp = 
+                    Damage.NORMAL_LONG_RANGE_RAMP,
+                    //.5m,
+                    //0.92m, // Not really, probably standard, but small max range gives us this percent of base.
                     BuildingModifier = 3.0m
                 },
                 Penetrating = true,
                 Propelled = true,//Debatable with the high speed and short path, but "the Dragon's Fury's projectile is considered a modified rocket"
-                MaxRangeTime = 526.0m / 3000.0m, // My calc: 12.5 (524.5) above medium range converts .528 lr to equiv .92 max range
+                MaxRangeTime =
+                549m / 3000m, // 549 is minimum maxrange to get at 24, 72 minicrit, with 52.8%
+                //526.0m / 3000.0m, // My calc: 12.5 (524.5) above medium range converts .528 lr to equiv .92 max range
             };
             FireRate = 0.8m;
 

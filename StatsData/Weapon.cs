@@ -1070,7 +1070,7 @@ namespace StatsData
         public static readonly decimal OFFSET_7_ORIGINAL = 23.5m;//0, -3
         public static readonly decimal OFFSET_8_LUNCHBOX_TOSS = 0;//0, -8  (corrected to 0 x in description vs. 8 in video)
         // not known:
-        public static readonly decimal OFFSET_DRAGONSFURY = OFFSET_6_FLAMETHROWER; // I had 0
+        public static readonly decimal OFFSET_DRAGONSFURY = OFFSET_1_ROCKETS_FLARES; // rockets/flares "based on rocket launcher" // I had 0
         // not known:
         public static readonly decimal OFFSET_ORB = OFFSET_2_ENERGY_COWMANGLER_ARROWLIKE;
         // gas passer I assume is a "jar"
