@@ -266,7 +266,7 @@ namespace StatsData
                 AddGroup<AScattergun>(result, new Scattergun());
                 AddGroup<APistol>(result, new ScoutPistol());
                 AddGroup<ABolt>(result, new Huntsman());
-                AddGroup<AFlameThrower>(result, new FlameThrower());
+                AddGroup<AFlameThrowerBase>(result, new FlameThrower());
                 AddGroup<AFlareGun>(result, new FlareGun());
                 AddGroup<AGrenadeLauncher>(result, new GrenadeLauncher());
                 AddGroup<AMinigun>(result, new Minigun());

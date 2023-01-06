@@ -16,7 +16,7 @@ namespace StatsData
      * others?
      */
 
-    // S.C. primary probably doesn't belong in this file, but it's the only example of this exact calculation that is equivalent of the time-based
+    // Short Circuit primary probably doesn't belong in this file, but it's the only example of this exact calculation that is equivalent of the time-based
     public class ShortCircuit : Weapon
     {
         //TODO wiki went with base + falloff which doesn't really make any sense and they also didn't show mini-crit range
@@ -76,8 +76,6 @@ new NegativeAttribute("Uses metal for ammo"),
                 AmmoType = "Metal",
                 AmmoUsed = 5,
             };
-
-
         }
     }
 
@@ -235,7 +233,7 @@ WeaponData
 }
         */
         //TODO wiki is wrong in that 90% of 75 is not 69.
-        //TODO my obs is probably wrong in that I got 24 far, not 23.
+        //TODO possible my obs is wrong in that I got 24 far, not the 23 on wiki.
         //TODO wiki long range says 90%, I said 92%, really both are wrong, it's probably 52.8%, but limited by Max Range.
         //((526-512)/512)percent of long range(0.02734375). 1-(percent * (1-.528)) = .98709 (98.7%) equivalent long range ramp.
         // results in a value that would round to 25. obs is 24, wiki says 23.  Maybe 526 is not accurate.
@@ -243,7 +241,8 @@ WeaponData
         {
             Name = "fireball launcher";
 
-            Notes += "TODO I made up max range 549 to get observed 24 (72 minicrit) at max range vs. 52.8% long range\n";
+            Notes += "TODO I could use max range 549 to get observed 24 (72 burning) at max range vs. 52.8% long range\n" +
+                "max range 592 gets wiki's 23 (71 burning) at max range vs. 52.8% long range; but wiki claims 526 max\n";
 
             Projectile = new Projectile(3000)
             {
@@ -260,7 +259,10 @@ WeaponData
                 Penetrating = true,
                 Propelled = true,//Debatable with the high speed and short path, but "the Dragon's Fury's projectile is considered a modified rocket"
                 MaxRangeTime =
-                549m / 3000m, // 549 is minimum maxrange to get at 24, 72 minicrit, with 52.8%
+                // 600m/3000m=0.2s would be convenient.
+                592m / 3000m, // 592 is minimum (600 works) maxrange to get at 23 (wiki), 69 burning (wiki), with 52.8%
+                //578m / 3000m, // 578 is minimum maxrange to get at 23 (wiki), results in 71 burning (69 on wiki), with 52.8%
+                //549m / 3000m, // 549 is minimum maxrange to get at 24 (my obs), 72 burning, with 52.8%
                 //526.0m / 3000.0m, // My calc: 12.5 (524.5) above medium range converts .528 lr to equiv .92 max range
             };
             FireRate = 0.8m;

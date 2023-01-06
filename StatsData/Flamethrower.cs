@@ -2,7 +2,6 @@
 
 namespace StatsData
 {
-
     /// <summary>
     /// from tf_weapon_flamethrower.ctx:
     /// 	 "Damage"		"170"	// per second
@@ -29,9 +28,12 @@ namespace StatsData
     /// 				"flame_spread_degree"					"2.8"
     /// 				"flame_lifetime"						"0.6"
     /// 				"flame_random_life_time_offset"			"0.1"
-    /// </summary>
-    public abstract class AFlameThrower : Weapon
+    /// </summary> 
+    public abstract class AFlameThrowerBase : Weapon
     {
+        // treat low-exposure like minigun cold "cold" or "light" or "low exposure"
+        // treat long-range-time like inverse crossbow hang time "indirect" "max range" "far edge" "at range"
+
         #region weapon_newflame constants
         public const decimal flame_gravity = 0m;
         // I am guessing this is a percent reduction in speed per game tick.  Result makes sense.
@@ -49,12 +51,10 @@ namespace StatsData
         public const decimal flame_damage_period = 0.075m;
         // 170 dps per tf_weapon_flamethrower.ctx
         public const decimal flame_max_damage = 170m * flame_damage_period;//12.75
-        public const decimal flame_full_exposure_damage = flame_max_damage * .5m;//6.375
-        //public const decimal flame_base_damage = 6.5m;// what was 6.5 based on? lots of conjecture based on the wiki, I think.
 
-        public AFlameThrower(decimal baseDamage = flame_full_exposure_damage * .5m)
+        public AFlameThrowerBase(decimal baseDamage = flame_max_damage)
         {
-            Name = "flamethrower";
+            Name = "flamethrower max tracked target, new/close flame";
 
             Projectile = new Projectile(flame_speed)//TODO 2450 from items_game.txt, but that also has Drag that changes meaning.  What will the wiki think? equivalent for 0.6s lifespan would be ~641 Hu/s
             {
@@ -62,11 +62,11 @@ namespace StatsData
                 HitDamage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_6_FLAMETHROWER,
-                    ZeroRangeRamp = 2,
+                    ZeroRangeRamp = 1,
                     LongRangeRamp = 1,
-                    //BuildingModifier = 2.0m, // no, I think it's full exposure always for buildings.
+                    // buildings included because it's a new flame
 
-                    CritIncludesRamp = true, // (e.g. zero range damage with crits is 6x)
+                    //no longer relevant: CritIncludesRamp = true, // (e.g. zero range damage with crits is 6x)
                 },
 
                 //FIXME particles
@@ -75,8 +75,9 @@ namespace StatsData
                 //    Fragments = 2,
                 //    FragmentType = "particle",
                 //},
-                
-                MaxRangeTime = GetMaxRangeWeaponNewFlame() / flame_speed,// 385 Hu based on below calculation accounting for drag.
+
+                //Base is at a range of 0, so...max range time should reflect that.  treating it as 1/50th since it ranges 50-100%
+                MaxRangeTime = 0.02m * GetMaxRangeWeaponNewFlame() / flame_speed,// 385 Hu based on below calculation accounting for drag.
                 // was using 330... from ? I dont' even know. wiki text has 340 
 
                 Penetrating = true,
@@ -96,7 +97,7 @@ namespace StatsData
 
         }
 
-        protected decimal GetMaxRangeWeaponNewFlame()
+        public static decimal GetMaxRangeWeaponNewFlame()
         {
             // ASSUME drag is PERCENT reduction in speed per game tick (0.015 s).
             // Apply that, the speed, and the lifetime as follows to get a max range of 385.
@@ -109,7 +110,7 @@ namespace StatsData
             return maxRange;
         }
 
-        private decimal MaxRangeWithDrag(decimal travelTime, decimal dragIncrement, decimal startSpeed, decimal drag)
+        private static decimal MaxRangeWithDrag(decimal travelTime, decimal dragIncrement, decimal startSpeed, decimal drag)
         {
             decimal answer = 0;
             decimal speed = startSpeed;
@@ -126,21 +127,51 @@ namespace StatsData
         }
     }
 
-    public abstract class AFullFlameThrower : AFlameThrower
+    public class AFlameThrowerMax : AFlameThrowerBase
     {
-        public AFullFlameThrower(decimal baseDamage = flame_full_exposure_damage)
-            : base(baseDamage)
+        public AFlameThrowerMax()
         {
-            Name = "flamethrower (max exposure/buildings)";
-
-            Effects.Clear();
-            Effect = new AfterburnEffect(10);
-
+            //Name = "flamethrower tracked target, new/close flame";
+            ActivationTime = 0.9m;//full tracking time
         }
-
+    }
+    public class AFlameThrowerFar : AFlameThrowerBase
+    {
+        public AFlameThrowerFar() :
+            base(flame_max_damage * .5m)//6.375
+        {
+            Name = "flamethrower tracked target, old/distant flame";
+            Projectile.MaxRangeTime = GetMaxRangeWeaponNewFlame() / flame_speed;// 385 Hu based on below calculation accounting for drag.
+            ActivationTime = 0.9m;//full tracking time
+        }
+    }
+    public class AFlameThrowerFarCold : AFlameThrowerBase
+    {
+        public AFlameThrowerFarCold() :
+            base(flame_max_damage * .5m * .5m)//3.1875
+        {
+            Name = "flamethrower untracked target, old/distant flame";
+            Projectile.MaxRangeTime = GetMaxRangeWeaponNewFlame() / flame_speed;// 385 Hu based on below calculation accounting for drag.
+            Projectile.HitDamage.BuildingModifier = 2.0m;//"The ramp-up is separate for each enemy being attacked. Buildings are unaffected by the ramp-up."
+            Effects.Clear();
+            Effect = new AfterburnEffect(4);//TODO flamethrower says 4-10 (increase by .4s per hit), others show 3-10 or other nonsense
+                                                //TODO depends on exposure, so only minimum for min exposure? This is likely additive regardless of constant exposure, however.
+        }
+    }
+    public class AFlameThrowerCold : AFlameThrowerBase
+    {
+        public AFlameThrowerCold() :
+            base(flame_max_damage * .5m)//6.375
+        {
+            Name = "flamethrower untracked target, new/close flame";
+            Projectile.HitDamage.BuildingModifier = 2.0m;//"The ramp-up is separate for each enemy being attacked. Buildings are unaffected by the ramp-up."
+            Effects.Clear();
+            Effect = new AfterburnEffect(4);//TODO flamethrower says 4-10 (increase by .4s per hit), others show 3-10 or other nonsense
+                                                //TODO depends on exposure, so only minimum for min exposure? This is likely additive regardless of constant exposure, however.
+        }
     }
 
-    public class FlameThrower : AFlameThrower
+    public class FlameThrower : AFlameThrowerMax
     {
         public FlameThrower()
         {
@@ -159,6 +190,7 @@ namespace StatsData
 new PositiveAttribute("Extinguishing teammates restores 20 health"),
 new DescriptionAttribute("Afterburn reduces Medi Gun healing and resist shield effects.<br>Alt-Fire: Release a blast of air that pushes enemies and projectiles and extinguish teammates that are on fire."),
 });
+            Notes += "Max Range of new flame is just using 1/50th of old flame max\n";
             //            Name = "Rainblower"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
             //new PositiveAttribute("On Equip: Visit Pyroland"),
             //new PositiveAttribute("Extinguishing teammates restores 20 health"),
@@ -167,9 +199,12 @@ new DescriptionAttribute("Afterburn reduces Medi Gun healing and resist shield e
             //}); Name = "Nostromo Napalmer"; Level = 10; WeaponType = "Flame Thrower"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
             //new PositiveAttribute("Extinguishing teammates restores 20 health"),
             //}); 
+
             AlternateModes = new List<Weapon>
             {
-                new FlameThrowerMaxExposure(),
+                new FlameThrowerCold(),
+                new FlameThrowerAtRange(),
+                new FlameThrowerColdAtRange(),
             };
             SeparateModes = new List<Weapon>
             { 
@@ -178,16 +213,24 @@ new DescriptionAttribute("Afterburn reduces Medi Gun healing and resist shield e
         }
     }
 
-    internal class FlameThrowerMaxExposure : AFullFlameThrower
-    {
-        public FlameThrowerMaxExposure()
-            //TODO accurate? do buildings have time-ranged damage?
-            //TODO Should this be primary and half-damage is alternate like cold minigun? But Dragon's Fury works best as a ramp up that includes buildings
+    internal class FlameThrowerCold : AFlameThrowerCold {
+        public FlameThrowerCold()
         {
-            Name = "(max exposure/buildings)";
+            Name = "untracked";
         }
     }
-
+    internal class FlameThrowerAtRange : AFlameThrowerFar {
+        public FlameThrowerAtRange()
+        {
+            Name = "old flame";
+        }
+    }
+    internal class FlameThrowerColdAtRange : AFlameThrowerFarCold {
+        public FlameThrowerColdAtRange()
+        {
+            Name = "untracked, old flame";
+        }
+    }
     //"Cow Mangler: Deals critical hits when reflected by a crit-boosted flamethrower." - implies crit-boosted reflects crit-ify anything they reflect.
     public class CompressionBlast : Weapon
     {
@@ -222,7 +265,7 @@ new DescriptionAttribute("Afterburn reduces Medi Gun healing and resist shield e
         }
     }
 
-    public class BackBurner : AFlameThrower
+    public class BackBurner : AFlameThrowerMax
     {
         public BackBurner()
         {
@@ -234,7 +277,10 @@ new NegativeAttribute("+150% airblast cost"),
 }); 
             AlternateModes = new List<Weapon>
             {
-                new FlameThrowerMaxExposure(),
+                new FlameThrowerCold(),
+                new FlameThrowerAtRange(),
+                new FlameThrowerColdAtRange(),
+
                 //TODO ?FromBack, Effect: crit
             };
             SeparateModes = new List<Weapon>
@@ -244,7 +290,7 @@ new NegativeAttribute("+150% airblast cost"),
         }
     }
 
-    public class Degreaser : AFlameThrower
+    public class Degreaser : AFlameThrowerMax
     {
         //-66% afterburn damage penalty
         public Degreaser()
@@ -259,7 +305,9 @@ new NegativeAttribute("+25% airblast cost"),
 }); 
             AlternateModes = new List<Weapon>
             {
-                new DegreaserMaxExposure(),
+                new DegreaserCold(),
+                new DegreaserAtRange(),
+                new DegreaserColdAtRange(),
             };
             SeparateModes = new List<Weapon>
             {
@@ -267,12 +315,12 @@ new NegativeAttribute("+25% airblast cost"),
             };
 
             Effects.Clear();
-            Effect = NewDegreaserAfterburn();
+            Effect = NewDegreaserAfterburn(10m); // tracked
         }
 
-        internal static Effect NewDegreaserAfterburn(decimal time = 4m)
+        internal static Effect NewDegreaserAfterburn(decimal time2)
         {
-            decimal time2 = 10m;// using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
+            decimal time = 4m;// using normal afterburn times - wiki says 5.4 s but degreaser page looks woefully outdated.
             return new Effect()
             {
                 //Name = (time2 == time)
@@ -282,27 +330,40 @@ new NegativeAttribute("+25% airblast cost"),
                 Minimum = time,
                 Maximum = time2,
 
-                Damage = new Damage(4m * 0.34m), // Wiki says 1/tick (2/tick minicrit) - probably accurate, math works and ensures minicrit does more damage.
+                Damage = new Damage(4m * 1m/3m), // Wiki says 1/tick (2/tick minicrit) - text: 66% reduction. Math works and ensures minicrit does more damage.
                 DamageRate = 0.5m,
             };
         }
     }
-    internal class DegreaserMaxExposure : AFullFlameThrower
+    internal class DegreaserCold : AFlameThrowerCold
     {
-        public DegreaserMaxExposure()
-        //TODO (same as flameethrower) accurate? do buildings have time-ranged damage?
-        //TODO (same as flameethrower) Should this be primary and half-damage is alternate like cold minigun? But Dragon's Fury works best as a ramp up that includes buildings
+        public DegreaserCold()
         {
-            Name = "(max exposure/buildings)";
-
+            Name = "untracked";
+            Effects.Clear();
+            Effect = Degreaser.NewDegreaserAfterburn(4m);
+        }
+    }
+    internal class DegreaserAtRange : AFlameThrowerFar
+    {
+        public DegreaserAtRange()
+        {
+            Name = "old flame";
             Effects.Clear();
             Effect = Degreaser.NewDegreaserAfterburn(10m);
         }
     }
+    internal class DegreaserColdAtRange : AFlameThrowerFarCold
+    {
+        public DegreaserColdAtRange()
+        {
+            Name = "untracked, old flame";
+            Effects.Clear();
+            Effect = Degreaser.NewDegreaserAfterburn(4m);
+        }
+    }
 
-
-
-    public class Phlogistinator : AFlameThrower
+    public class Phlogistinator : AFlameThrowerMax
     {
         public Phlogistinator()
         {
@@ -318,7 +379,10 @@ new DescriptionAttribute("Being a revolutionary appliance capable of awakening t
             // no compression blast
             AlternateModes = new List<Weapon>
             {
-                new FlameThrowerMaxExposure(),
+                new FlameThrowerCold(),
+                new FlameThrowerAtRange(),
+                new FlameThrowerColdAtRange(),
+
                 //TODO phlog crits for 10 seconds
             };
         }

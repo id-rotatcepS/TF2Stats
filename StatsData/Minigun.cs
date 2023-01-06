@@ -49,6 +49,7 @@ namespace StatsData
             
             Name = "Minigun"; Level = 1; WeaponType = "Minigun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute("\n36 damage (360 dps) 150%-53% by range\n4 pellet spread accurate to 30% range\n 200 carried"),
 });
+            ActivationTime = 0.87m + 1.0m;// sec spin up + warm up;
             //ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -79,7 +80,7 @@ namespace StatsData
         public MinigunCold()
             :base(18)
         {
-            Name = "(cold)";
+            Name = "cold";
             ////ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -111,7 +112,7 @@ new PositiveAttribute("-20% damage resistance when below 50% health and spun up"
 new NegativeAttribute("-25% damage penalty"),
 new NegativeAttribute("30% slower spin up time"),
 });
-            ActivationTime = 1.16m;// sec spin up;
+            ActivationTime = 1.16m + 1.0m;// sec spin up + warm up;
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(27)
@@ -140,7 +141,7 @@ new NegativeAttribute("30% slower spin up time"),
         public NataschaCold()
             : base(27/2.0m)
         {
-            Name = "(cold)";
+            Name = "cold";
             ActivationTime = 1.16m;// sec spin up;
         }
     }
@@ -156,7 +157,7 @@ new PositiveAttribute("-20% damage resistance when below 50% health and spun up"
 new NegativeAttribute("50% slower spin up time"),
 new NegativeAttribute("-60% slower move speed while deployed"),
 });
-            ActivationTime = 1.31m;// sec spin up;
+            ActivationTime = 1.31m + 1.0m;// sec spin up + warm up;
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(43.2)
@@ -185,7 +186,7 @@ new NegativeAttribute("-60% slower move speed while deployed"),
         public BrassBeastCold()
             : base(43.2m / 2.0m)
         {
-            Name = "(cold)";
+            Name = "cold";
             ActivationTime = 1.31m;// sec spin up;
         }
     }
@@ -201,7 +202,7 @@ new PositiveAttribute("20% more accurate"),
 new PositiveAttribute("Silent Killer: No barrel spin sound"),
 new NegativeAttribute("-20% slower firing speed"),
 });
-            ActivationTime = 0.696m;// sec spin up;
+            ActivationTime = 0.696m + 1.0m;// sec spin up + warm up;
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(36)
@@ -232,7 +233,7 @@ new NegativeAttribute("-20% slower firing speed"),
         public TomislavCold()
             : base(36 / 2.0m, 0.064m)
         {
-            Name = "(cold)";
+            Name = "cold";
             ActivationTime = 0.696m;// sec spin up;
             FireRate = 0.12m; // "sometimes .135 due to server tick innacuracy"
         }
@@ -251,6 +252,7 @@ new PositiveAttribute("25% damage bonus vs burning players"),
 new NegativeAttribute("-10% damage penalty"),
 new NegativeAttribute("Consumes an additional 4 ammo per second while spun up"),
 });
+            ActivationTime = 0.87m + 1.0m;// sec spin up + warm up;
             ////ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{
@@ -285,7 +287,7 @@ new NegativeAttribute("Consumes an additional 4 ammo per second while spun up"),
         public HuoLongHeaterCold()
             : base(32.4m / 2.0m)
         {
-            Name = "(cold)";
+            Name = "cold";
         }
     }
 
@@ -334,7 +336,8 @@ new NegativeAttribute("Consumes an additional 4 ammo per second while spun up"),
         public HuoLongHeaterBurningTarget()
             :base(40.5m)
         {
-            Name = "(burning target)";
+            Name = "burning target";
+            ActivationTime = 0.87m + 1.0m;// sec spin up + warm up;
             ////ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
             //{

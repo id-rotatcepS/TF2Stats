@@ -135,8 +135,8 @@ beamdisconnect 	mediguns
         public string MaxRangePercent => PercentString(new DamageCalculations(v).FurthestRamp);
         public string MaxRangeFallOff => FragmentDamageMaxRange();
         public Visibility MaxRangeDamageVisibility
-            => //FarRampVisibility == Visibility.Visible &&
-             MaxRangeVisibility == Visibility.Visible && v.MaxRange < 1024
+            => MaxRangeVisibility == Visibility.Visible && v.MaxRange < 1024
+            && (FarRampVisibility == Visibility.Visible || MaxRangePercent != "100%")
             ? Visibility.Visible 
             : Visibility.Collapsed;
 
