@@ -185,7 +185,66 @@ namespace StatsData
 
         //public string FireType => W.Ammo?.FireType;
 
-        //public string Effect => W.Effect?.Name;
+        public string Effect => GetEffectsText();
+
+        private string GetEffectsText()
+        {
+            string result = string.Empty;
+            Weapon We = W;
+            result = GetEffectsTextWithAlts(result, We);
+            if (We.SeparateModes != null)
+            {
+                foreach (Weapon w in W.SeparateModes)
+                {
+                    result = GetEffectsTextWithAlts(result, w);
+                }
+            }
+
+            return result;
+        }
+
+        private string GetEffectsTextWithAlts(string result, Weapon We)
+        {
+            result = GetEffectsText(result, We);
+            if (We.AlternateModes != null)
+            {
+                foreach (Weapon w in We.AlternateModes)
+                {
+                    result = GetEffectsText(result, w);
+                }
+            }
+
+            return result;
+        }
+
+        private static string GetEffectsText(string result, Weapon We)
+        {
+            foreach (Effect e in We.Effects)
+            {
+                string effect = e.Name;
+                if (e.Damage != null)
+                {
+                    //TODO include this
+                }
+                if (e.DamageRate > 0)
+                {
+
+                }
+                if (e.Minimum == e.Maximum && e.Minimum > 0)
+                {
+                    effect = string.Format("{0:0.#} s ", e.Minimum) + effect;
+                }
+                else if (e.Minimum > 0 || e.Maximum > 0)
+                {
+                    effect = string.Format("{0:0.#}-{0:0.#} s ", e.Minimum, e.Maximum) + effect;
+                }
+                if (!result.Contains(effect))
+                    result += effect + "\n";
+            }
+
+            return result;
+        }
+
         //public decimal? EffectDamage => W.Effect?.Damage?.Base;
         //// damage details never of interest for an Effect:
         ////public decimal? EffectZeroRangeMod => W.Effect?.Damage?.ZeroRangeRamp;

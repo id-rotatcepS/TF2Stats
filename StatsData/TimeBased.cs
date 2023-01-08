@@ -246,21 +246,31 @@ WeaponData
 
             Projectile = new Projectile(3000)
             {
+                // calculations show the following:
+                // to match wiki (23 far, 69 far on fire): 600 or 592 max range, using either 52.8% or 50% long range
+                // to match obs (24 far, 72 far on fire): 548 max range, 50% long range.  547 works, too.
+                // (to use wiki's range of 526, not even 0% long range works for wiki or observed (except it works for not-on-fire as match of observed))
+                // turns out to get obs numbers with long of 0 to 52.8 has to be max range of 530-562
+                // turns out to get wiki numbers with long of 0 to 52.8 has to be max range of 550-606
+
                 HitDamage = new Damage(baseDamage)
                 {
                     Offset = Damage.OFFSET_DRAGONSFURY,
                     ZeroRangeRamp = 1.2m,
                     LongRangeRamp = 
-                    Damage.NORMAL_LONG_RANGE_RAMP,
-                    //.5m,
+                    //Damage.NORMAL_LONG_RANGE_RAMP,
+                    // most compatible number: 50%
+                    .5m,
                     //0.92m, // Not really, probably standard, but small max range gives us this percent of base.
                     BuildingModifier = 3.0m
                 },
                 Penetrating = true,
                 Propelled = true,//Debatable with the high speed and short path, but "the Dragon's Fury's projectile is considered a modified rocket"
                 MaxRangeTime =
-                // 600m/3000m=0.2s would be convenient.
-                592m / 3000m, // 592 is minimum (600 works) maxrange to get at 23 (wiki), 69 burning (wiki), with 52.8%
+                // smallest value to match observed with 50%
+                547m/3000m,
+                // 600m/3000m,//=0.2s would be convenient.
+                //592m / 3000m, // 592 is minimum (600 works) maxrange to get at 23 (wiki), 69 burning (wiki), with 52.8%
                 //578m / 3000m, // 578 is minimum maxrange to get at 23 (wiki), results in 71 burning (69 on wiki), with 52.8%
                 //549m / 3000m, // 549 is minimum maxrange to get at 24 (my obs), 72 burning, with 52.8%
                 //526.0m / 3000.0m, // My calc: 12.5 (524.5) above medium range converts .528 lr to equiv .92 max range
