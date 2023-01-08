@@ -570,9 +570,10 @@ beamdisconnect 	mediguns
             decimal midDecimal = v.Damage.Base;
             return FragmentDamage(WeaponVMDetail.Round(midDecimal), midDecimal);
         }
+        //"theoretical"
         private string FragmentDamageFar()
         {
-            DamageCalculations c = new DamageCalculations(v);
+            DamageCalculations c = new DamageCalculations(v) { CloseOffset = 32, MaxRange = 1024 };
             return FragmentDamage(c.Far, c.FarDecimal);
         }
         private string FragmentDamageBuilding()
@@ -581,13 +582,15 @@ beamdisconnect 	mediguns
             decimal buildingDecimal = v.Damage.Base * v.Damage.BuildingModifier;
             return FragmentDamage(WeaponVMDetail.Round(buildingDecimal), buildingDecimal);
         }
+        //"achievable"
         private string FragmentDamageMaxRange()
         {
             if (v.Damage == null) return string.Empty;
             DamageCalculations c = new DamageCalculations(v);
-            
-            decimal maxRangeDecimal = v.Damage.Base * c.FurthestRamp;
-            return FragmentDamage(WeaponVMDetail.Round(maxRangeDecimal), maxRangeDecimal);
+
+            return FragmentDamage(c.Far, c.FarDecimal);
+            //decimal maxRangeDecimal = v.Damage.Base * c.FurthestRamp;
+            //return FragmentDamage(WeaponVMDetail.Round(maxRangeDecimal), maxRangeDecimal);
         }
 
 
