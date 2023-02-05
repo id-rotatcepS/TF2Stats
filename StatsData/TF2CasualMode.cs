@@ -601,6 +601,8 @@ namespace StatsData
                 _IsIncludingAlternates = value;
                 rows = null;
                 NotifyPropertyChanged(nameof(WeaponCollection));
+                NotifyPropertyChanged(nameof(Spreadsheet));
+
             }
         }
 
@@ -616,6 +618,7 @@ namespace StatsData
                 rows = null;
                 NotifyPropertyChanged(nameof(WeaponCollection));
                 NotifyPropertyChanged(nameof(IsStockOnly));
+                NotifyPropertyChanged(nameof(Spreadsheet));
 
             }
         }
@@ -632,11 +635,11 @@ namespace StatsData
                 rows = null;
                 NotifyPropertyChanged(nameof(WeaponCollection));
                 NotifyPropertyChanged(nameof(IsWeaponGroups));
+                NotifyPropertyChanged(nameof(Spreadsheet));
             }
         }
 
         private bool _IsGameFilesLoaded = false;
-
         public bool IsGameFilesLoaded
         {
             get => _IsGameFilesLoaded;
@@ -646,19 +649,24 @@ namespace StatsData
                 if (_IsGameFilesLoaded) return;
                 _IsGameFilesLoaded = value;
 
-                LoadGameFileItems();
+                LoadGameFileItems(Weapons);
 
                 NotifyPropertyChanged(nameof(WeaponCollection));
             }
         }
 
-        private static async void LoadGameFileItems()
+        private static async void LoadGameFileItems(List<Weapon> weapons)
         {
             _ = await NotifyUserAsync("Select Folder of Decoded Game Files, if any.", "Folder containing GCFScape & Vice extracted tf_weapon*.txt files.");
             await LoadItemClasses();// new DirectoryInfo(@"C:\Users\...\Desktop\class stats\TF File Extraction\tf_scripts_ctx_decodes")
             _ = await NotifyUserAsync("Select Folder of items_game.txt File", @"items_game.txt is likely in your steamapps\common\Team Fortress 2\tf\scripts\items\ folder.");
             await LoadItems("items_game.txt");// new FileInfo(@"C:\Users\...\Desktop\class stats\TF File Extraction\steamapps_common_Team Fortress 2_tf_scripts_items\items_game.txt"));
+            
+            await new SpreadsheetWriter(weapons).Write();
+
         }
+
+        public static string Spreadsheet { get; internal set; }
 
         private static async Task<ContentDialogResult> NotifyUserAsync(string title, string content)
         {

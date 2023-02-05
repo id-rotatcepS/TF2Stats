@@ -19,8 +19,6 @@ namespace StatsData
     // Short Circuit primary probably doesn't belong in this file, but it's the only example of this exact calculation that is equivalent of the time-based
     public class ShortCircuit : Weapon
     {
-        //TODO wiki went with base + falloff which doesn't really make any sense and they also didn't show mini-crit range
-        //TODO minicrit more testing... math & game files max range 256 say I should be able to get 12 if I'm far enough away. 13 means I was more like 170 away... that's like an additional melee distance which is hard to believe.
         /// <summary>
         /// myobs: pb	lr	pmc	lmc	pbc	lrc
         /// myobs: 10	9	14	13	10	9
@@ -41,7 +39,10 @@ new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("Per Shot: -5 ammo"),
 new NegativeAttribute("Uses metal for ammo"),
 });
-            Notes += "7 damage but point blank ~150% ramp up for 10 damage, max range is still 125% ramp up for 9 damage";
+            Notes += "7 damage but point blank ~150% ramp up for 10 damage, max range is still 125% ramp up for 9 damage\n" +
+                "TODO minicrit more testing... math & game files max range 256 say I should be able to get 12 if I'm far enough away.\n" +
+                " obs 13 means I was more like 170 away as 'max'... that's like an additional melee distance which is hard to believe.\n" +
+                "TODO wiki went with base + falloff which doesn't really make any sense and they also didn't show mini-crit range\n";
             ActivationTime = 0;
             Melee = new Melee()
             {
@@ -85,10 +86,11 @@ new NegativeAttribute("Uses metal for ammo"),
     /// </summary>
     public class ShortCircuitAlt : Weapon
     {
-        //TODO building modifier Test - wiki talks about it but no number. not sure where I got it. 
         public ShortCircuitAlt()
         {
             Name = "electrical airblast";
+            Notes += "TODO test for actual building modifier value( is it really 3?) I had 0.10m but based on what?\n" +
+                " Wiki just says 'insignificant' and doesn't supply a number.\n";
 
             Projectile = new Projectile(400)//wd (guessed)
             {
@@ -98,7 +100,7 @@ new NegativeAttribute("Uses metal for ammo"),
                     ZeroRangeRamp = 1,
                     LongRangeRamp = 1,
 
-                    BuildingModifier = 0.20m//TODO test for actual value( is it really 3?) had 0.10m but based on what? Wiki just says "insignificant" and doesn't supply a number.
+                    BuildingModifier = 0.20m
                 },
                 Penetrating = true,
                 Propelled = true,

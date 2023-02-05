@@ -233,5 +233,13 @@ namespace StatsData.GameFiles
         {
             return instances.GetValueOrDefault(itemClassName);
         }
+        public static List<string> AllNames()
+        {
+            return instances.Keys.ToList();
+        }
+        public static string GetName(ItemClass ic)
+        {
+            return instances.FirstOrDefault(pair => pair.Value == ic).Key;
+        }
     }
 }

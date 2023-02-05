@@ -4,6 +4,56 @@ using System.Collections.Generic;
 
 namespace StatsData
 {
+    /* Playing with short-form text stats: */
+
+    //  9-90; 6dx10(28:1), 96dps; 3-32; 8-81 - 12-121 minicrit; 18-180 crit
+
+    // pistol (scout)
+    // dmg: 22 / b:15 (100/s) / 8
+    // amm: 12 (1.005s reload) / 36
+    // acc: 47:1 recoil spread
+    //
+    // mini: 30 / 20 ; crit: 45
+    // accu: 61% (recoil)
+
+    // shotgun (common)
+    // dmg: 9-90 / b:6-60 (96/s) / 3-32
+    // amm: 6 (.87-3.37s reload) / 32
+    // acc: 28:1 shot spread
+    //
+    // mini: 12-121 / 8-81 ; crit: 18-180
+    // accu: 36% (spread)
+
+    // rocket launcher
+    // dmg: 56-112 / b:45-90 (112.5/s) / 24-48
+    // amm: 4 (.92-3.32s reload) / 20
+    // acc: 1100 HU/s; 146 HU radius
+    //
+    // mini: ?-151 / ?-122 ; crit: ?-270
+    // accu: 12m/s; 1.2m radius
+    // accu: 18% (impact) 122% (splash)
+
+    // grenade launcher; roller
+    // dmg: 50-100 (166.67/s); 30-60
+    // amm: 4 (1.24-3.04s reload) / 16
+    // acc: 1216.6 HU/s; 146 HU radius; fuse: 2.3s
+    //
+    // mini: ?-135; ?-81 ; crit: ?-300; ?-180
+    // accu: 12m/s; 1.2m radius; fuse: 2.3s
+    // accu: 19% (impact) 135% (splash) max: 547%
+
+    // flame thrower (not including afterburn)
+    // dmg: 13 (170/s) / b:6-13  / 3
+    // amm: 200
+    // acc: 2450 HU/s 8.5% drag; limit: 385.24 HU
+    //
+    // mini: 9-17 / 4-9 ; crit: 19-38 / 10-19
+    // accu: 24m/s 8.5% drag; limit: 5.6m
+    // accu: 39% (impact); max: 75%
+
+    /********************************************/
+
+
     //https://docs.google.com/spreadsheets/d/1-Qu7WHA9dlTAlVEEI3DSeYrhZs2l157e2azezESt7b4/edit#gid=0
     public class WeaponVM : IComparable
     {

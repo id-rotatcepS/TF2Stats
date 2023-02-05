@@ -44,6 +44,7 @@
         <ScrollViewer Grid.Column="2"
                 VerticalScrollBarVisibility="Auto"
                 HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <StackPanel>
             <StackPanel 
                         DataContext="{x:Bind WeaponGrid.SelectedItem, Mode=OneWay}"  HorizontalAlignment="Stretch">
                 <TextBlock Text="{Binding Name}"/>
@@ -143,6 +144,10 @@
 
                 <TextBlock Text="--Game File Info--"/>
                 <TextBlock Text="{Binding Detail.GameItemSummary}"/>
+                </StackPanel>
+                <TextBox Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" 
+                         Text="{Binding Spreadsheet, Mode=OneWay}"
+                         FontFamily="Global Monospace,ApparentlyThatDoesn'tExistSo...,Consolas,Courier New" />
             </StackPanel>
         </ScrollViewer>
     </Grid>
