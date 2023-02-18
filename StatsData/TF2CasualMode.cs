@@ -13,6 +13,11 @@ namespace StatsData
 {
     public class TF2CasualMode : INotifyPropertyChanged
     {
+        public TF2CasualMode()
+        {
+            ItemClass.LoadKnownClasses();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string name)
         {
@@ -645,12 +650,19 @@ namespace StatsData
             get => _IsGameFilesLoaded;
             set
             {
-                // one-way boolean - we load files and that's it.
-                if (_IsGameFilesLoaded) return;
+                if (_IsGameFilesLoaded == value) return;
+
+                if (_IsGameFilesLoaded)
+                {
+                    ItemClass.ClearClasses();
+                    ItemClass.LoadKnownClasses();
+                }
+                else
+                {
+                    LoadGameFileItems(Weapons);
+                }
+
                 _IsGameFilesLoaded = value;
-
-                LoadGameFileItems(Weapons);
-
                 NotifyPropertyChanged(nameof(WeaponCollection));
             }
         }
@@ -661,8 +673,12 @@ namespace StatsData
             await LoadItemClasses();// new DirectoryInfo(@"C:\Users\...\Desktop\class stats\TF File Extraction\tf_scripts_ctx_decodes")
             _ = await NotifyUserAsync("Select Folder of items_game.txt File", @"items_game.txt is likely in your steamapps\common\Team Fortress 2\tf\scripts\items\ folder.");
             await LoadItems("items_game.txt");// new FileInfo(@"C:\Users\...\Desktop\class stats\TF File Extraction\steamapps_common_Team Fortress 2_tf_scripts_items\items_game.txt"));
-            
-            await new SpreadsheetWriter(weapons).Write();
+
+            try
+            {
+                await new SpreadsheetWriter(weapons).Write();
+            }
+            catch { }// if they cancelled everything this will fail.
 
         }
 
@@ -718,6 +734,7 @@ namespace StatsData
                 folderPicker.FileTypeFilter.Add("*");
                 StorageFolder folder = await folderPicker.PickSingleFolderAsync();
                 if (folder == null) return;
+                ItemClass.ClearClasses();
                 //Windows.Storage.StorageFolder folder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(path.FullName);
                 IReadOnlyList<StorageFile> files = await folder.GetFilesAsync();
                 foreach (StorageFile file in files.Where(IsItemfile))

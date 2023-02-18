@@ -9,7 +9,7 @@ namespace StatsData
         public APistol(decimal baseDamage = 15) // tf_weapon_pistol Damage=15
         {
             Name = "Pistol";
-            Notes += "TODO wiki spread 48:1, calc rounding issue 47.4999repeating\n";
+            Notes += "TODO wiki spread 48:1, my calc 50:1\n";
             Hitscan = new Hitscan()
             {
                 Damage = new Damage(baseDamage)
@@ -31,6 +31,10 @@ namespace StatsData
 
     public class EngineerPistol : APistol
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	15	0.04	0	secondary	0.5	0	0	12	12	projectile_bullet	4096	0.15	5	0.25	0	TF_WEAPON_PISTOL
+         */
         public EngineerPistol()
         {
             Attributes.AddRange(new WeaponAttribute[] {
@@ -51,6 +55,10 @@ namespace StatsData
     /// </summary>
     public class ScoutPistol : APistol
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	15	0.04	0	secondary	0.5	0	0	12	12	projectile_bullet	4096	0.15	5	0.25	0	TF_WEAPON_PISTOL_SCOUT
+         */
         // TODO (Addressed with offsets) wiki/obs point blank 22, calc 23; (winger comes out correct)
         public ScoutPistol(decimal baseDamage = 15)
             :base(baseDamage)
@@ -89,6 +97,10 @@ namespace StatsData
     /// </summary>
     public class Winger : ScoutPistol
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	15	0.04	0	secondary	0.5	0	0	12	12	projectile_bullet	4096	0.15	5	0.25	0	The Winger
+         */
         public Winger()
             :base(17.25m)
         {
@@ -125,6 +137,10 @@ new NegativeAttribute("-60% clip size"),
     /// </summary>
     public class PrettyBoysPocketPistol : ScoutPistol
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	15	0.04	0	secondary	0.5	0	0	12	12	projectile_bullet	4096	0.15	5	0.25	0	Pretty Boy's Pocket Pistol
+         */
         public PrettyBoysPocketPistol()
         {
             Name = "Pretty Boy's Pocket Pistol"; Level = 10; WeaponType = "Pistol"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
@@ -165,6 +181,7 @@ new NegativeAttribute("-25% clip size"),
         public ASMG()
         {
             Name = "smg";
+            Notes += "TODO Wiki spread 76:1 my calc 80:1\n";
 
             Hitscan = new Hitscan()
             {
@@ -249,6 +266,7 @@ new NegativeAttribute("No random critical hits"),
         public ARevolver(decimal baseDamage = 40, decimal recovery = 1.25m) // tf_weapon_revolver Damage=40
         {
             Name = "revolver";
+            Notes += "TODO Wiki spread 76:1 my calc 80:1\n";
 
             Hitscan = new Hitscan()
             {

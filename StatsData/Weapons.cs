@@ -20,9 +20,7 @@ namespace StatsData
     // TODO crossbow: Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)
     // TODO shortcircuit: wiki went with base + falloff which doesn't really make any sense and they also didn't show mini-crit range
     // TODO rocket launchers point blank required a custom ramp up
-    // TODO WIKI IS WRONG about shotguns spread... their own evidence proves them wrong (see comments on constant)
-    //TODO (shotgun/scattergun) wiki spread 30:1, but calc is 28:1 (28.148repeating).
-    //  calc is 30 if I use 2.0 instead of 1.9 for spread divisor. (but back-scatter is slightly too HIGH calc, then. and Minigun calcs 25 instead of 24 (and tomislav calcs 31 not 30))
+    // TODO check wiki spread vs. good calc (30:1 and 50:1 are good for sure)
 
     //TODO (shotgun/scattergun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off
 
@@ -38,6 +36,10 @@ namespace StatsData
 
     public abstract class IndivisibleParticleSmasher : Weapon
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+10	6	0.0675	0	primary	0.5	0.1	1	6	6	projectile_energy_ring	8192	0.8	5	0.25	2	The Pomson 6000
+         */
         public IndivisibleParticleSmasher(decimal baseDamage = 60)
         {
             Name = "indivisible particle smasher";
@@ -109,6 +111,10 @@ new DescriptionAttribute("Being an innovative hand-held irradiating utensil capa
     /// </summary>
     public class RighteousBison : IndivisibleParticleSmasher
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+10	6	0.0675	0	secondary	0.5	0.1	1	6	6	projectile_energy_ring	8192	0.8	5	0.25	2	The Righteous Bison
+         */
         public RighteousBison()
             : base(20)
         {
@@ -188,6 +194,10 @@ new NegativeAttribute("Deals only 20% damage to buildings"),
     /// </summary>
     public class Huntsman : ABolt
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	70	0	0	item2	1	0	0	1	12	projectile_arrow	8192	2	0.6	0.6	2	The Huntsman
+         */
         //TODO Aim Fatigue: 5s
         public Huntsman()
         {
@@ -326,6 +336,10 @@ new NegativeAttribute("Deals only 20% damage to buildings"),
     /// </summary>
     public class RescueRanger : ABolt
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	40	0	0	primary	1	0.1	0	6	6	projectile_arrow	0	0.625	5	0.25	3	The Rescue Ranger
+         */
         public RescueRanger()
         {
             Name = "Rescue Ranger"; Level = 1 - 100; WeaponType = "Shotgun"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
@@ -360,6 +374,10 @@ new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
 
     public class Wrangler : Weapon
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	4	0	0	item1	0	0	0	-1	75	projectile_bullet	8192	1.5	0	0	0	The Wrangler
+         */
         public Wrangler()
         {
             Name = "Wrangler"; Level = 5; WeaponType = "Laser Pointer"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),

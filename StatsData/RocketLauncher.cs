@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace StatsData
 {
@@ -8,6 +9,10 @@ namespace StatsData
     /// </summary>
     public abstract class ARocketLauncher : Weapon
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	90	0	0	primary	0.83	0.1	0	4	4	projectile_rocket	0	0.8	0.8	0.8	0	TF_WEAPON_ROCKETLAUNCHER
+         */
         //TODO point blank obs/wiki 112 (151mc), calcs as 113 (152mc)
         public ARocketLauncher(decimal baseDamage = 90, decimal speed = 1100, decimal splashRadius= AOE.DEFAULT_SPLASH)
         {
@@ -101,6 +106,10 @@ namespace StatsData
     /// </summary>
     public class DirectHit : ARocketLauncher
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	90	0	0	primary	0.83	0.1	0	4	4	projectile_rocket	0	0.8	0.8	0.8	0	The Direct Hit
+         */
         // TODO (similar to base) point blank obs/wiki 140 (mc 189); calc is 141 (mc 190); (wiki base 112 should round to 113, so that's ok)
 
         // +25% damage bonus
@@ -222,6 +231,10 @@ new NegativeAttribute("-25% damage penalty"),
     /// </summary>
     public class CowMangler5000 : ARocketLauncher
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	90	0	0	primary	0.83	0.1	0	4	4	projectile_energy_ball	0	0.8	0.8	0.8	0	The Cow Mangler 5000
+         */
         public CowMangler5000()
         {
             Name = "Cowmangler 5000";
@@ -310,9 +323,10 @@ new NegativeAttribute("-20% explosion radius"),
 new NegativeAttribute("+3 degrees random projectile deviation"),
 new NegativeAttribute("Overloading the chamber will cause a misfire"),
 new NegativeAttribute("No ammo from dispensers when active"),
-}); 
+});
             // +3 degrees random projectile deviation
-            Projectile.Spread = 0.05236m;
+            // (converted to radians)
+            Projectile.Spread = Convert.ToDecimal(3.0 * Math.PI / 180.0);// 0.05236m;
 
             //Projectile = new Projectile(1100)
             //{
@@ -344,6 +358,15 @@ new NegativeAttribute("No ammo from dispensers when active"),
     /// </summary>
     public class AirStrike : ARocketLauncher
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	90	0	0	primary	0.83	0.1	0	4	4	projectile_rocket	0	0.8	0.8	0.8	0	The Air Strike
+
+        can_deal_damage ; can_deal_gib_damage ; can_be_equipped_by_soldier_or_demo ; can_deal_posthumous_damage ; can_deal_critical_damage ; can_deal_long_distance_damage ; can_be_festivized	
+        Blast radius decreased: mult_explosion_radius=0.90 ; damage penalty: mult_dmg=0.85 ; rocket jump damage reduction: rocket_jump_dmg_reduction=0.85 ; rocketjump attackrate bonus: rocketjump_attackrate_bonus=0.35 ; mini rockets: mini_rockets=1 ; clipsize increase on kill: clipsize_increase_on_kill=4 ; disable fancy class select anim: disable_fancy_class_select_anim=1	
+        min_viewmodel_offset: 10 -3 -10 ; weapon_uses_stattrak_module: models/weapons/c_models/stattrack.mdl ; weapon_allow_inspect: 1
+         */
+
         // -15% damage penalty
         // -15% blast damage from rocket jumps
         // -10% explosion radius

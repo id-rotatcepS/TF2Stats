@@ -13,7 +13,6 @@ namespace StatsData
             Name = "Shotgun";
             Notes = "wiki 0.51 reload more, but derivatives all use 0.50\n" +
                 "Wiki Long range all pellets is as if 50%, not 52.8%??\n" +
-                "TODO wiki spread 30:1, but calc is 28:1 (28.148repeating). Spread based on 0.0675 - wiki shotgun discussion proof shows that yet mistakenly still uses 0.0625\n" +
                 "CLOSE RANGE REQUIRES OFFSET (32 doesn't match obs) or <150%\n" +
                 "TODO wiki all pellets far 30, but calc is 32, need evidence\n";
             Hitscan = new Hitscan()

@@ -19,6 +19,10 @@ namespace StatsData
     // Short Circuit primary probably doesn't belong in this file, but it's the only example of this exact calculation that is equivalent of the time-based
     public class ShortCircuit : Weapon
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	7	0.04	0	secondary	0	0	0	0	0	projectile_bullet	256	0.15	0	0	0	The Short Circuit
+         */
         /// <summary>
         /// myobs: pb	lr	pmc	lmc	pbc	lrc
         /// myobs: 10	9	14	13	10	9
@@ -58,7 +62,7 @@ new NegativeAttribute("Uses metal for ammo"),
                     //BuildingModifier = 0.07m// -93%
                     BuildingModifier = 0.20m// typical energy weapon modifier works with base 7 damage to round to 1 damage vs. building same as wiki
                 },
-                MaxRange = 256 // from tf_weapon_mechanical_arm.ctx
+                MaxRange = 256 // 256 from tf_weapon_mechanical_arm.ctx
             };
             FireRate = 0.15m;
 
@@ -376,6 +380,10 @@ new DescriptionAttribute("This powerful, single-shot flamethrower rewards consec
     /// </summary>
     public class CrusadersCrossbow : ABolt
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	75	0	0	primary	1.5	0	0	1	1	projectile_healing_bolt	0	0.23	0	0	0	The Crusader's Crossbow
+         */
         //TODO I had 1.6 FireRate. Wiki lists attack interval as 0.24 s, 1.5 reload (1.75 s with reload) 
         public CrusadersCrossbow()
         {

@@ -6,6 +6,10 @@ namespace StatsData
 
     public abstract class AFlareGun : Weapon
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	30	0	0	item1	0	0	0	-1	12	projectile_flare	8192	2	0	0	2	The Flare Gun
+         */
         public AFlareGun(decimal baseDamage = 30, decimal speed = 2000, decimal splashRadius = 0)
             //tf_weapon_flaregun Damage=30 Spread=0.0 TimeFireDelay=2.0
         {
@@ -157,6 +161,10 @@ new DescriptionAttribute("Alt-Fire: Detonate flare.<br>This weapon will reload a
     /// </summary>
     public class Manmelter : AFlareGun
     {
+        /*
+BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	AmmoPerShot	ClipSize	DefaultClip	ProjectileType	Range	TimeFireDelay	TimeIdle	TimeIdleEmpty	PunchAngle	Name
+1	30	0	0	secondary	0	0	0	-1	12	projectile_flare	8192	2	0	0	2	The Manmelter
+         */
         public Manmelter()
             :base(30, 
                  3000)

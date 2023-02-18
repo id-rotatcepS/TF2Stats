@@ -11,7 +11,7 @@ namespace StatsData
     // pistol (scout)
     // dmg: 22 / b:15 (100/s) / 8
     // amm: 12 (1.005s reload) / 36
-    // acc: 47:1 recoil spread
+    // acc: 50:1 recoil spread
     //
     // mini: 30 / 20 ; crit: 45
     // accu: 61% (recoil)
@@ -19,7 +19,7 @@ namespace StatsData
     // shotgun (common)
     // dmg: 9-90 / b:6-60 (96/s) / 3-32
     // amm: 6 (.87-3.37s reload) / 32
-    // acc: 28:1 shot spread
+    // acc: 30:1 shot spread
     //
     // mini: 12-121 / 8-81 ; crit: 18-180
     // accu: 36% (spread)
@@ -155,7 +155,7 @@ namespace StatsData
         {
             //?? 0.049
             if (spread > 0)
-                return 1.0m / ((decimal)Math.Tan((double)spread)) * (0.5m * 25);
+                return 1.0m / Convert.ToDecimal(Math.Tan(decimal.ToDouble(spread))) * (0.5m * 25); // weaponvmdamagefunctiontimes.SpreadRatio * 25
 
             //(exp radius + coll box "radius" / 300Hu/s median speed) = time to edge of impact zone .. * V = travel distance for explosion to still impact target
 

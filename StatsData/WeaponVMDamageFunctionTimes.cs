@@ -431,7 +431,8 @@ beamdisconnect 	mediguns
         /// </summary>
         /// <param name="spread"></param>
         /// <returns></returns>
-        private string SpreadRatio(decimal? spread)
+        [Obsolete]
+        private string BadSpreadRatio(decimal? spread)
         {
             if (!spread.HasValue)
                 return string.Empty;
@@ -450,6 +451,36 @@ beamdisconnect 	mediguns
 
             decimal deviance = spread.Value / defaultSpread;
             decimal spreadToOne = 1.0m / deviance;
+            return string.Format("{0}:1",
+                //$"{{0}}({spreadToOne}):1",
+
+                //"{0}({1}=1.0/({2}/{3}[={4}])):1",
+                //Math.Round(spreadToOne, MidpointRounding.AwayFromZero), spreadToOne, spread.Value, defaultSpread, spread.Value/defaultSpread);
+                WeaponVMDetail.Round(spreadToOne));
+        }
+
+        /// <summary>
+        /// My interpretation: spread is radians defining the cone of spread, therefore the ratio is (1/tan(spread/2)) : 1
+        /// </summary>
+        /// <param name="spread"></param>
+        /// <returns></returns>
+        /// <seealso cref="WeaponVM.GetAccurateRange(decimal, decimal, decimal)"/>
+        private string SpreadRatio(decimal? spread)
+        {
+            if (!spread.HasValue)
+                return string.Empty;
+
+            // angle of the right-triangle made from the center line and the perpendicular extending 1 HU
+            decimal triangleAngleRadians = spread.Value / 2m;
+
+            // the ratio of 1HU / center line
+            decimal tanAngle = Convert.ToDecimal(Math.Tan(decimal.ToDouble(triangleAngleRadians)));
+            // the length of the center line
+            decimal spreadToOne = 1.0m / tanAngle;
+
+            // That said, I don't care for SpreadRatio as a concept at all,
+            // I have come up with an Accuracy expression that I consider much more useful.
+
             return string.Format("{0}:1",
                 //$"{{0}}({spreadToOne}):1",
 

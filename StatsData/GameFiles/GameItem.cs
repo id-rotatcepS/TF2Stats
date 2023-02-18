@@ -9,7 +9,7 @@ namespace StatsData.GameFiles
     /// </summary>
     public class GameItem
     {
-   
+
         public static void LoadPrefabsItemsAndResolve(string fileContent)
         {
             Stack<string> lines = new Stack<string>(
@@ -62,7 +62,7 @@ namespace StatsData.GameFiles
             if (firstline.Trim().StartsWith("{"))
             {
                 inBlockProcessor.Invoke(nameOfBlock, lines);
-                if (! lines.Pop().Trim().StartsWith("}"))
+                if (!lines.Pop().Trim().StartsWith("}"))
                 {
                     throw new BalanceException(nameOfBlock);
                 }
@@ -200,11 +200,12 @@ namespace StatsData.GameFiles
         private static void LoadMainItems(string items, Stack<string> lines)
         {
             ProcessOnlyNamedBlocks(lines,
-                (blockName, lns) => { 
-                    if (itemIDs.Contains(blockName)) 
-                        itemInstances.Add(new GameItem(blockName, lns)); 
-                    else 
-                        EatBlockBody(lns); 
+                (blockName, lns) =>
+                {
+                    if (itemIDs.Contains(blockName))
+                        itemInstances.Add(new GameItem(blockName, lns));
+                    else
+                        EatBlockBody(lns);
                 });
         }
 
@@ -367,13 +368,13 @@ namespace StatsData.GameFiles
                 {
                     Action<string, Stack<string>> loadWeaponData = simpleMappers[next];
                     _ = ProcessBlockWith(lines, next, loadWeaponData);
-                        
+
                 }
                 else
                 if (complexMappers.ContainsKey(next))
                 {
                     Action<string, Stack<string>> loadWeaponData = complexMappers[next];
-                    ProcessBlockWith(lines, next, 
+                    ProcessBlockWith(lines, next,
                         (n, lns) => ProcessOnlyNamedBlocks(lns, loadWeaponData));
                 }
                 else
@@ -447,17 +448,17 @@ namespace StatsData.GameFiles
             catch { }
             try
             {
-                 Name = rows["name"]; // e.g. TF_WEAPON_BAT
+                Name = rows["name"]; // e.g. TF_WEAPON_BAT
             }
             catch { }
             try
             {
-                 Xifier_Class_Remap = rows["xifier_class_remap"];
+                Xifier_Class_Remap = rows["xifier_class_remap"];
             }
             catch { }
             try
             {
-                 Prefab = rows["prefab"];
+                Prefab = rows["prefab"];
             }
             catch { }
             try
@@ -467,12 +468,12 @@ namespace StatsData.GameFiles
             catch { }
             try
             {
-                 Base_Item_Name = rows["base_item_name"];
+                Base_Item_Name = rows["base_item_name"];
             }
             catch { }
             try
             {
-                 First_Sale_Date = rows["first_sale_date"];
+                First_Sale_Date = rows["first_sale_date"];
             }
             catch { }
             try
@@ -519,5 +520,167 @@ namespace StatsData.GameFiles
         //    // else push it back
         //}
 
+        /// <summary>
+        /// null if not found.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static string GetItemClassNameForID(string id) => id != null && idToItemClass.ContainsKey(id) ? idToItemClass[id] : null;
+        /// <summary>
+        /// based in items_game.txt 12/21/2022
+        /// </summary>
+        private static Dictionary<string, string> idToItemClass = new Dictionary<string, string>
+        {
+            ["588"] = "tf_weapon_drg_pomson",
+            ["442"] = "tf_weapon_raygun",
+            ["39"] = "tf_weapon_flaregun",
+            ["351"] = "tf_weapon_flaregun",
+            ["595"] = "tf_weapon_flaregun_revenge",
+            ["740"] = "tf_weapon_flaregun",
+            ["56"] = "tf_weapon_compound_bow",
+            ["305"] = "tf_weapon_crossbow",
+            ["997"] = "tf_weapon_shotgun_building_rescue",
+            ["22"] = "tf_weapon_pistol",
+            ["528"] = "tf_weapon_mechanical_arm",
+            ["140"] = "tf_weapon_laser_pointer",
+            ["23"] = "tf_weapon_pistol",
+            ["449"] = "tf_weapon_handgun_scout_secondary",
+            ["773"] = "tf_weapon_handgun_scout_secondary",
+            ["18"] = "tf_weapon_rocketlauncher",
+            ["127"] = "tf_weapon_rocketlauncher_directhit",
+            ["228"] = "tf_weapon_rocketlauncher",
+            ["414"] = "tf_weapon_rocketlauncher",
+            ["441"] = "tf_weapon_particle_cannon",
+            ["730"] = "tf_weapon_rocketlauncher",
+            ["1104"] = "tf_weapon_rocketlauncher_airstrike",
+            ["9"] = "tf_weapon_shotgun_primary",
+            ["415"] = "tf_weapon_shotgun_primary",
+            ["1153"] = "tf_weapon_shotgun_primary",
+            ["425"] = "tf_weapon_shotgun_primary",
+            ["141"] = "tf_weapon_sentry_revenge",
+            ["527"] = "tf_weapon_shotgun_primary",
+            ["13"] = "tf_weapon_scattergun",
+            ["45"] = "tf_weapon_scattergun",
+            ["220"] = "tf_weapon_handgun_scout_primary",
+            ["448"] = "tf_weapon_soda_popper",
+            ["772"] = "tf_weapon_pep_brawler_blaster",
+            ["1103"] = "tf_weapon_scattergun",
+            ["21"] = "tf_weapon_flamethrower",
+            ["40"] = "tf_weapon_flamethrower",
+            ["215"] = "tf_weapon_flamethrower",
+            ["594"] = "tf_weapon_flamethrower",
+            ["1178"] = "tf_weapon_rocketlauncher_fireball",
+            ["19"] = "tf_weapon_grenadelauncher",
+            ["308"] = "tf_weapon_grenadelauncher",
+            ["996"] = "tf_weapon_cannon",
+            ["1151"] = "tf_weapon_grenadelauncher",
+            ["20"] = "tf_weapon_pipebomblauncher",
+            ["130"] = "tf_weapon_pipebomblauncher",
+            ["1150"] = "tf_weapon_pipebomblauncher",
+            ["15"] = "tf_weapon_minigun",
+            ["41"] = "tf_weapon_minigun",
+            ["312"] = "tf_weapon_minigun",
+            ["424"] = "tf_weapon_minigun",
+            ["811"] = "tf_weapon_minigun",
+            ["17"] = "tf_weapon_syringegun_medic",
+            ["36"] = "tf_weapon_syringegun_medic",
+            ["412"] = "tf_weapon_syringegun_medic",
+            ["14"] = "tf_weapon_sniperrifle",
+            ["230"] = "tf_weapon_sniperrifle",
+            ["402"] = "tf_weapon_sniperrifle_decap",
+            ["526"] = "tf_weapon_sniperrifle",
+            ["752"] = "tf_weapon_sniperrifle",
+            ["1098"] = "tf_weapon_sniperrifle_classic",
+            ["16"] = "tf_weapon_smg",
+            ["751"] = "tf_weapon_charged_smg",
+            ["24"] = "tf_weapon_revolver",
+            ["61"] = "tf_weapon_revolver",
+            ["224"] = "tf_weapon_revolver",
+            ["460"] = "tf_weapon_revolver",
+            ["525"] = "tf_weapon_revolver",
+            ["812"] = "tf_weapon_cleaver",
+            //131	
+            //406	
+            //1099	
+            ["1179"] = "tf_weapon_rocketpack",
+            //444	
+            ["129"] = "tf_weapon_buff_item",
+            ["226"] = "tf_weapon_buff_item",
+            ["354"] = "tf_weapon_buff_item",
+            ["29"] = "tf_weapon_medigun",
+            ["35"] = "tf_weapon_medigun",
+            ["411"] = "tf_weapon_medigun",
+            ["998"] = "tf_weapon_medigun",
+            ["1101"] = "tf_weapon_parachute",
+            //133	
+            //405	
+            //57	
+            //231	
+            //642	
+            ["42"] = "tf_weapon_lunchbox",
+            ["159"] = "tf_weapon_lunchbox",
+            ["311"] = "tf_weapon_lunchbox",
+            ["1190"] = "tf_weapon_lunchbox",
+            ["46"] = "tf_weapon_lunchbox_drink",
+            ["163"] = "tf_weapon_lunchbox_drink",
+            ["58"] = "tf_weapon_jar",
+            ["222"] = "tf_weapon_jar_milk",
+            ["1180"] = "tf_weapon_jar_gas",
+            ["735"] = "tf_weapon_builder",
+            ["810"] = "tf_weapon_sapper",
+            ["30"] = "tf_weapon_invis",
+            ["59"] = "tf_weapon_invis",
+            ["60"] = "tf_weapon_invis",
+            ["7"] = "tf_weapon_wrench",
+            ["155"] = "tf_weapon_wrench",
+            ["329"] = "tf_weapon_wrench",
+            ["589"] = "tf_weapon_wrench",
+            ["142"] = "tf_weapon_robot_arm",
+            ["4"] = "tf_weapon_knife",
+            ["225"] = "tf_weapon_knife",
+            ["356"] = "tf_weapon_knife",
+            ["461"] = "tf_weapon_knife",
+            ["649"] = "tf_weapon_knife",
+            ["0"] = "tf_weapon_bat",
+            ["44"] = "tf_weapon_bat_wood",
+            ["317"] = "tf_weapon_bat",
+            ["325"] = "tf_weapon_bat",
+            ["349"] = "tf_weapon_bat",
+            ["355"] = "tf_weapon_bat",
+            ["450"] = "tf_weapon_bat",
+            ["648"] = "tf_weapon_bat_giftwrap",
+            ["775"] = "tf_weapon_shovel",
+            ["447"] = "tf_weapon_shovel",
+            ["1181"] = "tf_weapon_slap",
+            ["214"] = "tf_weapon_fireaxe",
+            ["239"] = "tf_weapon_fists",
+            ["426"] = "tf_weapon_fists",
+            ["154"] = "tf_weapon_shovel",
+            ["357"] = "tf_weapon_katana",
+            ["128"] = "tf_weapon_shovel",
+            ["416"] = "tf_weapon_shovel",
+            ["38"] = "tf_weapon_fireaxe",
+            ["153"] = "tf_weapon_fireaxe",
+            ["326"] = "tf_weapon_fireaxe",
+            ["348"] = "tf_weapon_fireaxe",
+            ["593"] = "tf_weapon_fireaxe",
+            ["813"] = "tf_weapon_breakable_sign",
+            ["132"] = "tf_weapon_sword",
+            ["307"] = "tf_weapon_stickbomb",
+            ["327"] = "tf_weapon_sword",
+            ["404"] = "tf_weapon_sword",
+            ["172"] = "tf_weapon_sword",
+            ["43"] = "tf_weapon_fists",
+            ["310"] = "tf_weapon_fists",
+            ["656"] = "tf_weapon_fists",
+            ["331"] = "tf_weapon_fists",
+            ["37"] = "tf_weapon_bonesaw",
+            ["173"] = "tf_weapon_bonesaw",
+            ["304"] = "tf_weapon_bonesaw",
+            ["413"] = "tf_weapon_bonesaw",
+            ["171"] = "tf_weapon_club",
+            ["232"] = "tf_weapon_club",
+            ["401"] = "tf_weapon_club",
+        };
     }
 }
