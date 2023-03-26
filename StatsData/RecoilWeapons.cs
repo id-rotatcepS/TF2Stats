@@ -9,7 +9,6 @@ namespace StatsData
         public APistol(decimal baseDamage = 15) // tf_weapon_pistol Damage=15
         {
             Name = "Pistol";
-            Notes += "TODO wiki spread 48:1, my calc 50:1\n";
             Hitscan = new Hitscan()
             {
                 Damage = new Damage(baseDamage)
@@ -181,7 +180,6 @@ new NegativeAttribute("-25% clip size"),
         public ASMG()
         {
             Name = "smg";
-            Notes += "TODO Wiki spread 76:1 my calc 80:1\n";
 
             Hitscan = new Hitscan()
             {
@@ -266,7 +264,6 @@ new NegativeAttribute("No random critical hits"),
         public ARevolver(decimal baseDamage = 40, decimal recovery = 1.25m) // tf_weapon_revolver Damage=40
         {
             Name = "revolver";
-            Notes += "TODO Wiki spread 76:1 my calc 80:1\n";
 
             Hitscan = new Hitscan()
             {

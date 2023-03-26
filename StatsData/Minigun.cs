@@ -9,7 +9,6 @@ namespace StatsData
         public AMinigun(decimal baseDamage = 36, decimal spread = Damage.SPREAD_MINIGUN) // Oddly, tf_weapon_minigun Damage=9
         {
             Name = "minigun";
-            Notes += "TODO general minigun Wiki spread 24:1 my calc 25:1\n";
             ActivationTime = 0.87m;// sec spin up;
             Hitscan = new Hitscan()
             {
@@ -203,7 +202,7 @@ new PositiveAttribute("20% more accurate"),
 new PositiveAttribute("Silent Killer: No barrel spin sound"),
 new NegativeAttribute("-20% slower firing speed"),
 });
-            Notes += "TODO Tomislav Wiki spread 30:1 my calc 31:1 - shortstop is pistol scattergun, maybe this is shotgun minigun?\n";
+            Notes += "shortstop is pistol scattergun, maybe this is shotgun minigun?\n";
             ActivationTime = 0.696m + 1.0m;// sec spin up + warm up;
             //Hitscan = new Hitscan()
             //{

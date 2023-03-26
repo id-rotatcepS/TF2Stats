@@ -13,8 +13,7 @@ namespace StatsData
             Name = "Shotgun";
             Notes = "wiki 0.51 reload more, but derivatives all use 0.50\n" +
                 "Wiki Long range all pellets is as if 50%, not 52.8%??\n" +
-                "CLOSE RANGE REQUIRES OFFSET (32 doesn't match obs) or <150%\n" +
-                "TODO wiki all pellets far 30, but calc is 32, need evidence\n";
+                "CLOSE RANGE REQUIRES OFFSET (32 doesn't match obs) or <150%\n";
             Hitscan = new Hitscan()
             {
                 Damage = new Damage(baseDamage)
@@ -144,7 +143,6 @@ new NegativeAttribute("-34% clip size"),
     public class PanicAttack : AShotgun
     {
         // +50% bullets per shot; -20% damage penalty; spread gimmick
-        //TODO (probably just from stock issue) wiki far max 36, calc is 38
         public PanicAttack()
             :base(72, 
                  15)
@@ -185,10 +183,10 @@ new NegativeAttribute("Successive shots become less accurate"),
         public PanicAttack6thShot()
              : base(72,
                  15, 
-                 0.0945m)//TODO umm.. where's this from? math vs. basis instead?
+                 Damage.SPREAD_SHOTGUN_SCATTERGUN*1.40m)//Interpretation I added to wiki based on patch note "March 28, 2018 Patch #1 Reduced worst-case shot pattern spread by 40%"  https://wiki.teamfortress.com/w/index.php?title=Panic_Attack&diff=prev&oldid=3379998 interpreted as 40% increase in spread worst-case =0.0945 (a little worse than backscatter).
         {
             Name = "6th shot";
-
+            Notes += "Updated wiki interpreting patch note as 40% higher spread worst-case, could be wrong\n";
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(72)
@@ -214,7 +212,7 @@ new NegativeAttribute("Successive shots become less accurate"),
     /// </summary>
     public class FamilyBusiness : AShotgun
     {
-        //TODO obs/wiki close max is 76, calc is 76.5=77  (and long wiki is 26, calc is 27 - relates to stock tho)
+        //TODO obs/wiki close max is 76, calc is 76.5=77 
         //TODO maybe default .5 round of "toEven" is what game uses? I'm manually using "awayfromzero"
         public FamilyBusiness()
             :base(51)

@@ -60,8 +60,7 @@ namespace StatsData
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc 142 but obs/'wiki' 141\n";
             Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
-            Notes += "obs close 10-104 matches my offsets and not wiki\n" +
-                "TODO (from AShotgun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off\n";
+            Notes += "obs close 10-104 matches my offsets and not wiki\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -102,8 +101,7 @@ new NegativeAttribute("-66% clip size"),
 new DescriptionAttribute("This weapon reloads its entire clip at once"),
 });
             Notes += "minicrit 'wiki'/calc close 153, but obs 152\n";
-            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n" +
-                "TODO wiki all pellets far 32, but calc is 34, need evidence\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
 
             //Hitscan = new Hitscan()
             //{
@@ -137,7 +135,7 @@ new DescriptionAttribute("This weapon reloads its entire clip at once"),
     {
         public Shortstop() // closer to a pistol than defaults
             :base(48, 4,
-                 Damage.SPREAD_PISTOL,// per ctx (wiki translates value to 50:1 (as does my calc) vs. 48:1 pistol)
+                 Damage.SPREAD_PISTOL,// per ctx
                  Damage.NORMAL_HITSCAN_ZERO_RANGE_RAMP) // yes, normal, not scattergun
             //tf_weapon_handgun_scout_primary Damage=12 BulletsPerShot=4, Spread=0.04 (pistol), TimeFireDelay=0.35
         {
@@ -148,9 +146,7 @@ new NegativeAttribute("Increase in push force taken from damage and airblast"),
 new DescriptionAttribute("Holds a 4-shot clip and reloads its entire clip at once.<br> Alt-Fire to reach and shove someone! <br><br>Mann Co.'s latest in high attitude break-action personal defense."),
 });
             Notes += "Close range works with 30, 25 (scatter current default), also most anything else (23.5-32)\n" +
-                "TODO wiki all pellets far 24, but calc is 25, need evidence\n" +
-                "Wiki claims \"has approximately 40% less pellet spread\" although it's not listed in stats. really it's pistol-spread per ctx file.\n" +
-                "TODO Wiki says 50:1, so does my calc, but Wiki pistol says 48:1 - nonsense.\n";
+                "Wiki claims \"has approximately 40% less pellet spread\" although it's not listed in stats. really it's pistol-spread per ctx file.\n";
             //Hitscan = new Hitscan()
             //{
             //    Damage = new Damage(48)
@@ -302,8 +298,7 @@ new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("20% less accurate"),
 });
             Notes += "wiki/calc close 105, but obs 104; minicrit calc/'wiki' 142 but obs 141\n";
-            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n" +
-                "TODO, wiki spread says is 24:1, but my calc with *1.20m rounds to 25:1 (24.6...)\n";
+            Notes += "**CLOSE RANGE REQUIRES OFFSET (32 doesn't match)\n";
 
             //Hitscan = new Hitscan()
             //{

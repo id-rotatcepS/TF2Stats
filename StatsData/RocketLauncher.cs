@@ -226,7 +226,7 @@ new NegativeAttribute("-25% damage penalty"),
     /// <summary>
     /// myobs: 112	48	151	122	122	122
     /// wiki: 105-112	24-48	151	122	135-270 (D/H)
-    /// note on 151: correct, but special reduced crit-boosted value of 122 needs to be updated on wiki. They seem to be unaware
+    /// note on 151: correct, but special reduced crit-boosted value of 122
     /// note on 135-270: check the reflect-crit really can do crit damage.  Looks like it should NOT be true and wiki needs update because: "May 13, 2013 Patch    [Undocumented] Fixed reflected Cow Mangler shots becoming Critical hits."
     /// </summary>
     public class CowMangler5000 : ARocketLauncher

@@ -5,7 +5,7 @@ namespace StatsData
 
     // reviewing vs. wiki pages, most look good starting from shield bash working up the list.  issues marked as TODO in code items.
     // summary:
-    // TODO shotgun long range all pellets is missing weapon tests (with a giant) and tends to not match wiki
+    // (wiki changed, but technically still not fully tested: shotgun long range all pellets is missing weapon tests (with a giant))
     // TODO need evidence observations: stickybombs & flamethrowers - numbers are a pretty good match now.
     // TODO overdose (other needs?) observations: small "vs. building" difference in wiki.
     // TODO huo-long heater direct burn damage a real thing, or does it just invoke simple afterburn? increased damage on already-burning enemy? assuming increased afterburn damage while active is true but test it inactive.
@@ -16,13 +16,9 @@ namespace StatsData
 
     //TODO wiki vs. calc'd close max on a huolong & natascha miniguns doesn't match up exactly (what is obs?) scout pistol, too (obs matches wiki)
 
-    // TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)
     // TODO crossbow: Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)
     // TODO shortcircuit: wiki went with base + falloff which doesn't really make any sense and they also didn't show mini-crit range
     // TODO rocket launchers point blank required a custom ramp up
-    // TODO check wiki spread vs. good calc (30:1 and 50:1 are good for sure)
-
-    //TODO (shotgun/scattergun) wiki all pellets far 30, but calc is 32, need evidence.  30 implies 50% fall-off
 
     //TODO self-damage management
     //TODO knock-back management
@@ -350,7 +346,6 @@ new NegativeAttribute("-50% max primary ammo on wearer"),
 new NegativeAttribute("Self mark for death when hauling buildings"),
 new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
 });
-            Notes += "TODO RescueRanger wiki mini-crit max of 72 is nonsense (obs and calc agree to 81)\n";
             Projectile = new Projectile(2400)
             {
                 HitDamage = new Damage(40) // tf_weapon_shotgun_building_rescue Damage=40

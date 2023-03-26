@@ -978,10 +978,6 @@ namespace StatsData
 
         /// <summary>
         /// https://www.reddit.com/r/truetf2/comments/1gyb8g/comment/cap37c1
-        /// 0.0625 (30:1) per https://wiki.teamfortress.com/wiki/Talk:Shotgun#Bullet_spread_on_either_this_page_or_the_page_for_the_Scattergun_.28and_potentially_a_lot_of_other_weapon_pages.29_is_WRONG
-        /// but the linked image (https://imgur.com/a/ZmWeqe9) says 0.0675 (28:1), same as reddit post!
-        /// I think they accidentally conflated it with the firing rate.
-        /// Turns out it doesn't matter outside that conversation (except another imgur link that used it to reverse engineer a 1.9 divisor to apply to everything to oversimplify things.)
         /// 
         /// I extracted and decrypted the tf_weapon ctx files myself using GCFScape & VICE.
         /// Spread: 0.0675
