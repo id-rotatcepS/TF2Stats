@@ -109,6 +109,7 @@ new PositiveAttribute("+25% greater jump height when active"),
 new NegativeAttribute("-60% clip size"),
 });
             Notes += "Wiki 1.10 reload was based on scout pistol that since was proven as 1.005\n";
+            Notes += "TODO wiki falloff is showing decimal, should be rounded\n";
 
             //Hitscan = new Hitscan()
             //{

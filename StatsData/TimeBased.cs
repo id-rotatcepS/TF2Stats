@@ -392,7 +392,7 @@ new NegativeAttribute("No headshots"),
 new NegativeAttribute("-75% max primary ammo on wearer"),
 new DescriptionAttribute("Fires special bolts that heal teammates and deals damage<br>based on distance traveled<br>This weapon will reload automatically when not active"),
 });
-            Notes += "TODO Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc)\n";
+            Notes += "TODO Wiki has nonsense crit & minicrit values of 113 & 51 on the low end when I've observed 115 & 52 (matches calc using 38.4 - 50% would be 38.5 but that'd be 115.5 crit)\n";
             Projectile = new Projectile(2400)
             {
                 // damages buildings the same amount based on hang time.

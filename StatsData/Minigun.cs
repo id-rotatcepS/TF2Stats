@@ -253,6 +253,7 @@ new PositiveAttribute("25% damage bonus vs burning players"),
 new NegativeAttribute("-10% damage penalty"),
 new NegativeAttribute("Consumes an additional 4 ammo per second while spun up"),
 });
+            Notes += "mini/crit bullet values are way off - maybe from a cold weapon\n";
             ActivationTime = 0.87m + 1.0m;// sec spin up + warm up;
             ////ActivationTime = 0.87;// sec spin up;
             //Hitscan = new Hitscan()
@@ -297,6 +298,7 @@ new NegativeAttribute("Consumes an additional 4 ammo per second while spun up"),
         public HuoLongHeaterFireRing()
         {
             Name = "Fire Ring";
+            Notes += "TODO also does direct damage according to wiki, and different afterburn when weapon active??\n";
 
             //TODO commented out - Test this... I don't think this is accurate information.
             //Hitscan = new Hitscan()

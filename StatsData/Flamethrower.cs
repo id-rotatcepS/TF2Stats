@@ -302,7 +302,8 @@ new PositiveAttribute("This weapon holsters 30% faster"),
 new PositiveAttribute("Extinguishing teammates restores 20 health"),
 new NegativeAttribute("-66% afterburn damage penalty"),
 new NegativeAttribute("+25% airblast cost"),
-}); 
+});
+            Notes += "TODO wiki sorely outdated vs others (afterburn duration, number / interval representations)\n";
             AlternateModes = new List<Weapon>
             {
                 new DegreaserCold(),
@@ -376,6 +377,7 @@ new NegativeAttribute("No random critical hits"),
 new NegativeAttribute("No airblast"),
 new DescriptionAttribute("Being a revolutionary appliance capable of awakening the fire element phlogiston that exists in all combustible creatures, which is to say, all of them."),
 }); 
+            Notes += "TODO wiki vs others (afterburn duration, interval representations)\n";
             // no compression blast
             AlternateModes = new List<Weapon>
             {

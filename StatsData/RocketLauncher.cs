@@ -19,6 +19,7 @@ BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	
             Name = "Rocket Launcher";
             //Notes += "Close Range 124.6% I invented as a single value that works with Liberty Launcher and everything else - When using offset=32 (no min separation).\n";
             Notes += "**CLOSE RANGE REQUIRES OFFSET - 125% works with all when using offset=23.5 (documented value) but NOT with 32 (no min separation).\n";
+            Notes += "TODO wiki point blank/med/long range ranges are 'common' but should be theoretical splash/hit range\n";
             Projectile = new Projectile(speed)
             {
                 HitDamage = new Damage(baseDamage)

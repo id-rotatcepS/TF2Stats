@@ -432,6 +432,7 @@ new PositiveAttribute("Charge and fire shots independent of zoom"),
 new NegativeAttribute("No headshots when not fully charged"),
 new NegativeAttribute("-10% damage on body shot"),
 });
+            Notes += "TODO wiki uses - between bodyshot and headshot but it's not a range - change to a comma or something - or do the percent as a range and headshot as a newline \n";
             ActivationTime = 0;// no delay;
             //Hitscan = new Hitscan()
             //{

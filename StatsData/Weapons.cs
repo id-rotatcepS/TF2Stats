@@ -199,6 +199,7 @@ BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	
         {
             Name = "Huntsman"; Level = 10; WeaponType = "Bow"; Attributes.AddRange(new WeaponAttribute[] { new NeutralAttribute(""),
 });
+            Notes += "TODO attack interval 0 / reload 1.94 vs. wiki interval 1.94 - attack interval should be consistently if-constant-supply-cabinet\n";
             Projectile = new Projectile(1875)//wd; had 1812 from other spreadsheet
             {
                 HitDamage = new Damage(50)  // TODO tf_weapon_compound_bow Damage=70 TimeFireDelay=2.0 TimeReload=1.0 Spread=0.0
@@ -236,6 +237,7 @@ BulletsPerShot	Damage	Spread	DamageRadius	WeaponType	TimeReload	TimeReloadStart	
         public HuntsmanCharged()
         {
             Name = "charged";
+            Notes += "TODO attack interval 1 for charged = max charge time 1\n";
 
             Projectile = new Projectile(2400)//wd
             {
@@ -346,6 +348,7 @@ new NegativeAttribute("-50% max primary ammo on wearer"),
 new NegativeAttribute("Self mark for death when hauling buildings"),
 new NegativeAttribute("4-to-1 health-to-metal ratio when repairing buildings"),
 });
+            Notes += "TODO wiki nonsense medium range - all 3 are not appropriate for this weapon type anyhow\n";
             Projectile = new Projectile(2400)
             {
                 HitDamage = new Damage(40) // tf_weapon_shotgun_building_rescue Damage=40
@@ -750,8 +753,8 @@ new NegativeAttribute("-2 health drained per second on wearer"),
 new NegativeAttribute("-15% damage penalty"),
 new DescriptionAttribute("While active, movement speed increases based on ÜberCharge percentage to a maximum of +20%"),
 });
-            //TODO wiki claims 8 against buildings... find out why, that makes 0 sense.
-            //NOTE no stat or wiki text says it should have different ramps, but it shows 111% in wiki stats box (probably because they were using 9 as base, not 8.5).  We use 120% like the rest of the syringe guns.
+            Notes += "TODO wiki claims 8 against buildings... find out why, that makes 0 sense.\n";
+            Notes += "TODO no stat or wiki text says it should have different ramps, but it shows 111% in wiki stats box (probably because they were using 9 as base, not 8.5).  We use 120% like the rest of the syringe guns.\n";
 
             //Projectile = new Projectile(1000) //wd; other sheet said 990
             //{
